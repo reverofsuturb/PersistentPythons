@@ -23,6 +23,8 @@ class Board(db.Model):
     user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     board_name = db.Column(db.String(255), nullable=False, unique=True)
 
+    lists = relationship('List', backref='board')
+
 
 class Card(db.Model):
     __tablename__ = "cards"
@@ -31,7 +33,7 @@ class Card(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    list_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
+    list_id = db.Column(db.Integer, ForeignKey("lists.id"), nullable=False)
     user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     labels = db.Column(db.String(255))
