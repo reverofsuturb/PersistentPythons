@@ -25,6 +25,13 @@ class Board(db.Model):
 
     lists = relationship('List', backref='board')
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'board_name': self.board_name
+        }
+
 
 class Card(db.Model):
     __tablename__ = "cards"
@@ -43,6 +50,20 @@ class Card(db.Model):
     end_date = db.Column(db.Date)
     checklist = db.Column(db.String(255), default=None)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'list_id': self.list_id,
+            'user_id': self.user_id,
+            'title': self.title,
+            'labels': self.labels,
+            'notification': self.notification,
+            'description': self.description,
+            'start_date': self.start_date,
+            'end_date': self.end_date,
+            'checklist': self.checklist
+        }
+
 
 class List(db.Model):
     __tablename__ = "lists"
@@ -54,6 +75,14 @@ class List(db.Model):
     board_id = db.Column(db.Integer, ForeignKey("boards.id"))
     user_id = db.Column(db.Integer, ForeignKey("users.id"))
     title = db.Column(db.String(255), nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'board_id': self.board_id,
+            'user_id': self.user_id,
+            'title': self.title
+        }
 
 
 class CardImage(db.Model):
@@ -67,6 +96,14 @@ class CardImage(db.Model):
     url = db.Column(db.String(1000), nullable=False)
     cover = db.Column(db.Boolean, nullable=False)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'card_id': self.card_id,
+            'url': self.url,
+            'cover': self.cover
+        }
+
 
 class Comment(db.Model):
     __tablename__ = "comments"
@@ -78,3 +115,12 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     card_id = db.Column(db.Integer, ForeignKey("cards.id"), nullable=False)
     body = db.Column(db.Text(255), nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'card_id': self.card_id,
+            'body': self.body
+        }
+
