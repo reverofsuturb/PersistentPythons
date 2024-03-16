@@ -51,7 +51,6 @@ class List(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     board_id = db.Column(db.Integer, ForeignKey("boards.id"))
     user_id = db.Column(db.Integer, ForeignKey("users.id"))
-    updated = db.Column(db.Date, onupdate=current_date)
     title = db.Column(db.String(255), nullable=False)
 
 
