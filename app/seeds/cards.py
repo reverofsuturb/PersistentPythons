@@ -1,8 +1,10 @@
 from app.models import db, Card, environment, SCHEMA
 from sqlalchemy.sql import text
+from datetime import date
 
 
 def seed_cards():
+
     card1 = Card(
         list_id=1,
         user_id=1,
@@ -10,8 +12,8 @@ def seed_cards():
         labels="Dope",
         notification=True,
         description="Everything is great I love life",
-        start_date="2024/03/12",
-        end_date="2024/03/13",
+        start_date=date.today(),
+        end_date=date.today(),
         checklist="Check",
     )
     card2 = Card(
@@ -21,8 +23,8 @@ def seed_cards():
         labels="Not Dope",
         notification=False,
         description="Everything is not great, however, life is bearable",
-        start_date="2024/04/15",
-        end_date="2024/05/16",
+        start_date=date.today(),
+        end_date=date.today(),
         checklist="Not Check",
     )
     card3 = Card(
@@ -32,8 +34,8 @@ def seed_cards():
         labels="async",
         notification=False,
         description="def all that",
-        start_date="2024/06/21",
-        end_date="2024/06/21",
+        start_date=date.today(),
+        end_date=date.today(),
         checklist="Shrood",
     )
     card4 = Card(
@@ -43,8 +45,8 @@ def seed_cards():
         labels="Put One Here",
         notification=False,
         description="Because I hate notifications",
-        start_date="2024/08/12",
-        end_date="2025/05/02",
+        start_date=date.today(),
+        end_date=date.today(),
         checklist=" ",
     )
     card5 = Card(
@@ -54,8 +56,8 @@ def seed_cards():
         labels="It is what it is",
         notification=True,
         description="Alert me always",
-        start_date="2024/08/05",
-        end_date="2024/09/03",
+        start_date=date.today(),
+        end_date=date.today(),
         checklist=" ",
     )
     all_cards = [card1, card2, card3, card4, card5]

@@ -2,6 +2,7 @@ from .db import db, environment, SCHEMA
 from sqlalchemy import ForeignKey, String, Integer, Float, Boolean, Date, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
+from app.models import User
 
 
 current_date = datetime.now().date()
@@ -123,4 +124,3 @@ class Comment(db.Model):
             'card_id': self.card_id,
             'body': self.body
         }
-

@@ -1,5 +1,5 @@
 from app.models import db, CardImage, environment, SCHEMA
-from sqlalchemy.orm import text
+from sqlalchemy.sql import text
 
 
 def card_images_seeds():
@@ -59,10 +59,10 @@ def card_images_seeds():
 	[db.session.add(card_image) for card_image in all_card_images]
 	db.session.commit()
 
-	def undo_card_images():
-		if environment == "production":
-			db.session.execute(f"TRUNCATE table {SCHEMA}.cards RESTART IDENTITY CASCADE;")
-		else:
-			db.session.execute(text("DELETE FROM cards"))
+def undo_card_images():
+	if environment == "production":
+		db.session.execute(f"TRUNCATE table {SCHEMA}.cards RESTART IDENTITY CASCADE;")
+	else:
+		db.session.execute(text("DELETE FROM cards"))
 
-		db.session.commit()
+	db.session.commit()

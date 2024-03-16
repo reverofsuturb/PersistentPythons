@@ -3,6 +3,6 @@ from wtforms import TextAreaField, IntegerField
 from wtforms.validators import DataRequired
 
 class CommentForm(FlaskForm):
-    user_id = IntegerField("User ID", validators=[DataRequired])
-    card_id = IntegerField("Card ID", validators=[DataRequired])
+    user_id = IntegerField("User ID", validators=[DataRequired()])
+    card_id = IntegerField("Card ID", validators=[DataRequired()])
     comment = TextAreaField("Comment", validators=[DataRequired()])
