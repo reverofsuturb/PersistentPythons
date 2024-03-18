@@ -30,6 +30,10 @@ def seed_comments():
     )
 
 
+    all_comments = [comment1, comment2, comment3, comment4, comment5]
+    [db.session.add(comment) for comment in all_comments]
+    db.session.commit()
+
 def undo_comments():
     if environment == "production":
         db.session.execute(

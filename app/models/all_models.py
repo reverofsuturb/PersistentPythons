@@ -72,8 +72,9 @@ class Card(db.Model):
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
     checklist = db.Column(db.String(255), default=None)
-
+# EDIT THIS DOWN BELOW CHAOS?
     list = db.relationship('List', back_populates='cards_in_list')
+    comments = db.relationship('Comment', back_populates='comments_rel')
 
     def to_dict(self):
         return {
@@ -121,6 +122,8 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
     card_id = db.Column(db.Integer, ForeignKey("cards.id"), nullable=False)
     body = db.Column(db.Text(255), nullable=False)
+    comments_rel = db.relationship('Card', back_populates='comments')
+
 
     def to_dict(self):
         return {
