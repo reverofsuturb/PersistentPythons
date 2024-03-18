@@ -8,7 +8,7 @@ board_routes = Blueprint("boards", __name__)
 
 
 
-@board_routes.route("/", methods=["GET"])
+@board_routes.route("", methods=["GET"])
 @login_required
 def view_board():
     stmt = select(Board).where(Board.user_id == current_user.id)
@@ -52,14 +52,13 @@ def new_board():
 @board_routes.route("/<int:board_id>", methods=["GET", "PUT"])
 @login_required
 def edit_board(board_id):
-    board = select(Board).where(Board.id == board_id)
+    stmt = select(Board).where(Board.id == board_id)
+    board = db.session.execute(stmt).scalar_one()
     if board.user_id != current_user.id:
         return jsonify({
             "Not Authorized": "forbidden"
         }), 403
 
-    stmt = select(Board).where(Board.id == id)
-    board = db.session.execute(stmt).scalar_one()
     if request.method == "PUT":
         form = BoardForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
@@ -88,6 +87,7 @@ def delete_board(board_id):
     board_grabber = db.session.execute(stmt).scalar_one()
 
     db.session.delete(board_grabber)
+    db.session.commit()
 
     return jsonify({
         "Board Deleted" : board_grabber.to_dict()
