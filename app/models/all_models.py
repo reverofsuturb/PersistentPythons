@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy import ForeignKey, String, Integer, Float, Boolean, Date, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -12,6 +12,8 @@ card_user = db.Table(
     db.Column("user_id", db.ForeignKey("users.id"), primary_key=True),
     db.Column("card_id", db.ForeignKey("cards.id"), primary_key=True),
 )
+if environment == "production":
+    card_user.schema = SCHEMA
 ## add some join tables
 
 class Board(db.Model):
@@ -21,7 +23,7 @@ class Board(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     board_name = db.Column(db.String(255), nullable=False, unique=True)
 
     lists = relationship('List', backref='board')
@@ -41,8 +43,8 @@ class List(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    board_id = db.Column(db.Integer, ForeignKey("boards.id"))
-    user_id = db.Column(db.Integer, ForeignKey("users.id"))
+    board_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('boards.id')))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     title = db.Column(db.String(255), nullable=False)
 
     cards_in_list = db.relationship('Card', back_populates='list')
@@ -63,8 +65,8 @@ class Card(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    list_id = db.Column(db.Integer, ForeignKey("lists.id"), nullable=False)
-    user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
+    list_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("lists.id")), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     labels = db.Column(db.String(255))
     notification = db.Column(db.Boolean)
@@ -99,7 +101,7 @@ class CardImage(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    card_id = db.Column(db.Integer, ForeignKey("cards.id"), nullable=False)
+    card_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("cards.id")), nullable=False)
     url = db.Column(db.String(1000), nullable=False)
     cover = db.Column(db.Boolean, nullable=False)
 
@@ -119,8 +121,8 @@ class Comment(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, ForeignKey("users.id"), nullable=False)
-    card_id = db.Column(db.Integer, ForeignKey("cards.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    card_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("cards.id")), nullable=False)
     body = db.Column(db.Text(255), nullable=False)
     comments_rel = db.relationship('Card', back_populates='comments')
 
