@@ -34,6 +34,28 @@ class Board(db.Model):
         }
 
 
+class List(db.Model):
+    __tablename__ = "lists"
+
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    board_id = db.Column(db.Integer, ForeignKey("boards.id"))
+    user_id = db.Column(db.Integer, ForeignKey("users.id"))
+    title = db.Column(db.String(255), nullable=False)
+
+    cards_in_list = db.relationship('Card', back_populates='list')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'board_id': self.board_id,
+            'user_id': self.user_id,
+            'title': self.title
+        }
+
+
 class Card(db.Model):
     __tablename__ = "cards"
 
@@ -51,6 +73,8 @@ class Card(db.Model):
     end_date = db.Column(db.Date)
     checklist = db.Column(db.String(255), default=None)
 
+    list = db.relationship('List', back_populates='cards_in_list')
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -65,25 +89,6 @@ class Card(db.Model):
             'checklist': self.checklist
         }
 
-
-class List(db.Model):
-    __tablename__ = "lists"
-
-    if environment == "production":
-        __table_args__ = {"schema": SCHEMA}
-
-    id = db.Column(db.Integer, primary_key=True)
-    board_id = db.Column(db.Integer, ForeignKey("boards.id"))
-    user_id = db.Column(db.Integer, ForeignKey("users.id"))
-    title = db.Column(db.String(255), nullable=False)
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'board_id': self.board_id,
-            'user_id': self.user_id,
-            'title': self.title
-        }
 
 
 class CardImage(db.Model):

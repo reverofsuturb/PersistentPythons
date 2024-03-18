@@ -6,26 +6,44 @@ from sqlalchemy import select
 
 list_routes = Blueprint("list", __name__)
 
+
+
+
+
+
+
 @list_routes.route("", methods=["GET"])
 @login_required
 def view_lists():
-    stmt = select(List).where(List.user_id == current_user.id)
+    stmt = select(List).join(List.cards_in_list).where(List.user_id == current_user.id)
 
     lists_list = []
 
     for row in db.session.execute(stmt):
+        print("This is our data:", row.List.to_dict())
+        print("This is our data:", row.List.cards_in_list())
+        print("This is our data:", row.List)
         results = row.List
+        # print(row.cards_in_list.title)
+
         results_info = {
             "id": results.id,
             "title": results.title,
             "board_id": results.board_id,
-            "user_id": results.user_id
+            "user_id": results.user_id,
+            "cards_in_list":results.cards_in_list
         }
+
         lists_list.append(results_info)
 
     return jsonify({
         "Lists": lists_list
     })
+
+
+
+
+
 
 
 @list_routes.route('/<int:list_id>', methods=["GET","PUT"])
