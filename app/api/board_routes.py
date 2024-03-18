@@ -59,3 +59,15 @@ def edit_board(id):
         {
             "Edited Board" : board.to_dict()
         })
+
+@board_routes.route("/<int:id>", methods=["DELETE"])
+@login_required
+def delete_board(id):
+    stmt = select(Board).where(Board.id ==id)
+    board_grabber = db.session.execute(stmt).scalar_one()
+
+    db.session.delete(board_grabber)
+
+    return jsonify({
+        "Board Deleted" : board_grabber.to_dict()
+    })
