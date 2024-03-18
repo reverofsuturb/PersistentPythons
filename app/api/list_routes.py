@@ -35,7 +35,7 @@ def edit_list(list_id):
     list = db.session.execute(stmt).scalar_one()
     if list.user_id != current_user.id:
         return jsonify({
-            "Not Authorized": "forbidden"
+            "Not Authorized": "Forbidden"
         }), 403
 
     if request.method == "PUT":
@@ -61,10 +61,10 @@ def delete_list(list_id):
         return jsonify({
             "Not Authorized": "forbidden"
         }), 403
-    
+
     db.session.delete(list)
     db.session.commit()
-    
+
     return jsonify({
         "List Deleted" : list.to_dict()
     })
@@ -74,12 +74,12 @@ def delete_list(list_id):
 def new_card(list_id):
     stmt = select(List).where(List.id == list_id)
     list = db.session.execute(stmt).scalar_one()
-    
+
     if list.user_id != current_user.id:
         return jsonify({
-            "Not Authorized": "forbidden"
+            "Not Authorized": "Forbidden"
         }), 403
-    
+
     form = CardForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
@@ -101,7 +101,5 @@ def new_card(list_id):
         return jsonify({
             "New Card": card.to_dict()
         })
-    
-    return jsonify({'errors': form.errors}), 400
 
-    
+    return jsonify({'errors': form.errors}), 400

@@ -12,7 +12,7 @@ card_user = db.Table(
     db.Column("user_id", db.ForeignKey("users.id"), primary_key=True),
     db.Column("card_id", db.ForeignKey("cards.id"), primary_key=True),
 )
-
+## add some join tables
 
 class Board(db.Model):
     __tablename__ = "boards"
