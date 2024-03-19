@@ -1,25 +1,25 @@
-const GET_ALL_BOARDS ="boards/getAllBoards"
+const GET_ALL_BOARDS = "boards/getAllBoards";
 const GET_BOARD = "boards/getBoard";
 const POST_BOARD = "boards/postBoard";
 const PUT_BOARD = "boards/putBoard";
 const DELETE_BOARD = "boards/deleteBoard";
 
-const getAllBoards = () => ({
+const getAllBoards = (boards) => ({
   type: GET_ALL_BOARDS,
-  boards
-})
+  boards,
+});
 
-const getBoard = () => ({
+const getBoard = (board) => ({
   type: GET_BOARD,
   board,
 });
 
-const postBoard = () => ({
+const postBoard = (board) => ({
   type: POST_BOARD,
   board,
 });
 
-const putBoard = () => ({
+const putBoard = (board) => ({
   type: PUT_BOARD,
   board,
 });
@@ -30,15 +30,21 @@ const deleteBoard = () => ({
 
 export const thunkGetAllBoards = () => async (dispatch) => {
   const response = await fetch("/api/boards");
+  // console.log("RESPONSE", response);
   if (response.ok) {
     const data = await response.json();
+    // console.log(
+    //   "🚀 %c ~ file: boards.js:178 ~ thunkAllBoards ~ data:",
+    //   "color: yellow; font-size: 32px",
+    //   data
+    // );
+
     if (data.errors) {
       return data.errors;
     }
     dispatch(getAllBoards(data));
   }
 };
-
 
 export const thunkGetBoard = (board_id) => async (dispatch) => {
   const response = await fetch(`/api/boards/${board_id}`);
@@ -91,25 +97,25 @@ export const thunkDeleteBoard = (board_id) => async (dispatch) => {
     dispatch(deleteBoard(data));
   }
 };
-const initialState = {}
+const initialState = {};
 
 const boardsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_BOARDS:{
-      boardState = {}
-      action.boards.forEach((board) => {
-      boardState[board.id] = board
-      })
-      return boardState
+    case GET_ALL_BOARDS: {
+      let boardState = {};
+      action.boards.Boards.forEach((board) => {
+        boardState[board.id] = board;
+      });
+      return boardState;
     }
     case GET_BOARD:
-      return { ...state, [action.board.id]: board };
+      return { ...state, [action.board.id]: action.board };
     case POST_BOARD:
-      return { ...state, [action.board.id]: board };
+      return { ...state, [action.board.id]: action.board };
     case PUT_BOARD:
-      return { ...state, [action.board.id]: board };
+      return { ...state, [action.board.id]: action.board };
     case DELETE_BOARD:
-      return { ...state, [action.board.id]: board };
+      return { ...state, [action.board.id]: action.board };
     default:
       return state;
   }
