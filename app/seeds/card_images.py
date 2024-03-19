@@ -50,7 +50,7 @@ def card_images_seeds():
 		cover = True,
 	)
 	card_image10 = CardImage(
-		card_id = 10,
+		card_id = 2,
 		url = 'https://imgur.com/lab35Jz.jpg',
 		cover = True,
 	)
@@ -61,8 +61,8 @@ def card_images_seeds():
 
 def undo_card_images():
 	if environment == "production":
-		db.session.execute(f"TRUNCATE table {SCHEMA}.cards RESTART IDENTITY CASCADE;")
+		db.session.execute(f"TRUNCATE table {SCHEMA}.card_images RESTART IDENTITY CASCADE;")
 	else:
-		db.session.execute(text("DELETE FROM cards"))
+		db.session.execute(text("DELETE FROM card_images"))
 
 	db.session.commit()
