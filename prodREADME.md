@@ -166,7 +166,36 @@ Updates and returns an existing Board.
 ### Delete a Board
 Deletes an existing board.
 
+* Require Authentication: true
+* Require proper authorization: Board must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/boards/:boardId
+  * Body: none
 
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a Board with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Board couldn't be found"
+    }
+    ```
 
 
 
