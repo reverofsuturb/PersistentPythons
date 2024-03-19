@@ -57,6 +57,8 @@ class List(db.Model):
             'title': self.title
         }
 
+    
+
 
 class Card(db.Model):
     __tablename__ = "cards"
@@ -70,7 +72,7 @@ class Card(db.Model):
     title = db.Column(db.String(255), nullable=False)
     labels = db.Column(db.String(255))
     notification = db.Column(db.Boolean)
-    description = db.Column(db.Text(255))
+    description = db.Column(db.String(2000))
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
     checklist = db.Column(db.String(255), default=None)
@@ -123,7 +125,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     card_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("cards.id")), nullable=False)
-    body = db.Column(db.Text(255), nullable=False)
+    body = db.Column(db.String(2000), nullable=False)
     comments_rel = db.relationship('Card', back_populates='comments')
 
 

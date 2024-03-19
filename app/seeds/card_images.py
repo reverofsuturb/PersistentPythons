@@ -50,7 +50,7 @@ def card_images_seeds():
 		cover = True,
 	)
 	card_image10 = CardImage(
-		card_id = 10,
+		card_id = 2,
 		url = 'https://imgur.com/lab35Jz.jpg',
 		cover = True,
 	)

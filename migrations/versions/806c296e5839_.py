@@ -69,7 +69,7 @@ def upgrade():
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('labels', sa.String(length=255), nullable=True),
     sa.Column('notification', sa.Boolean(), nullable=True),
-    sa.Column('description', sa.Text(length=255), nullable=True),
+    sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('start_date', sa.Date(), nullable=True),
     sa.Column('end_date', sa.Date(), nullable=True),
     sa.Column('checklist', sa.String(length=255), nullable=True),
@@ -108,7 +108,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
-    sa.Column('body', sa.Text(length=255), nullable=False),
+    sa.Column('body', sa.String(length=255), nullable=False),
     sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
