@@ -48,8 +48,10 @@ export const thunkGetAllBoards = () => async (dispatch) => {
 
 export const thunkGetBoard = (board_id) => async (dispatch) => {
   const response = await fetch(`/api/boards/${board_id}`);
+  console.log("🚀 ~ thunkGetBoard ~ response:", response)
   if (response.ok) {
     const data = await response.json();
+    console.log("🚀 ~ thunkGetBoard ~ data:", data)
     if (data.errors) {
       return data.errors;
     }

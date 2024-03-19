@@ -72,6 +72,7 @@ def edit_board(board_id):
             })
 
         return jsonify({'errors': form.errors}), 400
+    return jsonify(board.to_dict())
 
 
 
