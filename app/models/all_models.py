@@ -57,6 +57,8 @@ class List(db.Model):
             'title': self.title
         }
 
+    
+
 
 class Card(db.Model):
     __tablename__ = "cards"
