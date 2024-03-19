@@ -43,7 +43,7 @@ def new_board():
         db.session.add(board)
         db.session.commit()
         return jsonify(
-            {"New Board": board.to_dict()}
+          board.to_dict()
         )  # This converts our dictionary into a JSON response
 
     return jsonify({'errors': form.errors}), 400

@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
-import AllBoards from "../components/Boards";
-import SingleBoard from "../components/Boards/SingleBoard/SingleBoard";
+import { AllBoards, SingleBoard, PostBoards } from "../components/Boards";
 import Layout from "./Layout";
+
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "boards",
         element: <AllBoards />,
+      },
+      {
+        path: "boards/new",
+        element: <PostBoards />
       },
       {
         path: "boards/:board_id",

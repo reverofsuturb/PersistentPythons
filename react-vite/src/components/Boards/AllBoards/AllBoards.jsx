@@ -5,7 +5,7 @@ import { thunkGetAllBoards } from "../../../store/boards";
 export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
-  //   console.log("BOARDS", boards);
+    console.log("BOARDS", boards);
 
   const allBoards = Object.values(boards);
 
