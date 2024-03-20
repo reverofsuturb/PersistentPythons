@@ -5,6 +5,7 @@ import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
 import AllLists from "../components/Lists/AllLists/AllLists";
 import PostLists from "../components/Lists/PostLists/PostLists";
 import EditList from "../components/Lists/EditList/EditList";
+import PostCard from "../components/Cards/PostCards/PostCard";
 import Layout from "./Layout";
 import EditBoard from "../components/Boards/EditBoards/EditBoard";
 
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: "lists/:list_id/edit",
         element: <EditList />,
+      },
+      {
+        path: "lists/:list_id/cards/new",
+        element: <PostCard />,
       },
     ],
   },

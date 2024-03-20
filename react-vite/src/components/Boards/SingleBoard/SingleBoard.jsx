@@ -91,6 +91,7 @@ import DeleteBoard from "../DeleteBoards/DeleteBoard";
 import EditList from "../../Lists/EditList/EditList";
 import DeleteList from "../../Lists/DeleteList/DeleteList";
 import SingleCard from "../../Cards/SingleCard/SingleCard";
+import PostCard from "../../Cards/PostCards/PostCard";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
@@ -98,6 +99,7 @@ export default function SingleBoard() {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [showPostCard, setShowPostCard] = useState(false);
 
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
@@ -110,7 +112,7 @@ export default function SingleBoard() {
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id]);
+  }, [dispatch, board_id, showEdit, showPostCard]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -146,14 +148,18 @@ export default function SingleBoard() {
           <ul>
             {allLists.length &&
               allLists?.map((list) => (
-                <div>
-                  <li key={list.id}>{list.title}</li>
+                <div key={list.id}>
+                  <li>{list.title}</li>
                   {list?.cards_in_list.map((card) => (
-                    <SingleCard card={card} />
+                    <SingleCard key={card.id} card={card} />
                   ))}
                   <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
                   {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
+                  <button onClick={() => setShowPostCard(!showPostCard)}>
+                    PostCard
+                  </button>
+                  {showPostCard ? <PostCard list={list} /> : null}
                 </div>
               ))}
           </ul>

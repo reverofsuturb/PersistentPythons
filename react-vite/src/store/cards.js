@@ -50,14 +50,14 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     console.log("DATA", data);
-  }
 
-  if (data.errors) {
-    console.log("ERRORS", data.errors);
-    return data.errors;
+    if (data.errors) {
+      console.log("ERRORS", data.errors);
+      return data.errors;
+    }
+    const newCard = await dispatch(postCard(data));
+    return newCard;
   }
-  const card = await dispatch(postCard(data));
-  return card;
 };
 
 const thunkEditCard = (card_id, card) => async (dispatch) => {
