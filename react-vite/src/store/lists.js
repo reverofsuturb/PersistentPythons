@@ -1,7 +1,7 @@
 const GET_ALL_LISTS = "lists/getAllLists";
 const POST_LIST = "lists/postList";
-const EDIT_LIST = "lists/editList"
-
+const EDIT_LIST = "lists/editList";
+const DELETE_LIST = "lists/deleteList";
 
 const getAllLists = (lists) => ({
   type: GET_ALL_LISTS,
@@ -13,11 +13,13 @@ const postList = (list) => ({
   list,
 });
 const editList = (list) => ({
-    type: EDIT_LIST,
-    list
-})
-
-
+  type: EDIT_LIST,
+  list,
+});
+const deleteList = (list_id) => ({
+  type: DELETE_LIST,
+  list_id,
+});
 
 export const thunkGetAllLists = () => async (dispatch) => {
   const res = await fetch("/api/lists");
@@ -55,31 +57,45 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
   }
 };
 
-
-
 export const thunkEditList = (list_id, list) => async (dispatch) => {
-    console.log("ARE WE HERE")
-    const res = await fetch(`/api/lists/${list_id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(list),
-    })
-    if (res.ok) {
-        const data = await res.json();
-        console.log("🚀 ~ thunkPostList ~ data:", data)
+  console.log("ARE WE HERE");
+  const res = await fetch(`/api/lists/${list_id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(list),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    console.log("🚀 ~ thunkPostList ~ data:", data);
 
-        if (data.errors) {
-          console.log("🚀 ~ thunkEditList ~ data.errors:", data.errors)
-          return data.errors;
-        }
-
-        await dispatch(editList(data))
-        return data
+    if (data.errors) {
+      console.log("🚀 ~ thunkEditList ~ data.errors:", data.errors);
+      return data.errors;
     }
-}
 
+    await dispatch(editList(data));
+    return data;
+  }
+};
+
+export const thunkDeleteList = (list_id) => async (dispatch) => {
+  const res = await fetch(`/api/lists/${list_id}`, {
+    method: "DELETE",
+  });
+  console.log(res)
+  if (res.ok) {
+    const data = await res.json();
+    console.log(data);
+
+    if (data.errors) {
+      console.log(data.errors);
+      return data.errors;
+    }
+  }
+  await dispatch(deleteList(list_id));
+};
 
 const initialState = {};
 
@@ -95,6 +111,14 @@ function listReducer(state = initialState, action) {
     }
     case POST_LIST: {
       return { ...state, [action.list.id]: action.list };
+    }
+    case EDIT_LIST: {
+      return { ...state, [action.list.id]: action.list };
+    }
+    case DELETE_LIST: {
+      listState = { ...state };
+      delete listState[action.list_id];
+      return listState;
     }
     default:
       return state;

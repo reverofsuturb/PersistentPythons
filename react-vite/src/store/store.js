@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import boardsReducer from "./boards";
 import listReducer from "./lists";
+import cardsReducer from "./cards";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   boards: boardsReducer,
-  lists: listReducer
+  lists: listReducer,
+  cards: cardsReducer
 });
 
 let enhancer;
