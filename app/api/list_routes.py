@@ -7,6 +7,9 @@ from sqlalchemy import select
 list_routes = Blueprint("list", __name__)
 
 
+
+
+
 @list_routes.route("", methods=["GET"])
 @login_required
 def view_lists():
@@ -28,6 +31,9 @@ def view_lists():
 
     return jsonify({"Lists": lists_list})
 
+
+
+
 @list_routes.route("/<int:list_id>", methods=["GET", "PUT"])
 @login_required
 def edit_list(list_id):
@@ -47,6 +53,9 @@ def edit_list(list_id):
         return jsonify({"errors": form.errors}), 400
 
 
+
+
+
 @list_routes.route("/<int:list_id>", methods=["DELETE"])
 @login_required
 def delete_list(list_id):
@@ -59,6 +68,9 @@ def delete_list(list_id):
     db.session.commit()
 
     return jsonify({"List Deleted": list.to_dict()})
+
+
+
 
 
 @list_routes.route("/<int:list_id>/card", methods=["GET", "POST"])
