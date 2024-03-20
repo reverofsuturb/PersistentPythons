@@ -49,17 +49,17 @@ export const thunkGetAllBoards = () => async (dispatch) => {
 
 export const thunkGetBoard = (board_id) => async (dispatch) => {
 
-  console.log("%c 🚀 ~ file: boards.js:51 ~ thunkGetBoard ~ board_id: ", "color: blue; font-size: 25px", board_id)
+  // console.log("%c 🚀 ~ file: boards.js:51 ~ thunkGetBoard ~ board_id: ", "color: blue; font-size: 25px", board_id)
   // board_id is not something that can be easily extractable inside a get route
 
   const response = await fetch(`/api/boards/${board_id}`);
 
-  console.log("%c 🚀 ~ file: boards.js:53 ~ thunkGetBoard ~ response: ", "color: blue; font-size: 25px", response)
+  // console.log("%c 🚀 ~ file: boards.js:53 ~ thunkGetBoard ~ response: ", "color: blue; font-size: 25px", response)
 
   if (response.ok) {
     const data = await response.json();
 
-    console.log("%c 🚀 ~ file: boards.js:60 ~ thunkGetBoard ~ data: ", "color: blue; font-size: 25px", data)
+    // console.log("%c 🚀 ~ file: boards.js:60 ~ thunkGetBoard ~ data: ", "color: blue; font-size: 25px", data)
 
     if (data.errors) {
       return data.errors;

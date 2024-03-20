@@ -37,6 +37,7 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
   console.log("RES", res);
   if (res.ok) {
     const data = await res.json();
+    console.log("🚀 ~ thunkPostList ~ data:", data)
 
     if (data.errors) {
       return data.errors;

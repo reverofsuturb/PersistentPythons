@@ -41,8 +41,8 @@ export default function PostList() {
           />
           <p className="p-error">{errors?.title}</p>
         </label>
+        <button>Submit</button>
       </form>
-      <button>Submit</button>
     </>
   );
 }

@@ -150,6 +150,7 @@ export default function SingleBoard() {
             {allLists.length &&
               allLists?.map((list) => <li key={list.id}>{list.title}</li>)}
           </ul>
+          <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>New List</button>
         </div>
       </div>
     </>
