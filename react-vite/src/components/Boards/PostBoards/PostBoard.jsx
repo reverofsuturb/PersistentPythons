@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import { thunkPostBoard } from "../../../store/boards";
-import { useNavigate } from "react-router-dom";
 import "./PostBoard.css";
 
 
 
 
 export default function PostBoard() {
+  // const { board_id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [boardName, setBoardName] = useState("");
   const [errors, setErrors] = useState({});
+
+
 
   useEffect(() => {
     const errorsObject = {}
@@ -22,42 +26,49 @@ export default function PostBoard() {
 
   }, [boardName])
 
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const board = {
+    const postingBoard = {
       board_name: boardName,
     };
 
-    const newBoard = await dispatch(thunkPostBoard(board));
-    console.log(newBoard, "NEW BOARD");
-    if (newBoard && newBoard.errors) {
-      return setErrors(newBoard.errors);
+    const res = await dispatch(thunkPostBoard(postingBoard));
+
+    // console.log("%c 🚀 ~ file: PostBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ", "color: orange; font-size: 25px", res)
+
+    const newPost = Object.values(res)
+    console.log(newPost, newPost[1].id)
+
+    if (res && res.errors) {
+      return setErrors(res.errors);
     }
-    navigate(`/boards/${newBoard.board.id}`)
+    navigate(`/boards/${newPost[1].id}`)
   };
+
 
   return (
     <>
       <div className="outer-post_container">
 
-      <div className="inner-post_container">
-        <form onSubmit={onSubmit}>
-          <label>
-            Name
-            <input
-              type="text"
-              value={boardName}
-              onChange={(e) => setBoardName(e.target.value)}
+        <div className="inner-post_container">
+          <form onSubmit={onSubmit}>
+            <label>
+              Name
+              <input
+                type="text"
+                value={boardName}
+                onChange={(e) => setBoardName(e.target.value)}
               />
-            <p className="p-error">{errors?.boardName}</p>
-          </label>
+              <p className="p-error">{errors?.boardName}</p>
+            </label>
 
-          <button>Submit</button>
-        </form>
+            <button>Submit</button>
+          </form>
         </div>
 
-    </div>
+      </div>
     </>
   );
 }

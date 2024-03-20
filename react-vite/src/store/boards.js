@@ -35,7 +35,7 @@ export const thunkGetAllBoards = () => async (dispatch) => {
     const data = await response.json();
     console.log(
       "🚀 %c ~ file: boards.js:178 ~ thunkAllBoards ~ data:",
-      "color: yellow; font-size: 32px",
+      "color: magenta; font-size: 32px",
       data
     );
 
@@ -100,6 +100,13 @@ export const thunkDeleteBoard = (board_id) => async (dispatch) => {
     dispatch(deleteBoard(data));
   }
 };
+
+
+
+
+
+
+
 const initialState = {};
 
 const boardsReducer = (state = initialState, action) => {
@@ -109,25 +116,43 @@ const boardsReducer = (state = initialState, action) => {
 
     case GET_ALL_BOARDS: {
       let boardState = {};
-      console.log("%c 🚀 ~ file: boards.js:108 ~ boardsReducer ~ action GET ALL BOARDS: ", "color: red; font-size: 25px", action)
+      console.log("%c 🚀 ~ file: boards.js:108 ~ boardsReducer ~ action GET ALL BOARDS: ", "color: magenta; font-size: 25px", action)
       action.boards.Boards.forEach((board) => {
         boardState[board.id] = board;
       });
       return boardState;
     }
-    case GET_BOARD:
-      console.log("%c 🚀 ~ file: boards.js:108 ~ boardsReducer ~ action GET one BOARD: ", "color: red; font-size: 25px", action)
+    case GET_BOARD: {
+      return { ...state, [action.board.id]: action.board };
+    }
+    case POST_BOARD: {
       return { ...state, [action.board.id]: action.board };
 
-    case POST_BOARD:
-      return { ...state, [action.board.id]: action.board };
-    case PUT_BOARD:
-      return { ...state, [action.board.id]: action.board };
-    case DELETE_BOARD:
-      return { ...state, [action.board.id]: action.board };
+    }
+    case PUT_BOARD: {
+
+      const newEditState = { ...state }
+      const newEditBoard = { ...action.board }
+
+      newEditState[action.board.id] = {
+        ...newEditBoard
+      }
+      return newEditState
+    }
+    case DELETE_BOARD: {
+      // return { ...state, [action.board.id]: action.board };
+
+      const oldState = { ...state };
+
+      delete oldState[action.id]
+      return oldState;
+    }
     default:
       return state;
   }
 };
+
+
+
 
 export default boardsReducer;

@@ -3,6 +3,7 @@ import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
 import Layout from "./Layout";
+import EditBoard from "../components/Boards/EditBoards/EditBoard";
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         path: "boards/:board_id",
         element: <SingleBoard />,
       },
+      {
+        path: "boards/:board_id/edit",
+        element: <EditBoard />,
+      }
     ],
   },
 ]);

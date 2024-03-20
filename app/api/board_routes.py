@@ -43,8 +43,8 @@ def new_board():
         db.session.add(board)
         db.session.commit()
         return jsonify(
-          board.to_dict()
-        )  # This converts our dictionary into a JSON response
+            board.to_dict()
+        ), 201
 
     return jsonify({'errors': form.errors}), 400
 
@@ -67,9 +67,8 @@ def edit_board(board_id):
           db.session.add(board)
           db.session.commit()
           return jsonify(
-            {
-                "Edited Board" : board.to_dict()
-            })
+              board.to_dict()
+            )
 
         return jsonify({'errors': form.errors}), 400
     return jsonify(board.to_dict())
@@ -91,7 +90,7 @@ def delete_board(board_id):
     db.session.commit()
 
     return jsonify({
-        "Board Deleted" : board_grabber.to_dict()
+        "Message": "Board deleted successfully"
     })
 
 
@@ -102,7 +101,7 @@ def new_list(board_id):
     board = select(Board).where(Board.id == board_id)
     if board.user_id != current_user.id:
         return jsonify({
-            "Not Authorized": "forbidden"
+            "Not Authorized": "Forbidden"
         }), 403
 
     form = ListForm()
