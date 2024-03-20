@@ -10,7 +10,7 @@ list_routes = Blueprint("list", __name__)
 @list_routes.route("", methods=["GET"])
 @login_required
 def view_lists():
-    stmt = select(List).join(List.cards_in_list).where(List.user_id == current_user.id)
+    stmt = select(List).where(List.user_id == current_user.id)
 
     lists_list = []
 
@@ -41,9 +41,9 @@ def edit_list(list_id):
         form["csrf_token"].data = request.cookies["csrf_token"]
         if form.validate_on_submit():
             curr_list.title = form.title.data
-            db.session.add(list)
+            db.session.add(curr_list)
             db.session.commit()
-            return jsonify({"Edited List": list.to_dict()})
+            return jsonify({"Edited List": curr_list.to_dict()})
         return jsonify({"errors": form.errors}), 400
 
 

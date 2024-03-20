@@ -4,6 +4,7 @@ import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
 import AllLists from "../components/Lists/AllLists/AllLists";
 import PostLists from "../components/Lists/PostLists/PostLists";
+import EditList from "../components/Lists/EditList/EditList";
 import Layout from "./Layout";
 import EditBoard from "../components/Boards/EditBoards/EditBoard";
 
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "boards/:board_id/lists/new",
         element: <PostLists />,
+      },
+      {
+        path: "lists/:list_id/edit",
+        element: <EditList />,
       },
     ],
   },

@@ -94,12 +94,14 @@ import { thunkGetAllLists } from "../../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import DeleteBoard from "../DeleteBoards/DeleteBoard";
+import EditList from "../../Lists/EditList/EditList";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
+  const [showEdit, setShowEdit] = useState(false)
 
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
@@ -112,7 +114,10 @@ export default function SingleBoard() {
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id, showMenu]);
+
+    
+
+  }, [dispatch, board_id]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -148,7 +153,13 @@ export default function SingleBoard() {
           </div>
           <ul>
             {allLists.length &&
-              allLists?.map((list) => <li key={list.id}>{list.title}</li>)}
+              allLists?.map((list) =>
+              <div>
+                <li key={list.id}>{list.title}</li>
+                <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
+                {showEdit ? <EditList list={list}/> : null}
+              </div>
+              )}
           </ul>
           <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>New List</button>
         </div>

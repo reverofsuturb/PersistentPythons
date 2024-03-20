@@ -1,5 +1,7 @@
 const GET_ALL_LISTS = "lists/getAllLists";
 const POST_LIST = "lists/postList";
+const EDIT_LIST = "lists/editList"
+
 
 const getAllLists = (lists) => ({
   type: GET_ALL_LISTS,
@@ -10,6 +12,12 @@ const postList = (list) => ({
   type: POST_LIST,
   list,
 });
+const editList = (list) => ({
+    type: EDIT_LIST,
+    list
+})
+
+
 
 export const thunkGetAllLists = () => async (dispatch) => {
   const res = await fetch("/api/lists");
@@ -37,7 +45,6 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
   console.log("RES", res);
   if (res.ok) {
     const data = await res.json();
-    console.log("🚀 ~ thunkPostList ~ data:", data)
 
     if (data.errors) {
       return data.errors;
@@ -47,6 +54,32 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
     return list;
   }
 };
+
+
+
+export const thunkEditList = (list_id, list) => async (dispatch) => {
+    console.log("ARE WE HERE")
+    const res = await fetch(`/api/lists/${list_id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(list),
+    })
+    if (res.ok) {
+        const data = await res.json();
+        console.log("🚀 ~ thunkPostList ~ data:", data)
+
+        if (data.errors) {
+          console.log("🚀 ~ thunkEditList ~ data.errors:", data.errors)
+          return data.errors;
+        }
+
+        await dispatch(editList(data))
+        return data
+    }
+}
+
 
 const initialState = {};
 
