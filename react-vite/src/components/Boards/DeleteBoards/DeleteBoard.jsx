@@ -19,11 +19,9 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 	const { closeModal } = useModal();
 	const [showMenu, setShowMenu] = useState(false);
 	const thisRef = useRef();
-	const [currState, setCurrState] = useState([boards]);
 
 	console.log("%c 🚀 ~ file: DeleteBoard.jsx:15 ~ DeleteBoard ~ boards: ", "color: red; font-size: 25px", boards)
 
-	console.log("BOARD", board)
 	const toggleMenu = (e) => {
 		e.stopPropagation();
 
@@ -31,15 +29,16 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 	}
 
 	const handleDelete = async (board_id) => {
+		try {
+			await dispatch(thunkDeleteBoard(board_id))
+			navigate('/boards')
+		} catch (error) {
+			console.log('Why are you like this', error)
+		}
 
-		await dispatch(thunkDeleteBoard(board_id))
-		// const remainingBoards = boards.filter(currBoard => currBoard.id != board_id)
 
-		// setCurrState(remainingBoards)
 
-		closeModal()
 
-		navigate('/boards')
 	}
 
 	const noDeletion = (e) => {
@@ -52,7 +51,7 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 
 		dispatch(thunkGetBoard(board_id))
 
-	}, [dispatch, board_id, currState])
+	}, [dispatch, board_id])
 
 
 	return (
@@ -67,13 +66,17 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 							<button
 								className="delete-board-button"
 								board_id="delete-board-yes"
-								onClick={(e) => handleDelete(board_id)}>
+								onClick={() => {
+									handleDelete(board_id)
+									navigate('/boards')
+								}}>
+
 								Yes (Delete Board)
 							</button>
 							<button
 								className="delete-board-button"
 								board_id="delete-board-no"
-								onClick={noDeletion}
+								onClick={() => noDeletion()}
 							> No (Go Back)</button>
 						</div>
 					</form>

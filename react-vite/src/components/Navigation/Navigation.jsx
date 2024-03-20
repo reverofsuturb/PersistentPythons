@@ -8,6 +8,12 @@ function Navigation() {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/boards">All Boards</NavLink>
+      </li>
+      <li>
+        <NavLink to="/boards/new">New Board</NavLink>
+      </li>
 
       <li>
         <ProfileButton />
