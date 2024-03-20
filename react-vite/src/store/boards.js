@@ -101,7 +101,7 @@ export const thunkPutBoard = (board, board_id) => async (dispatch) => {
 
 export const thunkDeleteBoard = (board_id) => async (dispatch) => {
 
-console.log("%c 🚀 ~ file: boards.js:104 ~ thunkDeleteBoard ~ board_id: ", "color: magenta; font-size: 25px", board_id)
+  console.log("%c 🚀 ~ file: boards.js:104 ~ thunkDeleteBoard ~ board_id: ", "color: magenta; font-size: 25px", board_id)
 
 
   const response = await fetch(`/api/boards/${board_id}`, {
@@ -113,11 +113,14 @@ console.log("%c 🚀 ~ file: boards.js:104 ~ thunkDeleteBoard ~ board_id: ", "co
 
   });
 
-    console.log("%c 🚀 ~ file: boards.js:110 ~ thunkDeleteBoard ~ response: ", "color: orange; font-size: 25px", response)
+  console.log("%c 🚀 ~ file: boards.js:110 ~ thunkDeleteBoard ~ response: ", "color: orange; font-size: 25px", response)
 
 
   if (response.ok) {
     const data = await response.json();
+
+    console.log("%c 🚀 ~ file: boards.js:122 ~ thunkDeleteBoard ~ data: ", "color: orange; font-size: 25px", data)
+
     if (data.errors) {
       return data.errors;
     }

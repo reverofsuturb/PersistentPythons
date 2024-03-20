@@ -66,13 +66,13 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 							className="delete-board-modal-pop">
 							<button
 								className="delete-board-button"
-								// board_id="delete-board-yes"
-								onClick={handleDelete}>
+								board_id="delete-board-yes"
+								onClick={(e) => handleDelete(board_id)}>
 								Yes (Delete Board)
 							</button>
 							<button
 								className="delete-board-button"
-								// board_id="delete-board-no"
+								board_id="delete-board-no"
 								onClick={noDeletion}
 							> No (Go Back)</button>
 						</div>
