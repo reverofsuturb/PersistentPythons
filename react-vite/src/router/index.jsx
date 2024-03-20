@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
+import AllLists from "../components/Lists/AllLists/AllLists";
+import PostLists from "../components/Lists/PostLists/PostLists";
 import Layout from "./Layout";
 import EditBoard from "../components/Boards/EditBoards/EditBoard";
-
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +38,15 @@ export const router = createBrowserRouter([
       {
         path: "boards/:board_id/edit",
         element: <EditBoard />,
-      }
+      },
+      {
+        path: "boards/:board_id/lists",
+        element: <AllLists />,
+      },
+      {
+        path: "boards/:board_id/lists/new",
+        element: <PostLists />,
+      },
     ],
   },
 ]);

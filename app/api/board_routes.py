@@ -97,8 +97,9 @@ def delete_board(board_id):
 @board_routes.route("/<int:board_id>/list", methods=["GET","POST"])
 @login_required
 def new_list(board_id):
-    board = select(Board).where(Board.id == board_id)
-    if board.user_id != current_user.id:
+    stmt = select(Board).where(Board.id == board_id)
+    board_grabber = db.session.execute(stmt).scalar_one()
+    if board_grabber.user_id != current_user.id:
         return jsonify({
             "Not Authorized": "Forbidden"
         }), 403

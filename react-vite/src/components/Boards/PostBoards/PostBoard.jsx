@@ -4,9 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { thunkPostBoard } from "../../../store/boards";
 import "./PostBoard.css";
 
-
-
-
 export default function PostBoard() {
   // const { board_id } = useParams();
   const dispatch = useDispatch();
@@ -15,17 +12,15 @@ export default function PostBoard() {
   const [boardName, setBoardName] = useState("");
   const [errors, setErrors] = useState({});
 
-
-
   useEffect(() => {
-    const errorsObject = {}
+    const errorsObject = {};
 
-    boardName.length < 5 ? errorsObject.boardName = "Board name is required" : null
+    boardName.length < 5
+      ? (errorsObject.boardName = "Board name is required")
+      : null;
 
-    setErrors(errorsObject)
-
-  }, [boardName])
-
+    setErrors(errorsObject);
+  }, [boardName]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -37,21 +32,19 @@ export default function PostBoard() {
     const res = await dispatch(thunkPostBoard(postingBoard));
 
     // console.log("%c 🚀 ~ file: PostBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ", "color: orange; font-size: 25px", res)
-
-    const newPost = Object.values(res)
-    console.log(newPost, newPost[1].id)
-
     if (res && res.errors) {
       return setErrors(res.errors);
     }
-    navigate(`/boards/${newPost[1].id}`)
-  };
 
+    const newPost = Object.values(res);
+    console.log(newPost, newPost[1].id);
+
+    navigate(`/boards/${newPost[1].id}`);
+  };
 
   return (
     <>
       <div className="outer-post_container">
-
         <div className="inner-post_container">
           <form onSubmit={onSubmit}>
             <label>
@@ -67,7 +60,6 @@ export default function PostBoard() {
             <button>Submit</button>
           </form>
         </div>
-
       </div>
     </>
   );
