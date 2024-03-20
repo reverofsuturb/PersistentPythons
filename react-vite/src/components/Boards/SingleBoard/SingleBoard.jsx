@@ -90,6 +90,7 @@ import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import DeleteBoard from "../DeleteBoards/DeleteBoard";
 import EditList from "../../Lists/EditList/EditList";
 import DeleteList from "../../Lists/DeleteList/DeleteList";
+import SingleCard from "../../Cards/SingleCard/SingleCard";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
@@ -148,15 +149,7 @@ export default function SingleBoard() {
                 <div>
                   <li key={list.id}>{list.title}</li>
                   {list?.cards_in_list.map((card) => (
-                    <div>
-                      <div>{card.title}</div>
-                      <div>{card.labels}</div>
-                      <div>{card.notification}</div>
-                      <div>{card.description}</div>
-                      <div>{card.start_date}</div>
-                      <div>{card.end_date}</div>
-                      <div>{card.checklist}</div>
-                    </div>
+                    <SingleCard card={card} />
                   ))}
                   <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
                   {showEdit ? <EditList list={list} /> : null}

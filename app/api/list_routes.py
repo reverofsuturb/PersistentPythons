@@ -55,10 +55,10 @@ def delete_list(list_id):
     if curr_list.user_id != current_user.id:
         return jsonify({"Not Authorized": "forbidden"}), 403
 
-    db.session.delete(list)
+    db.session.delete(curr_list)
     db.session.commit()
 
-    return jsonify({"List Deleted": list.to_dict()})
+    return jsonify({"List Deleted": curr_list.to_dict()})
 
 
 @list_routes.route("/<int:list_id>/card", methods=["GET", "POST"])

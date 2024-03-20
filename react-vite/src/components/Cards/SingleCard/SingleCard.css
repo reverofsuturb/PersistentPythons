@@ -1,0 +1,20 @@
+.sc-container {
+  display: flex;
+  flex-direction: column;
+  background-color: grey;
+  width: fit-content;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px
+}
+
+.sc-title {
+  font-size: 1rem;
+  background-color: grey;
+}
+
+.sc-row {
+  font-size: 0.9rem;
+  background-color: grey;
+  border-bottom: solid 1px black;
+}
