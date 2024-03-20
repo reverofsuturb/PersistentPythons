@@ -13,6 +13,9 @@
 	color: red;
 }
 
+li.open-modal-menu-item_list {
+	list-style-type: none;
+}
 
 
 

@@ -24,8 +24,9 @@ const putBoard = (board) => ({
   board,
 });
 
-const deleteBoard = () => ({
+const deleteBoard = (board_id) => ({
   type: DELETE_BOARD,
+  board_id
 });
 
 export const thunkGetAllBoards = () => async (dispatch) => {
@@ -47,11 +48,19 @@ export const thunkGetAllBoards = () => async (dispatch) => {
 };
 
 export const thunkGetBoard = (board_id) => async (dispatch) => {
+
+  console.log("%c 🚀 ~ file: boards.js:51 ~ thunkGetBoard ~ board_id: ", "color: blue; font-size: 25px", board_id)
+  // board_id is not something that can be easily extractable inside a get route
+
   const response = await fetch(`/api/boards/${board_id}`);
-  console.log("🚀 ~ thunkGetBoard ~ response:", response)
+
+  console.log("%c 🚀 ~ file: boards.js:53 ~ thunkGetBoard ~ response: ", "color: blue; font-size: 25px", response)
+
   if (response.ok) {
     const data = await response.json();
-    console.log("🚀 ~ thunkGetBoard ~ data:", data)
+
+    console.log("%c 🚀 ~ file: boards.js:60 ~ thunkGetBoard ~ data: ", "color: blue; font-size: 25px", data)
+
     if (data.errors) {
       return data.errors;
     }
@@ -91,7 +100,22 @@ export const thunkPutBoard = (board, board_id) => async (dispatch) => {
 };
 
 export const thunkDeleteBoard = (board_id) => async (dispatch) => {
-  const response = await fetch(`/api/boards/${board_id}`);
+
+console.log("%c 🚀 ~ file: boards.js:104 ~ thunkDeleteBoard ~ board_id: ", "color: magenta; font-size: 25px", board_id)
+
+
+  const response = await fetch(`/api/boards/${board_id}`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+
+  });
+
+    console.log("%c 🚀 ~ file: boards.js:110 ~ thunkDeleteBoard ~ response: ", "color: orange; font-size: 25px", response)
+
+
   if (response.ok) {
     const data = await response.json();
     if (data.errors) {
@@ -99,6 +123,7 @@ export const thunkDeleteBoard = (board_id) => async (dispatch) => {
     }
     dispatch(deleteBoard(data));
   }
+
 };
 
 
@@ -144,9 +169,13 @@ const boardsReducer = (state = initialState, action) => {
 
       const oldState = { ...state };
 
-      delete oldState[action.id]
+      console.log("%c 🚀 ~ file: boards.js:161 ~ boardsReducer ~ action: ", "color: purple; font-size: 25px", action, action.board_id)
+
+      delete oldState[action.board_id]
       return oldState;
     }
+
+
     default:
       return state;
   }

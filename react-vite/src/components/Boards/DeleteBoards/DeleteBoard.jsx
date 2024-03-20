@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 // import { thunkDeleteBoard, thunkGetBoard } from "../../../../store/boards";
 import { thunkDeleteBoard, thunkGetBoard } from "../../../store/boards";
 import { useModal } from "../../../context/Modal";
@@ -7,15 +8,18 @@ import { useModal } from "../../../context/Modal";
 
 import "./DeleteBoard.css";
 
-//! WARNING: Unable to delete, getting rejection of "destroy " from unknown origin
 export default function DeleteBoard({ board_id, board }) {
 
+console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "color: white; font-size: 25px", board_id)
+
+
 	const boards = useSelector(state => state.boards)
-	const dispatch = useDispatch()
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { closeModal } = useModal();
 	const [showMenu, setShowMenu] = useState(false);
 	const thisRef = useRef();
-	const [currState, setCurrState] = useState([boards])
+	const [currState, setCurrState] = useState([boards]);
 
 	console.log("%c 🚀 ~ file: DeleteBoard.jsx:15 ~ DeleteBoard ~ boards: ", "color: red; font-size: 25px", boards)
 
@@ -26,22 +30,22 @@ export default function DeleteBoard({ board_id, board }) {
 		setShowMenu(!showMenu);
 	}
 
-	const handleDelete = (board_id) => {
+	const handleDelete = async (board_id) => {
 
-		dispatch(thunkDeleteBoard(board_id))
-		const remainingBoards = boards.filter(currBoard => currBoard.id != board_id)
+		await dispatch(thunkDeleteBoard(board_id))
+		// const remainingBoards = boards.filter(currBoard => currBoard.id != board_id)
 
-		setCurrState(remainingBoards)
+		// setCurrState(remainingBoards)
 
 		closeModal()
+
+		navigate('/boards')
 	}
 
-	const noDeletion = async (e) => {
+	const noDeletion = (e) => {
 		e.preventDefault();
 
-		await dispatch(thunkGetBoard(board_id))
-
-		closeModal()
+		closeModal();
 	}
 
 	useEffect(() => {
@@ -61,12 +65,14 @@ export default function DeleteBoard({ board_id, board }) {
 							ref={thisRef}
 							className="delete-board-modal-pop">
 							<button
-								className="delete-board-button" id="delete-board-yes"
+								className="delete-board-button"
+								// board_id="delete-board-yes"
 								onClick={handleDelete}>
 								Yes (Delete Board)
 							</button>
 							<button
-								className="delete-board-button" id="delete-board-no"
+								className="delete-board-button"
+								// board_id="delete-board-no"
 								onClick={noDeletion}
 							> No (Go Back)</button>
 						</div>

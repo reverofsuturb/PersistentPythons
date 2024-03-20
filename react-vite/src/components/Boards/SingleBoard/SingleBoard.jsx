@@ -71,7 +71,7 @@ export default function SingleBoard() {
                                         onItemClick={closeMenu}
                                         modalComponent={
                                             <DeleteBoard
-                                                id={board_id}
+                                                board_id={board_id}
                                                 board={board}
                                             />
                                         }

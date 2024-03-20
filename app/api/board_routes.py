@@ -78,13 +78,12 @@ def edit_board(board_id):
 @board_routes.route("/<int:board_id>", methods=["DELETE"])
 @login_required
 def delete_board(board_id):
-    board = select(Board).where(Board.id == board_id)
-    if board.user_id != current_user.id:
+    stmt = select(Board).where(Board.id == board_id)
+    board_grabber = db.session.execute(stmt).scalar_one()
+    if board_grabber.user_id != current_user.id:
         return jsonify({
             "Not Authorized": "forbidden"
         }), 403
-    stmt = select(Board).where(Board.id ==id)
-    board_grabber = db.session.execute(stmt).scalar_one()
 
     db.session.delete(board_grabber)
     db.session.commit()
