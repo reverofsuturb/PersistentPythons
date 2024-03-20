@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllBoards } from "../../../store/boards";
+import { NavLink } from "react-router-dom";
+
 
 export default function AllBoards() {
   const dispatch = useDispatch();
@@ -19,7 +21,9 @@ export default function AllBoards() {
       <ul>
         {allBoards.length &&
           allBoards?.map((board) => (
-            <div key={board.id}>{board.board_name}</div>
+            <li>
+              <NavLink to={`/boards/${board.id}`}>{board.board_name}</NavLink>
+            </li>
           ))}
       </ul>
     </>

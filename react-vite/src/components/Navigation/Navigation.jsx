@@ -14,7 +14,6 @@ function Navigation() {
       <li>
         <NavLink to="/boards/new">New Board</NavLink>
       </li>
-
       <li>
         <ProfileButton />
       </li>
