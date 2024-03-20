@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from "react";
-import { thunkDeleteBoard, thunkGetBoard } from "../../../../store/boards";
-import { useModal } from "../../../../context/Modal";
+// import { thunkDeleteBoard, thunkGetBoard } from "../../../../store/boards";
+import { thunkDeleteBoard, thunkGetBoard } from "../../../store/boards";
+import { useModal } from "../../../context/Modal";
 
 
 import "./DeleteBoard.css";

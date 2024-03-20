@@ -4,7 +4,7 @@ import { thunkGetBoard } from "../../../store/boards";
 import { useNavigate, useParams } from "react-router-dom";
 import "./SingleBoard.css";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-import DeleteBoard from "../AllBoards/DeleteBoards/DeleteBoard";
+import DeleteBoard from "../DeleteBoards/DeleteBoard";
 
 
 
