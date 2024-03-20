@@ -1,5 +1,5 @@
 import AllBoards from "./AllBoards/AllBoards";
 import SingleBoard from "./SingleBoard/SingleBoard";
-import PostBoards from "./PostBoards/PostBoards";
+import PostBoard from "./PostBoards/PostBoard";
 
-export { AllBoards, SingleBoard, PostBoards };
+export { AllBoards, SingleBoard, PostBoard };

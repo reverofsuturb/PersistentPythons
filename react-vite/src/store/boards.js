@@ -70,8 +70,8 @@ export const thunkPostBoard = (board) => async (dispatch) => {
     if (data.errors) {
       return data.errors;
     }
-   const board = await dispatch(postBoard(data));
-   return board
+    const board = await dispatch(postBoard(data));
+    return board
   }
 };
 
@@ -104,15 +104,21 @@ const initialState = {};
 
 const boardsReducer = (state = initialState, action) => {
   switch (action.type) {
+
+
+
     case GET_ALL_BOARDS: {
       let boardState = {};
+      console.log("%c 🚀 ~ file: boards.js:108 ~ boardsReducer ~ action GET ALL BOARDS: ", "color: red; font-size: 25px", action)
       action.boards.Boards.forEach((board) => {
         boardState[board.id] = board;
       });
       return boardState;
     }
     case GET_BOARD:
+      console.log("%c 🚀 ~ file: boards.js:108 ~ boardsReducer ~ action GET one BOARD: ", "color: red; font-size: 25px", action)
       return { ...state, [action.board.id]: action.board };
+
     case POST_BOARD:
       return { ...state, [action.board.id]: action.board };
     case PUT_BOARD:

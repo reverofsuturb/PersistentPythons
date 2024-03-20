@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetBoard } from "../../../store/boards";
 import { useParams } from "react-router-dom";
+import "./SingleBoard.css";
+
+
+
 
 export default function SingleBoard(){
     const dispatch = useDispatch()
