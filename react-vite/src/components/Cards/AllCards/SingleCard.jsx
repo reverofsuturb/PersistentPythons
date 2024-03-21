@@ -6,6 +6,7 @@ import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
 import PostComment from "../Comments/PostComment";
+import { FaRegFileAlt, FaRegStickyNote, FaRegCheckSquare } from 'react-icons/fa';
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
@@ -19,18 +20,25 @@ export default function SingleCard({ card, list }) {
 
         <div className="photocover">
 
-          <div>
+          {/* <div>
             Photo cover
-          </div>
+          </div> */}
 
         </div>
 
+        <div className="titlescont">
+          <div>
+            <FaRegFileAlt />
+          </div>
+          <div>
+              <h1 style={{marginBottom: '0px' }} className="sc-title">{card.title}</h1>
+              <div className="sc-title" style={{ fontSize: '12px', margin: '0px' }}>In list: {list.title}</div>
+          </div>
+        </div>
 
         <div className="sc-container">
 
           <div className="leftside">
-              <h2 className="sc-title">Card Title:{card.title}</h2>
-              <h2 className="sc-title">In list: {list.title}</h2>
 
               <div className="label-notif-container">
                 <div className="sc-row">Labels: {card.labels}</div>
@@ -39,7 +47,7 @@ export default function SingleCard({ card, list }) {
 
               <div className="description-container">
                 <div className="logo">
-                  logo
+                <FaRegStickyNote />
                 </div>
                 <div className="fillthespace">
                   <div className="editanddescription">
@@ -53,6 +61,16 @@ export default function SingleCard({ card, list }) {
                   <div className="sc-row">Description: {card.description}</div>
                 </div>
               </div>
+
+              <div className="attachments-container">
+                <div>
+                  <FaRegCheckSquare />
+                </div>
+                <div>
+                  Attachments container goes here:
+                </div>
+              </div>
+
 
               {/* <div className="sc-row">Start Date: {card.start_date}</div>
               <div className="sc-row">End Date: {card.end_date}</div> */}
@@ -79,15 +97,17 @@ export default function SingleCard({ card, list }) {
             </div>
 
             <div className="rightside">
-                  <div>Add to card</div>
-                  <div>Members</div>
-                  <div>Labels</div>
-                  <div>Checklist</div>
-                  <div>Dates</div>
-                  <div>Attachment</div>
-                  <div>Cover</div>
-                  <div>Copy</div>
-                  <div>Archive</div>
+            <h5 style={{ marginBottom: '0'}}>Add to card</h5>
+                  <div className="buttonsincard">Members</div>
+                  <div className="buttonsincard">Labels</div>
+                  <div className="buttonsincard">Checklist</div>
+                  <div className="buttonsincard">Dates</div>
+                  <div className="buttonsincard">Attachment</div>
+                  <h5 style={{ marginBottom: '0', marginTop: '50px' }}>Action</h5>
+
+                  <div className="buttonsincard">Cover</div>
+                  <div className="buttonsincard">Copy</div>
+                  <div className="buttonsincard">Archive</div>
 
             </div>
 

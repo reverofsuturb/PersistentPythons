@@ -9,6 +9,8 @@ import "./AllComments.css";
 export default function AllComments({ card }) {
   const dispatch = useDispatch();
   const commentsObj = useSelector((state) => state.comments);
+  const user = useSelector((state) => state.session.user);
+  console.log("🚀 ~ AllComments ~ user:", user)
   const comments = Object.values(commentsObj);
 
   console.log("🚀 ~ AllComments ~ comments:", comments);
@@ -23,6 +25,7 @@ export default function AllComments({ card }) {
       {comments.length &&
         comments?.map((comment) => (
           <div key={comment.id}>
+            <p>{comment.user_id === user.id ? user.username : users[comment.user_id].username}</p>
             <p className="ac-comments-row">{comment?.body}</p>
             <OpenModalButton
               buttonText="Delete Comment"
