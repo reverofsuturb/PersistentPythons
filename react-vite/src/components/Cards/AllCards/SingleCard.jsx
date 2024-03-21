@@ -11,14 +11,19 @@ import { FaRegFileAlt, FaRegStickyNote, FaRegCheckSquare } from 'react-icons/fa'
 import { MdImage } from 'react-icons/md';
 
 import "./SingleCard.css";
+import { thunkEditCard } from "../../../store/cards";
 
 export default function SingleCard({ card, list }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("")
-  const [description, setdescription] = useState("")
-  const [labels, setlabels] = useState("")
-  const [notif, setNotif] = useState("")
+  const [title, setTitle] = useState(card.title)
+  const [description, setdescription] = useState(card.description)
+  const [labels, setlabels] = useState(card.labels)
+  const [notif, setNotif] = useState(card.notification)
   const [editTitle, setEditTitle] = useState(false)
+  const [editLabels, setEditLabels] = useState(false);
+  const [editNotif, setEditNotif] = useState(false);
+
+  const [errors, setErrors] = useState({});
 
 
   useEffect(() => {
@@ -43,6 +48,16 @@ export default function SingleCard({ card, list }) {
       labels,
       notif
     }
+
+    const res = await dispatch(thunkEditCard(card.id, editCards));
+
+    if (res && res.errors) {
+      return setErrors(res.errors);
+    }
+
+    setEditing(false);
+    dispatch(thunkGetAllLists());
+
   }
 
 
@@ -64,10 +79,11 @@ export default function SingleCard({ card, list }) {
           <div style={{marginTop:'5px'}} className="logo">
             <FaRegFileAlt />
           </div>
+
           <div>
             {editTitle === false ? (
               <h1 onDoubleClick={() => setEditTitle(true)} style={{marginBottom: '0px' }} className="sc-title">{card.title}</h1>
-              :
+            ):(
               <form className="edit-card-form" onSubmit={handleSubmit}>
               <label htmlFor="title">
                 <input
@@ -83,6 +99,8 @@ export default function SingleCard({ card, list }) {
             )}
               <div className="sc-title" style={{ fontSize: '12px', margin: '0px' }}>In list: {list.title}</div>
           </div>
+
+
         </div>
 
         <div className="sc-container">
@@ -90,8 +108,36 @@ export default function SingleCard({ card, list }) {
           <div className="leftside">
 
               <div className="label-notif-container">
-                <div className="sc-row">Labels: {card.labels}</div>
-                <div className="sc-row">Notification: {card.notification}</div>
+                <div>
+                  {editLabels === false ? (
+                    <div onDoubleClick={() => setEditLabels(true)} className="sc-row">
+                      Labels: {card.labels ? card.labels : null}
+                    </div>
+                  ) : (
+                    <form className="edit-card-form" onSubmit={handleSubmit}>
+                      <label htmlFor="labels">
+                        <input
+                          className="eb-lists-input"
+                          type="text"
+                          value={labels}
+                          onBlur={handleSubmit}
+                          onChange={(e) => setlabels(e.target.value)}
+                        />
+                        {errors?.labels && <p className="p-error">{errors.labels}</p>}
+                      </label>
+                    </form>
+                  )}
+                </div>
+
+              <div
+                onClick={() => setNotif(!notif)}
+                className="sc-row"
+                style={{ backgroundColor: notif ? 'lightblue' : 'transparent' }}
+              >
+                {notif ? "Notify me!" : "Don't notify me."}
+              </div>
+
+
               </div>
 
               <div className="description-container">
@@ -153,7 +199,7 @@ export default function SingleCard({ card, list }) {
             <div className="rightside">
             <h5 style={{ marginBottom: '0'}}>Add to card</h5>
                   <div className="buttonsincard">Members</div>
-                  <div className="buttonsincard">Labels</div>
+                  {card.labels ? null : <div className="buttonsincard">Labels</div>}
                   <div className="buttonsincard">Checklist</div>
                   <div className="buttonsincard">Dates</div>
                   <div className="buttonsincard">Attachment</div>
