@@ -76,7 +76,13 @@ export default function SingleBoard() {
 
                   {/* Cards */}
                   {list?.cards_in_list.map((card) => (
+<<<<<<< HEAD
                     <SingleCard key={card.id} card={card} list={list} />
+=======
+                    <div>
+                      <SingleCard key={card.id} card={card} list={list}/>
+                    </div>
+>>>>>>> file
                   ))}
 
 
