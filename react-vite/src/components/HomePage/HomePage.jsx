@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import SignupFormModal from "../SignupFormModal";
 import { useSelector } from "react-redux";
 
@@ -25,8 +25,10 @@ export default function HomePage() {
         <div>
           <div className="JoinButton">
             {!isLoggedIn && (
-              <OpenModalButton
-                buttonText="Sign up - it's free!"
+              <OpenModalMenuItem
+                itemText={
+                  <span id="signUpHereButton">Click Me! Sign Up For Free</span>
+                }
                 modalComponent={<SignupFormModal />}
               />
             )}

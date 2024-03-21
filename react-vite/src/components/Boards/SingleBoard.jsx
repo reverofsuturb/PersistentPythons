@@ -64,9 +64,45 @@ export default function SingleBoard() {
                   <EditList list={list} />
 
                   {/* Cards */}
-                  {list?.cards_in_list.map((card) => (
-                    <SingleCard key={card.id} card={card} list={list} />
-                  ))}
+                  <div className="all-cards-on-list">
+                    {list?.cards_in_list.map((card) => (
+                      <div className="indiv-card-in-list">
+                        {/* <SingleCard key={card.id} card={card} list={list} /> */}
+                        {/* <div onClick={() => {
+                        <OpenModalButton
+                          modalComponent={<SingleCard key={card.id} card={card} list={list} />}
+                        />
+                      }}>{card.title}</div> */}
+                        {card ?
+
+                          <>
+
+                            <div className="card-modal"
+                              values="card"
+                              onClick={() => console.log("CARD!!!: ", card)}
+                            >
+                              <div
+                                className="card-modal-title"
+                              >
+                                {<OpenModalMenuItem
+                                  itemText={card.title}
+                                  onItemClick={!closeMenu}
+                                  modalComponent={<SingleCard card={card} list={list} />}
+                                />}
+                              </div>
+                            </div>
+                          </>
+                          : <>
+                            {/* insert display with 4 different card templates, each showing an added card */}
+                          </>}
+                      </div>
+                    ))}
+                  </div>
+
+                  <button onClick={() => setShowEdit(!showEdit)}>
+                    Edit List
+                  </button>
+                  {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
                   <OpenModalButton
                     buttonText={"New Card"}
