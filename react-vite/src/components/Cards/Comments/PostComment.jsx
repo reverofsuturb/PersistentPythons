@@ -8,6 +8,10 @@ export default function PostComment({ card }) {
   const dispatch = useDispatch();
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState({});
+
+  // Update showButton state to depend on whether body is empty or not
+  const showButton = body !== "";
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -19,18 +23,23 @@ export default function PostComment({ card }) {
     if (res && res.errors) {
       return setErrors(res.errors)
     }
-
-
   };
 
   return (
     <div>
       <form className="pc-comments-form" onSubmit={handleSubmit}>
-        <label htmlFor="body" className="pc-comments-title">
-          <input style={{width:'100%'}} type="text" placeholder="Write a comment..." onChange={(e) => setBody(e.target.value)} />
-          {errors?.body && <p className="p-error">{errors.body} </p>}
-        </label>
-        <button>Submit</button>
+        <div className="input-container">
+          <label htmlFor="body" className="pc-comments-title">
+            <input
+              className="input-transition"
+              type="text"
+              placeholder="Write a comment..."
+              onChange={(e) => setBody(e.target.value)}
+            />
+            {errors?.body && <p className="p-error">{errors.body}</p>}
+          </label>
+          {showButton && <button className="pc-button">Submit</button>}
+        </div>
       </form>
     </div>
   );

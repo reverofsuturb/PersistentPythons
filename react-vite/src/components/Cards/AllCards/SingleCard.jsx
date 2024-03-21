@@ -6,15 +6,47 @@ import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
 import PostComment from "../Comments/PostComment";
+import { thunkGetAllComments } from "../../../store/comments";
 import { FaRegFileAlt, FaRegStickyNote, FaRegCheckSquare } from 'react-icons/fa';
 import { MdImage } from 'react-icons/md';
 
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
-  console.log("🚀 ~ SingleCard ~ list:", list.title)
-  console.log("🚀 ~ SingleCard ~ card:", card)
   const dispatch = useDispatch();
+  const [title, setTitle] = useState("")
+  const [description, setdescription] = useState("")
+  const [labels, setlabels] = useState("")
+  const [notif, setNotif] = useState("")
+  const [editTitle, setEditTitle] = useState(false)
+
+
+  useEffect(() => {
+    dispatch(thunkGetAllComments(card.id))
+  }, [dispatch])
+
+  const handleEdit = () => {
+    return (
+      <OpenModalButton
+        buttonText={"Edit Card"}
+        modalComponent={<EditCard card={card} list={list} />}
+      />
+    )
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault
+
+    const editCards = {
+      title,
+      description,
+      labels,
+      notif
+    }
+  }
+
+
+
 
   return (
     <>
@@ -33,7 +65,22 @@ export default function SingleCard({ card, list }) {
             <FaRegFileAlt />
           </div>
           <div>
-              <h1 style={{marginBottom: '0px' }} className="sc-title">{card.title}</h1>
+            {editTitle === false ? (
+              <h1 onDoubleClick={() => setEditTitle(true)} style={{marginBottom: '0px' }} className="sc-title">{card.title}</h1>
+              :
+              <form className="edit-card-form" onSubmit={handleSubmit}>
+              <label htmlFor="title">
+                <input
+                  className="eb-lists-input"
+                  type="text"
+                  value={title}
+                  onBlur={handleSubmit}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                {errors?.title && <p className="p-error">{errors.title}</p>}
+              </label>
+            </form>
+            )}
               <div className="sc-title" style={{ fontSize: '12px', margin: '0px' }}>In list: {list.title}</div>
           </div>
         </div>
@@ -114,6 +161,7 @@ export default function SingleCard({ card, list }) {
 
                   <div className="buttonsincard">Cover</div>
                   <div className="buttonsincard">Copy</div>
+                  <div onClick={handleEdit} className="buttonsincard">Edit Card</div>
                   <div className="buttonsincard">Archive</div>
 
             </div>
