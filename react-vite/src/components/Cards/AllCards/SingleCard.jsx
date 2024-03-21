@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
-import AllComments from "./AllComments";
+import AllComments from "../Comments/AllComments";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
