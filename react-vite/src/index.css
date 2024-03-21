@@ -1,49 +1,31 @@
 /* root and main page */
 
 #root {
-	margin: 0 auto;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
+  margin: 0 auto;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-
-
-
-
-
 
 /* general styling */
 .p-error {
-	font-size: small;
-	color: red;
+  font-size: small;
+  color: red;
 }
 
 li.open-modal-menu-item_list {
-	list-style-type: none;
+  list-style-type: none;
 }
-
-
-
-
 
 /* buttons */
 
-
-
-
-
-
 /* effects */
-
-
-
-
 
 /* other display */
