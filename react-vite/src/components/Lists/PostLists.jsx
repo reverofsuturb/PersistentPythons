@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { thunkPostList } from "../../../store/lists";
+import { thunkPostList } from "../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function PostList() {

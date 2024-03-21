@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-import EditCard from "../EditCards/EditCard";
-import DeleteCard from "../DeleteCards/DeleteCard";
-import AllComments from "../Comments/AllComments/AllComments";
+import EditCard from "./EditCard";
+import DeleteCard from "./DeleteCard";
+import AllComments from "./AllComments";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {

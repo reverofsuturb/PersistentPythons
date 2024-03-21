@@ -44,7 +44,7 @@ def edit_card(card_id):
 
     if card.user_id != current_user.id:
         return jsonify({"Not Authorized": "Forbidden"}), 403
-    
+
     if request.method == "PUT":
         form = CardForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
@@ -113,7 +113,8 @@ def post_card_image(card_id):
 def get_comments(card_id):
     if request.method == "GET":
         comments_list = []
-        stmt = select(Comment).join(Comment.comments_rel).where(Comment.card_id == card_id)
+        # stmt = select(Comment).join(Comment.comments_rel).where(Comment.card_id == card_id)
+        stmt = select(Comment).where(Comment.card_id == card_id)
 
         comment = db.session.execute(stmt)
 
@@ -127,8 +128,8 @@ def get_comments(card_id):
             }
             comments_list.append(results_info)
 
-        return jsonify({"Comments": comments_list})
-    
+        return jsonify(comments_list)
+
     elif request.method == "POST":
         form = CommentForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
@@ -143,7 +144,7 @@ def get_comments(card_id):
             db.session.commit()
 
             return jsonify({"New Comment": comment.to_dict()})
-        
+
         return jsonify({"error": form.errors}), 400
 
 

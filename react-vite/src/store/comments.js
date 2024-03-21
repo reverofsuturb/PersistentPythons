@@ -24,8 +24,9 @@ const deleteComment = (comment_id) => ({
 });
 
 export const thunkGetAllComments = (card_id) => async (dispatch) => {
-  const response = await fetch(`/api/${card_id}/comments`);
+  const response = await fetch(`/api/cards/${card_id}/comments`);
   const data = await response.json();
+  console.log("🚀 ~ thunkGetAllComments ~ data:", data)
   if (data.errors) {
     console.log(data.errors);
     return data.errors;
