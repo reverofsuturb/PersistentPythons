@@ -36,8 +36,8 @@
   flex-direction: column;
   gap: 20px;
   background-color: #613659;
-  height: 30%;
-  width: 40%;
+  height: fit-content;
+  width: 25%;
   margin: auto;
   padding: 20px;
   border-radius: 50px;
@@ -51,6 +51,6 @@
 
 .card-modal {}
 
-.card-modal-title{
+.card-modal-title {
   cursor: pointer;
 }
