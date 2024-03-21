@@ -57,9 +57,9 @@ const closeMenu = () => setShowEditCard(false)
               </div>
             }
           </div>
-        </div>
         <div>
           <AllComments card={card}/>
+        </div>
         </div>
       </div>
     </>
