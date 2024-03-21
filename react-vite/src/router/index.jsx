@@ -8,16 +8,16 @@ import EditList from "../components/Lists/EditList";
 import PostCard from "../components/Cards/AllCards/PostCard";
 import Layout from "./Layout";
 import EditBoard from "../components/Boards/EditBoard";
-// import MainPage from "../components/MainPage/MainPage";
+import MainPage from "../components/MainPage/MainPage";
 
 export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      // {
-      //   path: "/home",
-      //   element: <MainPage />,
-      // },
+      {
+        path: "/home",
+        element: <MainPage />,
+      },
       {
         path: "login",
         element: <LoginFormPage />,

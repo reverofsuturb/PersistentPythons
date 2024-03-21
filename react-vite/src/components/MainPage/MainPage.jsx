@@ -1,80 +1,103 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import groupImage from '../../images/mainpage/groups.jpg'
-import eventImage from '../../images/mainpage/events.jpg'
-import createGroupImage from '../../images/mainpage/createGroup.jpg'
-import mainImage from '../../images/mainpage/mainpagePhoto.jpg'
 import './MainPage.css';
-import NotLoggedInModal from '../PermissionModal/PermissionModal';
 import { useModal } from '../../context/Modal';
 import SignupFormModal from '../SignupFormModal';
 
-// export default function MainPage() {
-//     const sessionUser = useSelector((state) => state.session.user);
-//     const { setModalContent } = useModal();
+import mainPhoto from '../../images/MainPage_oto.png'
+import boardPhoto from '../../images/board.png'
 
-//     const navigate = useNavigate()
+export default function MainPage() {
+    const sessionUser = useSelector((state) => state.session.user);
+    const { setModalContent } = useModal();
 
-//     const allGroups = () => {
-//         navigate(`/groups`)
-//     }
-//     const allEvents = () => {
-//         navigate(`/events`)
-//     }
-//     const createGroup = () => {
-//         if (!sessionUser){
-//             setModalContent(<NotLoggedInModal />);
-//         } else {
-//             navigate(`/groups/new`);
-//         }
-//     }
-//     const signupModal = () => {
-//         setModalContent(<SignupFormModal />)
-//     }
+    const navigate = useNavigate()
+
+    const allGroups = () => {
+        navigate(`/groups`)
+    }
+    const allEvents = () => {
+        navigate(`/events`)
+    }
+    const createGroup = () => {
+        if (!sessionUser){
+            setModalContent(<NotLoggedInModal />);
+        } else {
+            navigate(`/groups/new`);
+        }
+    }
+    const signupModal = () => {
+        setModalContent(<SignupFormModal />)
+    }
 
     return (
         <div className="main-page">
+            <div className='tagContainer'>
+                <div className='tag_bar'>
+                    <h4>Accelerate your teams travel plans with Trans-galactic Artificial Intelligence Facilitating Orbital Organic Distance (TAI FOOD)</h4>
+                </div>
+            </div>
 
             <div className='welcome'>
                 <div className='welcomeText'>
-                    <h1 className='fixtxtalign' >The Introverts Platform</h1>
-                    <h2 className='fixtxtalign' >Where distance becomes friendships</h2>
-                    <p id='ptagchagne' >“The Introverts Platform” is a revolutionary digital space designed specifically for introverts. It provides a safe, comfortable environment where introverts can connect, share ideas, and build meaningful relationships while respecting their need for personal space and solitude.</p>
-                    <p id='ptagchagne' >“The platform offers a variety of features tailored to the introvert lifestyle. For instance, users can engage in one-on-one conversations or participate in small group discussions, all at their own pace. The platform also includes a ‘Quiet Mode’, allowing users to take a break from social interactions whenever they need it!</p>
+                    <h1 className='fixtxtalign' >Space Odyssey brings the joy of travel, with the greatness of planning!</h1>
+                    <p id='ptagchagne'>A space odyssey with a date, probably!</p>
+
                 </div>
-                <div>
-                    <img className='maingImageMainPage' src={mainImage} />
+                <div style={{marginLeft:'10px'}}>
+                    <p></p>
+                    <img className='maingImageMainPage' src={mainPhoto} />
+                    <p></p>
                 </div>
             </div>
 
             {/* I need a center text on how the webpage works and have it centered on the page */}
-            <div className="descriptionmeetup">
-                <h2>How MeetUpThatWay works</h2>
-                <p>You can people watch or just stay at home!</p>
+
+
+
+            <div className='lowercontainerback'>
+                <div className='lowercontainer'>
+                    <div className='toppart'>
+                            <h5 style={{marginBottom:'0px'}}>SPACE ODYSSEY 101</h5>
+                            <h1 style={{marginTop:'10px', marginBottom:'15px'}}>A Productive Vaca</h1>
+                            <h4 style={{marginTop:'0px'}}>Simple, flexible, and powerful. All it takes are boards, lists, and cards to get a clear view of who’s doing what and what needs to get done. Learn more in our guide for getting started.</h4>
+                    </div>
+
+
+                    <div className='lowerpart'>
+                        <div className='leftside'>
+                            <div>
+                                <p>
+                                    Boardings(Boards)
+                                </p>
+                                <h5>SO keeps the tasks and days nice with incredible views! In a glance to see the space intertwine with time, to make you go aw!</h5>
+                            </div>
+                            <div>
+                                <p>
+                                To-go!(list)
+                                </p>
+                                <h5>The diffent stages of time travel to go! Start as simple as seeing your childhood pet, seeing grandma, or not going out with that certain someone! Theres no wrong way of SO!</h5>
+
+                            </div>
+                            <div>
+                                <p>
+                                Credit Card!
+                                </p>
+                                <h5>"Time and space makes the heart grow fonder" no more. With one simple purchase you can easily have all the time you want, or less, with your SO, using SO!</h5>
+
+                            </div>
+                        </div>
+                        <div style={{paddingBottom:'80px'}}>
+                            <img className='boards' src={boardPhoto} />
+                        </div>
+                    </div>
+
+
+                </div>
+
             </div>
 
-
-            <div style={{cursor:'pointer'}} className="how-it-works">
-                <div className="findgroups" onClick={allGroups} >
-                    <img src={groupImage} alt="See all groups" />
-                    <p>Find all groups away from me!</p>
-                </div>
-
-                <div className="findevents" onClick={allEvents}>
-                    <img src={eventImage} alt="Find an event" />
-                    <p>Find an event that way!</p>
-                </div>
-
-                <div className="creategroup"
-                    style={!sessionUser ? { pointerEvents: "none", opacity: "0.4" } : { color: 'initial' }}
-                    onClick={createGroup}>
-                    <img src={createGroupImage} alt="Start a new group" />
-                    <p>Start a new introvert binge</p>
-                </div>
-
-//             </div>
-
-//             {!sessionUser && <button className='Joinusalready' type="button" onClick={signupModal}>Join Meetup</button>}
-//         </div>
-//     );
-// }
+            {!sessionUser && <button className='Joinusalready' type="button" onClick={signupModal}>Join Meetup</button>}
+        </div>
+    );
+}
