@@ -4,21 +4,18 @@ import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import EditCard from "../EditCards/EditCard";
 import DeleteCard from "../DeleteCards/DeleteCard";
 import AllComments from "../Comments/AllComments/AllComments";
+import PostComment from "../Comments/PostComments/PostComment";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
-
-
   const dispatch = useDispatch();
   const [showEditCard, setShowEditCard] = useState(false);
 
-const closeMenu = () => setShowEditCard(false)
-
+  const closeMenu = () => setShowEditCard(false);
 
   return (
     <>
       <div>
-
         <div className="sc-container">
           <h2 className="sc-title">{card.title}</h2>
           <div className="sc-row">Labels: {card.labels}</div>
@@ -28,38 +25,32 @@ const closeMenu = () => setShowEditCard(false)
           <div className="sc-row">End Date: {card.end_date}</div>
           <div className="sc-row">Checklist: {card.checklist}</div>
           <div>
-            {
-              card.id &&
+            {card.id && (
               <div>
-                <button onClick={() =>
-                  setShowEditCard(!showEditCard)}
-                >
-                    <OpenModalMenuItem
+                <button onClick={() => setShowEditCard(!showEditCard)}>
+                  <OpenModalMenuItem
                     className="single-edit-card-modal"
-                      itemText={"Edit Card"}
-                      onItemClick={closeMenu}
-                      modalComponent={<EditCard card={card} list={list} />}
-                    />
+                    itemText={"Edit Card"}
+                    onItemClick={closeMenu}
+                    modalComponent={<EditCard card={card} list={list} />}
+                  />
                 </button>
 
-
-                <button onClick={() =>
-                  setShowEditCard(!showEditCard)}
-                >
-                    <OpenModalMenuItem
+                <button onClick={() => setShowEditCard(!showEditCard)}>
+                  <OpenModalMenuItem
                     className="single-edit-card-modal"
-                      itemText={"Delete Card"}
-                      onItemClick={closeMenu}
-                      modalComponent={<DeleteCard card={card} list={list} />}
-                    />
+                    itemText={"Delete Card"}
+                    onItemClick={closeMenu}
+                    modalComponent={<DeleteCard card={card} list={list} />}
+                  />
                 </button>
-
               </div>
-            }
+            )}
           </div>
         </div>
         <div>
-          <AllComments card={card}/>
+          <AllComments card={card} />
+          <PostComment card={card} />
         </div>
       </div>
     </>

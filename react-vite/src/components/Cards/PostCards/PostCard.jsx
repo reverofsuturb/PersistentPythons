@@ -82,7 +82,9 @@ export default function PostCard({ list }) {
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
           ></input>
-          {errors?.start_date && <p className="p-error">{errors.start_date} </p>}
+          {errors?.start_date && (
+            <p className="p-error">{errors.start_date} </p>
+          )}
         </label>
         <label htmlFor="endDate">
           End Date
@@ -98,7 +100,6 @@ export default function PostCard({ list }) {
             value={checklist}
             onChange={(e) => setChecklist(e.target.value)}
           ></input>
-
         </label>
         <button>Submit</button>
       </form>{" "}
