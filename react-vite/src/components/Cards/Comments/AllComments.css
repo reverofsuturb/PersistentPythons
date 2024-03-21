@@ -1,17 +1,33 @@
-.ac-comments-title {
+/* .ac-comments-title {
   background-color: #c197d2;
   padding: 5px;
   border-radius: 10px;
   font-size: 1.2rem;
 }
 
-.ac-comments-row {
-  background-color: #c197d2;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 1rem;
-}
 
 .ac-modal-button {
   background-color: #613659;
+} */
+
+.comment-container{
+  display: flex;
+}
+
+.comment-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  width: 100%;
+}
+
+
+.ac-comments-row {
+  background-color: #f5f5f5; /* softer background color */
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 10px;
+  width: 90%
 }
