@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import EditCard from "../EditCards/EditCard";
+import DeleteCard from "../DeleteCards/DeleteCard";
+import AllComments from "../Comments/AllComments/AllComments";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
 
-  console.log("%c 🚀 ~ file: SingleCard.jsx:8 ~ SingleCard ~ card: ", "color: yellow; font-size: 25px", card, card.id)
 
   const dispatch = useDispatch();
   const [showEditCard, setShowEditCard] = useState(false);
@@ -29,18 +30,36 @@ const closeMenu = () => setShowEditCard(false)
           <div>
             {
               card.id &&
-              <button onClick={() =>
-                setShowEditCard(!showEditCard)}
-              >
-                  <OpenModalMenuItem
-                  className="single-edit-card-modal"
-                    itemText={"Edit Card"}
-                    onItemClick={closeMenu}
-                    modalComponent={<EditCard card={card} list={list} />}
-                  />
-              </button>
+              <div>
+                <button onClick={() =>
+                  setShowEditCard(!showEditCard)}
+                >
+                    <OpenModalMenuItem
+                    className="single-edit-card-modal"
+                      itemText={"Edit Card"}
+                      onItemClick={closeMenu}
+                      modalComponent={<EditCard card={card} list={list} />}
+                    />
+                </button>
+
+
+                <button onClick={() =>
+                  setShowEditCard(!showEditCard)}
+                >
+                    <OpenModalMenuItem
+                    className="single-edit-card-modal"
+                      itemText={"Delete Card"}
+                      onItemClick={closeMenu}
+                      modalComponent={<DeleteCard card={card} list={list} />}
+                    />
+                </button>
+
+              </div>
             }
           </div>
+        </div>
+        <div>
+          <AllComments card={card}/>
         </div>
       </div>
     </>

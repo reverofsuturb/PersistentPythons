@@ -9,10 +9,6 @@ import { useModal } from "../../../context/Modal";
 import "./DeleteBoard.css";
 
 export default function DeleteBoard({ board_id, board }) {
-
-console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "color: white; font-size: 25px", board_id)
-
-
 	const boards = useSelector(state => state.boards)
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -20,7 +16,6 @@ console.log("%c 🚀 ~ file: DeleteBoard.jsx:13 ~ DeleteBoard ~ board_id: ", "co
 	const [showMenu, setShowMenu] = useState(false);
 	const thisRef = useRef();
 
-	console.log("%c 🚀 ~ file: DeleteBoard.jsx:15 ~ DeleteBoard ~ boards: ", "color: red; font-size: 25px", boards)
 
 	const toggleMenu = (e) => {
 		e.stopPropagation();

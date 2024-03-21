@@ -20,7 +20,7 @@ export default function DeleteList({ list }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <button>DELETE</button>
+        <button>Delete List</button>
       </form>
     </>
   );

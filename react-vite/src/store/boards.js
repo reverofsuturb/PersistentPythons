@@ -48,11 +48,26 @@ export const thunkGetAllBoards = () => async (dispatch) => {
 };
 
 export const thunkGetBoard = (board_id) => async (dispatch) => {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
   const response = await fetch(`/api/boards/${board_id}`);
   const data = await response.json();
 
+<<<<<<< HEAD
   if (data.errors) {
     return data;
+=======
+  if (response.ok) {
+    const data = await response.json();
+
+    if (data.errors) {
+      return data.errors;
+    }
+    dispatch(getBoard(data));
+>>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
   }
   dispatch(getBoard(data));
 };
@@ -88,15 +103,30 @@ export const thunkPutBoard = (board, board_id) => async (dispatch) => {
 };
 
 export const thunkDeleteBoard = (board_id) => async (dispatch) => {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
   const response = await fetch(`/api/boards/${board_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
   });
+<<<<<<< HEAD
   const data = await response.json();
   if (data.errors) {
     return data;
+=======
+
+  if (response.ok) {
+    const data = await response.json();
+
+    if (data.errors) {
+      return data.errors;
+    }
+    dispatch(deleteBoard(data));
+>>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
   }
   dispatch(deleteBoard(data));
 };
@@ -122,9 +152,19 @@ const boardsReducer = (state = initialState, action) => {
       return { ...state, [action.board.id]: action.board };
     }
     case DELETE_BOARD: {
+<<<<<<< HEAD
       const boardState = { ...state };
       delete boardState[action.board_id];
       return boardState;
+=======
+      // return { ...state, [action.board.id]: action.board };
+
+      const oldState = { ...state };
+
+
+      delete oldState[action.board_id]
+      return oldState;
+>>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
     }
     default:
       return state;
