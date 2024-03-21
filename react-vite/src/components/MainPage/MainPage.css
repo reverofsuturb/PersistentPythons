@@ -1,0 +1,116 @@
+.main-page {
+
+    text-align: center;
+}
+
+.how-it-works {
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+.welcome{
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+
+    margin-top: 50px;
+    display: flex;
+}
+
+.welcomeText{
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.fixtxtalign, #ptagchagne{
+    text-align: left;
+}
+
+#ptagchagne{
+    max-width: 85%;
+}
+.maingImageMainPage{
+    width: 100%;
+    max-width:400px;
+    border-radius: 18px;
+}
+
+.descriptionmeetup {
+    width:100%;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+
+.how-it-works img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    max-height: 400px;
+}
+
+
+.step img {
+    width: 100px;
+}
+
+.Joinusalready {
+    background-color: #008CBA;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 5px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.Joinusalready:hover {
+    background-color: #005f6b;
+}
+.findgroups, .findevents, .creategroup {
+    border: 1px solid transparent;
+}
+
+.findgroups:hover, .findevents:hover, .creategroup:hover {
+    border-color: black;
+}
+
+@media (max-width: 1150px) {
+    .welcome{
+        margin: 100px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 50px;
+        display: flex;
+    }
+
+    .fixtxtalign, #ptagchagne{
+        text-align:center;
+
+    }
+    .welcomeText{
+        max-width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .how-it-works {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+        max-width: 300px;
+    }
+}
