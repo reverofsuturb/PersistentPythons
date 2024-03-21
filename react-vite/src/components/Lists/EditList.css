@@ -1,0 +1,28 @@
+<<<<<<< Updated upstream
+=======
+.eb-lists-title {
+  font-size: 1.25rem;
+  border-bottom: solid 2px #211522;
+  margin: 0.5rem 0.2rem;
+}
+
+.eb-lists-input {
+  font-size: 1.25rem;
+  border-radius: 15px;
+  width: 200px;
+  background-color: #c197d2;
+}
+
+.eb-lists-submit-button {
+  width: 75px;
+  height: 30px;
+  background-color: #c197d2;
+  border-radius: 15px;
+}
+
+.eb-lists-form {
+  margin-top: 23.24px;
+  margin-bottom: 23.24px;
+  border-bottom: solid 2px #211522;
+}
+>>>>>>> Stashed changes

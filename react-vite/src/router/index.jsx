@@ -2,9 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
-import AllLists from "../components/Lists/AllLists";
-import PostLists from "../components/Lists/PostLists";
-import EditList from "../components/Lists/EditList";
+import { AllLists, PostList, EditList } from "../components/Lists";
 import PostCard from "../components/Cards/AllCards/PostCard";
 import Layout from "./Layout";
 import EditBoard from "../components/Boards/EditBoard";
@@ -48,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "boards/:board_id/lists/new",
-        element: <PostLists />,
+        element: <PostList />,
       },
       {
         path: "lists/:list_id/edit",
