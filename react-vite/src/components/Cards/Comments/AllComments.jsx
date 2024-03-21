@@ -25,7 +25,7 @@ export default function AllComments({ card }) {
           <div key={comment.id}>
             <p className="ac-comments-row">{comment?.body}</p>
             <OpenModalButton
-              buttonText="Delete"
+              buttonText="Delete Comment"
               modalComponent={<DeleteComment comment={comment} />}
             />
           </div>
