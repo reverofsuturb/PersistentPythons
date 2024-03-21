@@ -1,9 +1,9 @@
-import AllLists from "./AllLists/AllLists";
-import EditList from "./EditList/EditList";
-import DeleteList from "./DeleteList/DeleteList";
+import AllLists from "./AllLists";
+import EditList from "./EditList";
+import DeleteList from "./DeleteList";
+import PostList from "./PostList";
 
 
 
 
-
-export { AllLists, EditList, DeleteList };
+export { AllLists, EditList, PostList, DeleteList };
