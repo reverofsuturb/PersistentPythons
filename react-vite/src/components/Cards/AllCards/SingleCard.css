@@ -40,6 +40,8 @@
   display: flex;
   padding-top: 10px;
   padding-bottom: 20px;
+  padding-right: 16px;
+  margin-left: 16px;
 }
 
 .description-container{
@@ -70,6 +72,14 @@
 }
 
 .attachments-container{
+  display: flex;
+}
+
+.checklist-container{
+  display: flex;
+  margin-bottom: 15px;
+}
+.attachments-container{
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -90,4 +100,8 @@
 
 .buttonsincard:hover {
   background-color: #C2C4C7; /* Darker shade on hover */
+}
+
+.logo{
+  margin-right: 5px;
 }

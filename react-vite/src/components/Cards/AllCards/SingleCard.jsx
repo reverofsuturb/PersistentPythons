@@ -7,6 +7,8 @@ import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
 import PostComment from "../Comments/PostComment";
 import { FaRegFileAlt, FaRegStickyNote, FaRegCheckSquare } from 'react-icons/fa';
+import { MdImage } from 'react-icons/md';
+
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
@@ -27,7 +29,7 @@ export default function SingleCard({ card, list }) {
         </div>
 
         <div className="titlescont">
-          <div>
+          <div style={{marginTop:'5px'}} className="logo">
             <FaRegFileAlt />
           </div>
           <div>
@@ -63,8 +65,8 @@ export default function SingleCard({ card, list }) {
               </div>
 
               <div className="attachments-container">
-                <div>
-                  <FaRegCheckSquare />
+                <div className="logo">
+                  <MdImage />
                 </div>
                 <div>
                   Attachments container goes here:
@@ -74,7 +76,12 @@ export default function SingleCard({ card, list }) {
 
               {/* <div className="sc-row">Start Date: {card.start_date}</div>
               <div className="sc-row">End Date: {card.end_date}</div> */}
-              <div className="sc-row">Checklist: {card.checklist}</div>
+              <div className="checklist-container">
+                <div className="logo">
+                  <FaRegCheckSquare />
+                </div>
+                <div className="sc-row">Checklist: {card.checklist}</div>
+              </div>
               <div className="postcommentcont"><PostComment card={card} /></div>
               <div>
                 {card.id && (
