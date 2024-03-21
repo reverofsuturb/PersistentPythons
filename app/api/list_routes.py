@@ -28,6 +28,7 @@ def view_lists():
 
     return jsonify({"Lists": lists_list})
 
+
 @list_routes.route("/<int:list_id>", methods=["GET", "PUT"])
 @login_required
 def edit_list(list_id):
@@ -89,5 +90,5 @@ def new_card(list_id):
         db.session.commit()
 
         return jsonify({"New Card": card.to_dict()})
-
-    return jsonify({"errors": form.errors}), 400
+    else:
+        return jsonify({"errors": form.errors}), 400
