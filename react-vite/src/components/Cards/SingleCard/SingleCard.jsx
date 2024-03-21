@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import EditCard from "../EditCards/EditCard";
 import DeleteCard from "../DeleteCards/DeleteCard";
+import AllComments from "../Comments/AllComments/AllComments";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
@@ -56,6 +57,9 @@ const closeMenu = () => setShowEditCard(false)
               </div>
             }
           </div>
+        </div>
+        <div>
+          <AllComments card={card}/>
         </div>
       </div>
     </>
