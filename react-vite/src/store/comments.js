@@ -26,7 +26,7 @@ const deleteComment = (comment_id) => ({
 export const thunkGetAllComments = (card_id) => async (dispatch) => {
   const response = await fetch(`/api/cards/${card_id}/comments`);
   const data = await response.json();
-  console.log("🚀 ~ thunkGetAllComments ~ data:", data)
+  console.log("🚀 ~ thunkGetAllComments ~ data:", data);
   if (data.errors) {
     console.log(data.errors);
     return data;
@@ -49,19 +49,10 @@ export const thunkPostComment = (card_id, comment) => async (dispatch) => {
     const comment = await dispatch(postComment(data));
     return comment;
   }
-<<<<<<< HEAD
 };
 
 export const thunkDeleteComment = (card_id, comment_id) => async (dispatch) => {
   const response = await fetch(`/api/cards/${card_id}/comments/${comment_id}`, {
-=======
-  const newComment = await dispatch(postComment(data));
-  return newComment;
-};
-
-export const thunkDeleteComment = (comment_id) => async (dispatch) => {
-  const response = await fetch(`/api/cards/comments/${comment_id}`, {
->>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14
     method: "DELETE",
   });
   const data = await response.json();
