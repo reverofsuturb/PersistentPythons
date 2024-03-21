@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetAllLists } from "../../../store/lists";
+import { thunkGetAllLists } from "../../store/lists";
 import "./AllLists.css";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
