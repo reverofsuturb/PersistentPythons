@@ -38,8 +38,6 @@ export default function PostBoard() {
     }
     closeModal();
 
-    // const newPost = Object.values(res);
-    // console.log(newPost, newPost[1].id);
 
     navigate(`/boards/${res.board.id}`);
   };

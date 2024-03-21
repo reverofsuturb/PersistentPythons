@@ -83,7 +83,7 @@ export default function SingleBoard() {
                               <div
                                 className="card-modal-box"
                                 values="card"
-                                onClick={() => console.log("CARD!!!: ", card)}
+  
                               >
                                 <div className="card-modal-title">
                                   <OpenModalMenuItem

@@ -8,12 +8,10 @@ export default function DeleteList({ list }) {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    console.log("res")
     const res = dispatch(thunkDeleteList(list.id));
     if (res && res.errors) {
       return res.errors;
     }
-    console.log(res);
     return res;
   };
 

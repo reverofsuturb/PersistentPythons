@@ -6,12 +6,6 @@ import { useModal } from "../../../context/Modal";
 import "./EditCard.css";
 
 export default function EditCard({ card, list }) {
-  console.log(
-    "%c 🚀 ~ file: EditCard.jsx:12 ~ EditCard ~ card: ",
-    "color: orange; font-size: 25px",
-    card
-  );
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState(card.title);

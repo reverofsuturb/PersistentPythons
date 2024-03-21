@@ -28,11 +28,9 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    console.log("DATA", data);
   }
 
   if (data.errors) {
-    console.log("ERRORS", data.errors);
     return data.errors;
   }
   dispatch(getCard(data));
@@ -46,9 +44,7 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
     },
     body: JSON.stringify(card),
   });
-  console.log(res);
   const data = await res.json();
-  console.log("DATA", data);
   if (data.errors) {
     return data.errors;
   } else {
@@ -67,10 +63,8 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
   });
 
   const data = await res.json();
-  console.log("DATA", data);
 
   if (data.errors) {
-    console.log("ERRORS", data.errors);
     return data;
   } else {
     const card = await dispatch(editCard(data));
@@ -84,11 +78,9 @@ export const thunkDeleteCard = (card_id) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    console.log("DATA", data);
   }
 
   if (data.errors) {
-    console.log("ERRORS", data.errors);
     return data.errors;
   }
   await dispatch(deleteCard(data));

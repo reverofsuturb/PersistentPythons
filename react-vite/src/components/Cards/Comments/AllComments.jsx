@@ -12,10 +12,8 @@ export default function AllComments({ card }) {
   const dispatch = useDispatch();
   const commentsObj = useSelector((state) => state.comments);
   const user = useSelector((state) => state.session.user);
-  console.log("🚀 ~ AllComments ~ user:", user)
   const comments = Object.values(commentsObj);
 
-  console.log("🚀 ~ AllComments ~ comments:", comments);
 
   useEffect(() => {
     dispatch(thunkGetAllComments(card.id));

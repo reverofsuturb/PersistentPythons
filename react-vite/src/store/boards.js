@@ -31,14 +31,8 @@ const deleteBoard = (board_id) => ({
 
 export const thunkGetAllBoards = () => async (dispatch) => {
   const response = await fetch("/api/boards");
-  console.log("RESPONSE", response);
   if (response.ok) {
     const data = await response.json();
-    console.log(
-      "🚀 %c ~ file: boards.js:178 ~ thunkAllBoards ~ data:",
-      "color: magenta; font-size: 32px",
-      data
-    );
 
     if (data.errors) {
       return data;
@@ -54,6 +48,7 @@ export const thunkGetBoard = (board_id) => async (dispatch) => {
   if (data.errors) {
     return data;
   }
+  
   dispatch(getBoard(data));
 };
 
@@ -79,7 +74,6 @@ export const thunkPutBoard = (board, board_id) => async (dispatch) => {
     body: JSON.stringify(board),
   });
   const data = await response.json();
-  console.log(data);
   if (data.errors) {
     return data;
   } else {

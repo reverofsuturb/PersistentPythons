@@ -12,7 +12,6 @@ export default function AllLists() {
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
   );
-  console.log("LISTS", allLists);
 
   useEffect(() => {
     dispatch(thunkGetAllLists());

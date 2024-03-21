@@ -8,7 +8,6 @@ import "./DeleteComment.css";
 export default function DeleteComment({ comment }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  console.log(comment);
   return (
     <div className="dc-comments-delete-modal">
       <h2 className="dc-comments-modal-title">Confirm Delete</h2>

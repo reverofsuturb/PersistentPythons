@@ -7,7 +7,6 @@ import "./AllBoards.css"
 export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
-    console.log("BOARDS", boards);
 
   const allBoards = Object.values(boards);
 

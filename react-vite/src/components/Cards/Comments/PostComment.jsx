@@ -19,7 +19,6 @@ export default function PostComment({ card }) {
       body,
     }
     const res = await dispatch(thunkPostComment(card.id, newComment));
-    console.log(res)
     if (res && res.errors) {
       return setErrors(res.errors)
     }

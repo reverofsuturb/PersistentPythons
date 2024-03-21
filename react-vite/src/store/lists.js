@@ -23,9 +23,8 @@ const deleteList = (list_id) => ({
 
 export const thunkGetAllLists = () => async (dispatch) => {
   const res = await fetch("/api/lists");
-  //   console.log("RES", res);
   const data = await res.json();
-  // console.log("DATA", data);
+
 
   if (data.errors) {
     return data;
@@ -42,7 +41,6 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
     },
     body: JSON.stringify(list),
   });
-  console.log("RES", res);
   const data = await res.json();
 
   if (data.errors) {
@@ -54,7 +52,6 @@ export const thunkPostList = (board_id, list) => async (dispatch) => {
 };
 
 export const thunkEditList = (list_id, list) => async (dispatch) => {
-  console.log("ARE WE HERE");
   const res = await fetch(`/api/lists/${list_id}`, {
     method: "PUT",
     headers: {
@@ -63,10 +60,9 @@ export const thunkEditList = (list_id, list) => async (dispatch) => {
     body: JSON.stringify(list),
   });
   const data = await res.json();
-  console.log("🚀 ~ thunkPostList ~ data:", data);
+
 
   if (data.errors) {
-    console.log("🚀 ~ thunkEditList ~ data.errors:", data.errors);
     return data;
   }
   await dispatch(editList(data));
@@ -77,11 +73,8 @@ export const thunkDeleteList = (list_id) => async (dispatch) => {
   const res = await fetch(`/api/lists/${list_id}`, {
     method: "DELETE",
   });
-  console.log(res);
   const data = await res.json();
-  console.log(data);
   if (data.errors) {
-    console.log(data.errors);
     return data;
   }
   await dispatch(deleteList(list_id));
