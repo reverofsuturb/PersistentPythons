@@ -20,10 +20,11 @@ export default function DeleteComment({ comment }) {
 
   return (
     <>
+
       <form onSubmit={handleSubmit}>
-		{user.id === comment.user_id &&
-        	<button>Delete Comment</button>
-		}
+        {user.id === comment.user_id &&
+          <button>Delete Comment</button>
+        }
       </form>
     </>
   );
