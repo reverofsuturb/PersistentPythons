@@ -30,7 +30,7 @@ export default function SingleBoard() {
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id]);
+  }, [dispatch, board_id, showMenu]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -76,28 +76,35 @@ export default function SingleBoard() {
                   <div className="all-cards-on-list">
                     {list?.cards_in_list.map((card) => (
                       <div className="indiv-card-in-list">
-                        {/* <SingleCard key={card.id} card={card} list={list} /> */}
-                        {/* <div onClick={() => {
-                        <OpenModalButton
-                          modalComponent={<SingleCard key={card.id} card={card} list={list} />}
-                        />
-                      }}>{card.title}</div> */}
                         {card ?
 
                           <>
 
-                            <div className="card-modal"
+                            <div className="card-modal-box"
                               values="card"
                               onClick={() => console.log("CARD!!!: ", card)}
                             >
                               <div
                                 className="card-modal-title"
-                              >
-                                {<OpenModalMenuItem
+                                >
+                                <OpenModalMenuItem
+                                  className="card-modal-item"
                                   itemText={card.title}
                                   onItemClick={!closeMenu}
-                                  modalComponent={<SingleCard card={card} list={list}/>}
-                                />}
+                                  modalComponent={<SingleCard
+                                    className="confusion"
+                                    card={card} list={list} />}
+                                />
+                              </div>
+                              <div className="card-modal-main-info">
+
+                                <div className="card-modal-cover-image">
+                                  [Enter Image Here]
+                                </div>
+                                <div className="card-modal-description">
+                                  {card.description}
+                                </div>
+
                               </div>
                             </div>
                           </>
@@ -114,7 +121,7 @@ export default function SingleBoard() {
                   {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
                   <OpenModalButton
-                    buttonText={"New Card"}
+                    buttonText={"Add a Card"}
                     modalComponent={<PostCard list={list} />}
                   />
                 </div>
