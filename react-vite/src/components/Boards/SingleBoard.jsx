@@ -11,7 +11,7 @@ import EditList from "../Lists/EditList";
 import DeleteList from "../Lists/DeleteList";
 import SingleCard from "../Cards/AllCards/SingleCard";
 import PostCard from "../Cards/AllCards/PostCard";
-import PostList from "../Lists/PostLists";
+import { PostList } from "../Lists";
 import "./SingleBoard.css";
 
 export default function SingleBoard() {
@@ -37,95 +37,119 @@ export default function SingleBoard() {
 
   return (
     <>
-      <div className="outer_container">
-        <div>
-          {board?.board_name && <EditBoard board={board} />}
-
-          {/*Board Delete */}
-          <div className="single-board-delete">
+      <div className="sb-outer_container">
+        <div className="sb-inner_container">
+          <div>
+            {board?.board_name}
+          </div>
+          <div className="single-board-edit">
             {board_id && (
-              <button className="single-board-button-delete">
-                <OpenModalMenuItem
-                  itemText={"Delete Board"}
-                  onItemClick={closeMenu}
-                  modalComponent={
-                    <DeleteBoard board_id={board_id} board={board} />
-                  }
-                />
+              <button
+                className="single-board-button-edit"
+                onClick={() => navigate(`/boards/${board_id}/edit`)}
+              >
+                Edit Board
               </button>
             )}
           </div>
 
-          {/* list */}
-          {/* <div className="sb-lists-wide"> */}
-          <div className="sb-lists-full">
-            {allLists.length ? (
-              allLists?.map((list) => (
-                <div key={list.id} className="sb-list-container">
-                  <EditList list={list} />
+          {/* additional options */}
+          <div className="sb-delete-bp-list-add">
 
-                  {/* Cards */}
-                  <div className="all-cards-on-list">
-                    {list?.cards_in_list.map((card) => (
-                      <div className="indiv-card-in-list">
-                        {card ? (
-                          <>
-                            <div
-                              className="card-modal-box"
-                              values="card"
-                              onClick={() => console.log("CARD!!!: ", card)}
-                            >
-                              <div className="card-modal-title">
-                                <OpenModalMenuItem
-                                  className="card-modal-item"
-                                  itemText={card.title}
-                                  onItemClick={!closeMenu}
-                                  modalComponent={
-                                    <SingleCard
-                                      className="confusion"
-                                      card={card}
-                                      list={list}
-                                    />
-                                  }
-                                />
-                              </div>
-                              <div className="card-modal-main-info">
-                                <div className="card-modal-cover-image">
-                                  [Enter Image Here]
-                                </div>
-                                <div className="card-modal-description">
-                                  {card.description}
-                                </div>
-                              </div>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            {/* insert display with 4 different card templates, each showing an added card */}
-                          </>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  <DeleteList list={list} />
-                  <OpenModalButton
-                    buttonText={"Add a Card"}
-                    modalComponent={<PostCard list={list} />}
+            {/*Board Delete */}
+            <div className="single-board-delete">
+              {board_id && (
+                <button className="single-board-button-delete">
+                  <OpenModalMenuItem
+                    itemText={"Delete Board"}
+                    onItemClick={closeMenu}
+                    modalComponent={
+                      <DeleteBoard board_id={board_id} board={board} />
+                    }
                   />
-                </div>
-              ))
-            ) : (
-              <>No Lists Created</>
-            )}
+                </button>
+              )}
+            </div>
+            <div className="board-post-list">
+              <PostList />
+            </div>
           </div>
+          {/* list */}
+          <div className="outer-sb-list">
 
-          <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>
-            New List
-          </button>
+            <div className="sb-list-full">
+              {allLists.length ? (
+                allLists?.map((list) => (
+                  <div key={list.id} className="sb-list-container">
+                    <h2 className="sb-lists-title">{list.title}</h2>
+
+                    {/* Cards */}
+                    <div className="all-cards-on-list">
+                      {list?.cards_in_list.map((card) => (
+                        <div className="indiv-card-in-list">
+                          {card ? (
+                            <>
+                              <div
+                                className="card-modal-box"
+                                values="card"
+                                onClick={() => console.log("CARD!!!: ", card)}
+                              >
+                                <div className="card-modal-title">
+                                  <OpenModalMenuItem
+                                    className="card-modal-item"
+                                    itemText={card.title}
+                                    onItemClick={!closeMenu}
+                                    modalComponent={
+                                      <SingleCard
+                                        className="confusion"
+                                        card={card}
+                                        list={list}
+                                      />
+                                    }
+                                  />
+                                </div>
+                                <div className="card-modal-main-info">
+                                  <div className="card-modal-cover-image">
+                                    [Enter Image Here]
+                                  </div>
+                                  <div className="card-modal-description">
+                                    {card.description}
+                                  </div>
+                                </div>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {/* insert display with 4 different card templates, each showing an added card */}
+                            </>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    <button onClick={() => setShowEdit(!showEdit)}>
+                      Edit List
+                    </button>
+                    {showEdit ? <EditList list={list} /> : null}
+                    <DeleteList list={list} />
+                    <OpenModalButton
+                      buttonText={"Add a Card"}
+                      modalComponent={<PostCard list={list} />}
+                    />
+                  </div>
+                ))
+              ) : (
+                <>No Lists Created</>
+              )}
+
+              <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>
+                New List
+              </button>
+
+            </div>
+          </div>
         </div>
       </div>
-      <PostList />
     </>
   );
 }

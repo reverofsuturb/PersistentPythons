@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .eb-lists-title {
   font-size: 1.75rem;
   border-bottom: solid 2px #211522;
@@ -5,6 +6,18 @@
 
 .eb-lists-input {
   font-size: 1.75rem;
+=======
+<<<<<<< Updated upstream
+=======
+.eb-lists-title {
+  font-size: 1.25rem;
+  border-bottom: solid 2px #211522;
+  margin: 0.5rem 0.2rem;
+}
+
+.eb-lists-input {
+  font-size: 1.25rem;
+>>>>>>> single-board-card
   border-radius: 15px;
   width: 200px;
   background-color: #c197d2;
@@ -22,3 +35,7 @@
   margin-bottom: 23.24px;
   border-bottom: solid 2px #211522;
 }
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> single-board-card

@@ -3,7 +3,7 @@ import { thunkGetAllLists } from "../../store/lists";
 import "./AllLists.css";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import PostList from "./PostLists"
+import PostList from "./PostList";
 export default function AllLists() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
