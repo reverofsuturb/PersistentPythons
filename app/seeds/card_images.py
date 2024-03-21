@@ -10,47 +10,47 @@ def card_images_seeds():
 		cover = True,
 	)
 	card_image2 = CardImage(
-		card_id = 1,
+		card_id = 2,
 		url = 'https://imgur.com/10WPEMV.jpg',
 		cover = False,
 	)
 	card_image3 = CardImage(
-		card_id = 2,
+		card_id = 3,
 		url = 'https://imgur.com/9xzJhaP.jpg',
 		cover = False,
 	)
 	card_image4 = CardImage(
-		card_id = 2,
+		card_id = 4,
 		url = 'https://imgur.com/xTfhFLE.jpg',
 		cover = True,
 	)
 	card_image5 = CardImage(
-		card_id = 3,
+		card_id = 5,
 		url = 'https://imgur.com/Mdqz9LC.jpg',
 		cover = False,
 	)
 	card_image6 = CardImage(
-		card_id = 3,
+		card_id = 6,
 		url = 'https://imgur.com/Mdqz9LC.jpg',
 		cover = True,
 	)
 	card_image7 = CardImage(
-		card_id = 4,
+		card_id = 7,
 		url = 'https://imgur.com/evZ2BFG.jpg',
 		cover = True,
 	)
 	card_image8 = CardImage(
-		card_id = 4,
+		card_id = 8,
 		url = 'https://imgur.com/mPMqcuo.jpg',
 		cover = False,
 	)
 	card_image9 = CardImage(
-		card_id = 5,
+		card_id = 9,
 		url = 'https://imgur.com/pc3n1bh.jpg',
 		cover = True,
 	)
 	card_image10 = CardImage(
-		card_id = 2,
+		card_id = 10,
 		url = 'https://imgur.com/lab35Jz.jpg',
 		cover = True,
 	)

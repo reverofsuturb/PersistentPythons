@@ -40,7 +40,7 @@ def seed_cards():
     )
     card4 = Card(
         list_id=4,
-        user_id=2,
+        user_id=1,
         title="Confusion",
         labels="Put One Here",
         notification=False,
@@ -51,7 +51,7 @@ def seed_cards():
     )
     card5 = Card(
         list_id=5,
-        user_id=1,
+        user_id=2,
         title="Living Freely",
         labels="It is what it is",
         notification=True,
@@ -62,7 +62,7 @@ def seed_cards():
     )
     card6 = Card(
         list_id=6,
-        user_id=2,
+        user_id=3,
         title="Grocery Shopping",
         labels="To Buy",
         notification=False,
@@ -73,7 +73,7 @@ def seed_cards():
     )
     card7 = Card(
         list_id=7,
-        user_id=3,
+        user_id=1,
         title="Work Tasks",
         labels="In Progress",
         notification=False,
@@ -84,7 +84,7 @@ def seed_cards():
     )
     card8 = Card(
         list_id=8,
-        user_id=1,
+        user_id=2,
         title="Home Improvement",
         labels="To-Do",
         notification=False,
@@ -95,7 +95,7 @@ def seed_cards():
     )
     card9 = Card(
         list_id=9,
-        user_id=2,
+        user_id=3,
         title="Fitness Goals",
         labels="Completed Sets",
         notification=False,
@@ -106,7 +106,7 @@ def seed_cards():
     )
     card10 = Card(
         list_id=10,
-        user_id=3,
+        user_id=1,
         title="Travel Plans",
         labels="Upcoming Trips",
         notification=False,
@@ -118,7 +118,7 @@ def seed_cards():
 
     card11 = Card(
         list_id=11,
-        user_id=1,
+        user_id=2,
         title="Creative Projects",
         labels="Ideas",
         notification=False,
@@ -130,7 +130,7 @@ def seed_cards():
 
     card12 = Card(
         list_id=12,
-        user_id=2,
+        user_id=3,
         title="Financial Management",
         labels="Expenses",
         notification=False,
@@ -142,7 +142,7 @@ def seed_cards():
 
     card13 = Card(
         list_id=13,
-        user_id=3,
+        user_id=1,
         title="Health Tracker",
         labels="Progress",
         notification=False,
@@ -154,7 +154,7 @@ def seed_cards():
 
     card14 = Card(
         list_id=14,
-        user_id=1,
+        user_id=2,
         title="Home Decor",
         labels="Options",
         notification=False,
@@ -166,7 +166,7 @@ def seed_cards():
 
     card15 = Card(
         list_id=15,
-        user_id=2,
+        user_id=3,
         title="Random Thoughts",
         labels="Notes",
         notification=False,
@@ -176,8 +176,8 @@ def seed_cards():
         checklist="Notes",
     )
     card16 = Card(
-        list_id=16,
-        user_id=3,
+        list_id=1,
+        user_id=1,
         title="Daily Journal",
         labels="Reflection",
         notification=False,
@@ -188,8 +188,8 @@ def seed_cards():
     )
 
     card17 = Card(
-        list_id=17,
-        user_id=1,
+        list_id=2,
+        user_id=2,
         title="Recipe Collection",
         labels="Cooking",
         notification=False,
@@ -200,8 +200,8 @@ def seed_cards():
     )
 
     card18 = Card(
-        list_id=18,
-        user_id=2,
+        list_id=3,
+        user_id=3,
         title="Gardening Tasks",
         labels="Green Thumb",
         notification=False,
@@ -212,8 +212,8 @@ def seed_cards():
     )
 
     card19 = Card(
-        list_id=19,
-        user_id=3,
+        list_id=4,
+        user_id=1,
         title="Language Learning",
         labels="Polyglot",
         notification=False,
@@ -224,8 +224,8 @@ def seed_cards():
     )
 
     card20 = Card(
-        list_id=20,
-        user_id=1,
+        list_id=5,
+        user_id=2,
         title="Pet Care",
         labels="Furry Friends",
         notification=False,
@@ -236,8 +236,8 @@ def seed_cards():
     )
 
     card21 = Card(
-        list_id=21,
-        user_id=2,
+        list_id=6,
+        user_id=3,
         title="Home Office Setup",
         labels="Productivity",
         notification=False,
@@ -248,8 +248,8 @@ def seed_cards():
     )
 
     card22 = Card(
-        list_id=22,
-        user_id=3,
+        list_id=7,
+        user_id=1,
         title="Book Recommendations",
         labels="Literature",
         notification=False,
@@ -260,8 +260,8 @@ def seed_cards():
     )
 
     card23 = Card(
-        list_id=23,
-        user_id=1,
+        list_id=8,
+        user_id=2,
         title="Outdoor Adventures",
         labels="Exploration",
         notification=False,
@@ -272,8 +272,8 @@ def seed_cards():
     )
 
     card24 = Card(
-        list_id=24,
-        user_id=2,
+        list_id=9,
+        user_id=3,
         title="Photography Projects",
         labels="Shutterbug",
         notification=False,
@@ -284,8 +284,8 @@ def seed_cards():
     )
 
     card25 = Card(
-        list_id=25,
-        user_id=3,
+        list_id=10,
+        user_id=1,
         title="Random Quotes",
         labels="Inspiration",
         notification=False,
@@ -295,7 +295,33 @@ def seed_cards():
         checklist="Quotes",
     )
 
-    all_cards = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12, card13, card14, card15, card16, card17, card18, card19, card20, card21, card22, card23, card24, card25]
+    all_cards = [
+        card1,
+        card2,
+        card3,
+        card4,
+        card5,
+        card6,
+        card7,
+        card8,
+        card9,
+        card10,
+        card11,
+        card12,
+        card13,
+        card14,
+        card15,
+        card16,
+        card17,
+        card18,
+        card19,
+        card20,
+        card21,
+        card22,
+        card23,
+        card24,
+        card25,
+    ]
     [db.session.add(card) for card in all_cards]
     db.session.commit()
 

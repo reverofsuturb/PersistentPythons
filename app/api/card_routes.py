@@ -151,7 +151,7 @@ def get_comments(card_id):
 
 @card_routes.route("/<int:card_id>/comments/<int:comment_id>", methods=["DELETE"])
 @login_required
-def delete_comment(comment_id):
+def delete_comment(card_id, comment_id):
     stmt = select(Comment).where(Comment.id == comment_id)
     comment = db.session.execute(stmt).scalar_one()
 
