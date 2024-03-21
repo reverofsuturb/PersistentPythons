@@ -38,18 +38,8 @@ export default function SingleBoard() {
   return (
     <>
       <div className="outer_container">
-        <div className="sb-board-title">
-          {board?.board_name}
-          <div className="single-board-edit">
-            {board_id && (
-              <button
-                className="single-board-button-edit"
-                onClick={() => navigate(`/boards/${board_id}/edit`)}
-              >
-                Edit Board
-              </button>
-            )}
-          </div>
+        <div>
+          {board?.board_name && <EditBoard board={board} />}
 
           {/*Board Delete */}
           <div className="single-board-delete">
@@ -76,43 +66,44 @@ export default function SingleBoard() {
 
                   {/* Cards */}
                   <div className="all-cards-on-list">
-                    {list?.cards_in_list.map(card => (
+                    {list?.cards_in_list.map((card) => (
                       <div className="indiv-card-in-list">
-                        {card ?
-
+                        {card ? (
                           <>
-
-                            <div className="card-modal-box"
+                            <div
+                              className="card-modal-box"
                               values="card"
                               onClick={() => console.log("CARD!!!: ", card)}
                             >
-                              <div
-                                className="card-modal-title"
-                                >
+                              <div className="card-modal-title">
                                 <OpenModalMenuItem
                                   className="card-modal-item"
                                   itemText={card.title}
                                   onItemClick={!closeMenu}
-                                  modalComponent={<SingleCard
-                                    className="confusion"
-                                    card={card} list={list} />}
+                                  modalComponent={
+                                    <SingleCard
+                                      className="confusion"
+                                      card={card}
+                                      list={list}
+                                    />
+                                  }
                                 />
                               </div>
                               <div className="card-modal-main-info">
-
                                 <div className="card-modal-cover-image">
                                   [Enter Image Here]
                                 </div>
                                 <div className="card-modal-description">
                                   {card.description}
                                 </div>
-
                               </div>
                             </div>
                           </>
-                          : <>
+                        ) : (
+                          <>
                             {/* insert display with 4 different card templates, each showing an added card */}
-                          </>}
+                          </>
+                        )}
                       </div>
                     ))}
                   </div>
