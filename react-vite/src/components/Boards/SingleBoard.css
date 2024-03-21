@@ -1,0 +1,39 @@
+.sb-board-title {
+  font-size: 2rem;
+  border-bottom: solid 2px #211522;
+}
+
+.sb-lists-title {
+  font-size: 1.75rem;
+  border-bottom: solid 2px #211522;
+}
+.sb-lists-full {
+  display: flex;
+  width: 100%;
+}
+.sb-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #613659;
+  height: 30%;
+  width: 40%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 50px;
+}
+.sb-boards-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  width: 250px;
+  background: #c197d2;
+  border-radius: 15px;
+}
+
+.sb-boards-link {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #211522;
+}

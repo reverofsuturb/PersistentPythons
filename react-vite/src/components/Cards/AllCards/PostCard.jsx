@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useModal } from "../../../context/Modal";
 import { thunkPostCard } from "../../../store/cards";
 import { useNavigate } from "react-router-dom";
 import "./PostCard.css";
@@ -7,6 +8,7 @@ import "./PostCard.css";
 export default function PostCard({ list }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { closeModal } = useModal();
   const [title, setTitle] = useState("");
   const [labels, setLabels] = useState("");
   const [notification, setNotification] = useState("");
@@ -36,13 +38,13 @@ export default function PostCard({ list }) {
     }
 
     // const newCard = Object.values(res);
-
+    closeModal();
     navigate(`/boards/${list.board_id}`);
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="pc-cards-create-modal" onSubmit={handleSubmit}>
         <label htmlFor="title">
           Title
           <input
@@ -101,8 +103,8 @@ export default function PostCard({ list }) {
             onChange={(e) => setChecklist(e.target.value)}
           ></input>
         </label>
-        <button>Submit</button>
-      </form>{" "}
+        <button className="pc-cards-modal-button">Submit</button>
+      </form>
     </>
   );
 }

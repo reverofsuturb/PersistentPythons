@@ -24,15 +24,15 @@ export default function PostComment({ card }) {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="body">
+    <div>
+      <form className="pc-comments-form" onSubmit={handleSubmit}>
+        <label htmlFor="body" className="pc-comments-title">
           Submit a Comment:
           <input type="text" onChange={(e) => setBody(e.target.value)} />
           {errors?.body && <p className="p-error">{errors.body} </p>}
         </label>
         <button>Submit</button>
       </form>
-    </>
+    </div>
   );
 }

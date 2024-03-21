@@ -1,0 +1,16 @@
+.pc-cards-create-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.pc-cards-modal-button {
+  color: #d3b1c2;
+  margin: 5px;
+  padding: 10px 50px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  background-color: #613659;
+}
