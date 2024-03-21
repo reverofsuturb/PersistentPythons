@@ -13,7 +13,7 @@ export default function AllComments(card) {
 	const card_id = card.card.id
 	const dispatch = useDispatch();
 	const comments = useSelector((state) => state.comments)
-	const commentObj = Object.values(comments)
+	const commentObj = Object.values(comments).filter(comment => comment.card_id === card_id);
 	const users = useSelector((state) => state.session.user)
 	console.log("🚀 ~ AllComments ~ commentObj:", commentObj)
 	console.log("🚀 ~ AllComments ~ comments:", comments)
