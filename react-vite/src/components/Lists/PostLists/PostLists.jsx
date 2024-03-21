@@ -26,7 +26,7 @@ export default function PostList() {
 
     // const newList = Object.values(res);
 
-    navigate(`/boards/${board_id}/lists`);
+    navigate(`/boards/${board_id}`);
   };
 
   return (

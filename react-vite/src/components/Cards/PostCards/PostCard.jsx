@@ -49,6 +49,7 @@ export default function PostCard({ list }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           ></input>
+          {errors?.title && <p className="p-error">{errors.title} </p>}
         </label>
         <label htmlFor="labels">
           Labels
@@ -81,6 +82,7 @@ export default function PostCard({ list }) {
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
           ></input>
+          {errors?.start_date && <p className="p-error">{errors.start_date} </p>}
         </label>
         <label htmlFor="endDate">
           End Date
@@ -88,6 +90,7 @@ export default function PostCard({ list }) {
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
           ></input>
+          {errors?.end_date && <p className="p-error">{errors.end_date} </p>}
         </label>
         <label htmlFor="checklist">
           Check List
@@ -95,7 +98,7 @@ export default function PostCard({ list }) {
             value={checklist}
             onChange={(e) => setChecklist(e.target.value)}
           ></input>
-          <p className="p-error">{errors?.title} </p>
+
         </label>
         <button>Submit</button>
       </form>{" "}

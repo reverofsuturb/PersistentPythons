@@ -12,15 +12,15 @@ export default function PostBoard() {
   const [boardName, setBoardName] = useState("");
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    const errorsObject = {};
+  // useEffect(() => {
+  //   const errorsObject = {};
 
-    boardName.length < 5
-      ? (errorsObject.boardName = "Board name is required")
-      : null;
+  //   boardName.length < 5
+  //     ? (errorsObject.boardName = "Board name is required")
+  //     : null;
 
-    setErrors(errorsObject);
-  }, [boardName]);
+  //   setErrors(errorsObject);
+  // }, [boardName]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -31,15 +31,19 @@ export default function PostBoard() {
 
     const res = await dispatch(thunkPostBoard(postingBoard));
 
-    // console.log("%c 🚀 ~ file: PostBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ", "color: orange; font-size: 25px", res)
+    console.log(
+      "%c 🚀 ~ file: PostBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ",
+      "color: orange; font-size: 25px",
+      res
+    );
     if (res && res.errors) {
       return setErrors(res.errors);
     }
 
-    const newPost = Object.values(res);
-    console.log(newPost, newPost[1].id);
+    // const newPost = Object.values(res);
+    // console.log(newPost, newPost[1].id);
 
-    navigate(`/boards/${newPost[1].id}`);
+    navigate(`/boards/${res.board.id}`);
   };
 
   return (
@@ -54,7 +58,9 @@ export default function PostBoard() {
                 value={boardName}
                 onChange={(e) => setBoardName(e.target.value)}
               />
-              <p className="p-error">{errors?.boardName}</p>
+              {errors?.board_name && (
+                <p className="p-error">{errors.board_name}</p>
+              )}
             </label>
 
             <button>Submit</button>

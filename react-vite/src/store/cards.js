@@ -26,14 +26,12 @@ const deleteCard = (card_id) => ({
 export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);
 
-  if (res.ok) {
-    const data = await res.json();
-    console.log("DATA", data);
-  }
+  const data = await res.json();
+  console.log("DATA", data);
 
   if (data.errors) {
     console.log("ERRORS", data.errors);
-    return data.errors;
+    return data;
   }
   dispatch(getCard(data));
 };
@@ -47,16 +45,15 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
     body: JSON.stringify(card),
   });
 
-  if (res.ok) {
-    const data = await res.json();
-    console.log("DATA", data);
+  const data = await res.json();
+  console.log("DATA", data);
 
-    if (data.errors) {
-      console.log("ERRORS", data.errors);
-      return data.errors;
-    }
-    const newCard = await dispatch(postCard(data));
-    return newCard;
+  if (data.errors) {
+    console.log("ERRORS", data.errors);
+    return data;
+  } else {
+    const card = await dispatch(postCard(data));
+    return card;
   }
 };
 
@@ -71,30 +68,31 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
 
   const data = await res.json();
 
-  console.log("%c 🚀 ~ file: cards.js:74 ~ thunkEditCard ~ data: ", "color: gold; font-size: 25px", data)
-
+  console.log(
+    "%c 🚀 ~ file: cards.js:74 ~ thunkEditCard ~ data: ",
+    "color: gold; font-size: 25px",
+    data
+  );
 
   if (data.errors) {
     console.log("ERRORS", data.errors);
-    return data.errors;
+    return data;
   } else {
     const card = await dispatch(editCard(data));
     return card;
   }
 };
 
-const thunkDeleteCard = (card_id) => async (dispatch) => {
+export const thunkDeleteCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`, {
     method: "DELETE",
   });
-  if (res.ok) {
-    const data = await res.json();
-    console.log("DATA", data);
-  }
+  const data = await res.json();
+  console.log("DATA", data);
 
   if (data.errors) {
     console.log("ERRORS", data.errors);
-    return data.errors;
+    return data;
   }
   await dispatch(deleteCard(data));
 };

@@ -146,12 +146,12 @@ export default function SingleBoard() {
             )}
           </div>
           <ul>
-            {allLists.length &&
+            {allLists.length ? (
               allLists?.map((list) => (
                 <div key={list.id}>
                   <li>{list.title}</li>
                   {list?.cards_in_list.map((card) => (
-                    <SingleCard key={card.id} card={card} list={list}/>
+                    <SingleCard key={card.id} card={card} list={list} />
                   ))}
                   <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
                   {showEdit ? <EditList list={list} /> : null}
@@ -161,7 +161,10 @@ export default function SingleBoard() {
                   </button>
                   {showPostCard ? <PostCard list={list} /> : null}
                 </div>
-              ))}
+              ))
+            ) : (
+              <>No Lists Created</>
+            )}
           </ul>
           <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>
             New List
