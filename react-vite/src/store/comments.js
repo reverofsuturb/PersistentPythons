@@ -35,7 +35,7 @@ export const thunkGetAllComments = (card_id) => async (dispatch) => {
 };
 
 export const thunkPostComment = (card_id, comment) => async (dispatch) => {
-  const response = await fetch(`/api/${card_id}/comments`, {
+  const response = await fetch(`/api/cards/${card_id}/comments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(comment),
@@ -46,8 +46,8 @@ export const thunkPostComment = (card_id, comment) => async (dispatch) => {
     console.log(data.errors);
     return data.errors;
   }
-  const comment = await dispatch(postComment(data));
-  return comment;
+  const newComment = await dispatch(postComment(data));
+  return newComment;
 };
 
 export const thunkDeleteComment = (card_id, comment_id) => async (dispatch) => {

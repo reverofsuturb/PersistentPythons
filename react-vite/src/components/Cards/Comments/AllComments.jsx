@@ -13,6 +13,7 @@ export default function AllComments(card) {
 	const dispatch = useDispatch();
 	const comments = useSelector((state) => state.comments)
 	const commentObj = Object.values(comments)
+	const users = useSelector((state) => state.session.user)
 	console.log("🚀 ~ AllComments ~ commentObj:", commentObj)
 	console.log("🚀 ~ AllComments ~ comments:", comments)
 
@@ -22,9 +23,16 @@ export default function AllComments(card) {
 
 	return (
 		<>
-			<h3>Comment:</h3>
+		  <h3>Comment:</h3>
 		  {commentObj.map((comment, index) => (
-			<div key={index}>{comment?.body}</div>
+			<div key={index}>
+			  <span>
+				{users.username}:
+			  </span>
+			  <span>
+				{comment.body}
+			  </span>
+			</div>
 		  ))}
 		</>
 	  );

@@ -4,15 +4,27 @@ import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
+import { thunkPostComment } from "../../../store/comments";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
+  const [newComment, setNewComment] = useState("");
 
 
   const dispatch = useDispatch();
   const [showEditCard, setShowEditCard] = useState(false);
+  const [showCommentBox, setShowCommentBox] = useState(false);
 
-const closeMenu = () => setShowEditCard(false)
+
+  const closeMenu = () => setShowEditCard(false)
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(thunkPostComment(card.id, { body: newComment }));
+
+    setNewComment("");
+  };
 
 
   return (
@@ -60,6 +72,21 @@ const closeMenu = () => setShowEditCard(false)
         <div>
           <AllComments card={card}/>
         </div>
+        <div>
+      <button onClick={() => setShowCommentBox(!showCommentBox)}>
+        Add Comment
+      </button>
+      {showCommentBox && (
+        <form onSubmit={handleCommentSubmit}>
+          <input
+            type="text"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      )}
+    </div>
         </div>
       </div>
     </>
