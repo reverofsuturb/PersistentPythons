@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./EditBoard.css";
-import { thunkPutBoard } from "../../../store/boards";
+import { thunkPutBoard } from "../../store/boards";
 
 export default function EditBoard() {
   const { board_id } = useParams();

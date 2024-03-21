@@ -113,9 +113,14 @@ def post_card_image(card_id):
 def get_comments(card_id):
     if request.method == "GET":
         comments_list = []
+<<<<<<< HEAD
         stmt = (
             select(Comment).join(Comment.comments_rel).where(Comment.card_id == card_id)
         )
+=======
+        # stmt = select(Comment).join(Comment.comments_rel).where(Comment.card_id == card_id)
+        stmt = select(Comment).where(Comment.card_id == card_id)
+>>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14
 
         comment = db.session.execute(stmt)
 
@@ -129,7 +134,11 @@ def get_comments(card_id):
             }
             comments_list.append(results_info)
 
+<<<<<<< HEAD
         return jsonify({"Comments": comments_list})
+=======
+        return jsonify(comments_list)
+>>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14
 
     elif request.method == "POST":
         form = CommentForm()
@@ -146,13 +155,20 @@ def get_comments(card_id):
 
             return jsonify({"New Comment": comment.to_dict()})
 
+<<<<<<< HEAD
         return jsonify({"errors": form.errors}), 400
 
 
 @card_routes.route("/<int:card_id>/comments/<int:comment_id>", methods=["DELETE"])
+=======
+        return jsonify({"error": form.errors}), 400
+
+
+@card_routes.route("/comments/<int:comment_id>" , methods=["DELETE"])
+>>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14
 @login_required
-def delete_comment(comment_id, card_id):
-    stmt = select(Comment).where(Comment.id == comment_id, Comment.card_id == card_id)
+def delete_comment(comment_id):
+    stmt = select(Comment).where(Comment.id == comment_id)
     comment = db.session.execute(stmt).scalar_one()
 
     if comment is None:

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { thunkDeleteList } from "../../../store/lists";
+import { thunkDeleteList } from "../../store/lists";
 
 import "./DeleteList.css";
 

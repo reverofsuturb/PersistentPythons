@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
+<<<<<<< HEAD:react-vite/src/components/Cards/SingleCard/SingleCard.jsx
 import EditCard from "../EditCards/EditCard";
 import DeleteCard from "../DeleteCards/DeleteCard";
 import AllComments from "../Comments/AllComments/AllComments";
@@ -8,10 +9,37 @@ import PostComment from "../Comments/PostComments/PostComment";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
+=======
+import EditCard from "./EditCard";
+import DeleteCard from "./DeleteCard";
+import AllComments from "../Comments/AllComments";
+import { thunkPostComment } from "../../../store/comments";
+import "./SingleCard.css";
+
+export default function SingleCard({ card, list }) {
+  const [newComment, setNewComment] = useState("");
+
+
+>>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14:react-vite/src/components/Cards/AllCards/SingleCard.jsx
   const dispatch = useDispatch();
   const [showEditCard, setShowEditCard] = useState(false);
+  const [showCommentBox, setShowCommentBox] = useState(false);
 
+<<<<<<< HEAD:react-vite/src/components/Cards/SingleCard/SingleCard.jsx
   const closeMenu = () => setShowEditCard(false);
+=======
+
+  const closeMenu = () => setShowEditCard(false)
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(thunkPostComment(card.id, { body: newComment }));
+
+    setNewComment("");
+  };
+
+>>>>>>> db95e8cdab9ae1a74467ed8b4844c184ef35cc14:react-vite/src/components/Cards/AllCards/SingleCard.jsx
 
   return (
     <>
@@ -47,10 +75,25 @@ export default function SingleCard({ card, list }) {
               </div>
             )}
           </div>
-        </div>
         <div>
           <AllComments card={card} />
           <PostComment card={card} />
+        </div>
+        <div>
+      <button onClick={() => setShowCommentBox(!showCommentBox)}>
+        Add Comment
+      </button>
+      {showCommentBox && (
+        <form onSubmit={handleCommentSubmit}>
+          <input
+            type="text"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      )}
+    </div>
         </div>
       </div>
     </>

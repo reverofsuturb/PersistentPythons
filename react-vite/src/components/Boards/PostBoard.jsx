@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { thunkPostBoard } from "../../../store/boards";
+import { thunkPostBoard } from "../../store/boards";
 import "./PostBoard.css";
 
 export default function PostBoard() {

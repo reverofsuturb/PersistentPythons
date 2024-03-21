@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkGetAllBoards } from "../../../store/boards";
+import { thunkGetAllBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 
 
