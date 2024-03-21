@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GiSpaceship } from "react-icons/gi";
 import { thunkLogout } from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { FaUserAstronaut } from "react-icons/fa6";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -45,16 +46,25 @@ function ProfileButton() {
   return (
     <>
       <button id="profileButton" onClick={toggleMenu}>
-        <GiSpaceship />
+        <FaUserAstronaut />
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <ul className="profile-dropdown" ref={ulRef}>
           {user ? (
             <>
               <li className="profileDeets">{user.username}</li>
               <li className="profileDeets">{user.email}</li>
               <li className="profileDeets">
-                <button onClick={logout}>Log Out</button>
+                <button id="allBoardsButtonInProfile">
+                  <NavLink id="allBoardsButtonInProfile" to="/boards">
+                    All Boards
+                  </NavLink>
+                </button>
+              </li>
+              <li className="profileDeets">
+                <button id="logoutButton" onClick={logout}>
+                  Log Out
+                </button>
               </li>
             </>
           ) : (

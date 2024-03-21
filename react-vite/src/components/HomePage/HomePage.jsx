@@ -9,8 +9,9 @@ export default function HomePage() {
     <div>
       <div id="accelerateContainer">
         <h3 id="accelerate">
-          Accelerate your teams work with Atlassian Intelligence (AI) features
-          🤖 now in beta! Learn more.
+          Intelligence (AI) features 🧠 now in beta! Learn more about our
+          intelligence thats still figuring out if its smart or just pretending!
+          🤖
         </h3>
       </div>
       <div id="spaceParagraphContainer">

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { thunkPostBoard } from "../../store/boards";
 import "./PostBoard.css";
 import { useModal } from "../../context/Modal";
@@ -45,28 +45,26 @@ export default function PostBoard() {
   };
 
   return (
-    <>
+    <div className="postBoardForm">
       <div className="outer-post_container">
-        <div className="postBoardForm">
-          <form onSubmit={onSubmit}>
-            <h2>New Mission Board</h2>
-            <div id="formBoardLabel">
-              Board Title
-              <label>
-                <input
-                  type="text"
-                  value={boardName}
-                  onChange={(e) => setBoardName(e.target.value)}
-                />
-                {errors?.board_name && (
-                  <p className="p-error">{errors.board_name}</p>
-                )}
-              </label>
-              <button>Create</button>
-            </div>
-          </form>
-        </div>
+        <form onSubmit={onSubmit}>
+          <h2>New Mission Board</h2>
+          <div id="formBoardLabel">
+            Board Title
+            <label>
+              <input
+                type="text"
+                value={boardName}
+                onChange={(e) => setBoardName(e.target.value)}
+              />
+              {errors?.board_name && (
+                <p className="p-error">{errors.board_name}</p>
+              )}
+            </label>
+            <button>Create</button>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   );
 }

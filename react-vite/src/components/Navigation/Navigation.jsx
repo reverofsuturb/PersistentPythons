@@ -6,7 +6,7 @@ import SignupFormModal from "../SignupFormModal";
 import LoginFormModal from "../LoginFormModal";
 import { useSelector } from "react-redux";
 import PostBoard from "../Boards/PostBoard";
-import { FaShuttleSpace } from "react-icons/fa6";
+import { BiLogoSquarespace } from "react-icons/bi";
 
 function Navigation() {
   const isLoggedIn = useSelector((state) => state.session.user !== null);
@@ -14,8 +14,8 @@ function Navigation() {
     <div id="navBar">
       <div id="homeBoardLinkContainer">
         <NavLink id="homeNavLink" to="/">
+          <BiLogoSquarespace />
           Space Odyssey
-          <FaShuttleSpace />
         </NavLink>
         {isLoggedIn && (
           <div id="boardLinksContainer">

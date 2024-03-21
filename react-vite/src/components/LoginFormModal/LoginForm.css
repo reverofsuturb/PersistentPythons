@@ -5,6 +5,7 @@
   justify-content: center;
   margin-left: 10px;
   margin-right: 10px;
+  /* background-color: white; */
 }
 #loginForm {
   display: flex;
