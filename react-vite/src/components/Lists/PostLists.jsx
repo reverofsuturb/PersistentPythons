@@ -1,15 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { thunkPostList } from "../../store/lists";
+import { thunkGetAllLists } from "../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
+import "./PostLists.css";
 
 export default function PostList() {
   const { board_id } = useParams();
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
-
+  const [showSubmit, setShowSubmit] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,26 +24,42 @@ export default function PostList() {
     if (res && res.errors) {
       return setErrors(res.errors);
     }
-
-    // const newList = Object.values(res);
-
-    navigate(`/boards/${board_id}`);
+    dispatch(thunkGetAllLists());
+    setTitle("");
+    setShowSubmit(false);
   };
 
   return (
     <>
-      <h2>New List</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <p className="p-error">{errors?.title}</p>
-        </label>
-        <button>Submit</button>
-      </form>
+      {showSubmit === false ? (
+        <button
+          type=""
+          className="pl-lists-button"
+          onClick={() => setShowSubmit(!showSubmit)}
+        >
+          Add a list
+        </button>
+      ) : (
+        <div className="pl-lists-container">
+          <form className="pl-lists-form" onSubmit={handleSubmit}>
+            <label className="pl-lists-label" htmlFor="title">
+              <input
+                className="pl-lists-input"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter a list title"
+              />
+            </label>
+            <div className="pl-lists-button-container">
+              <p className="p-error">{errors?.title}</p>{" "}
+              <button type="submit" className="pl-lists-submit-button">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </>
   );
 }

@@ -1,52 +1,50 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { thunkEditList, thunkGetAllLists } from "../../store/lists";
+import "./EditList.css";
 
 export default function EditList({ list }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const list = useSelector((state) => state.lists[list.id])
-  // console.log("🚀 ~ EditList ~ list:", list.title)
-
   const [title, setTitle] = useState(list.title);
   const [errors, setErrors] = useState({});
+  const [editing, setEditing] = useState(false);
 
-  const submitEditList = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEdits = {
       title: title,
     };
-    console.log("🚀 ~ submitEditList ~ newEdits:", newEdits);
 
     const res = await dispatch(thunkEditList(list.id, newEdits));
-    console.log("🚀 ~ submitEditList ~ res:", res);
 
     if (res && res.errors) {
       return setErrors(res.errors);
     }
-
-    navigate(`/boards/${list.board_id}`);
-  };
-
-  useEffect(() => {
+    setEditing(false);
     dispatch(thunkGetAllLists());
-  }, [dispatch]);
+  };
 
   return (
     <>
-      <form onSubmit={submitEditList}>
-        <label htmlFor="title">
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          {errors?.title && <p className="p-error">{errors.title}</p>}
-        </label>
-        <button>Submit</button>
-      </form>
+      {editing === false ? (
+        <h2 onDoubleClick={() => setEditing(true)} className="eb-lists-title">
+          {list.title}
+        </h2>
+      ) : (
+        <form className="eb-lists-form" onSubmit={handleSubmit}>
+          <label htmlFor="title">
+            <input
+              className="eb-lists-input"
+              type="text"
+              value={title}
+              onBlur={handleSubmit}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            {errors?.title && <p className="p-error">{errors.title}</p>}
+          </label>
+        </form>
+      )}
     </>
   );
 }

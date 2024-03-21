@@ -7,10 +7,12 @@
   font-size: 1.75rem;
   border-bottom: solid 2px #211522;
 }
+/* .sb-lists-wide */
 .sb-lists-full {
   display: flex;
   width: 100%;
 }
+
 .sb-list-container {
   display: flex;
   flex-direction: column;
