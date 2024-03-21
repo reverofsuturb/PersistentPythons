@@ -1,44 +1,49 @@
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import OpenModalButton from "../OpenModalButton";
+import OpenModalMenuItem from "./OpenModalMenuItem";
 import SignupFormModal from "../SignupFormModal";
 import LoginFormModal from "../LoginFormModal";
 import { useSelector } from "react-redux";
+import PostBoard from "../Boards/PostBoard";
+import { FaShuttleSpace } from "react-icons/fa6";
 
 function Navigation() {
   const isLoggedIn = useSelector((state) => state.session.user !== null);
   return (
     <div id="navBar">
-      <div>
-        <NavLink id="homenavlink" to="/">
+      <div id="homeBoardLinkContainer">
+        <NavLink id="homeNavLink" to="/">
           Space Odyssey
+          <FaShuttleSpace />
         </NavLink>
+        {isLoggedIn && (
+          <div id="boardLinksContainer">
+            <button id="allBoardsButton">
+              <NavLink id="allBoardsButton" to="/boards">
+                All Boards
+              </NavLink>
+            </button>
+            <OpenModalMenuItem
+              itemText={<span id="createNewButton">Create</span>}
+              modalComponent={<PostBoard />}
+            />
+          </div>
+        )}
       </div>
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/boards">All Boards</NavLink>
-        </li>
-        <li>
-          <NavLink to="/boards/new">New Board</NavLink>
-        </li>
-      </ul>
       <div id="modalButtonsContainer">
         {isLoggedIn && <ProfileButton />}
         {!isLoggedIn && (
-          <>
-            <OpenModalButton
-              buttonText="Access Control Panel"
+          <div id="loginAndSignupButtonContainer">
+            <OpenModalMenuItem
+              itemText={<span id="missionControlButton">Mission Control</span>}
               modalComponent={<LoginFormModal />}
             />
-            <OpenModalButton
-              buttonText="Join Space Odyssey"
+            <OpenModalMenuItem
+              itemText={<span id="joinButton">Join Space Odyssey</span>}
               modalComponent={<SignupFormModal />}
             />
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -46,5 +51,3 @@ function Navigation() {
 }
 
 export default Navigation;
-
-

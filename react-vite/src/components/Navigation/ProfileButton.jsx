@@ -41,16 +41,16 @@ function ProfileButton() {
 
   return (
     <>
-      <button onClick={toggleMenu}>
+      <button id="profileButton" onClick={toggleMenu}>
         <GiSpaceship />
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
+              <li className="profileDeets">{user.username}</li>
+              <li className="profileDeets">{user.email}</li>
+              <li className="profileDeets">
                 <button onClick={logout}>Log Out</button>
               </li>
             </>
