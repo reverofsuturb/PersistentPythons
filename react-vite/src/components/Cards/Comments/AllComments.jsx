@@ -4,6 +4,7 @@ import { thunkGetAllComments } from "../../../store/comments";
 
 
 import "./AllComments.css"
+import DeleteComment from "./DeleteComment";
 
 
 
@@ -32,6 +33,7 @@ export default function AllComments(card) {
 			  <span>
 				{comment.body}
 			  </span>
+			  <DeleteComment comment={comment}/>
 			</div>
 		  ))}
 		</>

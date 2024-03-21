@@ -148,10 +148,10 @@ def get_comments(card_id):
         return jsonify({"error": form.errors}), 400
 
 
-@card_routes.route("/<int:card_id>/comments/<int:comment_id>" , methods=["DELETE"])
+@card_routes.route("/comments/<int:comment_id>" , methods=["DELETE"])
 @login_required
-def delete_comment(comment_id, card_id):
-    stmt = select(Comment).where(Comment.id == comment_id, Comment.card_id == card_id)
+def delete_comment(comment_id):
+    stmt = select(Comment).where(Comment.id == comment_id)
     comment = db.session.execute(stmt).scalar_one()
 
     if comment is None:

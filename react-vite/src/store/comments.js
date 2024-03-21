@@ -50,8 +50,8 @@ export const thunkPostComment = (card_id, comment) => async (dispatch) => {
   return newComment;
 };
 
-export const thunkDeleteComment = (card_id, comment_id) => async (dispatch) => {
-  const response = await fetch(`/api/${card_id}/comments/${comment_id}`, {
+export const thunkDeleteComment = (comment_id) => async (dispatch) => {
+  const response = await fetch(`/api/cards/comments/${comment_id}`, {
     method: "DELETE",
   });
   const data = await response.json();
