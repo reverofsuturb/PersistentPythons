@@ -29,11 +29,11 @@ function LoginFormModal() {
   };
 
   return (
-    <>
+    <div className="modalPage">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form id="loginForm" onSubmit={handleSubmit}>
+        Email
         <label>
-          Email
           <input
             type="text"
             value={email}
@@ -42,8 +42,8 @@ function LoginFormModal() {
           />
         </label>
         {errors.email && <p>{errors.email}</p>}
+        Password
         <label>
-          Password
           <input
             type="password"
             value={password}
@@ -54,7 +54,7 @@ function LoginFormModal() {
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

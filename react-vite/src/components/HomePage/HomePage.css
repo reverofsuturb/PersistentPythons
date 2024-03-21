@@ -1,0 +1,41 @@
+#accelerateContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(209, 225, 243);
+}
+
+#accelerate {
+  font-size: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#spaceParagraphContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../../public/space.jpg);
+  height: 850px;
+}
+
+#spaceParagraph {
+  margin-top: 130px;
+  width: 650px;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.386);
+  border-radius: 10px;
+}
+
+#secondSpaceParagraph {
+  /* width: 650px; */
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.386);
+  border-radius: 10px;
+}

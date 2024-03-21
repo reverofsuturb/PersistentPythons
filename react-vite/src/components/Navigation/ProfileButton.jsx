@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from "react-icons/fa";
+import { GiSpaceship } from "react-icons/gi";
 import { thunkLogout } from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
@@ -42,7 +42,7 @@ function ProfileButton() {
   return (
     <>
       <button onClick={toggleMenu}>
-        <FaUserCircle />
+        <GiSpaceship />
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
