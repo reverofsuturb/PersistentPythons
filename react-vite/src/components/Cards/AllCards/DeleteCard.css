@@ -1,6 +1,21 @@
-form.edit-card-modal {
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-	padding: 2em;
+.ec-cards-delete-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.ec-cards-modal-title,
+.ec-cards-modal-p {
+  color: #211522;
+}
+
+.ec-cards-modal-button {
+  color: #d3b1c2;
+  margin: 5px;
+  padding: 10px 50px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  background-color: #613659;
 }

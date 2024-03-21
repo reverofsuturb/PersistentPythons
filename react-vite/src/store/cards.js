@@ -58,7 +58,7 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
 };
 
 export const thunkEditCard = (card_id, card) => async (dispatch) => {
-  const res = await fetch(`api/cards/${card_id}`, {
+  const res = await fetch(`/api/cards/${card_id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
 
   if (data.errors) {
     console.log("ERRORS", data.errors);
-    return data.errors;
+    return data;
   } else {
     const card = await dispatch(editCard(data));
     return card;

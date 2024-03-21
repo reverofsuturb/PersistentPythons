@@ -4,77 +4,63 @@ import { useNavigate } from "react-router-dom";
 import { thunkEditCard } from "../../../store/cards";
 import { useModal } from "../../../context/Modal";
 import { thunkDeleteCard } from "../../../store/cards";
-import "./DeleteCard.css"
-
-
-
+import "./DeleteCard.css";
 
 export default function DeleteCard(card) {
-	const card_id = card.card.id
-	// const getCard = useSelector(state => state.boards)
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const { closeModal } = useModal();
-	const [showMenu, setShowMenu] = useState(false);
+  const card_id = card.card.id;
+  // const getCard = useSelector(state => state.boards)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { closeModal } = useModal();
+  const [showMenu, setShowMenu] = useState(false);
 
+  const toggleMenu = (e) => {
+    e.stopPropagation();
 
+    // setShowMenu(!showMenu);
+  };
 
-	const toggleMenu = (e) => {
-		e.stopPropagation();
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    try {
+      await dispatch(thunkDeleteCard(card_id));
+      // navigate(`/boards/${board_id}`)
+    } catch (error) {
+      console.log("Why are you like this", error);
+    }
+  };
 
-		// setShowMenu(!showMenu);
-	}
+  // const noDeletion = (e) => {
+  //   e.preventDefault();
 
-	const handleDelete = async () => {
-		try {
-			await dispatch(thunkDeleteCard(card_id))
-			// navigate(`/boards/${board_id}`)
-		} catch (error) {
-			console.log('Why are you like this', error)
-		}
-	}
+  //   closeModal();
+  // };
 
+  // useEffect(() => {
 
-	const noDeletion = (e) => {
-		e.preventDefault();
+  // 	dispatch(thunkGetBoard(list.board_id))
 
-		closeModal();
-	}
+  // }, [dispatch, list.board_id])
 
-	// useEffect(() => {
-
-	// 	dispatch(thunkGetBoard(list.board_id))
-
-	// }, [dispatch, list.board_id])
-
-
-
-	return (
-		<>
-			<div className="outer-delete_container">
-				<div className="inner-delete_container">
-					<h1>Confirm Delete</h1>
-					<form action="" onClick={toggleMenu}>
-						<div
-							className="delete-board-modal-pop">
-							<button
-								className="delete-board-button"
-								board_id="delete-board-yes"
-								onClick={() => {
-									handleDelete()
-								}}>
-
-								Yes (Delete Board)
-							</button>
-							<button
-								className="delete-board-button"
-								board_id="delete-board-no"
-								onClick={() => noDeletion()}
-							> No (Go Back)</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</>
-	)
+  return (
+    <div className="ec-cards-delete-modal">
+      <h2 className="ec-cards-modal-title">Confirm Delete</h2>
+      <p className="ec-comments-modal-p">
+        Are you sure you want to remove this comment?
+      </p>
+      <form action="" onClick={toggleMenu}>
+        <button
+          className="ec-cards-modal-button"
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          Yes
+        </button>
+        <button className="ec-cards-modal-button" onClick={()=> closeModal()}>
+          No
+        </button>
+      </form>
+    </div>
+  );
 }

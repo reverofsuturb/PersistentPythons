@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
+// import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
+import OpenModalButton from "../../OpenModalButton";
 import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
@@ -9,10 +10,6 @@ import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
   const dispatch = useDispatch();
-  const [showEditCard, setShowEditCard] = useState(false);
-  // const [showCommentBox, setShowCommentBox] = useState(false);
-
-  const closeMenu = () => setShowEditCard(false);
 
   return (
     <>
@@ -28,23 +25,15 @@ export default function SingleCard({ card, list }) {
           <div>
             {card.id && (
               <div>
-                <button onClick={() => setShowEditCard(!showEditCard)}>
-                  <OpenModalMenuItem
-                    className="single-edit-card-modal"
-                    itemText={"Edit Card"}
-                    onItemClick={closeMenu}
-                    modalComponent={<EditCard card={card} list={list} />}
-                  />
-                </button>
+                <OpenModalButton
+                  buttonText={"Edit Card"}
+                  modalComponent={<EditCard card={card} list={list} />}
+                />
 
-                <button onClick={() => setShowEditCard(!showEditCard)}>
-                  <OpenModalMenuItem
-                    className="single-edit-card-modal"
-                    itemText={"Delete Card"}
-                    onItemClick={closeMenu}
-                    modalComponent={<DeleteCard card={card} list={list} />}
-                  />
-                </button>
+                <OpenModalButton
+                  buttonText={"Delete Card"}
+                  modalComponent={<DeleteCard card={card} list={list} />}
+                />
               </div>
             )}
           </div>
@@ -52,21 +41,6 @@ export default function SingleCard({ card, list }) {
             <AllComments card={card} />
             <PostComment card={card} />
           </div>
-          {/* <div>
-            <button onClick={() => setShowCommentBox(!showCommentBox)}>
-              Add Comment
-            </button>
-            {showCommentBox && (
-              <form onSubmit={handleCommentSubmit}>
-                <input
-                  type="text"
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-              </form>
-            )}
-          </div> */}
         </div>
       </div>
     </>

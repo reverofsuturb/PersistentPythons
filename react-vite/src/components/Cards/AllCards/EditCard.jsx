@@ -35,7 +35,7 @@ export default function EditCard({ card, list }) {
       description,
       start_date: startDate,
       end_date: endDate,
-      checklist,
+      checklist
     };
 
     const res = await dispatch(thunkEditCard(card.id, editCard));

@@ -19,16 +19,16 @@ export default function AllComments({ card }) {
 
   return (
     <>
-      <h2>Comments:</h2>
+      <h2 className="ac-comments-title">Comments:</h2>
       {comments.length &&
         comments?.map((comment) => (
-          <>
-            <p key={comment.id}>{comment?.body}</p>
+          <div key={comment.id}>
+            <p className="ac-comments-row">{comment?.body}</p>
             <OpenModalButton
               buttonText="Delete"
               modalComponent={<DeleteComment comment={comment} />}
             />
-          </>
+          </div>
         ))}
     </>
   );
