@@ -12,7 +12,6 @@ export default function EditCard({ card, list }) {
     card
   );
 
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState(card.title);
@@ -25,8 +24,6 @@ export default function EditCard({ card, list }) {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const [showMenu, setShowMenu] = useState(false);
-=======
->>>>>>> 2814d0600ce4fa965e6adce5a593f5922fc5bca6
 
   const handleSubmit = async (e) => {
     e.preventDefault();
