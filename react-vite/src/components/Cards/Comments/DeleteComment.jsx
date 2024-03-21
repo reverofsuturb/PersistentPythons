@@ -1,31 +1,27 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { thunkDeleteComment } from "../../../store/comments";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useModal } from "../../../context/Modal";
+import { thunkDeleteComment } from "../../../store/comments"
 
-
+import "./DeleteComment.css";
 
 export default function DeleteComment({ comment }) {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user)
-
-  const handleSubmit = () => {
-    console.log("res")
-    const res = dispatch(thunkDeleteComment(comment.id));
-    if (res && res.errors) {
-      return res.errors;
-    }
-    console.log(res);
-    return res;
-  };
-
+  const { closeModal } = useModal();
+console.log(comment)
   return (
     <>
-
-      <form onSubmit={handleSubmit}>
-        {user.id === comment.user_id &&
-          <button>Delete Comment</button>
-        }
-      </form>
+      <h2>Confirm Delete</h2>
+      <p>Are you sure you want to remove this comment?</p>
+      <button
+        onClick={() => {
+          dispatch(thunkDeleteComment(comment.card_id, comment.id));
+          closeModal();
+        }}
+      >
+        Yes
+      </button>
+      <button onClick={() => closeModal()}>No</button>
     </>
   );
 }

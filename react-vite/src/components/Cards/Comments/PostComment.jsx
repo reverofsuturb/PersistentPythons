@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkPostComment } from "../../../../store/comments";
+import { thunkPostComment } from "../../../store/comments";
 
 import "./PostComment.css";
 

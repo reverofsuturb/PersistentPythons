@@ -1,42 +1,35 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllComments } from "../../../store/comments";
-
-
-import "./AllComments.css"
 import DeleteComment from "./DeleteComment";
+import OpenModalButton from "../../OpenModalButton";
 
+import "./AllComments.css";
 
+export default function AllComments({ card }) {
+  const dispatch = useDispatch();
+  const commentsObj = useSelector((state) => state.comments);
+  const comments = Object.values(commentsObj);
 
+  console.log("🚀 ~ AllComments ~ comments:", comments);
 
-export default function AllComments(card) {
-	const card_id = card.card.id
-	const dispatch = useDispatch();
-	const comments = useSelector((state) => state.comments)
-	const commentObj = Object.values(comments).filter(comment => comment.card_id === card_id);
-	const users = useSelector((state) => state.session.user)
-	console.log("🚀 ~ AllComments ~ commentObj:", commentObj)
-	console.log("🚀 ~ AllComments ~ comments:", comments)
+  useEffect(() => {
+    dispatch(thunkGetAllComments(card.id));
+  }, [dispatch]);
 
-	useEffect(() => {
-		dispatch(thunkGetAllComments(card_id))
-	}, [dispatch])
-
-	return (
-		<>
-		  <h3>Comment:</h3>
-		  {commentObj.map((comment, index) => (
-			<div key={index}>
-			  <span>
-				{users.username}:
-			  </span>
-			  <span>
-				{comment.body}
-			  </span>
-			  <DeleteComment comment={comment}/>
-			</div>
-		  ))}
-		</>
-	  );
-
+  return (
+    <>
+      <h2>Comments:</h2>
+      {comments.length &&
+        comments?.map((comment) => (
+          <>
+            <p key={comment.id}>{comment?.body}</p>
+            <OpenModalButton
+              buttonText="Delete"
+              modalComponent={<DeleteComment comment={comment} />}
+            />
+          </>
+        ))}
+    </>
+  );
 }

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
-import EditCard from "../EditCards/EditCard";
-import DeleteCard from "../DeleteCards/DeleteCard";
-import AllComments from "../Comments/AllComments/AllComments";
-import PostComment from "../Comments/PostComments/PostComment";
+import EditCard from "./EditCard";
+import DeleteCard from "./DeleteCard";
+import AllComments from "../Comments/AllComments";
+import PostComment from "../Comments/PostComment";
 import "./SingleCard.css";
 
 export default function SingleCard({ card, list }) {
   const dispatch = useDispatch();
   const [showEditCard, setShowEditCard] = useState(false);
-  const [showCommentBox, setShowCommentBox] = useState(false);
+  // const [showCommentBox, setShowCommentBox] = useState(false);
 
   const closeMenu = () => setShowEditCard(false);
 
@@ -52,7 +52,7 @@ export default function SingleCard({ card, list }) {
             <AllComments card={card} />
             <PostComment card={card} />
           </div>
-          <div>
+          {/* <div>
             <button onClick={() => setShowCommentBox(!showCommentBox)}>
               Add Comment
             </button>
@@ -66,7 +66,7 @@ export default function SingleCard({ card, list }) {
                 <button type="submit">Submit</button>
               </form>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </>

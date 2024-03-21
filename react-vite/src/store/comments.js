@@ -58,9 +58,9 @@ export const thunkDeleteComment = (card_id, comment_id) => async (dispatch) => {
   const data = await response.json();
   if (data.errors) {
     console.log(data.errors);
-    return data.errors;
+    return data;
   }
-  await dispatch(deleteComment(data));
+  await dispatch(deleteComment(comment_id));
 };
 
 const initialState = {};

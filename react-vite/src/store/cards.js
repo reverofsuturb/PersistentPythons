@@ -57,7 +57,7 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   }
 };
 
-const thunkEditCard = (card_id, card) => async (dispatch) => {
+export const thunkEditCard = (card_id, card) => async (dispatch) => {
   const res = await fetch(`api/cards/${card_id}`, {
     method: "PUT",
     headers: {
@@ -78,7 +78,7 @@ const thunkEditCard = (card_id, card) => async (dispatch) => {
   }
 };
 
-const thunkDeleteCard = (card_id) => async (dispatch) => {
+export const thunkDeleteCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`, {
     method: "DELETE",
   });
