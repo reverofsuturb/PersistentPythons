@@ -20,7 +20,7 @@ const editCard = (card) => ({
 
 const deleteCard = (card_id) => ({
   type: DELETE_CARD,
-  card,
+  card_id,
 });
 
 export const thunkGetCard = (card_id) => async (dispatch) => {
@@ -60,25 +60,27 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   }
 };
 
-const thunkEditCard = (card_id, card) => async (dispatch) => {
-  const res = await fetch(`api/cards/${card_id}`, {
+export const thunkEditCard = (card_id, card) => async (dispatch) => {
+  const res = await fetch(`/api/cards/${card_id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(card),
   });
-  if (res.ok) {
-    const data = await res.json();
-    console.log("DATA", data);
-  }
+
+  const data = await res.json();
+
+  console.log("%c 🚀 ~ file: cards.js:74 ~ thunkEditCard ~ data: ", "color: gold; font-size: 25px", data)
+
 
   if (data.errors) {
     console.log("ERRORS", data.errors);
     return data.errors;
+  } else {
+    const card = await dispatch(editCard(data));
+    return card;
   }
-  const card = await dispatch(editCard(data));
-  return card;
 };
 
 const thunkDeleteCard = (card_id) => async (dispatch) => {

@@ -151,13 +151,13 @@ export default function SingleBoard() {
                 <div key={list.id}>
                   <li>{list.title}</li>
                   {list?.cards_in_list.map((card) => (
-                    <SingleCard key={card.id} card={card} />
+                    <SingleCard key={card.id} card={card} list={list}/>
                   ))}
                   <button onClick={() => setShowEdit(!showEdit)}>Edit</button>
                   {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
                   <button onClick={() => setShowPostCard(!showPostCard)}>
-                    PostCard
+                    Post Card
                   </button>
                   {showPostCard ? <PostCard list={list} /> : null}
                 </div>
