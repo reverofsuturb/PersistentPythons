@@ -136,6 +136,7 @@ export default function SingleBoard() {
           </button>
         </div>
       </div>
+      <PostList />
     </>
   );
 }
