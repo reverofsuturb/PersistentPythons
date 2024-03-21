@@ -31,7 +31,6 @@ export default function PostBoard() {
 
     const res = await dispatch(thunkPostBoard(postingBoard));
 
-    // console.log("%c 🚀 ~ file: PostBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ", "color: orange; font-size: 25px", res)
     if (res && res.errors) {
       return setErrors(res.errors);
     }

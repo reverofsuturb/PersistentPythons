@@ -17,11 +17,9 @@ export default function EditBoard() {
 	const navigate = useNavigate();
 
 	const board = useSelector(state => state.boards[board_id]);
-	
+
 	const [boardName, setBoardName] = useState("");
 	const [errors, setErrors] = useState({});
-
-	console.log("%c 🚀 ~ file: EditBoard.jsx:15 ~ EditBoard ~ board: ", "color: green; font-size: 25px", board)
 
 
 
@@ -43,8 +41,6 @@ export default function EditBoard() {
 		};
 
 		const res = await dispatch(thunkPutBoard(updatedBoard, board_id));
-
-		console.log("%c 🚀 ~ file: EditBoard.jsx:44 ~ onSubmit ~ NEW RESPONSE: ", "color: orange; font-size: 25px", res)
 
 
 		if (res && res.errors) {

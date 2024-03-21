@@ -26,7 +26,7 @@ class Board(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     board_name = db.Column(db.String(255), nullable=False, unique=True)
 
-    lists = relationship('List', backref='board')
+    lists = relationship('List', backref='board', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -47,7 +47,7 @@ class List(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
     title = db.Column(db.String(255), nullable=False)
 
-    cards_in_list = db.relationship('Card', back_populates='list')
+    cards_in_list = db.relationship('Card', back_populates='list', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
@@ -57,7 +57,7 @@ class List(db.Model):
             'title': self.title
         }
 
-    
+
 
 
 class Card(db.Model):
@@ -78,7 +78,7 @@ class Card(db.Model):
     checklist = db.Column(db.String(255), default=None)
 # EDIT THIS DOWN BELOW CHAOS?
     list = db.relationship('List', back_populates='cards_in_list')
-    comments = db.relationship('Comment', back_populates='comments_rel')
+    comments = db.relationship('Comment', back_populates='comments_rel', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
