@@ -1,27 +1,9 @@
+/* board styling */
 .sb-board-title {
   font-size: 2rem;
   border-bottom: solid 2px #211522;
 }
 
-.sb-lists-title {
-  font-size: 1.75rem;
-  border-bottom: solid 2px #211522;
-}
-.sb-lists-full {
-  display: flex;
-  width: 100%;
-}
-.sb-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  background-color: #613659;
-  height: 30%;
-  width: 40%;
-  margin: auto;
-  padding: 20px;
-  border-radius: 50px;
-}
 .sb-boards-tile {
   display: flex;
   align-items: center;
@@ -36,4 +18,39 @@
   font-size: 1.5rem;
   text-decoration: none;
   color: #211522;
+}
+
+/* list styling */
+.sb-lists-title {
+  font-size: 1.75rem;
+  border-bottom: solid 2px #211522;
+}
+
+.sb-lists-full {
+  display: flex;
+  width: 100%;
+}
+
+.sb-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #613659;
+  height: 30%;
+  width: 40%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 50px;
+}
+
+/* card styling */
+
+.all-cards-on-list {}
+
+.indiv-card-in-list {}
+
+.card-modal {}
+
+.card-modal-title{
+  cursor: pointer;
 }
