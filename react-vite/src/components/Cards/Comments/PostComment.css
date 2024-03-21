@@ -1,0 +1,22 @@
+.pc-comments-form {
+  display: flex;
+  gap: 10px;
+}
+
+.pc-comments-title {
+  background-color: #c197d2;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.pc-comments-row {
+  background-color: #c197d2;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.pc-button {
+  background-color: #613659;
+}

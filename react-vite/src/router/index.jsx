@@ -2,12 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
-import AllLists from "../components/Lists/AllLists/AllLists";
-import PostLists from "../components/Lists/PostLists/PostLists";
-import EditList from "../components/Lists/EditList/EditList";
-import PostCard from "../components/Cards/PostCards/PostCard";
+import AllLists from "../components/Lists/AllLists";
+import PostLists from "../components/Lists/PostLists";
+import EditList from "../components/Lists/EditList";
+import PostCard from "../components/Cards/AllCards/PostCard";
 import Layout from "./Layout";
-import HomePage from "../components/HomePage/HomePage";
 import EditBoard from "../components/Boards/EditBoards/EditBoard";
 
 export const router = createBrowserRouter([
@@ -16,7 +15,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <h1>Welcome!</h1>,
       },
       {
         path: "login",

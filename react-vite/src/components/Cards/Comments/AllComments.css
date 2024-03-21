@@ -1,0 +1,17 @@
+.ac-comments-title {
+  background-color: #c197d2;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.ac-comments-row {
+  background-color: #c197d2;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.ac-modal-button {
+  background-color: #613659;
+}

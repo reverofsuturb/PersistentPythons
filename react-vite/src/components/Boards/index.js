@@ -1,8 +1,8 @@
-import AllBoards from "./AllBoards/AllBoards";
-import SingleBoard from "./SingleBoard/SingleBoard";
-import PostBoard from "./PostBoards/PostBoard";
-import EditBoard from "./EditBoards/EditBoard";
-import DeleteBoard from "./DeleteBoards/DeleteBoard";
+import AllBoards from "./AllBoards";
+import SingleBoard from "./SingleBoard";
+import PostBoard from "./PostBoard";
+import EditBoard from "./EditBoard";
+import DeleteBoard from "./DeleteBoard";
 
 
 
