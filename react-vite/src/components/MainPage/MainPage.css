@@ -22,8 +22,8 @@
     background: linear-gradient(110deg, #356b9de5, #3a92d5,#57bdbb, #63d0cf, #62A6CD, #CE9EDE, #DA99DC, #fcedcf);
     background-size: 200% 200%;
     animation: Gradient 20s ease infinite;
-    width: 100%;
     position: relative;
+    height: 50vb;
 }
 
 .welcome::after {
@@ -46,7 +46,7 @@
 
 
 .welcomeText{
-    max-width: 50%;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -61,6 +61,43 @@
 }
 .maingImageMainPage{
     width: 100%;
+    max-width:400px;
+    border-radius: 18px;
+}
+
+.lowercontainerback{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, white 60%, rgb(215, 234, 241) 100%);
+    margin-bottom: 400px;
+    height: 100%;
+}
+
+.lowercontainer{
+    max-width: 900px;
+}
+
+.toppart{
+    display: flex;
+    flex-direction: column;
+}
+
+.lowerpart{
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.leftside{
+    width: 300px
+}
+
+
+.boards{
     max-width:400px;
     border-radius: 18px;
 }
