@@ -54,27 +54,27 @@ def seed_lists():
     )
     list11 = List(
         board_id=1,
-        user_id=2,
+        user_id=1,
         title="Future Plans",
     )
     list12 = List(
         board_id=2,
-        user_id=3,
+        user_id=2,
         title="Past Memories",
     )
     list13 = List(
         board_id=3,
-        user_id=1,
+        user_id=3,
         title="Present Moments",
     )
     list14 = List(
         board_id=4,
-        user_id=2,
+        user_id=1,
         title="Dream Projects",
     )
     list15 = List(
         board_id=5,
-        user_id=3,
+        user_id=2,
         title="Wishful Thinking",
     )
 

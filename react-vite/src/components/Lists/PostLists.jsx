@@ -40,7 +40,10 @@ export default function PostList() {
           Add a list
         </button>
       ) : (
-        <div className="pl-lists-container">
+        <div
+          className="pl-lists-container"
+          onMouseLeave={() => setTimeout(() => setShowSubmit(false), 1000)}
+        >
           <form className="pl-lists-form" onSubmit={handleSubmit}>
             <label className="pl-lists-label" htmlFor="title">
               <input
