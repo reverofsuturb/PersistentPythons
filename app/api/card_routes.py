@@ -144,7 +144,7 @@ def get_comments(card_id):
             db.session.add(comment)
             db.session.commit()
 
-            return jsonify({"New Comment": comment.to_dict()})
+            return jsonify(comment.to_dict())
 
         return jsonify({"errors": form.errors}), 400
 
