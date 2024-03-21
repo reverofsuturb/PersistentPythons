@@ -15,12 +15,17 @@ function Navigation() {
           Space Odyssey
         </NavLink>
       </div>
-      {/* <div>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
           <NavLink to="/boards">All Boards</NavLink>
-        </div>
-        <div>
+        </li>
+        <li>
           <NavLink to="/boards/new">New Board</NavLink>
-        </div> */}
+        </li>
+      </ul>
       <div id="modalButtonsContainer">
         {isLoggedIn && <ProfileButton />}
         {!isLoggedIn && (
@@ -41,3 +46,5 @@ function Navigation() {
 }
 
 export default Navigation;
+
+
