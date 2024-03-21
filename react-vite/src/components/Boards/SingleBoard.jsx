@@ -5,10 +5,10 @@ import { thunkGetAllLists } from "../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import DeleteBoard from "./DeleteBoard";
-import EditList from "../Lists/EditList/EditList";
-import DeleteList from "../Lists/DeleteList/DeleteList";
-import SingleCard from "../Cards/SingleCard/SingleCard";
-import PostCard from "../Cards/PostCards/PostCard";
+import EditList from "../Lists/EditList";
+import DeleteList from "../Lists/DeleteList";
+import SingleCard from "../Cards/AllCards/SingleCard";
+import PostCard from "../Cards/AllCards/PostCard";
 
 export default function SingleBoard() {
   const { board_id } = useParams();

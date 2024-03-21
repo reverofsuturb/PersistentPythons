@@ -2,12 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import { AllBoards, SingleBoard, PostBoard } from "../components/Boards";
-import AllLists from "../components/Lists/AllLists/AllLists";
-import PostLists from "../components/Lists/PostLists/PostLists";
-import EditList from "../components/Lists/EditList/EditList";
-import PostCard from "../components/Cards/PostCards/PostCard";
+import AllLists from "../components/Lists/AllLists";
+import PostLists from "../components/Lists/PostLists";
+import EditList from "../components/Lists/EditList";
+import PostCard from "../components/Cards/AllCards/PostCard";
 import Layout from "./Layout";
-import EditBoard from "../components/Boards/EditBoards/EditBoard";
+import EditBoard from "../components/Boards/EditBoard";
 
 export const router = createBrowserRouter([
   {
