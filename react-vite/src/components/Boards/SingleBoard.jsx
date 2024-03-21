@@ -40,18 +40,9 @@ export default function SingleBoard() {
       <div className="sb-outer_container">
         <div className="sb-inner_container">
           <div>
-            {board?.board_name}
+          {board?.board_name && <EditBoard board={board} />}
           </div>
-          <div className="single-board-edit">
-            {board_id && (
-              <button
-                className="single-board-button-edit"
-                onClick={() => navigate(`/boards/${board_id}/edit`)}
-              >
-                Edit Board
-              </button>
-            )}
-          </div>
+
 
           {/* additional options */}
           <div className="sb-delete-bp-list-add">
@@ -81,7 +72,7 @@ export default function SingleBoard() {
               {allLists.length ? (
                 allLists?.map((list) => (
                   <div key={list.id} className="sb-list-container">
-                    <h2 className="sb-lists-title">{list.title}</h2>
+                    <EditList list={list} />
 
                     {/* Cards */}
                     <div className="all-cards-on-list">
@@ -127,10 +118,6 @@ export default function SingleBoard() {
                       ))}
                     </div>
 
-                    <button onClick={() => setShowEdit(!showEdit)}>
-                      Edit List
-                    </button>
-                    {showEdit ? <EditList list={list} /> : null}
                     <DeleteList list={list} />
                     <OpenModalButton
                       buttonText={"Add a Card"}
