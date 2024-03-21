@@ -99,10 +99,6 @@ export default function SingleBoard() {
                     ))}
                   </div>
 
-                  <button onClick={() => setShowEdit(!showEdit)}>
-                    Edit List
-                  </button>
-                  {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
                   <OpenModalButton
                     buttonText={"New Card"}
