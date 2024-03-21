@@ -7,7 +7,8 @@ import PostLists from "../components/Lists/PostLists";
 import EditList from "../components/Lists/EditList";
 import PostCard from "../components/Cards/AllCards/PostCard";
 import Layout from "./Layout";
-import EditBoard from "../components/Boards/EditBoards/EditBoard";
+import EditBoard from "../components/Boards/EditBoard";
+import HomePage from "../components/HomePage/HomePage";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Welcome!</h1>,
+        element: <HomePage />,
       },
       {
         path: "login",
