@@ -40,7 +40,7 @@ export default function SingleBoard() {
       <div className="sb-outer_container">
         <div className="sb-inner_container">
           <div>
-          {board?.board_name && <EditBoard board={board} />}
+            {board?.board_name && <EditBoard board={board} />}
           </div>
 
 
@@ -62,7 +62,7 @@ export default function SingleBoard() {
               )}
             </div>
             <div className="board-post-list">
-              <PostList />
+              <PostList className="board-post-add-list-modal"/>
             </div>
           </div>
           {/* list */}
@@ -77,13 +77,12 @@ export default function SingleBoard() {
                     {/* Cards */}
                     <div className="all-cards-on-list">
                       {list?.cards_in_list.map((card) => (
-                        <div className="indiv-card-in-list">
+                        <div className="indiv-card-in-list" key={card.id}>
                           {card ? (
                             <>
                               <div
                                 className="card-modal-box"
                                 values="card"
-                                onClick={() => console.log("CARD!!!: ", card)}
                               >
                                 <div className="card-modal-title">
                                   <OpenModalMenuItem
@@ -117,8 +116,9 @@ export default function SingleBoard() {
                         </div>
                       ))}
                     </div>
-
-                    <DeleteList list={list} />
+                    <div className="on-list-delete">
+                      <DeleteList list={list} />
+                    </div>
                     <OpenModalButton
                       buttonText={"Add a Card"}
                       modalComponent={<PostCard list={list} />}
