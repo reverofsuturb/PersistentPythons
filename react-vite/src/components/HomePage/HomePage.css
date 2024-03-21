@@ -17,25 +17,38 @@
   justify-content: center;
   align-items: center;
   background-image: url(../../../public/space.jpg);
-  height: 850px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 1300px;
 }
 
 #spaceParagraph {
-  margin-top: 130px;
+  margin-top: 40px;
   width: 650px;
   color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 2.25rem;
   background-color: rgba(0, 0, 0, 0.386);
   border-radius: 10px;
 }
 
 #secondSpaceParagraph {
-  /* width: 650px; */
+  font-size: 1.5rem;
   color: white;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 500;
   background-color: rgba(0, 0, 0, 0.386);
   border-radius: 10px;
+}
+
+#signUpHereButton {
+  color: black;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#signUpHereButton:hover {
+  cursor: pointer;
+  color: blueviolet;
 }

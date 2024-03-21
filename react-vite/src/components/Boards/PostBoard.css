@@ -1,0 +1,13 @@
+.postBoardForm {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+#formBoardLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}

@@ -5,11 +5,13 @@ import { thunkGetAllLists } from "../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import OpenModalButton from "../OpenModalButton";
+import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import EditList from "../Lists/EditList";
 import DeleteList from "../Lists/DeleteList";
 import SingleCard from "../Cards/AllCards/SingleCard";
 import PostCard from "../Cards/AllCards/PostCard";
+import PostList from "../Lists/PostLists";
 import "./SingleBoard.css";
 
 export default function SingleBoard() {
@@ -17,8 +19,7 @@ export default function SingleBoard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
-
+  // const [editing, setEditing] = useState(false);
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
 
@@ -37,19 +38,8 @@ export default function SingleBoard() {
   return (
     <>
       <div className="outer_container">
-        <div className="sb-board-title">
-          {board?.board_name}
-          <div className="single-board-edit">
-            {board_id && (
-              <button
-                className="single-board-button-edit"
-                onClick={() => navigate(`/boards/${board_id}/edit`)}
-              >
-                Edit Board
-              </button>
-            )}
-          </div>
-
+        <div>
+          {board?.board_name && <EditBoard board={board}/>}
           {/*Board Delete */}
           <div className="single-board-delete">
             {board_id && (
@@ -66,11 +56,12 @@ export default function SingleBoard() {
           </div>
 
           {/* list */}
+          {/* <div className="sb-lists-wide"> */}
           <div className="sb-lists-full">
             {allLists.length ? (
               allLists?.map((list) => (
                 <div key={list.id} className="sb-list-container">
-                  <h2 className="sb-lists-title">{list.title}</h2>
+                  <EditList list={list} />
 
                   {/* Cards */}
                   <div className="all-cards-on-list">
@@ -108,10 +99,6 @@ export default function SingleBoard() {
                     ))}
                   </div>
 
-                  <button onClick={() => setShowEdit(!showEdit)}>
-                    Edit List
-                  </button>
-                  {showEdit ? <EditList list={list} /> : null}
                   <DeleteList list={list} />
                   <OpenModalButton
                     buttonText={"New Card"}
@@ -120,10 +107,11 @@ export default function SingleBoard() {
                 </div>
               ))
             ) : (
-              <>No Lists Created</>
+              <></>
             )}
+            <PostList />
           </div>
-
+          {/* </div> */}
           <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>
             New List
           </button>

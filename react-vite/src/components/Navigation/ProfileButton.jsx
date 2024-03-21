@@ -5,12 +5,14 @@ import { thunkLogout } from "../../store/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useNavigate } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -37,20 +39,21 @@ function ProfileButton() {
     e.preventDefault();
     dispatch(thunkLogout());
     closeMenu();
+    navigate("/");
   };
 
   return (
     <>
-      <button onClick={toggleMenu}>
+      <button id="profileButton" onClick={toggleMenu}>
         <GiSpaceship />
       </button>
       {showMenu && (
         <ul className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
+              <li className="profileDeets">{user.username}</li>
+              <li className="profileDeets">{user.email}</li>
+              <li className="profileDeets">
                 <button onClick={logout}>Log Out</button>
               </li>
             </>

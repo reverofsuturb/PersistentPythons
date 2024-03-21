@@ -1,0 +1,22 @@
+.eb-board-title {
+  font-size: 1.75rem;
+  border-bottom: solid 2px #211522;
+}
+
+.eb-board-input {
+  font-size: 1.75rem;
+  border-radius: 15px;
+  width: 200px;
+  background-color: #c197d2;
+}
+
+.eb-board-submit-button {
+  width: 75px;
+  height: 30px;
+  background-color: #c197d2;
+  border-radius: 15px;
+}
+
+.eb-board-form {
+  border-bottom: solid 2px #211522;
+}

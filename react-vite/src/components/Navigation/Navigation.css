@@ -1,7 +1,19 @@
-/* .profile-dropdown {
-  position: absolute;
-} */
 @import url("https://fonts.cdnfonts.com/css/space-theme");
+
+#profileButton {
+  background-color: rgb(198, 16, 29);
+  width: 40px;
+  border-radius: 30px;
+}
+
+.profile-dropdown {
+  z-index: 99;
+}
+
+.profileDeets {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 
 #navBar {
   display: flex;
@@ -13,7 +25,7 @@
   margin-top: 10px;
 }
 
-#homenavlink {
+#homeNavLink {
   text-decoration: none;
   font-family: "Space Theme", sans-serif;
   font-weight: bold;
@@ -21,7 +33,82 @@
   color: rgb(0, 0, 0);
 }
 
+#homeBoardLinkContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 #modalButtonsContainer {
   display: flex;
   gap: 10px;
+}
+
+#boardLinksContainer {
+  display: flex;
+  justify-content: first baseline;
+  flex-direction: row;
+  gap: 15px;
+  justify-items: center;
+  align-items: center;
+}
+
+#allBoardsButton {
+  text-decoration: none;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  font-style: "Space Theme", sans-serif;
+  color: black;
+  font-size: 1.25rem;
+}
+
+#allBoardsButton:hover {
+  cursor: pointer;
+  color: blueviolet;
+}
+
+#createNewButton {
+  text-decoration: none;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  font-style: "Space Theme", sans-serif;
+  color: black;
+  font-size: 1.25rem;
+}
+
+#createNewButton:hover {
+  cursor: pointer;
+  color: blueviolet;
+}
+
+#loginAndSignupButtonContainer {
+  display: flex;
+  gap: 18px;
+}
+
+#missionControlButton {
+  text-decoration: none;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  font-style: "Space Theme", sans-serif;
+  color: black;
+  font-size: 1.25rem;
+}
+
+#missionControlButton:hover {
+  color: blueviolet;
+  cursor: pointer;
+}
+
+#joinButton {
+  text-decoration: none;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  font-style: "Space Theme", sans-serif;
+  color: black;
+  font-size: 1.25rem;
+}
+#joinButton:hover {
+  color: blueviolet;
+  cursor: pointer;
 }
