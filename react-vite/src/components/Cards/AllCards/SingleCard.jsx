@@ -21,6 +21,7 @@ export default function SingleCard({ card, list }) {
   const [description, setDescription] = useState(card.description)
   const [labels, setlabels] = useState(card.labels)
   const [notif, setNotif] = useState(card.notification)
+  console.log("🚀 ~ SingleCard ~ notif:", notif)
   const [editTitle, setEditTitle] = useState(false)
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
