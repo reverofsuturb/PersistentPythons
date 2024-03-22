@@ -30,6 +30,7 @@ export default function SingleBoard() {
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
   );
+  const [addCard, setAddCard] = useState(false)
 
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
@@ -98,7 +99,7 @@ export default function SingleBoard() {
 
                     {/* Cards */}
                     <div className="all-cards-on-list">
-                      {list?.cards_in_list.map((card) => (
+                      {list.cards_in_list.length && list?.cards_in_list.map((card) => (
                         <div className="indiv-card-in-list" key={card.id}>
                           {card ? (
                             <>
@@ -140,16 +141,31 @@ export default function SingleBoard() {
                         </div>
                       ))}
                     </div>
+                    <div className="addcarddiv">
+                      {addCard === false ? (
+                        <button
+                          type=""
+                          className="pl-lists-button"
+                          onClick={() => setAddCard(true)}
+                        >
+                          Add a card
+                        </button>
+                      ) : (
+                        <div>
+                            <PostCard  list={list}/>
+                        </div>
+                      )}
+                    </div>
                     <div className="list-card-delete-button">
                       <DeleteList list={list} />
                     </div>
-                    <div className="list-card-add-card">
+                    {/* <div className="list-card-add-card">
                       {<OpenModalButton
                         buttonText={"Add a Card"}
                         modalComponent={<PostCard list={list} />}
                         className="list-card-add-card-modal"
                       />}
-                    </div>
+                    </div> */}
                   </div>
                 ))
               ) : (
