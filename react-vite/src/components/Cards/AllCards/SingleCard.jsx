@@ -173,15 +173,14 @@ export default function SingleCard({ card, list }) {
                     ) : (
                       <form className="edit-card-form" onSubmit={handleSubmit}>
                         <label htmlFor="description">
-                          <input
-                            className="eb-lists-input"
-                            type="text"
+                          <textarea
+                            className="ed-card-input"
                             value={description}
-                            onBlur={handleSubmit}
                             onChange={(e) => setDescription(e.target.value)}
                           />
                           {errors?.description && <p className="p-error">{errors.description}</p>}
                         </label>
+                        <button type="submit">Submit</button>
                       </form>
                     )}
                 </div>

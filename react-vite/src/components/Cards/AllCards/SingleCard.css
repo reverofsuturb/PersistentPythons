@@ -2,7 +2,7 @@
   width: 650px;
   /* border: 1px solid orange; */
   border-radius: 15px;
-  background-color: #ffffff;
+  background-color: mintcream;
   padding: 20px;
 }
 .titlescont{
@@ -13,8 +13,7 @@
   /* border: 1px dashed red; */
   display: flex;
   flex-direction: row;
-  /* background-color: #613659; */
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 10px;
   padding: 5px;
   margin: 5px;
@@ -69,7 +68,7 @@
   /* background-color: #c197d2; */
   padding: 5px;
   border-radius: 10px;
-  border-bottom: solid 1px #211522;
+  /* border-bottom: solid 1px #211522; */
 }
 
 .attachments-container{
@@ -105,4 +104,11 @@
 
 .logo{
   margin-right: 5px;
+}
+
+.ed-card-input{
+  width: 450px;
+  height: 250px;
+  resize: none;
+  font-size: 15;
 }
