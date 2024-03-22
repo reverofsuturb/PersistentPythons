@@ -13,22 +13,26 @@ import SingleCard from "../Cards/AllCards/SingleCard";
 import PostCard from "../Cards/AllCards/PostCard";
 import { PostList } from "../Lists";
 import { useModal } from "../../context/Modal";
+import { RiSpaceShipFill } from "react-icons/ri";
+import { MdWorkspaces } from "react-icons/md";
+import { thunkGetAllBoards } from "../../store/boards";
+import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
-
-
 
 export default function SingleBoard() {
   const { board_id } = useParams();
-  const { closeModal } = useModal()
+  const { closeModal } = useModal();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   // const [editing, setEditing] = useState(false);
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
-  const post_card = useSelector((state) => state.cards)
-  const length_post_card = Object.values(post_card).length
+  const post_card = useSelector((state) => state.cards);
+  const length_post_card = Object.values(post_card).length;
 
-  const [hoverCaption, setHoverCaption] = useState("")
+  const allBoards = Object.values(boards);
+
+  const [hoverCaption, setHoverCaption] = useState("");
   const board = boards[board_id];
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
@@ -37,42 +41,71 @@ export default function SingleBoard() {
 
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
+    dispatch(thunkGetAllBoards());
     dispatch(thunkGetAllLists());
   }, [dispatch, board_id, showMenu, closeModal, addCard, length_post_card]);
 
-
   const closeMenu = () => setShowMenu(false);
   const editCaption = () => {
-    setHoverCaption("caption")
-  }
+    setHoverCaption("caption");
+  };
 
   const noCap = () => {
-    setHoverCaption("")
-  }
+    setHoverCaption("");
+  };
 
-  const hoverClassName = "hover" + (hoverCaption === "caption" ? "" : "hidden")
+  const hoverClassName = "hover" + (hoverCaption === "caption" ? "" : "hidden");
   return (
     <>
-      <div className="sb-outer_container">
-        <div className="sb-inner_container">
+      <div id="boardsTitleContainer">
+        <h2>
+          <RiSpaceShipFill />
+          Your Boards
+        </h2>
+      </div>
+      <div id="secondHalfContainerBoards">
+        <div id="boardsLeftSideContainer">
+          {allBoards.length &&
+            allBoards?.map((board) => (
+              <div key={board.id} className="ab-boards-tile-left">
+                <MdWorkspaces />
+                <NavLink
+                  className={"ab-boards-link-left"}
+                  to={`/boards/${board.id}`}
+                >
+                  {board.board_name}
+                </NavLink>
+              </div>
+            ))}
+        </div>
 
-          <div className="sb-edit-board"
+        <div id="boardsRightSideContainer">
+          <div id="workSpaceContainer">
+            <h2 id="workspaceTitle">{board?.board_name}</h2>
+          </div>
+
+          <div
+            className="sb-edit-board"
             onMouseEnter={editCaption}
             onMouseLeave={noCap}
             role="link"
           >
-            {board?.board_name && <EditBoard
-              board={board}
-              className="sb-edit-board-modal"
-
-            />}
-            {hoverCaption === "caption" && <p className={hoverClassName + (showMenu ? setHoverCaption("caption") : "")}>Double click here to edit board name</p>}
+            {board?.board_name && (
+              <EditBoard board={board} className="sb-edit-board-modal" />
+            )}
+            {hoverCaption === "caption" && (
+              <p
+                className={
+                  hoverClassName + (showMenu ? setHoverCaption("caption") : "")
+                }
+              >
+                Double click here to edit board name
+              </p>
+            )}
           </div>
-
 
           {/* additional options */}
           <div className="sb-delete-bp-list-add">
-
             {/*Board Delete */}
             <div className="single-board-delete">
               {board_id && (
@@ -94,7 +127,6 @@ export default function SingleBoard() {
           </div>
           {/* list */}
           <div className="outer-sb-list">
-
             <div className="sb-list-full">
               {allLists.length ? (
                 allLists?.map((list) => (
@@ -103,57 +135,52 @@ export default function SingleBoard() {
 
                     {/* Cards */}
                     <div className="all-cards-on-list">
-                      {list.cards_in_list.length && list?.cards_in_list.map((card) => (
-                        <div className="indiv-card-in-list" key={card.id}>
-                          {card ? (
-                            <>
-                              <div
-                                className="card-modal-box"
-                                values="card"
-
-                              >
-                                <div className="card-modal-title">
-                                  <OpenModalMenuItem
-                                    className="card-modal-item"
-                                    id="card-modal-item"
-                                    itemText={card.title}
-                                    onItemClick={!closeMenu}
-                                    modalComponent={
-                                      <SingleCard
-                                        className="card-modal"
-                                        card={card}
-                                        list={list}
-                                      />
-                                    }
-                                  />
-                                  {  }
-                                </div>
-                                <div className="card-modal-main-info">
-                                  <div className="card-modal-cover-image">
-                                    [Enter Image Here]
+                      {list.cards_in_list.length &&
+                        list?.cards_in_list.map((card) => (
+                          <div className="indiv-card-in-list" key={card.id}>
+                            {card ? (
+                              <>
+                                <div className="card-modal-box" values="card">
+                                  <div className="card-modal-title">
+                                    <OpenModalMenuItem
+                                      className="card-modal-item"
+                                      id="card-modal-item"
+                                      itemText={card.title}
+                                      onItemClick={!closeMenu}
+                                      modalComponent={
+                                        <SingleCard
+                                          className="card-modal"
+                                          card={card}
+                                          list={list}
+                                        />
+                                      }
+                                    />
+                                    {}
                                   </div>
-                                  <div className="card-modal-description">
-                                    {card.description}
+                                  <div className="card-modal-main-info">
+                                    <div className="card-modal-cover-image">
+                                      [Enter Image Here]
+                                    </div>
+                                    <div className="card-modal-description">
+                                      {card.description}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              {/* insert display with 4 different card templates, each showing an added card */}
-                            </>
-                          )}
-                        </div>
-                      ))}
+                              </>
+                            ) : (
+                              <>
+                                {/* insert display with 4 different card templates, each showing an added card */}
+                              </>
+                            )}
+                          </div>
+                        ))}
                     </div>
                     <div className="add-card-div">
-
                       <PostCard list={list} />
                     </div>
                     <div className="list-card-delete-button">
                       <DeleteList list={list} />
                     </div>
-
                   </div>
                 ))
               ) : (

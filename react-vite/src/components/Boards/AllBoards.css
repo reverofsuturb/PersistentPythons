@@ -51,7 +51,7 @@
 }
 
 .ab-boards-link-left:hover {
-  color: blueviolet;
+  color: rgb(43, 61, 226);
 }
 
 .ab-boards-tile-left {
@@ -77,8 +77,15 @@
   font-size: 1.5rem;
   font-weight: 500;
   font-family: "Space Grotesk", sans-serif;
-  background-color: rgba(0, 0, 0, 0.355);
+  text-shadow: black 2px 3px 2px;
   border-radius: 10px;
+  word-wrap: break-word;
+  overflow: hidden; /* Ensures text does not overflow its container */
+  text-overflow: ellipsis;
+}
+
+.ab-boards-link-right:hover {
+  color: rgb(43, 61, 226);
 }
 
 #containerForRightTiles {
@@ -86,24 +93,24 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 50px;
-  max-width: 1400px;
+  max-width: 1500px;
   flex-wrap: wrap;
-}
-
-.ab-boards-link-right:hover {
-  color: blueviolet;
 }
 
 .ab-boards-tile-right {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 10px;
   border: 2px white solid;
-  padding: 15px;
-  width: 80px;
-  height: 100px;
+  padding: 20px;
+  width: 100px;
+  height: 130px;
   border-radius: 10px;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.539);
 }
 
 .ab-boards-tile-right:hover {
