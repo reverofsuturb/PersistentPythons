@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetBoard } from "../../store/boards";
 import { thunkGetAllLists } from "../../store/lists";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import OpenModalButton from "../OpenModalButton";
 import EditBoard from "./EditBoard";
@@ -19,7 +19,6 @@ import "./SingleBoard.css";
 export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   // const [editing, setEditing] = useState(false);
   const boards = useSelector((state) => state.boards);
@@ -98,7 +97,7 @@ export default function SingleBoard() {
                     {/* Cards */}
                     <div className="all-cards-on-list">
                       {list?.cards_in_list.map((card) => (
-                        <div className="indiv-card-in-list">
+                        <div className="indiv-card-in-list" key={card.id}>
                           {card ? (
                             <>
                               <div
