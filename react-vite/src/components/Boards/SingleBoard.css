@@ -31,9 +31,10 @@
 }
 
 .hover {
-  position: absolute;
-  top: 3.2rem;
-  right: 11.6rem;
+  position: relative;
+  height: min-content;
+  top: 2.8rem;
+  right: 2.8rem;
   font-size: small;
   font-family: cursive;
   font-style: italic;
@@ -46,7 +47,7 @@
   visibility: hidden;
 }
 
-.sb-edit-board-modal {}
+/* .sb-edit-board-modal {} */
 
 .caption {
   font-size: small;
@@ -60,7 +61,7 @@
   justify-content: center;
   height: 250px;
   width: 250px;
-  background: #c197d2;
+  /* background: #c197d2; */
   border-radius: 15px;
 }
 
@@ -79,12 +80,28 @@
 
 .outer-sb-list {
   display: flex;
+  width: 100%;
 }
 
+.add-card-div {
+  width: 100%;
+  margin: 8px 4px;
+  display: flex;
+}
 
-button.pl-lists-button {
+.add-card-div>button.pl-lists-button {
   cursor: pointer;
-  margin: 12px 8px;
+  margin: 4px 8px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  height: 20%;
+  font-size: 14px;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  border-radius: 8px;
+
 }
 
 button.pl-lists-button:hover {
@@ -96,7 +113,7 @@ button.pl-lists-button:hover {
 }
 
 
-.sb-delete-bp-list-add {}
+/* .sb-delete-bp-list-add {} */
 
 .sb-list-full {
   display: flex;
@@ -132,7 +149,6 @@ button.pl-lists-button:hover {
   width: fit-content;
 }
 
-.single-board-button-delete {}
 
 /* card styling */
 
@@ -147,9 +163,16 @@ button.pl-lists-button:hover {
   height: 100%;
 }
 
-.indiv-card-in-list {}
+.indiv-card-in-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* Change flex-direction to row */
+  flex-wrap: wrap;
+  height: 200px;
+}
 
-.card-modal {}
+/* .card-modal {} */
 
 .card-modal-title {
   cursor: pointer;
@@ -182,9 +205,7 @@ button.pl-lists-button:hover {
   margin: 0;
   padding: 8px 0px;
   background-color: transparent;
-  overflow: hidden;
-  /* height: 500px; */
-  /* overflow-wrap: anywhere; */
+  /* overflow: hidden; */
   white-space: normal;
   flex-direction: row;
   width: 100%;
@@ -196,15 +217,14 @@ button.pl-lists-button:hover {
 
 .card-modal-title {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  height: 20px;
   width: 100%;
-  /* padding: 6px 8px 6px 12px; */
   padding: 8px 0px;
-  /* margin-inline-start: 1.5rem; */
   background-color: slategrey;
   color: darkblue;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .card-modal-title> :first-child {
@@ -215,6 +235,12 @@ button.pl-lists-button:hover {
   color: goldenrod;
 }
 
+div.card-modal-title>p.hover {
+  position: relative;
+  top: 50%;
+  right: 15%;
+  width: fit-content;
+}
 
 #card-modal-item {
   margin-inline-start: 0.5rem;

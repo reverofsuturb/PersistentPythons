@@ -32,7 +32,9 @@ export default function SingleBoard() {
 
   const allBoards = Object.values(boards);
 
-  const [hoverCaption, setHoverCaption] = useState("");
+  const [hoverCaption, setHoverCaption] = useState(null)
+
+
   const board = boards[board_id];
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
@@ -46,15 +48,10 @@ export default function SingleBoard() {
   }, [dispatch, board_id, showMenu, closeModal, addCard, length_post_card]);
 
   const closeMenu = () => setShowMenu(false);
-  const editCaption = () => {
-    setHoverCaption("caption");
-  };
 
-  const noCap = () => {
-    setHoverCaption("");
-  };
 
-  const hoverClassName = "hover" + (hoverCaption === "caption" ? "" : "hidden");
+  const hoverClassName = "hover" + (hoverCaption !== null ? "" : "hidden");
+
   return (
     <>
       {/*  CSS FOR THE BOARDS CONTAINER IS IN ALLBOARDS.CSS */}
@@ -86,17 +83,18 @@ export default function SingleBoard() {
 
           <div
             className="sb-edit-board"
-            onMouseEnter={editCaption}
-            onMouseLeave={noCap}
+            onMouseEnter={() => setHoverCaption(-1)}
+            onMouseLeave={() => setHoverCaption(null)}
             role="link"
           >
             {board?.board_name && (
               <EditBoard board={board} className="sb-edit-board-modal" />
             )}
-            {hoverCaption === "caption" && (
+            {hoverCaption === -1 && (
               <p
                 className={
-                  hoverClassName + (showMenu ? setHoverCaption("caption") : "")
+                  // hoverClassName + (showMenu ? setHoverCaption("caption") : "")
+                  hoverClassName
                 }
               >
                 Double click here to edit board name
@@ -135,45 +133,44 @@ export default function SingleBoard() {
 
                     {/* Cards */}
                     <div className="all-cards-on-list">
-                      {list.cards_in_list.length &&
-                        list?.cards_in_list.map((card) => (
-                          <div className="indiv-card-in-list" key={card.id}>
-                            {card ? (
-                              <>
-                                <div className="card-modal-box" values="card">
-                                  <div className="card-modal-title">
-                                    <OpenModalMenuItem
-                                      className="card-modal-item"
-                                      id="card-modal-item"
-                                      itemText={card.title}
-                                      onItemClick={!closeMenu}
-                                      modalComponent={
-                                        <SingleCard
-                                          className="card-modal"
-                                          card={card}
-                                          list={list}
-                                        />
-                                      }
-                                    />
-                                    {}
+                      {list.cards_in_list.length && list?.cards_in_list.map((card, index) => (
+                        <div className="indiv-card-in-list" key={card.id}>
+                          {card && (
+                            <>
+                              <div
+                                className="card-modal-box"
+                                onMouseEnter={() => setHoverCaption(index)}
+                                onMouseLeave={() => setHoverCaption(null)}
+                              >
+                                <div className="card-modal-title" role="link">
+                                  <OpenModalMenuItem
+                                    className="card-modal-item"
+                                    id="card-modal-item"
+                                    itemText={card.title}
+                                    onItemClick={!closeMenu}
+                                    modalComponent={
+                                      <SingleCard
+                                        className="card-modal"
+                                        card={card}
+                                        list={list}
+                                      />
+                                    }
+                                  />
+                                {hoverCaption === index && (<p className={hoverClassName }> Double click here edit your card</p>)}
+                                </div>
+                                <div className="card-modal-main-info">
+                                  <div className="card-modal-cover-image">
+                                    [Enter Image Here]
                                   </div>
-                                  <div className="card-modal-main-info">
-                                    <div className="card-modal-cover-image">
-                                      [Enter Image Here]
-                                    </div>
-                                    <div className="card-modal-description">
-                                      {card.description}
-                                    </div>
+                                  <div className="card-modal-description">
+                                    {card.description}
                                   </div>
                                 </div>
-                              </>
-                            ) : (
-                              <>
-                                {/* insert display with 4 different card templates, each showing an added card */}
-                              </>
-                            )}
-                          </div>
-                        ))}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      ))}
                     </div>
                     <div className="add-card-div">
                       <PostCard list={list} />
