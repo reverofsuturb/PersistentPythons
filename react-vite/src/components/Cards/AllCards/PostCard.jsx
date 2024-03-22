@@ -1,109 +1,71 @@
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useModal } from "../../../context/Modal";
-import { thunkPostCard } from "../../../store/cards";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { thunkPostCard, thunkGetCard } from "../../../store/cards";
+import { useNavigate, useParams } from "react-router-dom";
 import "./PostCard.css";
 
-export default function PostCard({ list }) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { closeModal } = useModal();
+export default function PostList({list}) {
   const [title, setTitle] = useState("");
-  const [labels, setLabels] = useState("");
-  const [notification, setNotification] = useState("");
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [checklist, setChecklist] = useState("");
   const [errors, setErrors] = useState({});
+  const [showSubmit, setShowSubmit] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
-    const postCard = {
+    let postCard = {
       title: title,
-      labels: labels,
-      notification: notification,
-      description: description,
-      checklist: checklist,
     };
 
     const res = await dispatch(thunkPostCard(list.id, postCard));
 
     if (res && res.errors) {
+      console.log("🚀 ~ handleSubmit ~ res.errors:", res.errors)
       return setErrors(res.errors);
     }
+    console.log("🚀 ~ handleSubmit ~ res.id:", res.card.id)
+    console.log("🚀 ~ handleSubmit ~ res:", res)
 
-    // const newCard = Object.values(res);
-    closeModal();
-    navigate(`/boards/${list.board_id}`);
+
+    setTitle("");
+    setShowSubmit(false);
+    await dispatch(thunkGetCard(res.card.id))
   };
 
   return (
     <>
-      <form className="pc-cards-create-modal" onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          ></input>
-          {errors?.title && <p className="p-error">{errors.title} </p>}
-        </label>
-        <label htmlFor="labels">
-          Labels
-          <input
-            value={labels}
-            onChange={(e) => setLabels(e.target.value)}
-          ></input>
-        </label>
-        <label htmlFor="notification">
-          Notification
-          <select
-            value={notification}
-            onChange={(e) => setNotification(e.target.value)}
-            id="notification-select"
-          >
-            <option value="true">True</option>
-            <option value="false">False</option>
-          </select>
-        </label>
-        <label htmlFor="description">
-          Description
-          <input
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></input>
-        </label>
-        <label htmlFor="startDate">
-          Start Date
-          <input
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          ></input>
-          {errors?.start_date && (
-            <p className="p-error">{errors.start_date} </p>
-          )}
-        </label>
-        <label htmlFor="endDate">
-          End Date
-          <input
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          ></input>
-          {errors?.end_date && <p className="p-error">{errors.end_date} </p>}
-        </label>
-        <label htmlFor="checklist">
-          Check List
-          <input
-            value={checklist}
-            onChange={(e) => setChecklist(e.target.value)}
-          ></input>
-        </label>
-        <button className="pc-cards-modal-button">Submit</button>
-      </form>
+      {showSubmit === false ? (
+        <button
+          type=""
+          className="pl-lists-button"
+          onClick={() => setShowSubmit(!showSubmit)}
+        >
+          Add a Card
+        </button>
+      ) : (
+        <div
+          className="pl-lists-container"
+          onMouseLeave={() => setTimeout(() => setShowSubmit(false), 1000)}
+        >
+          <form className="pl-lists-form" onSubmit={handleSubmit}>
+            <label className="pl-lists-label" htmlFor="title">
+              <input
+                className="pl-lists-input"
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter a card title"
+              />
+            </label>
+            <div className="pl-lists-button-container">
+              <p className="p-error">{errors?.title}</p>{" "}
+              <button type="submit" className="pl-lists-submit-button">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </>
   );
 }

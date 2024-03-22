@@ -33,6 +33,8 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
   dispatch(getCard(data));
 };
 
+
+
 export const thunkPostCard = (list_id, card) => async (dispatch) => {
   const res = await fetch(`/api/lists/${list_id}/card`, {
     method: "POST",
@@ -50,6 +52,9 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
     return newCard;
   }
 };
+
+
+
 
 export const thunkEditCard = (card_id, card) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`, {

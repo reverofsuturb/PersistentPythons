@@ -305,3 +305,12 @@ button.pl-lists-button:hover {
 }
 
 .list-card-add-card-modal {}
+
+.addcarddiv{
+  border: 1px solid pink;
+  width: 100%;
+}
+
+.addcarddiv .hover {
+  background-color: aliceblue;
+}
