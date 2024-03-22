@@ -1,16 +1,17 @@
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import "./EditBoard.css";
 import { thunkPutBoard } from "../../store/boards";
 
 export default function EditBoard({ board }) {
   const { board_id } = useParams();
   const dispatch = useDispatch();
-
-  const [boardName, setBoardName] = useState(board?.board_name);
+  const name_board = board?.board_name;
+  const [boardName, setBoardName] = useState(name_board);
   const [errors, setErrors] = useState({});
   const [editing, setEditing] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +28,18 @@ export default function EditBoard({ board }) {
     setEditing(false);
   };
 
+  useEffect(() => {
+    const errorsObject = {}
+
+    boardName.length < 5
+      ? (errorsObject.boardName = "Board name is required")
+      : null;
+    boardName.length > 20 ? (errorsObject.boardName = "Board name exceeds capacity") : null
+
+    setErrors(errorsObject)
+  }, [boardName])
+
+ 
   return (
     <>
       {editing === false ? (
@@ -45,7 +58,10 @@ export default function EditBoard({ board }) {
             />
             {errors?.board_name && (
               <p className="p-error">{errors.board_name}</p>
-            )}
+              ) || (
+                <p className="p-error">{errors.boardName}</p>
+              )
+            }
           </label>
         </form>
       )}
