@@ -10,6 +10,7 @@ import { BiLogoSquarespace } from "react-icons/bi";
 
 function Navigation() {
   const isLoggedIn = useSelector((state) => state.session.user !== null);
+
   return (
     <div id="navBar">
       <div id="homeBoardLinkContainer">
