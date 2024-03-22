@@ -42,10 +42,6 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
 
 
 export const thunkPostCard = (list_id, card) => async (dispatch) => {
-
-  console.log("%c 🚀 ~ file: cards.js:46 ~ thunkPostCard ~ card: ", "color: orange; font-size: 25px", card)
-
-  console.log("%c 🚀 ~ file: cards.js:48 ~ thunkPostCard ~ list_id: ", "color: orange; font-size: 25px", list_id)
   const res = await fetch(`/api/lists/${list_id}/card`, {
     method: "POST",
 
@@ -57,11 +53,8 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
     },
     body: JSON.stringify(card),
   });
-  console.log("%c 🚀 ~ file: cards.js:42 ~ thunkPostCard ~ res: ", "color: red; font-size: 25px", res)
 
   const data = await res.json();
-
-  console.log("%c 🚀 ~ file: cards.js:52 ~ thunkPostCard ~ data: ", "color: red; font-size: 25px", data)
 
   if (data.errors) {
     console.log("🚀 ~ thunkPostCard ~ data.errors:", data.errors)

@@ -4,6 +4,15 @@
   border-radius: 15px;
   background-color: mintcream;
   padding: 20px;
+  color: white;
+  background: linear-gradient(110deg, #13283ce2, #3a92d5,#57bdbb, #5abebd, #62A6CD, #a17cad, #DA99DC, #a00093);
+  background-size: 200% 200%;
+  animation: Gradient 20s ease infinite;
+}
+@keyframes Gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 .titlescont{
   margin-left: 15px;
@@ -86,6 +95,8 @@
 
 .rightside{
   /* border: 1px solid yellow; */
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
 
 }
@@ -94,8 +105,11 @@
   background-color: #E4E6E9;
   margin-bottom: 8px;
   width: 110px;
-  padding: 5px;
+  padding: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   transition: background-color 0.1s ease; /* Add this line for a smooth transition */
+  color: black;
 }
 
 .buttonsincard:hover {
@@ -112,4 +126,3 @@
   resize: none;
   font-size: 15;
 }
-
