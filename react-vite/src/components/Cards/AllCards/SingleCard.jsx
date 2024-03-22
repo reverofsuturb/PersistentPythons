@@ -11,24 +11,32 @@ import { FaRegFileAlt, FaRegStickyNote, FaRegCheckSquare } from 'react-icons/fa'
 import { MdImage } from 'react-icons/md';
 
 import "./SingleCard.css";
-import { thunkEditCard } from "../../../store/cards";
+import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 export default function SingleCard({ card, list }) {
+  console.log("🚀 ~ SingleCard ~ card:", card)
+  const cardState = useSelector((state) => state.card)
+  console.log("🚀 ~ SingleCard ~ cardState:", cardState)
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title)
-  const [description, setdescription] = useState(card.description)
+  console.log("🚀 ~ SingleCard ~ title:", title)
+  const [description, setDescription] = useState(card.description)
   const [labels, setlabels] = useState(card.labels)
   const [notif, setNotif] = useState(card.notification)
   const [editTitle, setEditTitle] = useState(false)
   const [editLabels, setEditLabels] = useState(false);
+  const [editDescription, setEditDescription] = useState(false);
   const [editNotif, setEditNotif] = useState(false);
 
   const [errors, setErrors] = useState({});
 
 
   useEffect(() => {
+    if (cardState?.title) setTitle(cardState.title)
+
+    dispatch(thunkGetCard(card.id))
     dispatch(thunkGetAllComments(card.id))
-  }, [dispatch])
+  }, [dispatch, cardState])
 
   const handleEdit = () => {
     return (
@@ -39,14 +47,20 @@ export default function SingleCard({ card, list }) {
     )
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault
+  const handleNotifChange = (e) => {
+    setNotif(!notif)
+    handleSubmit(e);
+  }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    console.log("are we getting here")
     const editCards = {
       title,
       description,
       labels,
-      notif
+      notification: notif
     }
 
     const res = await dispatch(thunkEditCard(card.id, editCards));
@@ -55,9 +69,10 @@ export default function SingleCard({ card, list }) {
       return setErrors(res.errors);
     }
 
-    setEditing(false);
-    dispatch(thunkGetAllLists());
-
+    setEditTitle(false);
+    setEditLabels(false)
+    setEditNotif(false)
+    setEditDescription(false)
   }
 
 
@@ -82,7 +97,7 @@ export default function SingleCard({ card, list }) {
 
           <div>
             {editTitle === false ? (
-              <h1 onDoubleClick={() => setEditTitle(true)} style={{marginBottom: '0px' }} className="sc-title">{card.title}</h1>
+              <h1 onDoubleClick={() => setEditTitle(true)} style={{marginBottom: '0px' }} className="sc-title">{title}</h1>
             ):(
               <form className="edit-card-form" onSubmit={handleSubmit}>
               <label htmlFor="title">
@@ -130,7 +145,7 @@ export default function SingleCard({ card, list }) {
                 </div>
 
               <div
-                onClick={() => setNotif(!notif)}
+                onClick={(e) => handleNotifChange(e)}
                 className="sc-row"
                 style={{ backgroundColor: notif ? 'lightblue' : 'transparent' }}
               >
@@ -153,7 +168,22 @@ export default function SingleCard({ card, list }) {
                       Edit
                     </button>
                   </div>
-                  <div className="sc-row">Description: {card.description}</div>
+                    {editDescription === false ? (
+                      <div onDoubleClick={() => setEditDescription(true)} className="sc-row">{description}</div>
+                    ) : (
+                      <form className="edit-card-form" onSubmit={handleSubmit}>
+                        <label htmlFor="description">
+                          <input
+                            className="eb-lists-input"
+                            type="text"
+                            value={description}
+                            onBlur={handleSubmit}
+                            onChange={(e) => setDescription(e.target.value)}
+                          />
+                          {errors?.description && <p className="p-error">{errors.description}</p>}
+                        </label>
+                      </form>
+                    )}
                 </div>
               </div>
 

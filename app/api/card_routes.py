@@ -60,8 +60,9 @@ def edit_card(card_id):
             db.session.add(card)
             db.session.commit()
 
-            return jsonify({"Edited Card": card.to_dict()})
+            return jsonify(card.to_dict())
         return jsonify({"errors": form.errors}), 400
+    return jsonify(card.to_dict())
 
 
 @card_routes.route("/<int:card_id>", methods=["DELETE"])
