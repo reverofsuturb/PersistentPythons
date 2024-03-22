@@ -38,7 +38,7 @@ export default function SingleCard({ card, list }) {
 
     dispatch(thunkGetCard(card.id))
     dispatch(thunkGetAllComments(card.id))
-  }, [dispatch, title, notif])
+  }, [dispatch, notif])
 
   const handleEdit = () => {
     return (
@@ -55,6 +55,7 @@ export default function SingleCard({ card, list }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('are we firing')
 
     const editCards = {
       title,
@@ -72,12 +73,14 @@ export default function SingleCard({ card, list }) {
 
     setNotif(!notif);
     setEditTitle(false);
-    setEditLabels(false)
-    setEditNotif(false)
-    setEditDescription(false)
+    setEditLabels(false);
+    setEditNotif(false);
+    setEditDescription(false);
   }
 
-
+  const handleButtonClick = () => {
+    alert('Feature coming soon');
+  }
 
 
 
@@ -212,10 +215,6 @@ export default function SingleCard({ card, list }) {
               <div>
                 {card.id && (
                   <div>
-                    <OpenModalButton
-                      buttonText={"Edit Card"}
-                      modalComponent={<EditCard card={card} list={list} />}
-                    />
 
                     <OpenModalButton
                       buttonText={"Delete Card"}
@@ -229,19 +228,22 @@ export default function SingleCard({ card, list }) {
               </div>
             </div>
 
-            <div className="rightside">
-            <h5 style={{ marginBottom: '0'}}>Add to card</h5>
-                  <div className="buttonsincard">Members</div>
-                  {card.labels ? null : <div className="buttonsincard">Labels</div>}
-                  <div className="buttonsincard">Checklist</div>
-                  <div className="buttonsincard">Dates</div>
-                  <div className="buttonsincard">Attachment</div>
-                  <h5 style={{ marginBottom: '0', marginTop: '50px' }}>Action</h5>
 
-                  <div className="buttonsincard">Cover</div>
-                  <div className="buttonsincard">Copy</div>
-                  <div onClick={handleEdit} className="buttonsincard">Edit Card</div>
-                  <div className="buttonsincard">Archive</div>
+            <div className="rightside">
+              <h5 style={{ marginBottom: '0'}}>Add to card</h5>
+              <button onClick={handleButtonClick} className="buttonsincard">Members</button>
+              {card.labels ? null : <button onClick={handleButtonClick} className="buttonsincard">Labels</button>}
+              <button onClick={handleButtonClick} className="buttonsincard">Checklist</button>
+              <button onClick={handleButtonClick} className="buttonsincard">Dates</button>
+              <button onClick={handleButtonClick} className="buttonsincard">Attachment</button>
+              <h5 style={{ marginBottom: '0', marginTop: '50px' }}>Action</h5>
+              <button onClick={handleButtonClick} className="buttonsincard">Cover</button>
+              <button onClick={handleButtonClick} className="buttonsincard">Copy</button>
+              <OpenModalButton
+                className="buttonsincard"
+                buttonText={"Delete Card"}
+                modalComponent={<DeleteCard card={card} list={list} />}
+              />
 
             </div>
 
