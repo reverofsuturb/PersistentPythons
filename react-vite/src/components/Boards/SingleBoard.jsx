@@ -57,6 +57,7 @@ export default function SingleBoard() {
   const hoverClassName = "hover" + (hoverCaption === "caption" ? "" : "hidden");
   return (
     <>
+      {/*  CSS FOR THE BOARDS CONTAINER IS IN ALLBOARDS.CSS */}
       <div id="boardsTitleContainer">
         <h2>
           <RiSpaceShipFill />
@@ -78,7 +79,6 @@ export default function SingleBoard() {
               </div>
             ))}
         </div>
-
         <div id="boardsRightSideContainer">
           <div id="workSpaceContainer">
             <h2 id="workspaceTitle">{board?.board_name}</h2>
