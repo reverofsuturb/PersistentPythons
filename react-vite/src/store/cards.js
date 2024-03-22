@@ -70,17 +70,18 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
 };
 
 export const thunkDeleteCard = (card_id) => async (dispatch) => {
+  console.log("🚀 ~ thunkDeleteCard ~ card_id:", card_id)
+  console.log('Heree!!')
   const res = await fetch(`/api/cards/${card_id}`, {
     method: "DELETE",
   });
-  if (res.ok) {
-    const data = await res.json();
-  }
+
+  const data = await res.json();
 
   if (data.errors) {
-    return data.errors;
+    return data;
   }
-  await dispatch(deleteCard(data));
+  await dispatch(deleteCard(card_id));
 };
 
 const initialState = {};

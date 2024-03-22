@@ -6,8 +6,9 @@ import { useModal } from "../../../context/Modal";
 import { thunkDeleteCard } from "../../../store/cards";
 import "./DeleteCard.css";
 
-export default function DeleteCard(card) {
-  const card_id = card.card.id;
+export default function DeleteCard({card}) {
+  const card_id = card.id;
+  console.log("🚀 ~ DeleteCard ~ card_id:", card_id)
   // const getCard = useSelector(state => state.boards)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,12 +23,16 @@ export default function DeleteCard(card) {
 
   const handleDelete = async (e) => {
     e.preventDefault()
-    try {
-      await dispatch(thunkDeleteCard(card_id));
-      // navigate(`/boards/${board_id}`)
-    } catch (error) {
-      console.log("Why are you like this", error);
+
+    const res = await dispatch(thunkDeleteCard(card.id));
+    console.log("🚀 ~ handleDelete ~ res:", res)
+
+    if (res && res.errors){
+      console.log(res.errors)
     }
+
+    // navigate(`/boards/${board_id}`)
+    closeModal()
   };
 
   // const noDeletion = (e) => {
@@ -48,12 +53,10 @@ export default function DeleteCard(card) {
       <p className="ec-comments-modal-p">
         Are you sure you want to remove this comment?
       </p>
-      <form action="" onClick={toggleMenu}>
+      <form onSubmit={handleDelete}>
         <button
+          type="submit"
           className="ec-cards-modal-button"
-          onClick={() => {
-            handleDelete();
-          }}
         >
           Yes
         </button>

@@ -9,7 +9,6 @@ export default function PostComment({ card }) {
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState({});
 
-  // Update showButton state to depend on whether body is empty or not
   const showButton = body !== "";
 
   const handleSubmit = async (e) => {
@@ -33,6 +32,7 @@ export default function PostComment({ card }) {
             <input
               className="input-transition"
               type="text"
+              value={body}
               placeholder="Write a comment..."
               onChange={(e) => setBody(e.target.value)}
             />

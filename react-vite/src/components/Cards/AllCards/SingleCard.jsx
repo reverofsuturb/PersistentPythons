@@ -14,14 +14,15 @@ import "./SingleCard.css";
 import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 export default function SingleCard({ card, list }) {
-  console.log("🚀 ~ SingleCard ~ card:", card)
-  const cardState = useSelector((state) => state.card)
+  const cardState = useSelector((state) => state.cards[card.id])
+
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title)
   const [description, setDescription] = useState(card.description)
-  const [labels, setlabels] = useState(card.labels)
+  const [labels, setLabels] = useState(card.labels)
+
+
   const [notif, setNotif] = useState(card.notification)
-  console.log("🚀 ~ SingleCard ~ notif:", notif)
   const [editTitle, setEditTitle] = useState(false)
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
@@ -32,10 +33,12 @@ export default function SingleCard({ card, list }) {
 
   useEffect(() => {
     if (cardState?.title) setTitle(cardState.title)
+    if (cardState?.notification) setNotif(cardState.notification)
+    if (cardState?.labels) setLabels(cardState.labels)
 
     dispatch(thunkGetCard(card.id))
     dispatch(thunkGetAllComments(card.id))
-  }, [dispatch, cardState])
+  }, [dispatch, title, notif])
 
   const handleEdit = () => {
     return (
@@ -44,7 +47,7 @@ export default function SingleCard({ card, list }) {
       modalComponent={<EditCard card={card} list={list} />}
       />
       )
-    }
+  }
 
   const handleNotifChange = (e) => {
     handleSubmit(e);
@@ -61,7 +64,7 @@ export default function SingleCard({ card, list }) {
     }
 
     const res = await dispatch(thunkEditCard(card.id, editCards));
-    console.log("🚀 ~ handleSubmit ~ res:", res.card.notification)
+
 
     if (res && res.errors) {
       return setErrors(res.errors);
@@ -126,7 +129,7 @@ export default function SingleCard({ card, list }) {
                 <div>
                   {editLabels === false ? (
                     <div onDoubleClick={() => setEditLabels(true)} className="sc-row">
-                      Labels: {card.labels ? card.labels : null}
+                      Labels: {labels ? labels : null}
                     </div>
                   ) : (
                     <form className="edit-card-form" onSubmit={handleSubmit}>
@@ -136,7 +139,7 @@ export default function SingleCard({ card, list }) {
                           type="text"
                           value={labels}
                           onBlur={handleSubmit}
-                          onChange={(e) => setlabels(e.target.value)}
+                          onChange={(e) => setLabels(e.target.value)}
                         />
                         {errors?.labels && <p className="p-error">{errors.labels}</p>}
                       </label>

@@ -31,10 +31,13 @@ export default function AllComments({ card }) {
             <div className="comment-info">
               <h4 style={{fontWeight:'900', marginTop:'0px', marginBottom:'5px'}}>{comment.user_id === user.id ? user?.username : null}</h4>
               <span className="ac-comments-row">{comment?.body}</span>
-              <OpenModalButton
-                buttonText="Delete Comment"
-                modalComponent={<DeleteComment comment={comment} />}
-              />
+              <div>
+                <OpenModalButton
+                  className='thisisbutton'
+                  buttonText="Delete Comment"
+                  modalComponent={<DeleteComment comment={comment} />}
+                />
+              </div>
             </div>
           </div>
         ))}

@@ -65,6 +65,8 @@ def edit_card(card_id):
     return jsonify(card.to_dict())
 
 
+
+
 @card_routes.route("/<int:card_id>", methods=["DELETE"])
 @login_required
 def delete_card(card_id):
@@ -80,7 +82,10 @@ def delete_card(card_id):
     db.session.delete(card)
     db.session.commit()
 
-    return jsonify({"Card Deleted": "Deletion Successful", "Old Card": card.to_dict()})
+    return jsonify(card.to_dict())
+
+
+
 
 
 @card_routes.route("/<int:card_id>/card_image", methods=["GET, POST"])

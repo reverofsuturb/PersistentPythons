@@ -12,12 +12,14 @@ import DeleteList from "../Lists/DeleteList";
 import SingleCard from "../Cards/AllCards/SingleCard";
 import PostCard from "../Cards/AllCards/PostCard";
 import { PostList } from "../Lists";
+import { useModal } from "../../context/Modal";
 import "./SingleBoard.css";
 
 
 
 export default function SingleBoard() {
   const { board_id } = useParams();
+  const { closeModal } = useModal()
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   // const [editing, setEditing] = useState(false);
@@ -32,7 +34,7 @@ export default function SingleBoard() {
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id, showMenu]);
+  }, [dispatch, board_id, showMenu, closeModal]);
 
   const closeMenu = () => setShowMenu(false);
   const editCaption = () => {
@@ -153,13 +155,13 @@ export default function SingleBoard() {
               ) : (
                 <>No Lists Created</>
               )}
-              <div className="modal-new-list_container">
+              {/* <div className="modal-new-list_container">
                 {<OpenModalButton
                   className="modal-new-list"
                   buttonText={"New List"}
                   modalComponent={<PostList />}
                 />}
-              </div>
+              </div> */}
 
             </div>
           </div>
