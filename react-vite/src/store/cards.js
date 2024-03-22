@@ -28,7 +28,7 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
 
   const data = await res.json();
   if (data.errors) {
-    return data.errors;
+    return data;
   }
   dispatch(getCard(data));
 };
@@ -43,7 +43,7 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   });
   const data = await res.json();
   if (data.errors) {
-    return data.errors;
+    return data;
   } else {
     const newCard = await dispatch(postCard(data));
     return newCard;
