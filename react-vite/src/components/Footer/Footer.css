@@ -7,10 +7,11 @@
 
 #meet {
   text-decoration: underline;
+  font-size: 1rem;
 }
 
 .name {
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-top: 0px;
   padding: 0px;
   font-weight: 500;

@@ -15,25 +15,29 @@ export default function HomePage() {
           🤖
         </h3>
       </div>
-      <div id="spaceParagraphContainer">
-        <h2 id="spaceParagraph">
-          Space Odyssey unites your missions, crew, and resources in one cosmic
-          hub. Keep your galactic endeavors organized, even across vast
-          distances.
-        </h2>
-        <h3 id="secondSpaceParagraph">
-          Keep everything in the same space-even if your crew wont.
-        </h3>
-        <div>
-          <div className="JoinButton">
-            {!isLoggedIn && (
-              <OpenModalMenuItem
-                itemText={
-                  <span id="signUpHereButton">Click Me! Sign Up For Free</span>
-                }
-                modalComponent={<SignupFormModal />}
-              />
-            )}
+      <div id="secondHalfContainer">
+        <div id="spaceParagraphContainer">
+          <h2 id="spaceParagraph">
+            Space Odyssey unites your missions, crew, and resources in one
+            cosmic hub. Keep your galactic endeavors organized, even across vast
+            distances.
+          </h2>
+          <h3 id="secondSpaceParagraph">
+            Keep everything in the same space-even if your crew wont.
+          </h3>
+          <div>
+            <div className="JoinButton">
+              {!isLoggedIn && (
+                <OpenModalMenuItem
+                  itemText={
+                    <span id="signUpHereButton">
+                      Click Me! Sign Up For Free
+                    </span>
+                  }
+                  modalComponent={<SignupFormModal />}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,9 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
-import "./AllBoards.css"
+import "./AllBoards.css";
+import { RiSpaceShipFill } from "react-icons/ri";
+import { MdWorkspaces } from "react-icons/md";
 
 export default function AllBoards() {
   const dispatch = useDispatch();
@@ -16,21 +18,47 @@ export default function AllBoards() {
 
   return (
     <>
-      <div className="ab-outer_container">
-        <div className="ab-inner_container">
+      <div id="boardsTitleContainer">
+        <h2>
+          <RiSpaceShipFill />
+          Your Boards
+        </h2>
+      </div>
+      <div id="secondHalfContainerBoards">
+        <div id="boardsLeftSideContainer">
+          {allBoards.length &&
+            allBoards?.map((board) => (
+              <div key={board.id} className="ab-boards-tile-left">
+                <MdWorkspaces />
+                <NavLink
+                  className={"ab-boards-link-left"}
+                  to={`/boards/${board.id}`}
+                >
+                  {board.board_name}
+                </NavLink>
+              </div>
+            ))}
+        </div>
 
-          <h2 className="ab-boards-title">Your Boards</h2>
-          <div className="ab-boards-container">
+        <div id="boardsRightSideContainer">
+          <div id="workSpaceContainer">
+            <h2 id="workspaceTitle">Your Boards</h2>
+          </div>
+          <div id="containerForRightTiles">
             {allBoards.length &&
               allBoards?.map((board) => (
-                <div className="ab-boards-tile">
-                  <NavLink className={"ab-boards-link"} to={`/boards/${board.id}`}>{board.board_name}</NavLink>
+                <div key={board.id} className="ab-boards-tile-right">
+                  <NavLink
+                    className={"ab-boards-link-right"}
+                    to={`/boards/${board.id}`}
+                  >
+                    {board.board_name}
+                  </NavLink>
                 </div>
               ))}
           </div>
         </div>
       </div>
-
     </>
   );
 }

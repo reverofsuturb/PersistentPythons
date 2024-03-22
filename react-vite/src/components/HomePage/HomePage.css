@@ -6,8 +6,15 @@
 }
 
 #accelerate {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#secondHalfContainer {
+  background-color: black;
+  background-image: url(../../../public/space.jpg);
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 
 #spaceParagraphContainer {
@@ -17,10 +24,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-image: url(../../../public/space.jpg);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  height: 1300px;
+  background-size: 60%;
+  height: 800px;
 }
 
 #spaceParagraph {

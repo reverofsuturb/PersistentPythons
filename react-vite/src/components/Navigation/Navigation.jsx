@@ -25,10 +25,12 @@ function Navigation() {
                 All Boards
               </NavLink>
             </button>
-            <OpenModalMenuItem
-              itemText={<span id="createNewButton">Create</span>}
-              modalComponent={<PostBoard />}
-            />
+            <div id="createButtonContainer">
+              <OpenModalMenuItem
+                itemText={<p id="createNewButton">Create</p>}
+                modalComponent={<PostBoard />}
+              />
+            </div>
           </div>
         )}
       </div>
@@ -37,11 +39,11 @@ function Navigation() {
         {!isLoggedIn && (
           <div id="loginAndSignupButtonContainer">
             <OpenModalMenuItem
-              itemText={<span id="missionControlButton">Mission Control</span>}
+              itemText={<p id="missionControlButton">Login Mission Control</p>}
               modalComponent={<LoginFormModal />}
             />
             <OpenModalMenuItem
-              itemText={<span id="joinButton">Join Space Odyssey</span>}
+              itemText={<p id="joinButton">Join Space Odyssey</p>}
               modalComponent={<SignupFormModal />}
             />
           </div>
