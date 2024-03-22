@@ -16,13 +16,12 @@ import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 export default function SingleCard({ card, list }) {
   console.log("🚀 ~ SingleCard ~ card:", card)
   const cardState = useSelector((state) => state.card)
-  console.log("🚀 ~ SingleCard ~ cardState:", cardState)
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title)
-  console.log("🚀 ~ SingleCard ~ title:", title)
   const [description, setDescription] = useState(card.description)
   const [labels, setlabels] = useState(card.labels)
   const [notif, setNotif] = useState(card.notification)
+  console.log("🚀 ~ SingleCard ~ notif:", notif)
   const [editTitle, setEditTitle] = useState(false)
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
@@ -41,39 +40,40 @@ export default function SingleCard({ card, list }) {
   const handleEdit = () => {
     return (
       <OpenModalButton
-        buttonText={"Edit Card"}
-        modalComponent={<EditCard card={card} list={list} />}
+      buttonText={"Edit Card"}
+      modalComponent={<EditCard card={card} list={list} />}
       />
-    )
-  }
+      )
+    }
 
   const handleNotifChange = (e) => {
-    setNotif(!notif)
     handleSubmit(e);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log("are we getting here")
     const editCards = {
       title,
       description,
       labels,
-      notification: notif
+      notification: !notif
     }
 
     const res = await dispatch(thunkEditCard(card.id, editCards));
+    console.log("🚀 ~ handleSubmit ~ res:", res.card.notification)
 
     if (res && res.errors) {
       return setErrors(res.errors);
     }
 
+    setNotif(!notif);
     setEditTitle(false);
     setEditLabels(false)
     setEditNotif(false)
     setEditDescription(false)
   }
+
 
 
 
@@ -164,7 +164,7 @@ export default function SingleCard({ card, list }) {
                     <div>
                       Description
                     </div>
-                    <button>
+                    <button onClick={() => setEditDescription(true)}>
                       Edit
                     </button>
                   </div>
@@ -181,6 +181,7 @@ export default function SingleCard({ card, list }) {
                           {errors?.description && <p className="p-error">{errors.description}</p>}
                         </label>
                         <button type="submit">Submit</button>
+                        <button onClick={() => setEditDescription(false)} type="submit">Cancel</button>
                       </form>
                     )}
                 </div>
