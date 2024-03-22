@@ -38,7 +38,7 @@ export default function SingleCard({ card, list }) {
 
     dispatch(thunkGetCard(card.id))
     dispatch(thunkGetAllComments(card.id))
-  }, [dispatch, title, notif])
+  }, [dispatch, notif])
 
   const handleEdit = () => {
     return (
@@ -54,7 +54,7 @@ export default function SingleCard({ card, list }) {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const editCards = {
       title,
@@ -72,13 +72,10 @@ export default function SingleCard({ card, list }) {
 
     setNotif(!notif);
     setEditTitle(false);
-    setEditLabels(false)
-    setEditNotif(false)
-    setEditDescription(false)
-  }
-
-
-
+    setEditLabels(false);
+    setEditNotif(false);
+    setEditDescription(false);
+  };
 
 
   return (
@@ -110,6 +107,7 @@ export default function SingleCard({ card, list }) {
                     value={title}
                     onBlur={handleSubmit}
                     onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter Title"
                   />
                   {errors?.title && <p className="p-error">{errors.title}</p>}
                 </label>
@@ -180,6 +178,7 @@ export default function SingleCard({ card, list }) {
                         className="ed-card-input"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Enter description"
                       />
                       {errors?.description && <p className="p-error">{errors.description}</p>}
                     </label>
