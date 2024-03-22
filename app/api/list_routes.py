@@ -89,6 +89,6 @@ def new_card(list_id):
         db.session.add(card)
         db.session.commit()
 
-        return jsonify({"New Card": card.to_dict()})
+        return jsonify(card.to_dict())
     else:
         return jsonify({"errors": form.errors}), 400
