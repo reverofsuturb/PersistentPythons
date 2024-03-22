@@ -22,6 +22,7 @@ export default function PostComment({ card }) {
     if (res && res.errors) {
       return setErrors(res.errors)
     }
+    setBody("")
   };
 
   return (

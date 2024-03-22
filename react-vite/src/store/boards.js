@@ -31,8 +31,10 @@ const deleteBoard = (board_id) => ({
 
 export const thunkGetAllBoards = () => async (dispatch) => {
   const response = await fetch("/api/boards");
+
   if (response.ok) {
     const data = await response.json();
+
 
     if (data.errors) {
       return data;
@@ -48,7 +50,7 @@ export const thunkGetBoard = (board_id) => async (dispatch) => {
   if (data.errors) {
     return data;
   }
-  
+
   dispatch(getBoard(data));
 };
 
