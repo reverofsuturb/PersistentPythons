@@ -18,7 +18,7 @@ export default function SingleCard({ card, list }) {
 
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title)
-  const [description, setDescription] = useState(card.description)
+  const [description, setDescription] = useState(card.description ? card.description : "");
   const [labels, setLabels] = useState(card.labels)
 
 
@@ -43,10 +43,10 @@ export default function SingleCard({ card, list }) {
   const handleEdit = () => {
     return (
       <OpenModalButton
-      buttonText={"Edit Card"}
-      modalComponent={<EditCard card={card} list={list} />}
+        buttonText={"Edit Card"}
+        modalComponent={<EditCard card={card} list={list} />}
       />
-      )
+    )
   }
 
   const handleNotifChange = (e) => {
@@ -94,28 +94,28 @@ export default function SingleCard({ card, list }) {
         </div>
 
         <div className="titlescont">
-          <div style={{marginTop:'5px'}} className="logo">
+          <div style={{ marginTop: '5px' }} className="logo">
             <FaRegFileAlt />
           </div>
 
           <div>
             {editTitle === false ? (
-              <h1 onDoubleClick={() => setEditTitle(true)} style={{marginBottom: '0px' }} className="sc-title">{title}</h1>
-            ):(
+              <h1 onDoubleClick={() => setEditTitle(true)} style={{ marginBottom: '0px' }} className="sc-title">{title}</h1>
+            ) : (
               <form className="edit-card-form" onSubmit={handleSubmit}>
-              <label htmlFor="title">
-                <input
-                  className="eb-lists-input"
-                  type="text"
-                  value={title}
-                  onBlur={handleSubmit}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-                {errors?.title && <p className="p-error">{errors.title}</p>}
-              </label>
-            </form>
+                <label htmlFor="title">
+                  <input
+                    className="eb-lists-input"
+                    type="text"
+                    value={title}
+                    onBlur={handleSubmit}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                  {errors?.title && <p className="p-error">{errors.title}</p>}
+                </label>
+              </form>
             )}
-              <div className="sc-title" style={{ fontSize: '12px', margin: '0px' }}>In list: {list.title}</div>
+            <div className="sc-title" style={{ fontSize: '12px', margin: '0px' }}>In list: {list.title}</div>
           </div>
 
 
@@ -125,27 +125,27 @@ export default function SingleCard({ card, list }) {
 
           <div className="leftside">
 
-              <div className="label-notif-container">
-                <div>
-                  {editLabels === false ? (
-                    <div onDoubleClick={() => setEditLabels(true)} className="sc-row">
-                      Labels: {labels ? labels : null}
-                    </div>
-                  ) : (
-                    <form className="edit-card-form" onSubmit={handleSubmit}>
-                      <label htmlFor="labels">
-                        <input
-                          className="eb-lists-input"
-                          type="text"
-                          value={labels}
-                          onBlur={handleSubmit}
-                          onChange={(e) => setLabels(e.target.value)}
-                        />
-                        {errors?.labels && <p className="p-error">{errors.labels}</p>}
-                      </label>
-                    </form>
-                  )}
-                </div>
+            <div className="label-notif-container">
+              <div>
+                {editLabels === false ? (
+                  <div onDoubleClick={() => setEditLabels(true)} className="sc-row">
+                    Labels: {labels ? labels : null}
+                  </div>
+                ) : (
+                  <form className="edit-card-form" onSubmit={handleSubmit}>
+                    <label htmlFor="labels">
+                      <input
+                        className="eb-lists-input"
+                        type="text"
+                        value={labels}
+                        onBlur={handleSubmit}
+                        onChange={(e) => setLabels(e.target.value)}
+                      />
+                      {errors?.labels && <p className="p-error">{errors.labels}</p>}
+                    </label>
+                  </form>
+                )}
+              </div>
 
               <div
                 onClick={(e) => handleNotifChange(e)}
@@ -156,94 +156,94 @@ export default function SingleCard({ card, list }) {
               </div>
 
 
-              </div>
+            </div>
 
-              <div className="description-container">
-                <div className="logo">
+            <div className="description-container">
+              <div className="logo">
                 <FaRegStickyNote />
-                </div>
-                <div className="fillthespace">
-                  <div className="editanddescription">
-                    <div>
-                      Description
-                    </div>
-                    <button onClick={() => setEditDescription(true)}>
-                      Edit
-                    </button>
-                  </div>
-                    {editDescription === false ? (
-                      <div onDoubleClick={() => setEditDescription(true)} className="sc-row">{description}</div>
-                    ) : (
-                      <form className="edit-card-form" onSubmit={handleSubmit}>
-                        <label htmlFor="description">
-                          <textarea
-                            className="ed-card-input"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                          />
-                          {errors?.description && <p className="p-error">{errors.description}</p>}
-                        </label>
-                        <button type="submit">Submit</button>
-                        <button onClick={() => setEditDescription(false)} type="submit">Cancel</button>
-                      </form>
-                    )}
-                </div>
               </div>
-
-              <div className="attachments-container">
-                <div className="logo">
-                  <MdImage />
-                </div>
-                <div>
-                  Attachments container goes here:
-                </div>
-              </div>
-
-
-              {/* <div className="sc-row">Start Date: {card.start_date}</div>
-              <div className="sc-row">End Date: {card.end_date}</div> */}
-              <div className="checklist-container">
-                <div className="logo">
-                  <FaRegCheckSquare />
-                </div>
-                <div className="sc-row">Checklist: {card.checklist}</div>
-              </div>
-              <div className="postcommentcont"><PostComment card={card} /></div>
-              <div>
-                {card.id && (
+              <div className="fillthespace">
+                <div className="editanddescription">
                   <div>
-                    <OpenModalButton
-                      buttonText={"Edit Card"}
-                      modalComponent={<EditCard card={card} list={list} />}
-                    />
-
-                    <OpenModalButton
-                      buttonText={"Delete Card"}
-                      modalComponent={<DeleteCard card={card} list={list} />}
-                    />
+                    Description
                   </div>
+                  <button onClick={() => setEditDescription(true)}>
+                    Edit
+                  </button>
+                </div>
+                {editDescription === false ? (
+                  <div onDoubleClick={() => setEditDescription(true)} className="sc-row">{description}</div>
+                ) : (
+                  <form className="edit-card-form" onSubmit={handleSubmit}>
+                    <label htmlFor="description">
+                      <textarea
+                        className="ed-card-input"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                      {errors?.description && <p className="p-error">{errors.description}</p>}
+                    </label>
+                    <button type="submit">Submit</button>
+                    <button onClick={() => setEditDescription(false)} type="submit">Cancel</button>
+                  </form>
                 )}
               </div>
+            </div>
+
+            <div className="attachments-container">
+              <div className="logo">
+                <MdImage />
+              </div>
               <div>
-                <AllComments card={card} />
+                Attachments container goes here:
               </div>
             </div>
 
-            <div className="rightside">
-            <h5 style={{ marginBottom: '0'}}>Add to card</h5>
-                  <div className="buttonsincard">Members</div>
-                  {card.labels ? null : <div className="buttonsincard">Labels</div>}
-                  <div className="buttonsincard">Checklist</div>
-                  <div className="buttonsincard">Dates</div>
-                  <div className="buttonsincard">Attachment</div>
-                  <h5 style={{ marginBottom: '0', marginTop: '50px' }}>Action</h5>
 
-                  <div className="buttonsincard">Cover</div>
-                  <div className="buttonsincard">Copy</div>
-                  <div onClick={handleEdit} className="buttonsincard">Edit Card</div>
-                  <div className="buttonsincard">Archive</div>
-
+            {/* <div className="sc-row">Start Date: {card.start_date}</div>
+              <div className="sc-row">End Date: {card.end_date}</div> */}
+            <div className="checklist-container">
+              <div className="logo">
+                <FaRegCheckSquare />
+              </div>
+              <div className="sc-row">Checklist: {card.checklist}</div>
             </div>
+            <div className="postcommentcont"><PostComment card={card} /></div>
+            <div>
+              {card.id && (
+                <div>
+                  <OpenModalButton
+                    buttonText={"Edit Card"}
+                    modalComponent={<EditCard card={card} list={list} />}
+                  />
+
+                  <OpenModalButton
+                    buttonText={"Delete Card"}
+                    modalComponent={<DeleteCard card={card} list={list} />}
+                  />
+                </div>
+              )}
+            </div>
+            <div>
+              <AllComments card={card} />
+            </div>
+          </div>
+
+          <div className="rightside">
+            <h5 style={{ marginBottom: '0' }}>Add to card</h5>
+            <div className="buttonsincard">Members</div>
+            {card.labels ? null : <div className="buttonsincard">Labels</div>}
+            <div className="buttonsincard">Checklist</div>
+            <div className="buttonsincard">Dates</div>
+            <div className="buttonsincard">Attachment</div>
+            <h5 style={{ marginBottom: '0', marginTop: '50px' }}>Action</h5>
+
+            <div className="buttonsincard">Cover</div>
+            <div className="buttonsincard">Copy</div>
+            <div onClick={handleEdit} className="buttonsincard">Edit Card</div>
+            <div className="buttonsincard">Archive</div>
+
+          </div>
 
         </div>
 
