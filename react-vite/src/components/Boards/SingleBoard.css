@@ -182,22 +182,6 @@ button.pl-lists-button:hover {
   margin: 0;
   padding: 8px 0px;
   background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  padding: 8px 0px;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  padding: 8px 0px;
-  background-color: transparent;
   overflow: hidden;
   /* height: 500px; */
   /* overflow-wrap: anywhere; */
@@ -220,12 +204,17 @@ button.pl-lists-button:hover {
   padding: 8px 0px;
   /* margin-inline-start: 1.5rem; */
   background-color: slategrey;
-  color: darkorchid;
+  color: darkblue;
 }
 
-.card-modal-title:last-child {
+.card-modal-title> :first-child {
   margin-inline-start: 0.5rem;
 }
+
+.card-modal-title:hover> :first-child {
+  color: goldenrod;
+}
+
 
 #card-modal-item {
   margin-inline-start: 0.5rem;
@@ -258,9 +247,6 @@ button.pl-lists-button:hover {
 .card-modal-description {
   cursor: default;
 }
-
-
-
 
 
 .on-list-delete {
@@ -305,12 +291,3 @@ button.pl-lists-button:hover {
 }
 
 .list-card-add-card-modal {}
-
-.addcarddiv{
-  border: 1px solid pink;
-  width: 100%;
-}
-
-.addcarddiv .hover {
-  background-color: aliceblue;
-}

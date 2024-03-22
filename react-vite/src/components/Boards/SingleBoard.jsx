@@ -25,17 +25,21 @@ export default function SingleBoard() {
   // const [editing, setEditing] = useState(false);
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
+  const post_card = useSelector((state) => state.cards)
+  const length_post_card = Object.values(post_card).length
+
   const [hoverCaption, setHoverCaption] = useState("")
   const board = boards[board_id];
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
   );
-  const [addCard, setAddCard] = useState(false)
+  const [addCard, setAddCard] = useState(false);
 
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id, showMenu, closeModal]);
+  }, [dispatch, board_id, showMenu, closeModal, addCard, length_post_card]);
+
 
   const closeMenu = () => setShowMenu(false);
   const editCaption = () => {
@@ -122,6 +126,7 @@ export default function SingleBoard() {
                                       />
                                     }
                                   />
+                                  {  }
                                 </div>
                                 <div className="card-modal-main-info">
                                   <div className="card-modal-cover-image">
@@ -141,44 +146,19 @@ export default function SingleBoard() {
                         </div>
                       ))}
                     </div>
-                    <div className="addcarddiv">
-                      {addCard === false ? (
-                        <button
-                          type=""
-                          className="pl-lists-button"
-                          onClick={() => setAddCard(true)}
-                        >
-                          Add a card
-                        </button>
-                      ) : (
-                        <div>
-                            <PostCard  list={list}/>
-                        </div>
-                      )}
+                    <div className="add-card-div">
+
+                      <PostCard list={list} />
                     </div>
                     <div className="list-card-delete-button">
                       <DeleteList list={list} />
                     </div>
-                    {/* <div className="list-card-add-card">
-                      {<OpenModalButton
-                        buttonText={"Add a Card"}
-                        modalComponent={<PostCard list={list} />}
-                        className="list-card-add-card-modal"
-                      />}
-                    </div> */}
+
                   </div>
                 ))
               ) : (
                 <>No Lists Created</>
               )}
-              {/* <div className="modal-new-list_container">
-                {<OpenModalButton
-                  className="modal-new-list"
-                  buttonText={"New List"}
-                  modalComponent={<PostList />}
-                />}
-              </div> */}
-
             </div>
           </div>
         </div>

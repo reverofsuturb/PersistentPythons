@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { thunkPostBoard } from "../../store/boards";
 import "./PostBoard.css";
@@ -9,7 +9,6 @@ export default function PostBoard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { closeModal } = useModal();
-
   const [boardName, setBoardName] = useState("");
   const [errors, setErrors] = useState({});
 

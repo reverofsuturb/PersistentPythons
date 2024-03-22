@@ -26,7 +26,13 @@ const deleteCard = (card_id) => ({
 export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);
 
+
+  console.log("%c 🚀 ~ file: cards.js:30 ~ thunkGetCard ~ res: ", "color: red; font-size: 25px", res)
+
   const data = await res.json();
+
+  console.log("%c 🚀 ~ file: cards.js:34 ~ thunkGetCard ~ data: ", "color: red; font-size: 25px", data)
+
   if (data.errors) {
     return data;
   }
@@ -36,14 +42,27 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
 
 
 export const thunkPostCard = (list_id, card) => async (dispatch) => {
+
+  console.log("%c 🚀 ~ file: cards.js:46 ~ thunkPostCard ~ card: ", "color: orange; font-size: 25px", card)
+
+  console.log("%c 🚀 ~ file: cards.js:48 ~ thunkPostCard ~ list_id: ", "color: orange; font-size: 25px", list_id)
   const res = await fetch(`/api/lists/${list_id}/card`, {
     method: "POST",
+
+
+
+
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(card),
   });
+  console.log("%c 🚀 ~ file: cards.js:42 ~ thunkPostCard ~ res: ", "color: red; font-size: 25px", res)
+
   const data = await res.json();
+
+  console.log("%c 🚀 ~ file: cards.js:52 ~ thunkPostCard ~ data: ", "color: red; font-size: 25px", data)
+
   if (data.errors) {
     console.log("🚀 ~ thunkPostCard ~ data.errors:", data.errors)
     return data;
@@ -94,10 +113,15 @@ const initialState = {};
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
+
+
     case GET_CARD: {
       return { ...state, [action.card.id]: action.card };
     }
     case POST_CARD: {
+      console.log("%c 🚀 ~ file: cards.js:111 ~ cardsReducer ~ action: ", "color: red; font-size: 25px", "action: ", action,
+        "current post state: ", state)
+      console.log()
       return { ...state, [action.card.id]: action.card };
     }
     case EDIT_CARD: {
