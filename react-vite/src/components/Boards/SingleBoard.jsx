@@ -62,7 +62,7 @@ export default function SingleBoard() {
               )}
             </div>
             <div className="board-post-list">
-              <PostList className="board-post-add-list-modal"/>
+              <PostList />
             </div>
           </div>
           {/* list */}
@@ -77,13 +77,13 @@ export default function SingleBoard() {
                     {/* Cards */}
                     <div className="all-cards-on-list">
                       {list?.cards_in_list.map((card) => (
-                        <div className="indiv-card-in-list" key={card.id}>
+                        <div className="indiv-card-in-list">
                           {card ? (
                             <>
                               <div
                                 className="card-modal-box"
                                 values="card"
-                              
+
                               >
                                 <div className="card-modal-title">
                                   <OpenModalMenuItem
@@ -117,13 +117,16 @@ export default function SingleBoard() {
                         </div>
                       ))}
                     </div>
-                    <div className="on-list-delete">
+                    <div className="list-card-delete-button">
                       <DeleteList list={list} />
                     </div>
-                    <OpenModalButton
-                      buttonText={"Add a Card"}
-                      modalComponent={<PostCard list={list} />}
-                    />
+                    <div className="list-card-add-card">
+                      <OpenModalButton
+                        buttonText={"Add a Card"}
+                        modalComponent={<PostCard list={list} />}
+                        className="list-card-add-card-modal"
+                      />
+                    </div>
                   </div>
                 ))
               ) : (

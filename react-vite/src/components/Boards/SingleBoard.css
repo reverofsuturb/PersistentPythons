@@ -54,11 +54,13 @@
 
 button.pl-lists-button {
   cursor: pointer;
+  margin: 12px 8px;
 }
+
 button.pl-lists-button:hover {
   cursor: pointer;
   background-color: slategrey;
-	border: 4px solid #6185e180;
+  border: 4px solid #6185e180;
   box-shadow: 0 0 10px #84acf8;
 }
 
@@ -87,10 +89,11 @@ button.pl-lists-button:hover {
   padding-bottom: 8px;
   align-items: center;
   width: 18rem;
-  height: 21rem;
+  /* height: 21rem; */
+  height: fit-content;
   /* padding: 20px; */
   /* overflow-y: scroll; */
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .single-board_delete {
@@ -244,14 +247,23 @@ button.pl-lists-button:hover {
   padding: 5px;
 }
 
-/*
-.board-post-list {
-  margin: 10px;
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-  left: 24rem;
-   top: -27rem;
-  bottom: 28rem;
+.list-card-delete-button {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-content: stretch;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
-*/
+
+.list-card-delete-button>form {}
+
+.list-card-delete-button>form>button {
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin: 8px 12px;
+}
+
+.list-card-add-card {}
+
+.list-card-add-card-modal {}
