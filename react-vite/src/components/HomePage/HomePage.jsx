@@ -2,6 +2,7 @@ import "./HomePage.css";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import SignupFormModal from "../SignupFormModal";
 import { useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
 
 export default function HomePage() {
   const isLoggedIn = useSelector((state) => state.session.user);
@@ -35,6 +36,9 @@ export default function HomePage() {
             )}
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

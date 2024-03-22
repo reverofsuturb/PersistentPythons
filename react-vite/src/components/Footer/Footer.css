@@ -1,0 +1,31 @@
+#teamContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#meet {
+  text-decoration: underline;
+}
+
+.name {
+  font-size: 1.5rem;
+  margin-top: 0px;
+  padding: 0px;
+  font-weight: 500;
+}
+
+#nameContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.namesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
