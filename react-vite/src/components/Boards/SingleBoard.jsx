@@ -109,11 +109,12 @@ export default function SingleBoard() {
                                 <div className="card-modal-title">
                                   <OpenModalMenuItem
                                     className="card-modal-item"
+                                    id="card-modal-item"
                                     itemText={card.title}
                                     onItemClick={!closeMenu}
                                     modalComponent={
                                       <SingleCard
-                                        className="confusion"
+                                        className="card-modal"
                                         card={card}
                                         list={list}
                                       />
@@ -142,21 +143,24 @@ export default function SingleBoard() {
                       <DeleteList list={list} />
                     </div>
                     <div className="list-card-add-card">
-                      <OpenModalButton
+                      {<OpenModalButton
                         buttonText={"Add a Card"}
                         modalComponent={<PostCard list={list} />}
                         className="list-card-add-card-modal"
-                      />
+                      />}
                     </div>
                   </div>
                 ))
               ) : (
                 <>No Lists Created</>
               )}
-
-              <button onClick={() => navigate(`/boards/${board_id}/lists/new`)}>
-                New List
-              </button>
+              <div className="modal-new-list_container">
+                {<OpenModalButton
+                  className="modal-new-list"
+                  buttonText={"New List"}
+                  modalComponent={<PostList />}
+                />}
+              </div>
 
             </div>
           </div>

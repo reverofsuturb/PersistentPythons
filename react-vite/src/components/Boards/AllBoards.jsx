@@ -16,15 +16,21 @@ export default function AllBoards() {
 
   return (
     <>
-    <h2 className="ab-boards-title">Your Boards</h2>
-      <div className="ab-boards-container">
-        {allBoards.length &&
-          allBoards?.map((board) => (
-            <div className="ab-boards-tile">
-              <NavLink className={"ab-boards-link"} to={`/boards/${board.id}`}>{board.board_name}</NavLink>
-            </div>
-          ))}
+      <div className="ab-outer_container">
+        <div className="ab-inner_container">
+
+          <h2 className="ab-boards-title">Your Boards</h2>
+          <div className="ab-boards-container">
+            {allBoards.length &&
+              allBoards?.map((board) => (
+                <div className="ab-boards-tile">
+                  <NavLink className={"ab-boards-link"} to={`/boards/${board.id}`}>{board.board_name}</NavLink>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
+
     </>
   );
 }
