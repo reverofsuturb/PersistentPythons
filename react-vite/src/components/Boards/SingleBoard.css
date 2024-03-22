@@ -51,6 +51,18 @@
   display: flex;
 }
 
+
+button.pl-lists-button {
+  cursor: pointer;
+}
+button.pl-lists-button:hover {
+  cursor: pointer;
+  background-color: slategrey;
+	border: 4px solid #6185e180;
+  box-shadow: 0 0 10px #84acf8;
+}
+
+
 .sb-delete-bp-list-add {}
 
 .sb-list-full {
@@ -69,7 +81,7 @@
   /* flex-wrap: wrap; */
   flex-direction: column;
   gap: 8px;
-  background-color: #613659;
+  background-color: darkgrey;
   margin: auto;
   border-radius: 50px;
   padding-bottom: 8px;
@@ -206,6 +218,30 @@
 
 .card-modal-description {
   cursor: default;
+}
+
+
+
+
+
+.on-list-delete {
+  padding: 2px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.on-list-delete>form {
+  margin: 2px 10px;
+}
+
+.on-list-delete>form>button {
+  width: 100%;
+  padding: 5px;
+}
+
+.sb-list-container>button {
+  padding: 5px;
 }
 
 /*
