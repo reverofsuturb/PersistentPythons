@@ -21,13 +21,12 @@ export default function PostCard({ list }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     const postCard = {
       title: title,
       labels: labels,
       notification: notification,
       description: description,
-      start_date: startDate,
-      end_date: endDate,
       checklist: checklist,
     };
 
@@ -83,7 +82,6 @@ export default function PostCard({ list }) {
           <input
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            type="date"
           ></input>
           {errors?.start_date && (
             <p className="p-error">{errors.start_date} </p>
@@ -94,7 +92,6 @@ export default function PostCard({ list }) {
           <input
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            type="date"
           ></input>
           {errors?.end_date && <p className="p-error">{errors.end_date} </p>}
         </label>
