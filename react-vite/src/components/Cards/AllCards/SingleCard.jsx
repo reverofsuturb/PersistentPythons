@@ -14,12 +14,9 @@ import "./SingleCard.css";
 import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 export default function SingleCard({ card, list }) {
-  console.log("🚀 ~ SingleCard ~ card:", card)
   const cardState = useSelector((state) => state.card)
-  console.log("🚀 ~ SingleCard ~ cardState:", cardState)
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title)
-  console.log("🚀 ~ SingleCard ~ title:", title)
   const [description, setDescription] = useState(card.description)
   const [labels, setlabels] = useState(card.labels)
   const [notif, setNotif] = useState(card.notification)
@@ -55,7 +52,6 @@ export default function SingleCard({ card, list }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    console.log("are we getting here")
     const editCards = {
       title,
       description,
