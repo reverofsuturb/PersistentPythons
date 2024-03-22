@@ -31,6 +31,12 @@ function LoginFormModal() {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setEmail("user1@aa.io");
+    setPassword("password");
+    await handleSubmit(new Event("submit"));
+  };
+
   return (
     <div className="modalPage">
       <h1>Log In</h1>
@@ -56,6 +62,7 @@ function LoginFormModal() {
         </label>
         {errors.password && <p>{errors.password}</p>}
         <button type="submit">Log In</button>
+        <button onClick={handleDemoLogin}>Demo User Login</button>
       </form>
     </div>
   );
