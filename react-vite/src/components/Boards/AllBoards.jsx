@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 import "./AllBoards.css";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { MdWorkspaces } from "react-icons/md";
+import PostBoard from "./PostBoard";
+import OpenModalButton from "../OpenModalButton";
 
 export default function AllBoards() {
   const dispatch = useDispatch();
@@ -27,8 +29,8 @@ export default function AllBoards() {
         </div>
         <div id="secondHalfContainerBoards">
           <div id="boardsLeftSideContainer">
-            {allBoards.length &&
-              allBoards?.map((board) => (
+            {allBoards && allBoards.length > 0 ? (
+              allBoards.map((board) => (
                 <div key={board.id} className="ab-boards-tile-left">
                   <MdWorkspaces />
                   <NavLink
@@ -38,7 +40,10 @@ export default function AllBoards() {
                     {board.board_name}
                   </NavLink>
                 </div>
-              ))}
+              ))
+            ) : (
+              <div>No boards available</div>
+            )}
           </div>
 
           <div id="boardsRightSideContainer">
@@ -46,8 +51,8 @@ export default function AllBoards() {
               <h2 id="workspaceTitle">Your Boards</h2>
             </div>
             <div id="containerForRightTiles">
-              {allBoards.length &&
-                allBoards?.map((board) => (
+              {allBoards && allBoards.length > 0 ? (
+                allBoards.map((board) => (
                   <div key={board.id} className="ab-boards-tile-right">
                     <NavLink
                       className={"ab-boards-link-right"}
@@ -56,7 +61,15 @@ export default function AllBoards() {
                       {board.board_name}
                     </NavLink>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div>
+                  <OpenModalButton
+                    buttonText="Create your first board"
+                    modalComponent={<PostBoard />}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

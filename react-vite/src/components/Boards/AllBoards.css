@@ -17,6 +17,8 @@
   flex-direction: column;
   border-top: 2px black solid;
   border-bottom: 2px black solid;
+  text-shadow: 1px 1px 2px rgb(159, 156, 156);
+  background-color: rgb(219, 219, 219);
 }
 
 #secondHalfContainerBoards {
@@ -29,7 +31,9 @@
   flex-direction: column;
   gap: 10px;
   border-right: 2px black solid;
-  height: 800px;
+  height: 900px;
+  background-color: rgb(219, 219, 219);
+  border-bottom: black 2px solid;
 }
 
 #boardsRightSideContainer {
@@ -37,6 +41,7 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: 100%;
+  border-bottom: black 2px solid;
 }
 
 .ab-boards-container {
@@ -48,10 +53,11 @@
   text-decoration: none;
   color: black;
   font-family: "Space Grotesk", sans-serif;
+  text-shadow: 1px 1px 2px rgb(159, 156, 156);
 }
 
 .ab-boards-link-left:hover {
-  color: rgb(43, 61, 226);
+  color: rgb(0, 15, 154);
 }
 
 .ab-boards-tile-left {
@@ -63,6 +69,9 @@
   color: white;
   margin-left: 40px;
   margin-top: 30px;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.494);
+  border-radius: 10px;
 }
 
 #workspaceTitle {
@@ -73,11 +82,13 @@
 
 .ab-boards-link-right {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 1.5rem;
   font-weight: 500;
-  font-family: "Space Grotesk", sans-serif;
-  text-shadow: black 2px 3px 2px;
+  /* font-family: "Space Grotesk", sans-serif; */
+  font-family: "Death Star", sans-serif;
+  border: rgb(255, 255, 255) 1px, solid;
+  text-shadow: rgb(255, 255, 255) 1px 1px 5px;
   border-radius: 10px;
   word-wrap: break-word;
   overflow: hidden; /* Ensures text does not overflow its container */
@@ -104,13 +115,27 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  border: 2px white solid;
+  border: 2px rgb(0, 0, 0) solid;
   padding: 20px;
   width: 100px;
   height: 130px;
   border-radius: 10px;
   word-wrap: break-word;
-  background-color: rgba(0, 0, 0, 0.539);
+  /* background-color: rgba(0, 0, 0, 0.539); */
+  background: linear-gradient(
+    110deg,
+    #0c263fe2,
+    #1c4c71,
+    #3a8886,
+    #5abebd,
+    #497e9e,
+    #633e6f,
+    #98619a,
+    #6f0567
+  );
+  background-size: 200% 200%;
+  animation: Gradient 20s ease infinite;
+  box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
 }
 
 .ab-boards-tile-right:hover {

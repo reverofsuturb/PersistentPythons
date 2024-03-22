@@ -80,10 +80,6 @@ export default function SingleBoard() {
             ))}
         </div>
         <div id="boardsRightSideContainer">
-          <div id="workSpaceContainer">
-            <h2 id="workspaceTitle">{board?.board_name}</h2>
-          </div>
-
           <div
             className="sb-edit-board"
             onMouseEnter={editCaption}
