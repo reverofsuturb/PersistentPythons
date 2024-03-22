@@ -14,6 +14,8 @@ import PostCard from "../Cards/AllCards/PostCard";
 import { PostList } from "../Lists";
 import "./SingleBoard.css";
 
+
+
 export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function SingleBoard() {
   // const [editing, setEditing] = useState(false);
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
-
+  const [hoverCaption, setHoverCaption] = useState("")
   const board = boards[board_id];
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
@@ -34,13 +36,31 @@ export default function SingleBoard() {
   }, [dispatch, board_id, showMenu]);
 
   const closeMenu = () => setShowMenu(false);
+  const editCaption = () => {
+    setHoverCaption("caption")
+  }
 
+  const noCap = () => {
+    setHoverCaption("")
+  }
+
+  const hoverClassName = "hover" + (hoverCaption === "caption" ? "" : "hidden")
   return (
     <>
       <div className="sb-outer_container">
         <div className="sb-inner_container">
-          <div>
-            {board?.board_name && <EditBoard board={board} />}
+
+          <div className="sb-edit-board"
+            onMouseEnter={editCaption}
+            onMouseLeave={noCap}
+            role="link"
+          >
+            {board?.board_name && <EditBoard
+              board={board}
+              className="sb-edit-board-modal"
+
+            />}
+            {hoverCaption === "caption" && <p className={hoverClassName + (showMenu ? setHoverCaption("caption") : "")}>Double click here to edit board name</p>}
           </div>
 
 
@@ -61,6 +81,7 @@ export default function SingleBoard() {
                 </button>
               )}
             </div>
+
             <div className="board-post-list">
               <PostList />
             </div>

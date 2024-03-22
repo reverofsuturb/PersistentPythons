@@ -2,6 +2,10 @@
   font-size: 1.75rem;
   border-bottom: solid 2px #211522;
 }
+.eb-board-title:hover {
+  border-bottom: solid 2px #211522;
+  color: blue;
+}
 
 .eb-board-input {
   font-size: 1.75rem;
