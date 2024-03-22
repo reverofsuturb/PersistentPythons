@@ -112,7 +112,12 @@ export default function SingleBoard() {
                                 values="card"
 
                               >
-                                <div className="card-modal-title">
+                                <div className="card-modal-title"
+                                  onMouseEnter={editCaption}
+                                  onMouseLeave={noCap}
+                                  role="link"
+
+                                >
                                   <OpenModalMenuItem
                                     className="card-modal-item"
                                     id="card-modal-item"
@@ -126,8 +131,10 @@ export default function SingleBoard() {
                                       />
                                     }
                                   />
-                                  {  }
                                 </div>
+                                  <div>
+                                    {hoverCaption === "caption" && <p className={hoverClassName + (showMenu ? setHoverCaption("caption") : "")}> Double click here edit your card</p>}
+                                  </div>
                                 <div className="card-modal-main-info">
                                   <div className="card-modal-cover-image">
                                     [Enter Image Here]
