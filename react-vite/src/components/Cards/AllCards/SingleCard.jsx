@@ -250,8 +250,8 @@ export default function SingleCard({ card, list }) {
             <button onClick={handleButtonClick} className="buttonsincard">
               Members
             </button>
-            {card.labels ? null : (
-              <button onClick={handleButtonClick} className="buttonsincard">
+            {labels ? <></> : (
+              <button onClick={() => setEditLabels(true)} className="buttonsincard">
                 Labels
               </button>
             )}
