@@ -15,6 +15,14 @@ export default function PostList() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (title.length == 0 ) {
+      setErrors({ title: "List title is required" });
+      return;
+    } else if (title.length > 100) {
+      setErrors({ title: "List's title must be shorter than 100 characters long." });
+      return;
+    }
+
     let postList = {
       title: title,
     };

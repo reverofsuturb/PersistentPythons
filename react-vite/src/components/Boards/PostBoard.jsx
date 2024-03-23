@@ -15,6 +15,14 @@ export default function PostBoard() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    if (boardName.length == 0 ) {
+      setErrors({ boardName: "Board's name is required" });
+      return;
+    } else if (boardName.length > 100) {
+      setErrors({ boardName: "Board's name must be shorter than 100 characters long." });
+      return;
+    }
+
     const postingBoard = {
       board_name: boardName,
     };

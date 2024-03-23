@@ -19,24 +19,32 @@ export default function PostCard({ list }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (title.length == 0 ) {
+      setErrors({ title: "Card title is required" });
+      return;
+    } else if (title.length > 50) {
+      setErrors({ title: "Card's title must be shorter than 50 characters long." });
+      return;
+    }
+
+
     const postCard = {
       title
     };
 
     const res = await dispatch(thunkPostCard(list.id, postCard));
 
-
     if (res && res.errors) {
-
-      return setErrors(res.errors);
+      setErrors(res.errors);
+      return;
     }
-
 
     setTitle("");
     closeModal();
   };
 
   const toggleMenu = (e) => {
+    console.log("Did this happen")
     e.stopPropagation();
     setShowSubmit(!showSubmit);
   };
@@ -53,7 +61,7 @@ export default function PostCard({ list }) {
     return () => document.removeEventListener('click', closeMenu)
 
   }, [dispatch, list.board_id, showSubmit])
-  
+
   return (
     <>
       <button
