@@ -91,12 +91,7 @@ export default function SingleBoard() {
               <EditBoard board={board} className="sb-edit-board-modal" />
             )}
             {hoverCaption === -1 && (
-              <p
-                className={
-                  // hoverClassName + (showMenu ? setHoverCaption("caption") : "")
-                  hoverClassName
-                }
-              >
+              <p className={hoverClassName}>
                 Double click here to edit board name
               </p>
             )}
