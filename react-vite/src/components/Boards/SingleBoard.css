@@ -326,3 +326,9 @@ div.card-modal-title>p.hover {
 }
 
 .list-card-add-card-modal {}
+
+.nocards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
