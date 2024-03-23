@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import db, Board, List, User, Card, CardImage, Comment
 from app.forms import CardForm, CardImageForm, CommentForm
 from sqlalchemy import select
+from app.api.aws import (upload_file_to_s3, get_unique_filename)
+
 
 card_routes = Blueprint("card", __name__)
 
@@ -88,6 +90,8 @@ def delete_card(card_id):
 
 
 
+
+
 @card_routes.route("/<int:card_id>/card_image", methods=["GET, POST"])
 @login_required
 def post_card_image(card_id):
@@ -123,6 +127,11 @@ def post_card_image(card_id):
     if form.errors:
         print(form.errors)
         return jsonify({form.errors}),400
+
+
+
+
+
 
 
 @card_routes.route("/<int:card_id>/comments", methods=["GET", "POST"])

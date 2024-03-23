@@ -16,14 +16,18 @@ export default function PostCardImage({card}){
 
         const formData = new FormData()
         formData.append("image", image)
-
         console.log("🚀 ~ handleSubmit ~ formData:", formData)
+
+
+        setImageLoading(true)
+
         const res = await dispatch(thunkPostCardImages(card.id,formData))
+        console.log("🚀 ~ handleSubmit ~ res:", res)
         if (res && res.errors){
             return setErrors(res.errors)
         }
 
-        closeModal()
+        // closeModal()
     }
 
     return (
