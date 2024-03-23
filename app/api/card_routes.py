@@ -104,14 +104,25 @@ def post_card_image(card_id):
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        card_image = CardImage(
-            card_id=card_id, url=form.url.data, cover=form.cover.data
-        )
-        db.session.add(card_image)
-        db.session.commit()
-        return jsonify({"New Card Image": card_image.to_dict()})
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(dir(upload))
+        print(upload)
 
-    return jsonify({"errors": form.errors}), 400
+        if "url" not in upload:
+            return jsonify({'errors': [upload]}), 400
+
+        url = upload('url')
+        new_image = CardImage(image= url)
+
+        db.session.add(new_image)
+        db.session.commit()
+        return jsonify({url})
+
+    if form.errors:
+        print(form.errors)
+        return jsonify({form.errors}),400
 
 
 @card_routes.route("/<int:card_id>/comments", methods=["GET", "POST"])
