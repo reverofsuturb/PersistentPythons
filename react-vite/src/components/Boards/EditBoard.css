@@ -1,6 +1,8 @@
 .eb-board-title {
   font-size: 1.75rem;
   border-bottom: solid 2px white;
+  font-family: "Death Star", sans-serif;
+  text-shadow: black 2px 2px 2px;
 }
 
 .eb-board-title:hover {
@@ -99,7 +101,7 @@ div.caption_container {
   width: 87%;
 }
 
-div.caption_container>p.hover {
+div.caption_container > p.hover {
   position: relative;
   top: -0.8rem;
   left: 4rem;
