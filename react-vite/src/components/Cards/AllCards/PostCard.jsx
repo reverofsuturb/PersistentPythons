@@ -53,39 +53,38 @@ export default function PostCard({ list }) {
     return () => document.removeEventListener('click', closeMenu)
 
   }, [dispatch, list.board_id, showSubmit])
-
+  
   return (
     <>
-      {showSubmit === false ? (
-        <button
-          type="button"
-          className="pl-lists-button"
-          onClick={toggleMenu}
-        >
-          Add a Card
-        </button>
-      ) : (
-        <div className="pl-lists-container">
-          <form className="pl-lists-form" onSubmit={handleSubmit}>
-            <label className="pl-lists-label">
-              <input
-                className="pl-lists-input"
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Enter a card title"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </label>
-            <div className="pl-lists-button-container">
-              <p className="p-error">{errors?.title}</p>
-              <button type="submit" className="pl-lists-submit-button">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+      <button
+        type="button"
+        className="pl-lists-button"
+        onClick={toggleMenu}
+        style={{ display: showSubmit ? 'none' : 'block' }}
+      >
+        Add a Card
+      </button>
+      <div className="pl-lists-container" style={{ display: showSubmit ? 'block' : 'none' }}>
+        <form className="pl-lists-form" onSubmit={handleSubmit}>
+          <label className="pl-lists-label">
+            <input
+              className="pl-lists-input"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter a card title"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </label>
+          <div className="pl-lists-button-container">
+            <p className="p-error">{errors?.title}</p>
+            <button type="submit" className="pl-lists-submit-button">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
+
 }
