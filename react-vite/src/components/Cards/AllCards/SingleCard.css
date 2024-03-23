@@ -64,6 +64,15 @@
   justify-content: space-between;
 }
 
+.editanddescription button {
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.description-container:hover .editanddescription button {
+  opacity: 1;
+}
+
 .fillthespace{
   width: 100%
 }

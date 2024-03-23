@@ -13,9 +13,16 @@ import {
   FaRegCheckSquare,
 } from "react-icons/fa";
 import { MdImage } from "react-icons/md";
+import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 import "./SingleCard.css";
-import { thunkEditCard, thunkGetCard } from "../../../store/cards";
+
+
+
+
+
+
+
 
 export default function SingleCard({ card, list }) {
   const cardState = useSelector((state) => state.cards[card.id]);
@@ -36,6 +43,7 @@ export default function SingleCard({ card, list }) {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    console.log("🚀 ~ SingleCard ~ description:", description)
     if (cardState?.title) setTitle(cardState.title);
     if (cardState?.notification) setNotif(cardState.notification);
     if (cardState?.labels) setLabels(cardState.labels);
@@ -171,46 +179,50 @@ export default function SingleCard({ card, list }) {
               </div>
             </div>
 
-            <div className="description-container">
-              <div className="logo">
-                <FaRegStickyNote />
-              </div>
-              <div className="fillthespace">
-                <div className="editanddescription">
-                  <div>Description</div>
-                  <button onClick={() => setEditDescription(true)}>Edit</button>
-                </div>
-                {editDescription === false ? (
-                  <div
-                    onDoubleClick={() => setEditDescription(true)}
-                    className="sc-row"
-                  >
-                    {description}
+              {description && (
+                <div className="description-container">
+                  <div className="logo">
+                    <FaRegStickyNote />
                   </div>
-                ) : (
-                  <form className="edit-card-form" onSubmit={handleSubmit}>
-                    <label htmlFor="description">
-                      <textarea
-                        className="ed-card-input"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Enter description"
-                      />
-                      {errors?.description && (
-                        <p className="p-error">{errors.description}</p>
-                      )}
-                    </label>
-                    <button type="submit">Submit</button>
-                    <button
-                      onClick={() => setEditDescription(false)}
-                      type="submit"
-                    >
-                      Cancel
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
+
+
+                  <div className="fillthespace">
+                    <div className="editanddescription">
+                      <div>Description</div>
+                      <button onClick={() => setEditDescription(true)}>Edit</button>
+                    </div>
+                    {editDescription === false ? (
+                      <div
+                      onDoubleClick={() => setEditDescription(true)}
+                      className="sc-row"
+                      >
+                        {description}
+                      </div>
+                    ) : (
+                      <form className="edit-card-form" onSubmit={handleSubmit}>
+                        <label htmlFor="description">
+                          <textarea
+                            className="ed-card-input"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Enter description"
+                            />
+                          {errors?.description && (
+                            <p className="p-error">{errors.description}</p>
+                          )}
+                        </label>
+                        <button type="submit">Submit</button>
+                        <button
+                          onClick={() => setEditDescription(false)}
+                          type="submit"
+                          >
+                          Cancel
+                        </button>
+                      </form>
+                    )}
+                  </div>
+                </div>
+              )}
 
             <div className="attachments-container">
               <div className="logo">
@@ -253,6 +265,15 @@ export default function SingleCard({ card, list }) {
             {labels ? <></> : (
               <button onClick={() => setEditLabels(true)} className="buttonsincard">
                 Labels
+              </button>
+            )}
+            {description ? <></> : (
+              <button onClick={() => {
+                setDescription(' ')
+                setEditDescription(true)
+              }
+              } className="buttonsincard">
+                Add Description
               </button>
             )}
             <button onClick={handleButtonClick} className="buttonsincard">

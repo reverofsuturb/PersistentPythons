@@ -22,10 +22,15 @@
   color: black;
 }
 
-.thisisbutton{
-
-  width: 20p
+.thisisbutton {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+.comment-container:hover .thisisbutton {
+  opacity: 1;
+}
+
 
 
 .ac-comments-row {
