@@ -28,17 +28,53 @@
   border-bottom: solid 2px #211522;
 }
 
+.eb-title_outer_container {
+  display: flex;
+  max-width: fit-content;
+  max-height: fit-content;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.eb-title_inner_container {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  width: 100%;
+  /* flex-wrap: wrap; */
+}
+
+.eb-title {
+  display: flex;
+  height: 50%;
+  flex-wrap: wrap;
+}
+
+.eb-title_container {
+  display: flex;
+  height: 50px;
+  max-height: fit-content;
+  align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-title {
+  width: 100%;
+  text-decoration: none;
+  margin: 0px 10px;
+}
+
 .eb-lists-title {
   font-size: 1.25rem;
   border-bottom: solid 2px #211522;
   margin: 0.5rem 0.2rem;
-  display: inline-flex;
-  max-width: fit-content;
-  width: 40%;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: baseline;
-  height: 35px;
+  display: flex;
+  align-self: center;
+  width: fit-content;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 .hover {
@@ -59,10 +95,15 @@
   visibility: hidden;
 }
 
-.eb-lists-title>p.hover {
+div.caption_container {
+  width: 87%;
+}
+
+div.caption_container>p.hover {
   position: relative;
-  top: 1rem;
-  left: 0rem;
+  top: -0.8rem;
+  left: 4rem;
   width: fit-content;
   color: black;
+  margin: 8px 4px;
 }
