@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { thunkPostList } from "../../store/lists";
 import { thunkGetAllLists } from "../../store/lists";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,12 +11,16 @@ export default function PostList() {
   const [errors, setErrors] = useState({});
   const [showSubmit, setShowSubmit] = useState(false);
   const dispatch = useDispatch();
+  const ufRef = useRef();
+
+
+  const closeMenu = () => setShowSubmit(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let postList = {
-      title: title,
+      title
     };
 
     const res = await dispatch(thunkPostList(board_id, postList));
@@ -26,25 +30,52 @@ export default function PostList() {
     }
     dispatch(thunkGetAllLists());
     setTitle("");
-    setShowSubmit(false);
+
+    closeMenu()
   };
+
+  const toggleMenu = (e) => {
+    e.stopPropagation();
+
+    setShowSubmit(!showSubmit);
+  };
+
+
+
+  useEffect(() => {
+    if (!showSubmit) return;
+    const handleOutsideClick = (e) => {
+      if (ufRef.current && !ufRef.current.contains(e.target)) {
+        setShowSubmit(false)
+      }
+    }
+
+    if (showSubmit) {
+      document.addEventListener('click', handleOutsideClick)
+    } else {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+    return () => document.removeEventListener('click', handleOutsideClick)
+
+  }, [showSubmit])
+
 
   return (
     <>
       {showSubmit === false ? (
         <button
-          type=""
+          type="button"
           className="pl-lists-button"
-          onClick={() => setShowSubmit(!showSubmit)}
+          onClick={toggleMenu}
         >
           Add a list
         </button>
       ) : (
         <div
           className="pl-lists-container"
-          onMouseLeave={() => setTimeout(() => setShowSubmit(false), 1000)}
+
         >
-          <form className="pl-lists-form" onSubmit={handleSubmit}>
+          <form className="pl-lists-form" onSubmit={handleSubmit} ref={ufRef}>
             <label className="pl-lists-label" htmlFor="title">
               <input
                 className="pl-lists-input"
@@ -52,6 +83,7 @@ export default function PostList() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter a list title"
+              // onClick={(e) => e.stopPropagation()}
               />
             </label>
             <div className="pl-lists-button-container">
