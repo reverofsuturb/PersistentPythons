@@ -17,6 +17,7 @@ import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 import "./SingleCard.css";
 import PostCardImage from "./PostCardImage";
+import GetImagesForCards from "./GetCardImage";
 
 
 
@@ -229,7 +230,9 @@ export default function SingleCard({ card, list }) {
               <div className="logo">
                 <MdImage />
               </div>
-              <div>Attachments container goes here:</div>
+              <div>
+                <GetImagesForCards card={card} />
+              </div>
             </div>
 
             {/* <div className="sc-row">Start Date: {card.start_date}</div>

@@ -24,14 +24,17 @@ const deleteCard = (card_id) => ({
   card_id,
 });
 
-const addCardImage = (card_id) => ({
+
+const addCardImage = (card_id, image) => ({
   type: ADD_CARD_IMAGE,
-  card_id
+  card_id,
+  image
 })
 
+
+
+
 export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
-  console.log("🚀 ~ thunkPostCardImage ~ card_id:", card_id)
-  console.log("🚀 ~ thunkPostCardImage ~ image:", image)
   const res = await fetch(`/api/cards/${card_id}/card_image`, {
     method: "POST",
     body: image
@@ -149,6 +152,9 @@ export default function cardsReducer(state = initialState, action) {
       const cardState = { ...state };
       delete cardState[action.card_id];
       return cardState;
+    }
+    case ADD_CARD_IMAGE: {
+      return { ...state, [action.card_id]: {...state[action.card_id], image: action.image} };
     }
     default:
       return state;

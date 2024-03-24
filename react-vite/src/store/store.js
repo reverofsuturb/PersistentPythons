@@ -10,6 +10,7 @@ import boardsReducer from "./boards";
 import listReducer from "./lists";
 import cardsReducer from "./cards";
 import { commentsReducer } from "./comments";
+import cardsImagesReducer from "./card_images";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   lists: listReducer,
   cards: cardsReducer,
   comments: commentsReducer,
+  cardImages: cardsImagesReducer
 });
 
 let enhancer;
