@@ -139,8 +139,10 @@ button.pl-lists-button:hover {
   flex-wrap: wrap;
   flex-direction: column;
   gap: 8px;
-  background-color: darkgrey;
+  /* background-color: darkgrey; */
+  background-color: rgba(0, 0, 0, 0.539);
 
+  box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   border-radius: 20px;
   padding-bottom: 8px;
@@ -241,7 +243,7 @@ button.pl-lists-button:hover {
 }
 
 .card-modal-title:hover > :first-child {
-  color: goldenrod;
+  color: rgb(49, 98, 221);
 }
 
 div.card-modal-title > p.hover {

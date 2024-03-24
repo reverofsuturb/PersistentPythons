@@ -1,7 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/death-star");
 
-
-
 .ab-boards-title {
   font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
@@ -19,8 +17,6 @@ a.ab-a-nav {
   align-content: center;
   cursor: default;
 }
-
-
 
 #boardsTitleContainer {
   display: flex;
@@ -95,13 +91,13 @@ a.ab-a-nav {
 
 .ab-boards-link-right {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 1.5rem;
   font-weight: 500;
   /* font-family: "Space Grotesk", sans-serif; */
   font-family: "Death Star", sans-serif;
   border: rgb(255, 255, 255) 1px, solid;
-  text-shadow: rgb(255, 255, 255) 1px 1px 5px;
+  text-shadow: rgb(56, 51, 51) 1px 1px 5px;
   border-radius: 10px;
   word-wrap: break-word;
   overflow: hidden;
@@ -135,18 +131,8 @@ a.ab-a-nav {
   height: 150px;
   border-radius: 10px;
   word-wrap: break-word;
-  /* background-color: rgba(0, 0, 0, 0.539); */
-  background: linear-gradient(110deg,
-      #0c263fe2,
-      #1c4c71,
-      #3a8886,
-      #5abebd,
-      #497e9e,
-      #633e6f,
-      #98619a,
-      #6f0567);
-  background-size: 200% 200%;
-  animation: Gradient 20s ease infinite;
+  background-color: rgba(0, 0, 0, 0.539);
+
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
 }
 

@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/death-star");
+
 .eb-lists-title {
   font-size: 1.75rem;
   border-bottom: solid 2px #211522;
@@ -17,7 +19,6 @@
   font-size: 1.25rem;
   border-radius: 15px;
   width: 200px;
- 
 }
 
 .eb-lists-submit-button {

@@ -2,7 +2,7 @@
 
 #profileButton {
   background-color: #ffffff;
-  width: 40px;
+  max-width: 40px;
   border-radius: 30px;
   border: dotted 2px rgb(0, 0, 0);
   margin-bottom: 5px;
@@ -32,7 +32,7 @@
 
 .profile-dropdown {
   z-index: 99;
-  margin-top: 50px;
+  margin-top: 100px;
   width: fit-content;
   padding: 70px;
   padding-left: 20px;
