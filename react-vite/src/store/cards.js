@@ -38,9 +38,12 @@ export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
   })
   console.log("🚀 ~ thunkPostCardImage ~ res:", res)
 
-  const {data} = await res.json()
+  const data = await res.json()
+  console.log("🚀 ~ thunkPostCardImage ~ data:", data)
 
-  if(data.errors) return data;
+  if(data.errors) {
+    return data;
+  }
 
   dispatch(addCardImage(data))
 }

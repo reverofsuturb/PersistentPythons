@@ -2,6 +2,7 @@ import { thunkPostCardImage } from "../../../store/cards"
 import { useDispatch } from "react-redux"
 import React, {useState} from "react";
 // import { useHistory } from "react-router-dom";
+import "./PostCardImage.css"
 
 
 export default function PostCardImage({card}){
@@ -11,9 +12,11 @@ export default function PostCardImage({card}){
     console.log("🚀 ~ PostCardImage ~ image:", image)
     const [cover, setCover] = useState(true)
     const [imageLoading, setImageLoading] = useState(false);
+    const [errors, setErrors] = useState({})
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+        setErrors({})
 
         const formData = new FormData()
         formData.append("image_file", image)
@@ -27,7 +30,13 @@ export default function PostCardImage({card}){
         const res = await dispatch(thunkPostCardImage(card.id,formData))
         console.log("🚀 ~ handleSubmit ~ res:", res)
         if (res && res.errors){
-            return setErrors(res.errors)
+            setTimeout(() => {
+                setImageLoading(false)
+                setErrors(res.errors)
+            }, 500)
+
+            return
+
         }
 
         // closeModal()
@@ -38,16 +47,21 @@ export default function PostCardImage({card}){
             <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
+                className="post-card-image-form"
             >
                 <input
                 type='file'
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
+                className="post-card-image-input"
                 />
-                <button type="submit">Submit</button>
-                {(imageLoading) && <p>Loading...</p>}
-                <input type="checkbox" value={cover} onChange={() => setCover(!cover)}/>
+                <button type="submit" className="post-card-image-submit">Submit</button>
+                {(imageLoading) && <p className="loading">Loading...</p>}
+                <input type="checkbox" value={cover} onChange={() => setCover(!cover)} className="post-card-image-checkbox"/>Make this photo the cover?
+
+                {Object.values(errors).map((error) => <p className="p-error">{error}</p>)}
             </form>
         </>
     )
+
 }

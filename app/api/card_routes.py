@@ -131,7 +131,7 @@ def post_card_image(card_id):
 
     if form.errors:
         print(form.errors)
-        return jsonify(form.errors),400
+        return jsonify({"errors": form.errors}),400
 
 
 
