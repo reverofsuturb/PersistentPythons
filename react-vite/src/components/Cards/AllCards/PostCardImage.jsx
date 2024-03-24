@@ -1,4 +1,4 @@
-import { thunkPostCardImages } from "../../../store/cards"
+import { thunkPostCardImage } from "../../../store/cards"
 import { useDispatch } from "react-redux"
 import React, {useState} from "react";
 // import { useHistory } from "react-router-dom";
@@ -8,6 +8,7 @@ export default function PostCardImage({card}){
     const dispatch = useDispatch()
     // const history = useHistory();
     const [image, setImage] = useState(null);
+    console.log("🚀 ~ PostCardImage ~ image:", image)
     const [cover, setCover] = useState(true)
     const [imageLoading, setImageLoading] = useState(false);
 
@@ -15,13 +16,15 @@ export default function PostCardImage({card}){
         e.preventDefault()
 
         const formData = new FormData()
-        formData.append("image", image)
+        formData.append("image_file", image)
+        formData.append("card_id", card.id)
+
         console.log("🚀 ~ handleSubmit ~ formData:", formData)
 
 
         setImageLoading(true)
 
-        const res = await dispatch(thunkPostCardImages(card.id,formData))
+        const res = await dispatch(thunkPostCardImage(card.id,formData))
         console.log("🚀 ~ handleSubmit ~ res:", res)
         if (res && res.errors){
             return setErrors(res.errors)
