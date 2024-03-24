@@ -52,14 +52,15 @@ export default function SingleBoard() {
 
   return (
     <>
-      {/*  CSS FOR THE BOARDS CONTAINER IS IN ALLBOARDS.CSS */}
       <div id="boardsTitleContainer">
         <h2>
           <RiSpaceShipFill />
           Your Boards
         </h2>
       </div>
-      <div id="secondHalfContainerBoards">
+      <div id="secondHalfContainerBoards"
+        // className="sb-outer_container"
+      >
         <div id="boardsLeftSideContainer">
           {allBoards.length &&
             allBoards?.map((board) => (

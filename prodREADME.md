@@ -1,82 +1,99 @@
-# Persistent Pythons
+# Space Odyssey
 
-## Database Schema Design
 <!-- insert database schema design under an images folder that is located directly under the parent route -->
 
 ## About
-<!-- Insert live link -->
-<!-- Insert summary of what the app does -->
-<!-- discussion of technologies used -->
+
+- View our live site!
+  https://persistentpythons.onrender.com/*
+
+* "Space Odyssey" is a space-themed project management platform inspired by Trello. Users navigate through tasks and projects in a cosmic setting, organizing their work into missions. Teams, collaborate on missions using customizable boards, lists and cards, each with detailed information, attachments, and due dates. "Space Odyssey" offers a seamless and secure way for users to manage their projects across the cosmos while enjoying a visually captivating experience.
+
+* Technologies Used - Python with Flask to create a RESTful API.
+  Implement endpoints for user authentication, managing boards, cards, and lists, etc..
+  Defined SQLAlchemy models to represent users, boards, etc.
+  Create migration scripts using tools like Alembic to manage database schema changes. Develop the user interface using React components.
+  Use Redux to manage application state, including user authentication status, and UI states.
+  Implement routing using React Router to navigate between different views.
+  Integration: Connect the frontend and backend using HTTP requests to fetch and update data. Implemented AWS for the cardimages model.
+  <!-- discussion of technologies used -->
 
 ## API Documentation
 
 ### Feature 1
+
 <!-- Insert discussion of two features to show off teams technical abilities -->
+
 ### Get the current user's board
 
 Returns the board created by the current user.
 
-* Require Authentication: True
-* Request
+- Require Authentication: True
+- Request
 
-  * Method: GET
-  * URL: /api/boards
-  * Body: none
+  - Method: GET
+  - URL: /api/boards
+  - Body: none
 
-* Successful Response when there is a logged in user
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response when there is a logged in user
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
       "board": {
-      	"id": 1,
-			"user_id": 1,
-			"board_name": "Taco Palace",
+        "id": 1,
+        "user_id": 1,
+        "board_name": "Taco Palace"
       }
     }
     ```
+
 ### Create a board
 
 Creates and returns a new board.
 
-* Require Authentication: True
-* Request
-  * Method: (GET & ) POST
-  * URL: /api/boards/new
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Require Authentication: True
+- Request
+
+  - Method: (GET & ) POST
+  - URL: /api/boards/new
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "board_name": "Orange Chicken",
+      "board_name": "Orange Chicken"
     }
     ```
 
-* Successful Response
-  * Status Code: 201
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
       "id": 2,
-		"user_id": 1,
-		"board_name": "Orange Chicken",
+      "user_id": 1,
+      "board_name": "Orange Chicken",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -87,11 +104,12 @@ Creates and returns a new board.
     }
     ```
 
-* Error response: Couldn't find a Board with that specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Board with that specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -99,63 +117,65 @@ Creates and returns a new board.
     }
     ```
 
-
 ### Edit a Board
 
 Updates and returns an existing Board.
 
-* Require Authentication: True
-* Require proper authorization: Board must belong to the current user
-* Request
+- Require Authentication: True
+- Require proper authorization: Board must belong to the current user
+- Request
 
-  * Method: (GET & ) PUT
-  * URL: /api/boards/:boardId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: (GET & ) PUT
+  - URL: /api/boards/:boardId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
-		{
-			"board_name": "Orange Chicken",
-		}
+    {
+      "board_name": "Orange Chicken"
+    }
     ```
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
       "id": 2,
-		"user_id": 1,
-		"board_name": "Orange Chicken",
+      "user_id": 1,
+      "board_name": "Orange Chicken",
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
-* Error Response: Body validation error
-  * Status Code: 400
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
       "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
       "errors": {
-   		"message": "Board couldn't be found"
+        "message": "Board couldn't be found"
       }
     }
     ```
 
-* Error response: Couldn't find a Board with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Board with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -164,20 +184,23 @@ Updates and returns an existing Board.
     ```
 
 ### Delete a Board
+
 Deletes an existing board.
 
-* Require Authentication: true
-* Require proper authorization: Board must belong to the current user
-* Request
-  * Method: DELETE
-  * URL: /api/boards/:boardId
-  * Body: none
+- Require Authentication: true
+- Require proper authorization: Board must belong to the current user
+- Request
 
-* Successful Response
-  * Status Code: 200
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+  - Method: DELETE
+  - URL: /api/boards/:boardId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -185,11 +208,12 @@ Deletes an existing board.
     }
     ```
 
-* Error response: Couldn't find a Board with the specified id
-  * Status Code: 404
-  * Headers:
-    * Content-Type: application/json
-  * Body:
+- Error response: Couldn't find a Board with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
@@ -197,13 +221,14 @@ Deletes an existing board.
     }
     ```
 
-
-
 ### Feature 2
+
 <!-- Insert discussion of two features to show off teams technical abilities -->
 
 ### Conquest of Challenges
+
 <!-- Discussion of challenges faced and the way the team solved them -->
 
 ## Code Snippets
+
 <!-- insert a few code snippets highlighting best code -->

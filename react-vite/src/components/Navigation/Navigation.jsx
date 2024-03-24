@@ -20,11 +20,14 @@ function Navigation() {
         </NavLink>
         {isLoggedIn && (
           <div id="boardLinksContainer">
-            <button id="allBoardsButton">
-              <NavLink id="allBoardsButton" to="/boards">
-                All Boards
-              </NavLink>
-            </button>
+            <div className="all-boards-button">
+
+              <button id="allBoardsButton">
+                <NavLink id="allBoardsButton" to="/boards">
+                  Boards
+                </NavLink>
+              </button>
+            </div>
             <div id="createButtonContainer">
               <OpenModalMenuItem
                 itemText={<p id="createNewButton">Create</p>}
@@ -37,12 +40,14 @@ function Navigation() {
       <div id="modalButtonsContainer">
         {isLoggedIn && <ProfileButton />}
         {!isLoggedIn && (
-          <div id="loginAndSignupButtonContainer">
+          <div id="loginAndSignupButtonContainer" className="nav-modal-right_container">
             <OpenModalMenuItem
+              className="login-and-signup-modal"
               itemText={<p id="missionControlButton">Login Mission Control</p>}
               modalComponent={<LoginFormModal />}
             />
             <OpenModalMenuItem
+              className="login-and-signup-modal"
               itemText={<p id="joinButton">Join Space Odyssey</p>}
               modalComponent={<SignupFormModal />}
             />
