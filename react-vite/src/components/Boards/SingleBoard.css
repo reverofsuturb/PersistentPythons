@@ -106,7 +106,6 @@
 .pl-lists-button {
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.365);
-  
 }
 
 button.pl-lists-button:hover {
@@ -253,8 +252,6 @@ button.pl-lists-button:hover {
 
 .card-modal-title:hover > :first-child {
   color: rgb(49, 98, 221);
-.card-modal-title:hover> :first-child {
-  color: goldenrod;
 }
 
 div.card-modal-title > p.hover {
