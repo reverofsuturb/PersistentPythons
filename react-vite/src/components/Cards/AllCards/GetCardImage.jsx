@@ -17,6 +17,9 @@ export default function GetImagesForCards({card}) {
     // console.log("🚀 ~ GetImagesForCards ~ cardImages:", cardImages)
     const allImages = Object.values(cardImages).flat();
 
+
+    console.log("🚀 ~ GetImagesForCards ~ allImages:", allImages)
+
     useEffect(() => {
         dispatch(thunkGetCardImage(cardId))
     }, [dispatch])
@@ -24,8 +27,7 @@ export default function GetImagesForCards({card}) {
 
     return(
         <>
-
-            {allImages.map((image) => (
+            {allImages.filter(image => image.card_id === card.id).map((image) => (
                 <div key={image.id} className="card_images">
                     <img className="images" src={image.image_file} alt="Card" />
                 </div>
