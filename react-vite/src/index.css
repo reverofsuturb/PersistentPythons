@@ -1,7 +1,7 @@
 /* root, body, main page */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
-:root {
+#root {
 	margin: 0 auto;
 	position: absolute;
 	top: 0px;
@@ -11,6 +11,17 @@
 	font-size: 20px;
 }
 
+#root {
+	/* background-image: url('/assets/bckg-images/intergalactic-cosmos.jpeg'); */
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+* {
+	font-family: "Antic", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
 
 
 /* general styling */
@@ -56,3 +67,11 @@ button:focus {
 /* effects */
 
 /* other display */
+p:hover {
+	color: royalblue;
+}
+
+a:hover {
+	color: royalblue;
+	cursor: pointer;
+}

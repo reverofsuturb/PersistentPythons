@@ -6,7 +6,9 @@ import Footer from "../Footer/Footer";
 
 export default function HomePage() {
   const isLoggedIn = useSelector((state) => state.session.user);
+
   return (
+
     <div>
       <div id="accelerateContainer">
         <h3 id="accelerate">
@@ -17,8 +19,9 @@ export default function HomePage() {
       </div>
       <div id="secondHalfContainer">
         <div id="spaceParagraphContainer">
+          <div className="home-title">Space Odyssey</div>
           <h2 id="spaceParagraph">
-            Space Odyssey unites your missions, crew, and resources in one
+            We unites your missions, crew, and resources in one
             cosmic hub. Keep your galactic endeavors organized, even across vast
             distances.
           </h2>
@@ -31,7 +34,7 @@ export default function HomePage() {
                 <OpenModalMenuItem
                   itemText={
                     <span id="signUpHereButton">
-                      Click Me! Sign Up For Free
+                      Sign Up For Free!
                     </span>
                   }
                   modalComponent={<SignupFormModal />}

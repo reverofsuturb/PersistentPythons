@@ -7,6 +7,7 @@
   margin-right: 10px;
   /* background-color: white; */
 }
+
 #loginForm {
   display: flex;
   flex-direction: column;
