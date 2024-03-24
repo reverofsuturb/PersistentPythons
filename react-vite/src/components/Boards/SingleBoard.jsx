@@ -165,8 +165,8 @@ export default function SingleBoard() {
                           </div>
                         ))
                       ) : (
-                        <div>
-                          <div className="nocards">
+                        <div className="sb-contain-two">
+                          <div className="no-cards">
                             No cards yet! Add a card and get your odyssey on!
                           </div>
                         </div>

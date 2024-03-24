@@ -90,7 +90,7 @@
   display: flex;
 }
 
-.add-card-div > button.pl-lists-button {
+.add-card-div>button.pl-lists-button {
   cursor: pointer;
   margin: 4px 8px;
   padding: 12px;
@@ -140,6 +140,7 @@ button.pl-lists-button:hover {
   width: 18rem;
   height: fit-content;
   overflow: hidden;
+  padding: 12px 14px;
 }
 
 .single-board_delete {
@@ -158,6 +159,7 @@ button.pl-lists-button:hover {
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 1rem;
 }
 
 .indiv-card-in-list {
@@ -224,16 +226,16 @@ button.pl-lists-button:hover {
   flex-wrap: wrap;
 }
 
-.card-modal-title > :first-child {
+.card-modal-title> :first-child {
   margin-inline-start: 0.5rem;
   color: black;
 }
 
-.card-modal-title:hover > :first-child {
+.card-modal-title:hover> :first-child {
   color: goldenrod;
 }
 
-div.card-modal-title > p.hover {
+div.card-modal-title>p.hover {
   position: relative;
   top: 50%;
   right: 15%;
@@ -280,16 +282,16 @@ div.card-modal-title > p.hover {
   width: 100%;
 }
 
-.on-list-delete > form {
+.on-list-delete>form {
   margin: 2px 10px;
 }
 
-.on-list-delete > form > button {
+.on-list-delete>form>button {
   width: 100%;
   padding: 5px;
 }
 
-.sb-list-container > button {
+.sb-list-container>button {
   padding: 5px;
 }
 
@@ -302,10 +304,7 @@ div.card-modal-title > p.hover {
   flex-wrap: wrap;
 }
 
-.list-card-delete-button > form {
-}
-
-.list-card-delete-button > form > button {
+.list-card-delete-button>form>button {
   padding: 4px 8px;
   border-radius: 8px;
   margin: 8px 12px;
@@ -315,8 +314,6 @@ div.card-modal-title > p.hover {
   margin-bottom: 8px;
 }
 
-.list-card-add-card-modal {
-}
 
 .nocards {
   display: flex;

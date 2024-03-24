@@ -9,15 +9,54 @@
 
 .eb-lists-title {
   font-size: 1.25rem;
+  display: flex;
   border-bottom: solid 2px #211522;
   margin: 0.5rem 0.2rem;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.eb-title_outer_container {
+  width: 100%;
+  display: flex;
+  max-height: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.eb-title_inner_container {
+  display: flex;
+  height: 65px;
+  width: 100%;
+  /* flex-wrap: wrap; */
+  align-items: flex-start;
+  align-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.eb-title {
+  display: flex;
+  height: 65px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.list-title-menu {
+  padding: 5px;
+  /* margin-left: 25px;
+  margin-bottom: 50px; */
 }
 
 .eb-lists-input {
   font-size: 1.25rem;
   border-radius: 15px;
   width: 200px;
- 
+
 }
 
 .eb-lists-submit-button {
@@ -31,4 +70,26 @@
   margin-top: 23.24px;
   margin-bottom: 23.24px;
   border-bottom: solid 2px #211522;
+}
+
+div.caption_container {
+  width: 87%;
+}
+
+div.caption_container>p.hover {
+  position: relative;
+  top: 1.8rem;
+  right: 1rem;
+  width: fit-content;
+  color: black;
+}
+
+.hover.hidden {
+  visibility: hidden;
+}
+
+p.hover {
+  position: relative;
+  top: 0rem;
+  left: 2rem;
 }
