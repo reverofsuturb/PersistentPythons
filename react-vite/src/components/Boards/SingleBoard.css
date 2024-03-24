@@ -138,6 +138,7 @@ button.pl-lists-button:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  margin-left: 5px;
   gap: 8px;
   /* background-color: darkgrey; */
   background-color: rgba(0, 0, 0, 0.539);
@@ -153,6 +154,10 @@ button.pl-lists-button:hover {
   height: fit-content;
   overflow: hidden;
   /* overflow-x: auto; Allow horizontal scrolling */
+}
+
+.sb-list-container:hover {
+  box-shadow: 2.3px 1.2px 6px 6px #84acf8;
 }
 
 .single-board_delete {
