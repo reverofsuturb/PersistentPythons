@@ -58,7 +58,8 @@ export default function SingleBoard() {
           Your Boards
         </h2>
       </div>
-      <div id="secondHalfContainerBoards"
+      <div
+        id="secondHalfContainerBoards"
         // className="sb-outer_container"
       >
         <div id="boardsLeftSideContainer">
@@ -175,6 +176,66 @@ export default function SingleBoard() {
                           ) : (
                             <div>
                               <div className="nocards">
+                                No cards yet! Add a card and get your odyssey
+                                on!
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        {/* Cards */}
+                        <div className="all-cards-on-list">
+                          {list.cards_in_list.length > 0 ? (
+                            list.cards_in_list.map((card, index) => (
+                              <div className="indiv-card-in-list" key={card.id}>
+                                {card && (
+                                  <>
+                                    <div
+                                      className="card-modal-box"
+                                      onMouseEnter={() =>
+                                        setHoverCaption(index)
+                                      }
+                                      onMouseLeave={() => setHoverCaption(null)}
+                                    >
+                                      <div
+                                        className="card-modal-title"
+                                        role="link"
+                                      >
+                                        <OpenModalMenuItem
+                                          className="card-modal-item"
+                                          id="card-modal-item"
+                                          itemText={card.title}
+                                          onItemClick={!closeMenu}
+                                          modalComponent={
+                                            <SingleCard
+                                              className="card-modal"
+                                              card={card}
+                                              list={list}
+                                            />
+                                          }
+                                        />
+                                        {hoverCaption === index && (
+                                          <p className={hoverClassName}>
+                                            {" "}
+                                            Double click here edit your card
+                                          </p>
+                                        )}
+                                      </div>
+                                      <div className="card-modal-main-info">
+                                        <div className="card-modal-cover-image">
+                                          [Enter Image Here]
+                                        </div>
+                                        <div className="card-modal-description">
+                                          {card.description}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            ))
+                          ) : (
+                            <div className="sb-contain-two">
+                              <div className="no-cards">
                                 No cards yet! Add a card and get your odyssey
                                 on!
                               </div>
