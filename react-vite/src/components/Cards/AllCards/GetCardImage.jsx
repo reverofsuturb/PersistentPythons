@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { thunkGetCardImage } from "../../../store/card_images"
+import './GetCardImage.css'
 
 
 
@@ -13,20 +14,22 @@ export default function GetImagesForCards({card}) {
     const dispatch = useDispatch()
 
     const cardImages = useSelector((state) => state.cardImages)
-    console.log("🚀 ~ GetImagesForCards ~ cardImages:", cardImages)
+    // console.log("🚀 ~ GetImagesForCards ~ cardImages:", cardImages)
+    const allImages = Object.values(cardImages).flat();
 
     useEffect(() => {
-
         dispatch(thunkGetCardImage(cardId))
     }, [dispatch])
 
 
-
-
     return(
         <>
-            <h2>Hello from card images!</h2>
+
+            {allImages.map((image) => (
+                <div key={image.id} className="card_images">
+                    <img className="images" src={image.image_file} alt="Card" />
+                </div>
+            ))}
         </>
     )
-
 }

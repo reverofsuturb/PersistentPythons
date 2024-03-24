@@ -8,7 +8,6 @@ import "./DeleteCard.css";
 
 export default function DeleteCard({card}) {
   const card_id = card.id;
-  console.log("🚀 ~ DeleteCard ~ card_id:", card_id)
   // const getCard = useSelector(state => state.boards)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ export default function DeleteCard({card}) {
     e.preventDefault()
 
     const res = await dispatch(thunkDeleteCard(card.id));
-    console.log("🚀 ~ handleDelete ~ res:", res)
+
 
     if (res && res.errors){
       console.log(res.errors)

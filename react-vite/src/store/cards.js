@@ -39,10 +39,10 @@ export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
     method: "POST",
     body: image
   })
-  console.log("🚀 ~ thunkPostCardImage ~ res:", res)
+
 
   const data = await res.json()
-  console.log("🚀 ~ thunkPostCardImage ~ data:", data)
+
 
   if(data.errors) {
     return data;
@@ -55,11 +55,9 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);
 
 
-  console.log("%c 🚀 ~ file: cards.js:30 ~ thunkGetCard ~ res: ", "color: red; font-size: 25px", res)
 
   const data = await res.json();
 
-  console.log("%c 🚀 ~ file: cards.js:34 ~ thunkGetCard ~ data: ", "color: red; font-size: 25px", data)
 
   if (data.errors) {
     return data;
@@ -85,7 +83,6 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   const data = await res.json();
 
   if (data.errors) {
-    console.log("🚀 ~ thunkPostCard ~ data.errors:", data.errors)
     return data;
   } else {
     const newCard = await dispatch(postCard(data));
@@ -116,8 +113,6 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
 };
 
 export const thunkDeleteCard = (card_id) => async (dispatch) => {
-  console.log("🚀 ~ thunkDeleteCard ~ card_id:", card_id)
-  console.log('Heree!!')
   const res = await fetch(`/api/cards/${card_id}`, {
     method: "DELETE",
   });
@@ -140,9 +135,6 @@ export default function cardsReducer(state = initialState, action) {
       return { ...state, [action.card.id]: action.card };
     }
     case POST_CARD: {
-      console.log("%c 🚀 ~ file: cards.js:111 ~ cardsReducer ~ action: ", "color: red; font-size: 25px", "action: ", action,
-        "current post state: ", state)
-      console.log()
       return { ...state, [action.card.id]: action.card };
     }
     case EDIT_CARD: {
