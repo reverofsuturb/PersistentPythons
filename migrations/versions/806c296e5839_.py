@@ -84,7 +84,7 @@ def upgrade():
     op.create_table('card_images',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
-    sa.Column('url', sa.String(length=1000), nullable=False),
+    sa.Column('image_file', sa.String(length=1000), nullable=False),
     sa.Column('cover', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
     sa.PrimaryKeyConstraint('id')

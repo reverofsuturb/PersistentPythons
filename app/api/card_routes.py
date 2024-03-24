@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import db, Board, List, User, Card, CardImage, Comment
 from app.forms import CardForm, CardImageForm, CommentForm
 from sqlalchemy import select
+from app.api.aws import (upload_file_to_s3, get_unique_filename)
+
 
 card_routes = Blueprint("card", __name__)
 
@@ -88,30 +90,53 @@ def delete_card(card_id):
 
 
 
-@card_routes.route("/<int:card_id>/card_image", methods=["GET, POST"])
+
+
+@card_routes.route("/<int:card_id>/card_image", methods=["GET", "POST"])
 @login_required
 def post_card_image(card_id):
     stmt = select(Card).where(Card.id == card_id)
     card = db.session.execute(stmt).scalar_one()
-
     if card is None:
         return jsonify({"Error": "Image not found"}), 404
 
     if card.user_id != current_user.id:
         return jsonify({"Not Authorized": "Forbidden"}), 403
 
+
     form = CardImageForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    if form.validate_on_submit():
-        card_image = CardImage(
-            card_id=card_id, url=form.url.data, cover=form.cover.data
-        )
-        db.session.add(card_image)
-        db.session.commit()
-        return jsonify({"New Card Image": card_image.to_dict()})
 
-    return jsonify({"errors": form.errors}), 400
+    print('am i getting here')
+    if form.validate_on_submit():
+        image = form.data['image_file']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(dir(upload))
+        print(upload)
+
+        if "url" not in upload:
+            return jsonify({'errors': [upload]}), 400
+
+        url = upload['url']
+        new_image = CardImage(
+            card_id,
+            image_file = url
+            )
+
+        db.session.add(new_image)
+        db.session.commit()
+        return jsonify(url)
+
+    if form.errors:
+        print(form.errors)
+        return jsonify(form.errors),400
+
+
+
+
+
 
 
 @card_routes.route("/<int:card_id>/comments", methods=["GET", "POST"])

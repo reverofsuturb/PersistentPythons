@@ -2,6 +2,7 @@ const GET_CARD = "cards/getCard";
 const POST_CARD = "cards/postCard";
 const EDIT_CARD = "cards/editCard";
 const DELETE_CARD = "cards/deleteCard";
+const ADD_CARD_IMAGE = 'cards/newImage'
 
 const getCard = (card) => ({
   type: GET_CARD,
@@ -22,6 +23,27 @@ const deleteCard = (card_id) => ({
   type: DELETE_CARD,
   card_id,
 });
+
+const addCardImage = (card_id) => ({
+  type: ADD_CARD_IMAGE,
+  card_id
+})
+
+export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
+  console.log("🚀 ~ thunkPostCardImage ~ card_id:", card_id)
+  console.log("🚀 ~ thunkPostCardImage ~ image:", image)
+  const res = await fetch(`/api/cards/${card_id}/card_image`, {
+    method: "POST",
+    body: image
+  })
+  console.log("🚀 ~ thunkPostCardImage ~ res:", res)
+
+  const {data} = await res.json()
+
+  if(data.errors) return data;
+
+  dispatch(addCardImage(data))
+}
 
 export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);

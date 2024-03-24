@@ -16,6 +16,7 @@ import { MdImage } from "react-icons/md";
 import { thunkEditCard, thunkGetCard } from "../../../store/cards";
 
 import "./SingleCard.css";
+import PostCardImage from "./PostCardImage";
 
 
 
@@ -292,6 +293,12 @@ export default function SingleCard({ card, list }) {
             <button onClick={handleButtonClick} className="buttonsincard">
               Copy
             </button>
+            <OpenModalButton
+              className="buttonsincard"
+              buttonText={"Add Image"}
+              modalComponent={<PostCardImage card={card} />}
+            />
+
             <OpenModalButton
               className="buttonsincard"
               buttonText={"Delete Card"}
