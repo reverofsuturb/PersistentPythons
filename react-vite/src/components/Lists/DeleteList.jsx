@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { thunkDeleteList } from "../../store/lists";
+import { FaTrash } from "react-icons/fa";
 
 import "./DeleteList.css";
 
@@ -18,7 +19,9 @@ export default function DeleteList({ list }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <button>Delete List</button>
+        <button>
+          <FaTrash />
+        </button>
       </form>
     </>
   );
