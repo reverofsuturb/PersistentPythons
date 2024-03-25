@@ -417,7 +417,7 @@ ul.profile-dropdown {
   flex-direction: column;
   align-items: center;
   padding: 0px 10px;
-  position: relative;
+  /* position: relative; */
   bottom: 6rem;
   right: 0rem;
   border-radius: 10px;
