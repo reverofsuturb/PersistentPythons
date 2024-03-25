@@ -2,6 +2,7 @@ const GET_CARD = "cards/getCard";
 const POST_CARD = "cards/postCard";
 const EDIT_CARD = "cards/editCard";
 const DELETE_CARD = "cards/deleteCard";
+const ADD_CARD_IMAGE = 'cards/newImage'
 
 const getCard = (card) => ({
   type: GET_CARD,
@@ -23,10 +24,45 @@ const deleteCard = (card_id) => ({
   card_id,
 });
 
+
+const addCardImage = (card_id, image) => ({
+  type: ADD_CARD_IMAGE,
+  card_id,
+  image
+})
+
+
+
+
+export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
+  const res = await fetch(`/api/cards/${card_id}/card_image`, {
+    method: "POST",
+    body: image
+  })
+
+
+  const data = await res.json()
+
+
+  if(data.errors) {
+    return data;
+  }
+
+ const responseImage = await dispatch(addCardImage(data))
+
+  return responseImage;
+
+
+}
+
 export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);
 
+
+
   const data = await res.json();
+
+
   if (data.errors) {
     return data;
   }
@@ -38,14 +74,19 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
 export const thunkPostCard = (list_id, card) => async (dispatch) => {
   const res = await fetch(`/api/lists/${list_id}/card`, {
     method: "POST",
+
+
+
+
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(card),
   });
+
   const data = await res.json();
+
   if (data.errors) {
-    console.log("🚀 ~ thunkPostCard ~ data.errors:", data.errors)
     return data;
   } else {
     const newCard = await dispatch(postCard(data));
@@ -76,8 +117,6 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
 };
 
 export const thunkDeleteCard = (card_id) => async (dispatch) => {
-  console.log("🚀 ~ thunkDeleteCard ~ card_id:", card_id)
-  console.log('Heree!!')
   const res = await fetch(`/api/cards/${card_id}`, {
     method: "DELETE",
   });
@@ -94,6 +133,8 @@ const initialState = {};
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
+
+
     case GET_CARD: {
       return { ...state, [action.card.id]: action.card };
     }
@@ -107,6 +148,9 @@ export default function cardsReducer(state = initialState, action) {
       const cardState = { ...state };
       delete cardState[action.card_id];
       return cardState;
+    }
+    case ADD_CARD_IMAGE: {
+      return { ...state, [action.card_id]: {...state[action.card_id], image: action.image} };
     }
     default:
       return state;

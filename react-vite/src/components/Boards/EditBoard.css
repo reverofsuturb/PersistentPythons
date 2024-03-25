@@ -1,23 +1,26 @@
 .eb-board-title {
   font-size: 1.75rem;
-  border-bottom: solid 2px #211522;
+  border-bottom: solid 2px white;
+  font-family: "Death Star", sans-serif;
+  text-shadow: black 2px 2px 2px;
 }
+
 .eb-board-title:hover {
   border-bottom: solid 2px #211522;
-  color: blue;
+  color: royalblue;
 }
 
 .eb-board-input {
   font-size: 1.75rem;
   border-radius: 15px;
   width: 200px;
-  background-color: #c197d2;
+  background-color: royalblue;
 }
 
 .eb-board-submit-button {
   width: 75px;
   height: 30px;
-  background-color: #c197d2;
+  background-color: royalblue;
   border-radius: 15px;
 }
 
@@ -25,4 +28,71 @@
   margin-top: 23.24px;
   margin-bottom: 23.24px;
   border-bottom: solid 2px #211522;
+}
+
+.eb-title_container {
+  display: flex;
+  height: 50px;
+  max-height: fit-content;
+  align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-title {
+  width: 100%;
+  text-decoration: none;
+  margin: 0px 10px;
+}
+
+.list-title:hover {
+  cursor: pointer;
+}
+
+.list-title-menu {
+  cursor: pointer;
+}
+
+.eb-lists-title {
+  font-size: 1.25rem;
+  border-bottom: solid 2px #211522;
+  margin: 0.5rem 0.2rem;
+  display: flex;
+  align-self: center;
+  width: fit-content;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding: 5px;
+  width: 80%;
+}
+
+.hover {
+  position: relative;
+  height: min-content;
+  top: 2.8rem;
+  right: 2.8rem;
+  font-size: small;
+  font-family: cursive;
+  font-style: italic;
+  border: 1px solid black;
+  background-color: beige;
+  padding: 0px 8px;
+  color: black;
+}
+
+.hover.hidden {
+  visibility: hidden;
+}
+
+.eb-edits {
+  display: flex;
+  padding: 5px;
+}
+
+.eb-edit-title:hover {
+  text-decoration: none;
+}
+.eb-edit-name {
+  padding: 5px;
 }

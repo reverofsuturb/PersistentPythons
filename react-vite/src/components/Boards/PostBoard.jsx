@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { thunkPostBoard } from "../../store/boards";
 import "./PostBoard.css";
@@ -9,12 +9,19 @@ export default function PostBoard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { closeModal } = useModal();
-
   const [boardName, setBoardName] = useState("");
   const [errors, setErrors] = useState({});
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (boardName.length == 0 ) {
+      setErrors({ boardName: "Board's name is required" });
+      return;
+    } else if (boardName.length > 100) {
+      setErrors({ boardName: "Board's name must be shorter than 100 characters long." });
+      return;
+    }
 
     const postingBoard = {
       board_name: boardName,

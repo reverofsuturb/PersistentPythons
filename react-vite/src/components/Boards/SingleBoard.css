@@ -25,34 +25,59 @@
   border-bottom: solid 2px #211522;
 }
 
+#sb-delete-board-button-single {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 4px;
+  padding-bottom: 2px;
+  background-color: rgb(255, 255, 255);
+}
+
 .sb-edit-board {
   cursor: pointer;
   display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.delete-board-modal-pop {
+  display: flex;
+  gap: 5px;
+}
+
+.sb-edit-board > p.hover {
+  position: relative;
+  top: 1rem;
+  right: 3rem;
 }
 
 .hover {
-  position: absolute;
-  top: 3.2rem;
-  right: 11.6rem;
+  position: relative;
+  height: min-content;
+  top: 2.8rem;
+  right: 2.8rem;
   font-size: small;
   font-family: cursive;
   font-style: italic;
   border: 1px solid black;
   background-color: beige;
   padding: 0px 8px;
+  color: black;
 }
 
 .hover.hidden {
   visibility: hidden;
 }
 
-.sb-edit-board-modal {}
+/* .sb-edit-board-modal {} */
 
 .caption {
   font-size: small;
   position: relative;
 }
-
 
 .sb-boards-tile {
   display: flex;
@@ -60,7 +85,7 @@
   justify-content: center;
   height: 250px;
   width: 250px;
-  background: #c197d2;
+  /* background: #c197d2; */
   border-radius: 15px;
 }
 
@@ -77,14 +102,33 @@
   margin: 8px 12px;
 }
 
-.outer-sb-list {
+.add-card-div {
+  width: 100%;
+  margin: 8px 4px;
   display: flex;
 }
 
-
-button.pl-lists-button {
+.add-card-div > button.pl-lists-button {
   cursor: pointer;
-  margin: 12px 8px;
+  margin: 4px 8px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  height: 20%;
+  font-size: 14px;
+  background-color: transparent;
+  outline: none;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+/* #addListAndListContainer {
+  display: grid;
+  grid-template-columns: 1.25fr, 1fr;
+} */
+.pl-lists-button {
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.365);
 }
 
 button.pl-lists-button:hover {
@@ -95,44 +139,56 @@ button.pl-lists-button:hover {
   /* box-shadow: 0 0 10px #84acf8; */
 }
 
-
-.sb-delete-bp-list-add {}
+/* .sb-delete-bp-list-add {} */
+.outer-sb-list {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+}
 
 .sb-list-full {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   margin-top: 2rem;
-  flex-wrap: wrap;
-  align-content: center;
+  flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: center;
-  /* flex-direction: column; */
+  gap: 8px;
+  align-items: flex-start;
+  color: #eae5ec;
+  /* overflow-x: scroll; Allow horizontal scrolling */
 }
 
 .sb-list-container {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   flex-direction: column;
+  margin-left: 5px;
   gap: 8px;
-  background-color: darkgrey;
-  margin: auto;
-  border-radius: 50px;
+  /* background-color: darkgrey; */
+  background-color: rgba(0, 0, 0, 0.539);
+
+  box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
+  box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
+  border-radius: 20px;
   padding-bottom: 8px;
   align-items: center;
   width: 18rem;
-  /* height: 21rem; */
+  border: 1px black solid;
+  /* width: fit-content; */
   height: fit-content;
-  /* padding: 20px; */
-  /* overflow-y: scroll; */
   overflow: hidden;
+  /* overflow-x: auto; Allow horizontal scrolling */
+}
+
+.sb-list-container:hover {
+  box-shadow: 2.3px 1.2px 6px 6px #84acf8;
+  /* padding: 12px 14px; */
 }
 
 .single-board_delete {
   margin: 10px;
   width: fit-content;
 }
-
-.single-board-button-delete {}
 
 /* card styling */
 
@@ -145,11 +201,19 @@ button.pl-lists-button:hover {
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 1rem;
 }
 
-.indiv-card-in-list {}
+.indiv-card-in-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* Change flex-direction to row */
+  flex-wrap: wrap;
+  height: 200px;
+}
 
-.card-modal {}
+/* .card-modal {} */
 
 .card-modal-title {
   cursor: pointer;
@@ -182,25 +246,7 @@ button.pl-lists-button:hover {
   margin: 0;
   padding: 8px 0px;
   background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  padding: 8px 0px;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  padding: 8px 0px;
-  background-color: transparent;
-  overflow: hidden;
-  /* height: 500px; */
-  /* overflow-wrap: anywhere; */
+  /* overflow: hidden; */
   white-space: normal;
   flex-direction: row;
   width: 100%;
@@ -212,19 +258,31 @@ button.pl-lists-button:hover {
 
 .card-modal-title {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  flex-direction: column;
+  height: 20px;
   width: 100%;
-  /* padding: 6px 8px 6px 12px; */
   padding: 8px 0px;
-  /* margin-inline-start: 1.5rem; */
   background-color: slategrey;
-  color: darkorchid;
+  color: darkblue;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
-.card-modal-title:last-child {
+.card-modal-title > :first-child {
   margin-inline-start: 0.5rem;
+  color: black;
+}
+
+.card-modal-title:hover > :first-child {
+  color: rgb(49, 98, 221);
+}
+
+div.card-modal-title > p.hover {
+  position: relative;
+  top: 50%;
+  right: 15%;
+  width: fit-content;
+  color: black;
 }
 
 #card-modal-item {
@@ -259,10 +317,6 @@ button.pl-lists-button:hover {
   cursor: default;
 }
 
-
-
-
-
 .on-list-delete {
   padding: 2px;
   display: flex;
@@ -270,16 +324,16 @@ button.pl-lists-button:hover {
   width: 100%;
 }
 
-.on-list-delete>form {
+.on-list-delete > form {
   margin: 2px 10px;
 }
 
-.on-list-delete>form>button {
+.on-list-delete > form > button {
   width: 100%;
   padding: 5px;
 }
 
-.sb-list-container>button {
+.sb-list-container > button {
   padding: 5px;
 }
 
@@ -292,9 +346,7 @@ button.pl-lists-button:hover {
   flex-wrap: wrap;
 }
 
-.list-card-delete-button>form {}
-
-.list-card-delete-button>form>button {
+.list-card-delete-button > form > button {
   padding: 4px 8px;
   border-radius: 8px;
   margin: 8px 12px;
@@ -304,13 +356,101 @@ button.pl-lists-button:hover {
   margin-bottom: 8px;
 }
 
-.list-card-add-card-modal {}
+.nocards {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
 
-.addcarddiv{
-  border: 1px solid pink;
+.list-title-menu {
+  width: fit-content;
+  color: white;
+}
+
+.sb-header-right-container {
+  display: flex;
+  align-items: center;
+}
+
+h2.sb-edit-board > p.hover {
+  position: relative;
+  top: 2rem;
+  left: 2rem;
+}
+
+.sb-eb-cap {
+  display: flex;
+  align-items: baseline;
+  color: white;
+}
+
+p.caption {
+  position: relative;
+  height: min-content;
+  top: 2.8rem;
+  right: 2.8rem;
+  font-size: small;
+  font-family: cursive;
+  font-style: italic;
+  border: 1px solid black;
+  background-color: beige;
+  padding: 0px 8px;
+  color: black;
+}
+
+.list-title-menu {
+  background-color: transparent;
+  color: black;
+  width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 10px;
+}
+
+ul.profile-dropdown {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 10px;
+  position: relative;
+  bottom: 6rem;
+  right: 0rem;
+  border-radius: 10px;
+}
+
+ul.profile-dropdownhidden {
+  visibility: hidden;
+}
+
+ul.profile-dropdown > li {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  padding-left: 0;
+}
+
+ul.profile-dropdown > .opb {
   width: 100%;
 }
 
-.addcarddiv .hover {
-  background-color: aliceblue;
+button.omb-button {
+  width: 100%;
+  border-style: none;
+  padding: 5px;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+button.board-menu-button {
+  position: relative;
+  left: 8rem;
 }

@@ -22,8 +22,8 @@ export default function AllComments({ card }) {
   return (
     <>
       <h2 className="ac-comments-title">Comments:</h2>
-      {comments.length &&
-        comments?.map((comment) => (
+      {comments.length > 0 ? (
+        comments.map((comment) => (
           <div key={comment.id} className="comment-container">
             <div>
               <FaRegComment />
@@ -31,16 +31,19 @@ export default function AllComments({ card }) {
             <div className="comment-info">
               <h4 style={{fontWeight:'900', marginTop:'0px', marginBottom:'5px'}}>{comment.user_id === user.id ? user?.username : null}</h4>
               <span className="ac-comments-row">{comment?.body}</span>
-              <div>
+              <div className='thisisbutton'>
                 <OpenModalButton
-                  className='thisisbutton'
                   buttonText="Delete Comment"
                   modalComponent={<DeleteComment comment={comment} />}
                 />
               </div>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <p>Sure is empty in here, shout into the void!</p>
+      )}
     </>
   );
+
 }

@@ -104,14 +104,19 @@ class CardImage(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     card_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("cards.id")), nullable=False)
-    url = db.Column(db.String(1000), nullable=False)
+    image_file = db.Column(db.String(), nullable=False)
     cover = db.Column(db.Boolean, nullable=False)
+
+    def __init__(self, card_id, image_file, cover=False):
+        self.card_id = card_id
+        self.image_file = image_file
+        self.cover = cover
 
     def to_dict(self):
         return {
             'id': self.id,
             'card_id': self.card_id,
-            'url': self.url,
+            'image_file': self.image_file,
             'cover': self.cover
         }
 

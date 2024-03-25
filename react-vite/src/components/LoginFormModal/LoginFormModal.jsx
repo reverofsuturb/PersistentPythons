@@ -34,7 +34,7 @@ function LoginFormModal() {
   const handleDemoLogin = async () => {
     setEmail("user1@aa.io");
     setPassword("password");
-    await handleSubmit(new Event("submit"));
+    await handleSubmit();
   };
 
   return (
