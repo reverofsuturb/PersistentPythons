@@ -1,6 +1,7 @@
 .cardcontainer{
-  width: 650px;
-  /* border: 1px solid orange; */
+  width: auto;
+  max-height: 1000px;
+  overflow-y: auto;
   border-radius: 15px;
   background-color: mintcream;
   padding: 20px;
@@ -9,6 +10,7 @@
   background-size: 200% 200%;
   animation: Gradient 20s ease infinite;
 }
+
 @keyframes Gradient {
   0% {background-position: 0% 50%;}
   50% {background-position: 100% 50%;}
