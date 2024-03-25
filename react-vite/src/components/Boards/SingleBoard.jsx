@@ -30,7 +30,7 @@ export default function SingleBoard() {
   const post_card = useSelector((state) => state.cards);
   const sessionUser = useSelector(state => state.session.user);
 
-  console.log("%c 🚀 ~ file: SingleBoard.jsx:32 ~ SingleBoard ~ sessionUser: ", "color: red; font-size: 25px", sessionUser)
+  // console.log("%c 🚀 ~ file: SingleBoard.jsx:32 ~ SingleBoard ~ sessionUser: ", "color: red; font-size: 25px", sessionUser)
 
   const length_post_card = Object.values(post_card).length;
 
@@ -51,7 +51,7 @@ export default function SingleBoard() {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
     dispatch(thunkGetAllLists());
-  }, [dispatch, board_id, showMenu, closeModal, addCard, length_post_card]);
+  }, [dispatch, showMenu, closeModal, addCard, length_post_card]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -121,7 +121,6 @@ export default function SingleBoard() {
               <button
                 onClick={toggleMenu}
                 className="board-menu-button"
-                onMouseEnter={""}
               >
                 <i className="fa-solid fa-ellipsis"
                   onMouseOver={() => setHoverCaption(-1)}
@@ -217,7 +216,6 @@ export default function SingleBoard() {
                                           className="card-modal"
                                           card={card}
                                           list={list}
-                                          onMouseLeave={setAddCard(list)}
                                         />
                                       }
                                     />
