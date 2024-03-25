@@ -6,7 +6,7 @@
 }
 
 #accelerate {
-  font-size: 24px;
+  font-size: 1rem;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
@@ -66,52 +66,44 @@
 @keyframes lights {
   0% {
     color: hsl(230, 40%, 80%);
-    text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.2),
-      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+    text-shadow: 0 0 1em hsla(262, 93%, 36%, 0.2),
+      0 0 0.125em hsla(252, 100%, 60%, 0.3),
       -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
       1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
   }
 
   30% {
     color: hsl(230, 80%, 90%);
-    text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.5),
-      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+    text-shadow: 0 0 1em hsla(260, 93%, 28%, 0.5),
+      0 0 0.125em hsla(257, 89%, 22%, 0.5),
       -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
       0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
   }
 
   40% {
     color: hsl(230, 100%, 95%);
-    text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.5),
-      0 0 0.125em hsla(320, 100%, 90%, 0.5),
+    text-shadow: 0 0 1em hsla(320, 84%, 24%, 0.5),
+      0 0 0.125em hsla(253, 81%, 25%, 0.5),
       -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
       0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
   }
 
   70% {
     color: hsl(230, 80%, 90%);
-    text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.5),
-      0 0 0.125em hsla(320, 100%, 60%, 0.5),
+    text-shadow: 0 0 1em hsla(249, 85%, 30%, 0.5),
+      0 0 0.125em hsla(262, 84%, 27%, 0.5),
       0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
       -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
   }
 
   100% {
     color: hsl(230, 40%, 80%);
-    text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.2),
-      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+    text-shadow: 0 0 1em hsla(225, 87%, 45%, 0.2),
+      0 0 0.125em hsla(214, 79%, 48%, 0.3),
       1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
       -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
   }
-
 }
-
-
 
 div.home-title {
   font-size: 8.5rem;

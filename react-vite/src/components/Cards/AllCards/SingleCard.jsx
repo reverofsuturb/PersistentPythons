@@ -19,13 +19,6 @@ import "./SingleCard.css";
 import PostCardImage from "./PostCardImage";
 import GetImagesForCards from "./GetCardImage";
 
-
-
-
-
-
-
-
 export default function SingleCard({ card, list }) {
   const cardState = useSelector((state) => state.cards[card.id]);
 
@@ -45,7 +38,6 @@ export default function SingleCard({ card, list }) {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    console.log("🚀 ~ SingleCard ~ description:", description)
     if (cardState?.title) setTitle(cardState.title);
     if (cardState?.notification) setNotif(cardState.notification);
     if (cardState?.labels) setLabels(cardState.labels);
@@ -69,8 +61,6 @@ export default function SingleCard({ card, list }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    e.preventDefault();
-    console.log("are we firing");
 
     const editCards = {
       title,
@@ -181,50 +171,51 @@ export default function SingleCard({ card, list }) {
               </div>
             </div>
 
-              {description && (
-                <div className="description-container">
-                  <div className="logo">
-                    <FaRegStickyNote />
+            {description && (
+              <div className="description-container">
+                <div className="logo">
+                  <FaRegStickyNote />
+                </div>
+
+                <div className="fillthespace">
+                  <div className="editanddescription">
+                    <div>Description</div>
+                    <button onClick={() => setEditDescription(true)}>
+                      Edit
+                    </button>
                   </div>
-
-
-                  <div className="fillthespace">
-                    <div className="editanddescription">
-                      <div>Description</div>
-                      <button onClick={() => setEditDescription(true)}>Edit</button>
-                    </div>
-                    {editDescription === false ? (
-                      <div
+                  {editDescription === false ? (
+                    <div
                       onDoubleClick={() => setEditDescription(true)}
                       className="sc-row"
+                    >
+                      {description}
+                    </div>
+                  ) : (
+                    <form className="edit-card-form" onSubmit={handleSubmit}>
+                      <label htmlFor="description">
+                        <textarea
+                          className="ed-card-input"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                          placeholder="Enter description"
+                        />
+                        {errors?.description && (
+                          <p className="p-error">{errors.description}</p>
+                        )}
+                      </label>
+                      <button type="submit">Submit</button>
+                      <button
+                        onClick={() => setEditDescription(false)}
+                        type="submit"
                       >
-                        {description}
-                      </div>
-                    ) : (
-                      <form className="edit-card-form" onSubmit={handleSubmit}>
-                        <label htmlFor="description">
-                          <textarea
-                            className="ed-card-input"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Enter description"
-                            />
-                          {errors?.description && (
-                            <p className="p-error">{errors.description}</p>
-                          )}
-                        </label>
-                        <button type="submit">Submit</button>
-                        <button
-                          onClick={() => setEditDescription(false)}
-                          type="submit"
-                          >
-                          Cancel
-                        </button>
-                      </form>
-                    )}
-                  </div>
+                        Cancel
+                      </button>
+                    </form>
+                  )}
                 </div>
-              )}
+              </div>
+            )}
 
             <div className="attachments-container">
               <div className="logo">
@@ -266,17 +257,26 @@ export default function SingleCard({ card, list }) {
             <button onClick={handleButtonClick} className="buttonsincard">
               Members
             </button>
-            {labels ? <></> : (
-              <button onClick={() => setEditLabels(true)} className="buttonsincard">
+            {labels ? (
+              <></>
+            ) : (
+              <button
+                onClick={() => setEditLabels(true)}
+                className="buttonsincard"
+              >
                 Labels
               </button>
             )}
-            {description ? <></> : (
-              <button onClick={() => {
-                setDescription(' ')
-                setEditDescription(true)
-              }
-              } className="buttonsincard">
+            {description ? (
+              <></>
+            ) : (
+              <button
+                onClick={() => {
+                  setDescription(" ");
+                  setEditDescription(true);
+                }}
+                className="buttonsincard"
+              >
                 Add Description
               </button>
             )}

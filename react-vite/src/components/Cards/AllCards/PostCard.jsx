@@ -5,8 +5,6 @@ import { thunkGetBoard } from "../../../store/boards";
 import "./PostCard.css";
 import { useModal } from "../../../context/Modal";
 
-
-
 export default function PostCard({ list }) {
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
@@ -14,22 +12,21 @@ export default function PostCard({ list }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (title.length == 0 ) {
+    if (title.length == 0) {
       setErrors({ title: "Card title is required" });
       return;
     } else if (title.length > 50) {
-      setErrors({ title: "Card's title must be shorter than 50 characters long." });
+      setErrors({
+        title: "Card's title must be shorter than 50 characters long.",
+      });
       return;
     }
 
-
     const postCard = {
-      title
+      title,
     };
 
     const res = await dispatch(thunkPostCard(list.id, postCard));
@@ -44,7 +41,6 @@ export default function PostCard({ list }) {
   };
 
   const toggleMenu = (e) => {
-    console.log("Did this happen")
     e.stopPropagation();
     setShowSubmit(!showSubmit);
   };
@@ -52,15 +48,13 @@ export default function PostCard({ list }) {
   const closeMenu = () => setShowSubmit(false);
 
   useEffect(() => {
-    dispatch(thunkGetBoard(list.board_id))
+    dispatch(thunkGetBoard(list.board_id));
     if (!showSubmit) return;
 
+    document.addEventListener("click", closeMenu);
 
-    document.addEventListener('click', closeMenu);
-
-    return () => document.removeEventListener('click', closeMenu)
-
-  }, [dispatch, list.board_id, showSubmit])
+    return () => document.removeEventListener("click", closeMenu);
+  }, [dispatch, list.board_id, showSubmit]);
 
   return (
     <>
@@ -68,11 +62,14 @@ export default function PostCard({ list }) {
         type="button"
         className="pl-lists-button"
         onClick={toggleMenu}
-        style={{ display: showSubmit ? 'none' : 'block' }}
+        style={{ display: showSubmit ? "none" : "block" }}
       >
         Add a Card
       </button>
-      <div className="pl-lists-container" style={{ display: showSubmit ? 'block' : 'none' }}>
+      <div
+        className="pl-lists-container"
+        style={{ display: showSubmit ? "block" : "none" }}
+      >
         <form className="pl-lists-form" onSubmit={handleSubmit}>
           <label className="pl-lists-label">
             <input
@@ -94,5 +91,4 @@ export default function PostCard({ list }) {
       </div>
     </>
   );
-
 }

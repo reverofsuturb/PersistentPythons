@@ -8,22 +8,20 @@ export default function HomePage() {
   const isLoggedIn = useSelector((state) => state.session.user);
 
   return (
-
     <div>
       <div id="accelerateContainer">
-        <h3 id="accelerate">
+        {/* <h3 id="accelerate">
           Intelligence (AI) features 🧠 now in beta! Learn more about our
           intelligence thats still figuring out if its smart or just pretending!
           🤖
-        </h3>
+        </h3> */}
       </div>
       <div id="secondHalfContainer">
         <div id="spaceParagraphContainer">
           <div className="home-title">Space Odyssey</div>
           <h2 id="spaceParagraph">
-            We unites your missions, crew, and resources in one
-            cosmic hub. Keep your galactic endeavors organized, even across vast
-            distances.
+            We unites your missions, crew, and resources in one cosmic hub. Keep
+            your galactic endeavors organized, even across vast distances.
           </h2>
           <h3 id="secondSpaceParagraph">
             Keep everything in the same space-even if your crew wont.
@@ -33,9 +31,7 @@ export default function HomePage() {
               {!isLoggedIn && (
                 <OpenModalMenuItem
                   itemText={
-                    <span id="signUpHereButton">
-                      Sign Up For Free!
-                    </span>
+                    <span id="signUpHereButton">Sign Up For Free!</span>
                   }
                   modalComponent={<SignupFormModal />}
                 />

@@ -7,7 +7,7 @@
 
 .eb-board-title:hover {
   border-bottom: solid 2px #211522;
-  color: blue;
+  color: royalblue;
 }
 
 .eb-board-input {
@@ -29,9 +29,6 @@
   margin-bottom: 23.24px;
   border-bottom: solid 2px #211522;
 }
-
-
-
 
 .eb-title_container {
   display: flex;
@@ -55,9 +52,7 @@
 
 .list-title-menu {
   cursor: pointer;
-
 }
-
 
 .eb-lists-title {
   font-size: 1.25rem;

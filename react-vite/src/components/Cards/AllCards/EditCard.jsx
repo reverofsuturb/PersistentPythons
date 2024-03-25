@@ -29,7 +29,7 @@ export default function EditCard({ card, list }) {
       description,
       start_date: startDate,
       end_date: endDate,
-      checklist
+      checklist,
     };
 
     const res = await dispatch(thunkEditCard(card.id, editCard));
@@ -87,6 +87,9 @@ export default function EditCard({ card, list }) {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Enter a description"
           />
+          {errors?.description && (
+            <p className="p-error">{errors.description} </p>
+          )}
         </label>
         <label htmlFor="startDate">
           Start Date

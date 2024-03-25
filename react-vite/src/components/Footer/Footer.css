@@ -3,11 +3,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: black;
 }
 
 #meet {
   text-decoration: underline;
   font-size: 1.5rem;
+  color: white;
 }
 
 .name {
@@ -15,6 +17,7 @@
   margin-top: 0px;
   padding: 0px;
   font-weight: 500;
+  color: white;
 }
 
 #nameContainer {
@@ -23,10 +26,10 @@
   gap: 100px;
 }
 
-.namesContainer {
+/* .namesContainer {
   display: flex;
   flex-direction: column;
   gap: 5px;
   justify-content: center;
   align-items: center;
-}
+} */

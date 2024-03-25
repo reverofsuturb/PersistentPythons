@@ -25,16 +25,30 @@
   border-bottom: solid 2px #211522;
 }
 
+#sb-delete-board-button-single {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 4px;
+  padding-bottom: 2px;
+  background-color: rgb(255, 255, 255);
+}
+
 .sb-edit-board {
   cursor: pointer;
   display: flex;
+  gap: 10px;
   width: 100%;
   justify-content: flex-start;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
 }
 
-.sb-edit-board>p.hover {
+.delete-board-modal-pop {
+  display: flex;
+  gap: 5px;
+}
+
+.sb-edit-board > p.hover {
   position: relative;
   top: 1rem;
   right: 3rem;
@@ -94,7 +108,7 @@
   display: flex;
 }
 
-.add-card-div>button.pl-lists-button {
+.add-card-div > button.pl-lists-button {
   cursor: pointer;
   margin: 4px 8px;
   padding: 12px;
@@ -168,7 +182,7 @@ button.pl-lists-button:hover {
 
 .sb-list-container:hover {
   box-shadow: 2.3px 1.2px 6px 6px #84acf8;
-  padding: 12px 14px;
+  /* padding: 12px 14px; */
 }
 
 .single-board_delete {
@@ -254,16 +268,16 @@ button.pl-lists-button:hover {
   flex-wrap: wrap;
 }
 
-.card-modal-title> :first-child {
+.card-modal-title > :first-child {
   margin-inline-start: 0.5rem;
   color: black;
 }
 
-.card-modal-title:hover> :first-child {
+.card-modal-title:hover > :first-child {
   color: rgb(49, 98, 221);
 }
 
-div.card-modal-title>p.hover {
+div.card-modal-title > p.hover {
   position: relative;
   top: 50%;
   right: 15%;
@@ -310,16 +324,16 @@ div.card-modal-title>p.hover {
   width: 100%;
 }
 
-.on-list-delete>form {
+.on-list-delete > form {
   margin: 2px 10px;
 }
 
-.on-list-delete>form>button {
+.on-list-delete > form > button {
   width: 100%;
   padding: 5px;
 }
 
-.sb-list-container>button {
+.sb-list-container > button {
   padding: 5px;
 }
 
@@ -332,7 +346,7 @@ div.card-modal-title>p.hover {
   flex-wrap: wrap;
 }
 
-.list-card-delete-button>form>button {
+.list-card-delete-button > form > button {
   padding: 4px 8px;
   border-radius: 8px;
   margin: 8px 12px;
@@ -349,7 +363,6 @@ div.card-modal-title>p.hover {
   align-items: center;
 }
 
-
 .list-title-menu {
   width: fit-content;
   color: white;
@@ -360,11 +373,10 @@ div.card-modal-title>p.hover {
   align-items: center;
 }
 
-h2.sb-edit-board>p.hover {
+h2.sb-edit-board > p.hover {
   position: relative;
   top: 2rem;
   left: 2rem;
-
 }
 
 .sb-eb-cap {
@@ -395,6 +407,7 @@ p.caption {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  height: 10px;
 }
 
 ul.profile-dropdown {
@@ -408,14 +421,13 @@ ul.profile-dropdown {
   bottom: 6rem;
   right: 0rem;
   border-radius: 10px;
-
 }
 
 ul.profile-dropdownhidden {
   visibility: hidden;
 }
 
-ul.profile-dropdown>li {
+ul.profile-dropdown > li {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -425,7 +437,7 @@ ul.profile-dropdown>li {
   padding-left: 0;
 }
 
-ul.profile-dropdown>.opb {
+ul.profile-dropdown > .opb {
   width: 100%;
 }
 
@@ -436,7 +448,6 @@ button.omb-button {
   border-radius: 0;
   outline: none;
   box-shadow: none;
-
 }
 
 button.board-menu-button {
