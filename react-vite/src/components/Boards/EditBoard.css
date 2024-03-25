@@ -14,13 +14,13 @@
   font-size: 1.75rem;
   border-radius: 15px;
   width: 200px;
-  background-color: #c197d2;
+  background-color: royalblue;
 }
 
 .eb-board-submit-button {
   width: 75px;
   height: 30px;
-  background-color: #c197d2;
+  background-color: royalblue;
   border-radius: 15px;
 }
 
@@ -88,4 +88,16 @@
 
 .hover.hidden {
   visibility: hidden;
+}
+
+.eb-edits {
+  display: flex;
+  padding: 5px;
+}
+
+.eb-edit-title:hover {
+  text-decoration: none;
+}
+.eb-edit-name {
+  padding: 5px;
 }
