@@ -17,11 +17,10 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-RUN flask db upgrade
+RUN pip install boto3
 
 COPY . .
 
-RUN pip install boto3
-
+RUN flask db upgrade
 RUN flask seed all
 CMD gunicorn app:app
