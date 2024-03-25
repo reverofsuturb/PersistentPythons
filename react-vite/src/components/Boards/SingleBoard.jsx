@@ -4,7 +4,6 @@ import { thunkGetBoard } from "../../store/boards";
 import { thunkGetAllLists } from "../../store/lists";
 import { useParams } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
-import OpenModalButton from "../OpenModalButton";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
 import EditList from "../Lists/EditList";
@@ -18,6 +17,7 @@ import { MdWorkspaces } from "react-icons/md";
 import { thunkGetAllBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
+import OpenModalButton from "../OpenModalButton";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
@@ -28,7 +28,14 @@ export default function SingleBoard() {
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
   const post_card = useSelector((state) => state.cards);
+  const sessionUser = useSelector(state => state.session.user);
+
+  console.log("%c 🚀 ~ file: SingleBoard.jsx:32 ~ SingleBoard ~ sessionUser: ", "color: red; font-size: 25px", sessionUser)
+
   const length_post_card = Object.values(post_card).length;
+
+
+
 
   const allBoards = Object.values(boards);
 
@@ -48,7 +55,16 @@ export default function SingleBoard() {
 
   const closeMenu = () => setShowMenu(false);
 
-  const hoverClassName = "hover" + (hoverCaption !== null ? "" : "hidden");
+  const toggleMenu = (e) => {
+    e.stopPropagation();// Keep click from bubbling up to document and triggering closeMenu
+    setShowMenu(!showMenu)
+  }
+
+  const ulClassName = "profile-dropdown" + (showMenu ? "hidden" : "");
+
+
+
+  const hoverClassName = "caption" + (hoverCaption !== null ? "" : "hidden");
 
   return (
     <>
@@ -58,9 +74,8 @@ export default function SingleBoard() {
           Your Boards
         </h2>
       </div>
-      <div
-        id="secondHalfContainerBoards"
-        // className="sb-outer_container"
+      <div id="secondHalfContainerBoards"
+      // className="sb-outer_container"
       >
         <div id="boardsLeftSideContainer">
           {allBoards.length &&
@@ -77,26 +92,80 @@ export default function SingleBoard() {
             ))}
         </div>
         <div id="boardsRightSideContainer">
-          <div
-            className="sb-edit-board"
-            onMouseEnter={() => setHoverCaption(-1)}
-            onMouseLeave={() => setHoverCaption(null)}
-            role="link"
-          >
-            {board?.board_name && (
-              <EditBoard board={board} className="sb-edit-board-modal" />
-            )}
-            {hoverCaption === -1 && (
-              <p className={hoverClassName}>
-                Double click here to edit board name
-              </p>
-            )}
+          <div className="sb-header-right-container">
+            <div
+              className="sb-edit-board"
+            >
+              <div
+                className="sb-eb-cap"
+                onMouseEnter={() => setHoverCaption(-1)}
+                onMouseLeave={() => setHoverCaption(null)}
+                role="link"
+              >
+
+                {board?.board_name && (
+                  <EditBoard board={board} className="sb-edit-board-modal"
+                  />
+                )}
+              </div>
+              <div>
+                {hoverCaption === -1 && (
+                  <p className={hoverClassName}>
+                    Double click here to edit board name
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="list-title-menu">
+              <button
+                onClick={toggleMenu}
+                className="board-menu-button"
+                onMouseEnter={""}
+              >
+                <i className="fa-solid fa-ellipsis"
+                  onMouseOver={() => setHoverCaption(-1)}
+                  onMouseOut={() => setHoverCaption(null)}
+                  role="button"
+
+                />
+                {
+                  hoverCaption === "hover" &&
+                  <p className={hoverClassName + (showMenu ? (setHoverCaption("")) : "")}
+                  >Board Menu</p>
+                }
+              </button>
+              <ul className={ulClassName}>
+                {sessionUser ? (
+                  <>
+                    <li className="profile_dropdown_manage">
+                      {/* <button onClick={} className="user_manage_button">Manage Spots</button> */}
+                    </li>
+                    <li className="delete-opb opb">
+                      <OpenModalButton
+                        buttonText={"Delete Board"}
+                        modalComponent={<DeleteBoard board_id={board_id} board={board} />}
+                        onItemClick={closeMenu}
+                        role="button"
+                      />
+
+                    </li>
+
+                  </>
+                )
+                  :
+                  <>
+                  </>
+                }
+              </ul>
+
+            </div>
           </div>
 
           {/* additional options */}
           <div className="sb-delete-bp-list-add">
             {/*Board Delete */}
-            <div className="single-board-delete">
+            {/* <div className="single-board-delete">
               {board_id && (
                 <button className="single-board-button-delete">
                   <OpenModalMenuItem
@@ -104,11 +173,12 @@ export default function SingleBoard() {
                     onItemClick={closeMenu}
                     modalComponent={
                       <DeleteBoard board_id={board_id} board={board} />
+
                     }
                   />
                 </button>
               )}
-            </div>
+            </div> */}
 
             <div className="board-post-list">
               <PostList />
@@ -119,7 +189,9 @@ export default function SingleBoard() {
             <div className="sb-list-full">
               {allLists.length ? (
                 allLists?.map((list) => (
-                  <div key={list.id} className="sb-list-container">
+                  <div key={list.id} className="sb-list-container"
+
+                  >
                     <EditList list={list} />
 
                     {/* Cards */}
@@ -145,15 +217,11 @@ export default function SingleBoard() {
                                           className="card-modal"
                                           card={card}
                                           list={list}
+                                          onMouseLeave={setAddCard(list)}
                                         />
                                       }
                                     />
-                                    {hoverCaption === index && (
-                                      <p className={hoverClassName}>
-                                        {" "}
-                                        Double click here edit your card
-                                      </p>
-                                    )}
+                                    {hoverCaption === index && (<p className={hoverClassName}> Double click here edit your card</p>)}
                                   </div>
                                   <div className="card-modal-main-info">
                                     <div className="card-modal-cover-image">

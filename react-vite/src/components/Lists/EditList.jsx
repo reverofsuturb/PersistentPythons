@@ -36,31 +36,27 @@ export default function EditList({ list }) {
       <div className="eb-title_outer_container">
 
         {editing === false ? (
-          <>
-            <div className="eb-title">
+          <div className="eb-title">
 
-              <div className="eb-title_inner_container">
-                <div className="list-title-menu">
-                  <i className="fa-solid fa-ellipsis" />
+            <div className="eb-title_inner_container">
+              <h2 onDoubleClick={() => setEditing(true)} className="eb-lists-title"
+                onMouseEnter={() => setHoverCaption(-1)}
+                onMouseLeave={() => setHoverCaption(null)}
+              >
+                <div className="list-title">
+                  {list.title}
                 </div>
-                <h2 onDoubleClick={() => setEditing(true)} className="eb-lists-title"
-                  onMouseEnter={() => setHoverCaption(-1)}
-                  onMouseLeave={() => setHoverCaption(null)}
-                >
-                  <div className="list-title">
-                    {list.title}
-                  </div>
 
-                </h2>
-              </div>
+              </h2>
+            </div>
+            <div className="caption_container">
               {hoverCaption === -1 && (
                 <p className={hoverClassName}>
                   Double click here to edit board name
                 </p>
               )}
-
             </div>
-          </>
+          </div>
         ) : (
           <form className="eb-lists-form" onSubmit={handleSubmit}
 
