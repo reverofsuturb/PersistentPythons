@@ -49,6 +49,7 @@
   gap: 10px;
 }
 
+
 .profileDeets {
   font-size: 20px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -90,10 +91,20 @@
   align-items: center;
 }
 
-#modalButtonsContainer {
+/* #modalButtonsContainer {
   display: flex;
   gap: 10px;
   padding: 4px;
+} */
+
+#modalButtonsContainer {
+  width: fit-content;
+  display: flex;
+  gap: 10px;
+  padding: 4px;
+  align-items: center;
+  flex-direction: column;
+  height: 1rem;
 }
 
 #boardLinksContainer {
@@ -125,8 +136,7 @@
   height: 100%;
 }
 
-#createButtonContainer > :first-child {
-}
+#createButtonContainer> :first-child {}
 
 #createNewButton:hover {
   border-radius: 8px;
@@ -153,14 +163,12 @@
   gap: 18px;
 }
 
-#loginAndSignupButtonContainer > .open-modal-menu-item_list:last-child {
+#loginAndSignupButtonContainer>.open-modal-menu-item_list:last-child {
   background-color: darkblue;
   padding: 0px 8px;
 }
 
-#loginAndSignupButtonContainer
-  > .open-modal-menu-item_list:last-child
-  > p:hover {
+#loginAndSignupButtonContainer>.open-modal-menu-item_list:last-child>p:hover {
   color: mediumslateblue;
 }
 

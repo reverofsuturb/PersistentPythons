@@ -48,7 +48,11 @@ export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
     return data;
   }
 
-  dispatch(addCardImage(data))
+ const responseImage = await dispatch(addCardImage(data))
+
+  return responseImage;
+
+
 }
 
 export const thunkGetCard = (card_id) => async (dispatch) => {

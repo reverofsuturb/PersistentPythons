@@ -60,7 +60,7 @@ export default function SingleBoard() {
     setShowMenu(!showMenu)
   }
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "hidden" : "");
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : "hidden");
 
 
 
