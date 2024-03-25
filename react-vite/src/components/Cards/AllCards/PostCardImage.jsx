@@ -2,12 +2,14 @@ import { thunkPostCardImage } from "../../../store/cards"
 import { useDispatch } from "react-redux"
 import React, {useState} from "react";
 // import { useHistory } from "react-router-dom";
+import { useModal } from "../../../context/Modal";
 import "./PostCardImage.css"
 
 
 export default function PostCardImage({card}){
     const dispatch = useDispatch()
     // const history = useHistory();
+    const { closeModal } = useModal();
     const [image, setImage] = useState(null);
     console.log("🚀 ~ PostCardImage ~ image:", image)
     const [cover, setCover] = useState(true)
@@ -39,11 +41,11 @@ export default function PostCardImage({card}){
 
         }
 
-        // closeModal()
+        closeModal()
     }
 
     return (
-        <>
+        <div className="post-card-contatiner">
             <form
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
@@ -55,13 +57,19 @@ export default function PostCardImage({card}){
                 onChange={(e) => setImage(e.target.files[0])}
                 className="post-card-image-input"
                 />
+                {Object.values(errors).map((error) => <p className="p-error">{error}</p>)}
                 <button type="submit" className="post-card-image-submit">Submit</button>
                 {(imageLoading) && <p className="loading">Loading...</p>}
-                <input type="checkbox" value={cover} onChange={() => setCover(!cover)} className="post-card-image-checkbox"/>Make this photo the cover?
+                <div>
+                    <input type="checkbox" value={cover} onChange={() => setCover(!cover)} className="post-card-image-checkbox"/>
+                    <span>
+                        Make this photo the cover?
+                    </span>
 
-                {Object.values(errors).map((error) => <p className="p-error">{error}</p>)}
+                </div>
+
             </form>
-        </>
+        </div>
     )
 
 }

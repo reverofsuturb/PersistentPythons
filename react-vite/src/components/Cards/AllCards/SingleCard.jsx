@@ -246,16 +246,7 @@ export default function SingleCard({ card, list }) {
             <div className="postcommentcont">
               <PostComment card={card} />
             </div>
-            <div>
-              {card.id && (
-                <div>
-                  <OpenModalButton
-                    buttonText={"Delete Card"}
-                    modalComponent={<DeleteCard card={card} list={list} />}
-                  />
-                </div>
-              )}
-            </div>
+
             <div>
               <AllComments card={card} />
             </div>
@@ -286,9 +277,11 @@ export default function SingleCard({ card, list }) {
             <button onClick={handleButtonClick} className="buttonsincard">
               Dates
             </button>
-            <button onClick={handleButtonClick} className="buttonsincard">
-              Attachment
-            </button>
+            <OpenModalButton
+              className="buttonsincard"
+              buttonText={"Add Image"}
+              modalComponent={<PostCardImage card={card} />}
+            />
             <h5 style={{ marginBottom: "0", marginTop: "50px" }}>Action</h5>
             <button onClick={handleButtonClick} className="buttonsincard">
               Cover
@@ -296,12 +289,6 @@ export default function SingleCard({ card, list }) {
             <button onClick={handleButtonClick} className="buttonsincard">
               Copy
             </button>
-            <OpenModalButton
-              className="buttonsincard"
-              buttonText={"Add Image"}
-              modalComponent={<PostCardImage card={card} />}
-            />
-
             <OpenModalButton
               className="buttonsincard"
               buttonText={"Delete Card"}
