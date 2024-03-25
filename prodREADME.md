@@ -5,22 +5,47 @@
 ## About
 
 - View our live site!
-  https://persistentpythons.onrender.com/*
 
-* "Space Odyssey" is a space-themed project management platform inspired by Trello. Users navigate through tasks and projects in a cosmic setting, organizing their work into missions. Teams, collaborate on missions using customizable boards, lists and cards, each with detailed information, attachments, and due dates. "Space Odyssey" offers a seamless and secure way for users to manage their projects across the cosmos while enjoying a visually captivating experience.
+  https://persistentpythons.onrender.com/
 
-* Technologies Used - Python with Flask to create a RESTful API.
-  Implement endpoints for user authentication, managing boards, cards, and lists, etc..
-  Defined SQLAlchemy models to represent users, boards, etc.
-  Create migration scripts using tools like Alembic to manage database schema changes. Develop the user interface using React components.
-  Use Redux to manage application state, including user authentication status, and UI states.
-  Implement routing using React Router to navigate between different views.
-  Integration: Connect the frontend and backend using HTTP requests to fetch and update data. Implemented AWS for the cardimages model.
-  <!-- discussion of technologies used -->
+* "Space Odyssey" is a space-themed project management platform inspired by Trello. Users navigate through tasks and projects in a cosmic setting, organizing their work into missions. Teams, collaborate on missions using customizable boards, lists and cards, each with detailed information. "Space Odyssey" offers a seamless and secure way for users to manage their projects across the cosmos while enjoying a visually captivating experience.
+
+- Technologies Used
+
+  - Python with Flask to create a RESTful API
+  - Implement endpoints for user authentication, managing boards, cards, and lists, etc
+  - Defined SQLAlchemy models to represent users, boards, etc
+  - Create migration scripts using tools like Alembic to manage database schema changes
+  - Develop the user interface using React components
+  - Used Redux to manage application state, including user authentication status, and UI states
+  - Implemented routing using React Router to navigate between different views
+  - Implemented AWS for seamless image upload integration
+
+<!-- Insert discussion of two features to show off teams technical abilities -->
+
+## Showcase features
+
+- Card component modal
+
+- Implementing AWS for card-images post
+
+## Conquest of Challenges
+
+<!-- Discussion of challenges faced and the way the team solved them -->
+
+- Figuring out how to return data uniformly in a way that works for each page
+
+- Time management became relevant towards the end of the week, as we were not accomplishing as much as we had wanted to. We all started to feel the pressure, in that moment we decided to split up to make up for lost time
+
+## Code Snippets
+
+<!-- insert a few code snippets highlighting best code -->
+
+![alt text](image.png)
+
+- Once created, fields on the website are accessible to be edited by double clicking. We are also looking for users to be notified upon their interaction with these fields using React's mouse events, which is why we are using mouse enter and mouse leave to notify captions and provide a more intuitive experience.
 
 ## API Documentation
-
-### Feature 1
 
 <!-- Insert discussion of two features to show off teams technical abilities -->
 
@@ -222,13 +247,3 @@ Deletes an existing board.
     ```
 
 ### Feature 2
-
-<!-- Insert discussion of two features to show off teams technical abilities -->
-
-### Conquest of Challenges
-
-<!-- Discussion of challenges faced and the way the team solved them -->
-
-## Code Snippets
-
-<!-- insert a few code snippets highlighting best code -->
