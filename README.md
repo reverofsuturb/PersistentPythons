@@ -1,131 +1,249 @@
-# Flask React Project
+# Space Odyssey
 
-This is the starter for the Flask React project.
+<!-- insert database schema design under an images folder that is located directly under the parent route -->
 
-## Getting started
+## About
 
-1. Clone this repository (only this branch).
+- View our live site!
 
-2. Install dependencies.
+  https://persistentpythons.onrender.com/
 
-   ```bash
-   pipenv install -r requirements.txt
-   ```
+* "Space Odyssey" is a space-themed project management platform inspired by Trello. Users navigate through tasks and projects in a cosmic setting, organizing their work into missions. Teams, collaborate on missions using customizable boards, lists and cards, each with detailed information. "Space Odyssey" offers a seamless and secure way for users to manage their projects across the cosmos while enjoying a visually captivating experience.
 
-3. Create a __.env__ file based on the example with proper settings for your
-   development environment.
+- Technologies Used
 
-4. Make sure the SQLite3 database connection URL is in the __.env__ file.
+  - Python with Flask to create a RESTful API
+  - Implement endpoints for user authentication, managing boards, cards, and lists, etc
+  - Defined SQLAlchemy models to represent users, boards, etc
+  - Create migration scripts using tools like Alembic to manage database schema changes
+  - Develop the user interface using React components
+  - Used Redux to manage application state, including user authentication status, and UI states
+  - Implemented routing using React Router to navigate between different views
+  - Implemented AWS for seamless image upload integration
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention.**
+<!-- Insert discussion of two features to show off teams technical abilities -->
 
-6. Get into your pipenv, migrate your database, seed your database, and run your
-   Flask app:
+## Showcase features
 
-   ```bash
-   pipenv shell
-   ```
+- Card component modal
 
-   ```bash
-   flask db upgrade
-   ```
+- Implementing AWS for card-images post
 
-   ```bash
-   flask seed all
-   ```
+## Conquest of Challenges
 
-   ```bash
-   flask run
-   ```
+<!-- Discussion of challenges faced and the way the team solved them -->
 
-7. The React frontend has no styling applied. Copy the __.css__ files from your
-   Authenticate Me project into the corresponding locations in the
-   __react-vite__ folder to give your project a unique look.
+- Figuring out how to return data uniformly in a way that works for each page
 
-8. To run the React frontend in development, `cd` into the __react-vite__
-   directory and run `npm i` to install dependencies. Next, run `npm run build`
-   to create the `dist` folder. The starter has modified the `npm run build`
-   command to include the `--watch` flag. This flag will rebuild the __dist__
-   folder whenever you change your code, keeping the production version up to
-   date.
+- Time management became relevant towards the end of the week, as we were not accomplishing as much as we had wanted to. We all started to feel the pressure, in that moment we decided to split up to make up for lost time
 
-## Deployment through Render.com
+## Code Snippets
 
-First, recall that Vite is a development dependency, so it will not be used in
-production. This means that you must already have the __dist__ folder located in
-the root of your __react-vite__ folder when you push to GitHub. This __dist__
-folder contains your React code and all necessary dependencies minified and
-bundled into a smaller footprint, ready to be served from your Python API.
+<!-- insert a few code snippets highlighting best code -->
 
-Begin deployment by running `npm run build` in your __react-vite__ folder and
-pushing any changes to GitHub.
+![alt text](image.png)
 
-Refer to your Render.com deployment articles for more detailed instructions
-about getting started with [Render.com], creating a production database, and
-deployment debugging tips.
+- Once created, fields on the website are accessible to be edited by double clicking. We are also looking for users to be notified upon their interaction with these fields using React's mouse events, which is why we are using mouse enter and mouse leave to notify captions and provide a more intuitive experience.
 
-From the Render [Dashboard], click on the "New +" button in the navigation bar,
-and click on "Web Service" to create the application that will be deployed.
+## API Documentation
 
-Select that you want to "Build and deploy from a Git repository" and click
-"Next". On the next page, find the name of the application repo you want to
-deploy and click the "Connect" button to the right of the name.
+<!-- Insert discussion of two features to show off teams technical abilities -->
 
-Now you need to fill out the form to configure your app. Most of the setup will
-be handled by the __Dockerfile__, but you do need to fill in a few fields.
+### Get the current user's board
 
-Start by giving your application a name.
+Returns the board created by the current user.
 
-Make sure the Region is set to the location closest to you, the Branch is set to
-"main", and Runtime is set to "Docker". You can leave the Root Directory field
-blank. (By default, Render will run commands from the root directory.)
+- Require Authentication: True
+- Request
 
-Select "Free" as your Instance Type.
+  - Method: GET
+  - URL: /api/boards
+  - Body: none
 
-### Add environment variables
+- Successful Response when there is a logged in user
 
-In the development environment, you have been securing your environment
-variables in a __.env__ file, which has been removed from source control (i.e.,
-the file is gitignored). In this step, you will need to input the keys and
-values for the environment variables you need for production into the Render
-GUI.
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
-Add the following keys and values in the Render GUI form:
+    ```json
+    {
+      "board": {
+        "id": 1,
+        "user_id": 1,
+        "board_name": "Taco Palace"
+      }
+    }
+    ```
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
+### Create a board
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+Creates and returns a new board.
 
-Add the following keys and values:
+- Require Authentication: True
+- Request
 
-- DATABASE_URL (copy value from the **External Database URL** field)
+  - Method: (GET & ) POST
+  - URL: /api/boards/new
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
-**Note:** Add any other keys and values that may be present in your local
-__.env__ file. As you work to further develop your project, you may need to add
-more environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment.
+    ```json
+    {
+      "board_name": "Orange Chicken"
+    }
+    ```
 
-### Deploy
+- Successful Response
 
-Now you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your Dockerfile
-commands being executed and any errors that occur.
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
-When deployment is complete, open your deployed site and check to see that you
-have successfully deployed your Flask application to Render! You can find the
-URL for your site just below the name of the Web Service at the top of the page.
+    ```json
+    {
+      "id": 2,
+      "user_id": 1,
+      "board_name": "Orange Chicken",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-19 20:39:36"
+    }
+    ```
 
-**Note:** By default, Render will set Auto-Deploy for your project to true. This
-setting will cause Render to re-deploy your application every time you push to
-main, always keeping it up to date.
+- Error Response: Body validation error
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "board_name": "Board name is required"
+      }
+    }
+    ```
+
+- Error response: Couldn't find a Board with that specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Board couldn't be found"
+    }
+    ```
+
+### Edit a Board
+
+Updates and returns an existing Board.
+
+- Require Authentication: True
+- Require proper authorization: Board must belong to the current user
+- Request
+
+  - Method: (GET & ) PUT
+  - URL: /api/boards/:boardId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "board_name": "Orange Chicken"
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "id": 2,
+      "user_id": 1,
+      "board_name": "Orange Chicken",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-19 20:39:36"
+    }
+    ```
+
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "message": "Board couldn't be found"
+      }
+    }
+    ```
+
+- Error response: Couldn't find a Board with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Board couldn't be found"
+    }
+    ```
+
+### Delete a Board
+
+Deletes an existing board.
+
+- Require Authentication: true
+- Require proper authorization: Board must belong to the current user
+- Request
+
+  - Method: DELETE
+  - URL: /api/boards/:boardId
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+- Error response: Couldn't find a Board with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Board couldn't be found"
+    }
+    ```
+
+### Feature 2
