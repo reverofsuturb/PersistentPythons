@@ -3,12 +3,14 @@ import { useDispatch } from "react-redux";
 import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 import "./PostCardImage.css";
+import { useModal } from "../../../context/Modal";
+import "./PostCardImage.css"
 
 export default function PostCardImage({ card }) {
   const dispatch = useDispatch();
   // const history = useHistory();
   const [image, setImage] = useState(null);
-
+  console.log("🚀 ~ PostCardImage ~ image:", image);
   const [cover, setCover] = useState(true);
   const [imageLoading, setImageLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -21,10 +23,12 @@ export default function PostCardImage({ card }) {
     formData.append("image_file", image);
     formData.append("card_id", card.id);
 
+    console.log("🚀 ~ handleSubmit ~ formData:", formData);
+
     setImageLoading(true);
 
     const res = await dispatch(thunkPostCardImage(card.id, formData));
-
+    console.log("🚀 ~ handleSubmit ~ res:", res);
     if (res && res.errors) {
       setTimeout(() => {
         setImageLoading(false);
@@ -36,6 +40,8 @@ export default function PostCardImage({ card }) {
 
     // closeModal()
   };
+        closeModal()
+    }
 
   return (
     <>
@@ -67,4 +73,32 @@ export default function PostCardImage({ card }) {
       </form>
     </>
   );
+    return (
+        <div className="post-card-contatiner">
+            <form
+                onSubmit={handleSubmit}
+                encType="multipart/form-data"
+                className="post-card-image-form"
+            >
+                <input
+                type='file'
+                accept="image/*"
+                onChange={(e) => setImage(e.target.files[0])}
+                className="post-card-image-input"
+                />
+                {Object.values(errors).map((error) => <p className="p-error">{error}</p>)}
+                <button type="submit" className="post-card-image-submit">Submit</button>
+                {(imageLoading) && <p className="loading">Loading...</p>}
+                <div>
+                    <input type="checkbox" value={cover} onChange={() => setCover(!cover)} className="post-card-image-checkbox"/>
+                    <span>
+                        Make this photo the cover?
+                    </span>
+
+                </div>
+
+            </form>
+        </div>
+    )
+
 }
