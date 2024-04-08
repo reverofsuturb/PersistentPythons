@@ -410,24 +410,23 @@ p.caption {
   height: 10px;
 }
 
-ul.profile-dropdown {
+/* ul.profile-dropdown {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   padding: 0px 10px;
-  /* position: relative; */
   bottom: 6rem;
   right: 0rem;
   border-radius: 10px;
-}
+} */
 
-ul.profile-dropdownhidden {
+/* ul.profile-dropdownhidden {
   visibility: hidden;
-}
+} */
 
-ul.profile-dropdown > li {
+/* ul.profile-dropdown > li {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -435,11 +434,11 @@ ul.profile-dropdown > li {
   height: fit-content;
   padding: 2px;
   padding-left: 0;
-}
+} */
 
-ul.profile-dropdown > .opb {
+/* ul.profile-dropdown > .opb {
   width: 100%;
-}
+} */
 
 button.omb-button {
   width: 100%;

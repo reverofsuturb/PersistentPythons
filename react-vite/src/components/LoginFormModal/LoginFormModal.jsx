@@ -40,7 +40,7 @@ function LoginFormModal() {
   return (
     <div className="modalPage">
       <h1>Log In</h1>
-      <form id="loginForm" onSubmit={handleSubmit}>
+      <form id="loginForm" onSubmit={(e) => handleSubmit(e)}>
         Email
         <label>
           <input
@@ -50,7 +50,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p className="signUpErrors">{errors.email}</p>}
         Password
         <label>
           <input
@@ -60,7 +60,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p className="signUpErrors">{errors.password}</p>}
         <button type="submit">Log In</button>
         <button onClick={handleDemoLogin}>Demo User Login</button>
       </form>

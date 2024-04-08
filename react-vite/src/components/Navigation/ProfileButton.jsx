@@ -45,7 +45,7 @@ function ProfileButton() {
 
   return (
     <>
-      <button id="profileButton" onClick={toggleMenu}>
+      <button id="profileButton" onClick={(e) => toggleMenu(e)}>
         <FaUserAstronaut />
       </button>
       {showMenu && (

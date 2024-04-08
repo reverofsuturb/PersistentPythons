@@ -1,6 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/death-star");
 
 #profileButton {
+  position: absolute;
   background-color: #ffffff;
   max-width: 40px;
   border-radius: 30px;
@@ -31,9 +32,10 @@
 }
 
 .profile-dropdown {
+  position: absolute;
   z-index: 99;
   margin-top: 100px;
-  width: fit-content;
+  width: 180px;
   padding: 70px;
   padding-left: 20px;
   padding-right: 20px;
@@ -47,6 +49,9 @@
   border-radius: 25px;
   background-color: rgb(255, 255, 255);
   gap: 10px;
+  top: 37%;
+  right: -194%;
+  height: 50px;
 }
 
 .profileDeets {
@@ -98,13 +103,16 @@
 
 #modalButtonsContainer {
   display: flex;
-  width: fit-content;
+  /* width: fit-content; */
+  width: auto;
   gap: 10px;
   padding: 4px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 1rem;
+  height: 600px;
+  position: relative;
+  right: 1%;
 }
 
 #boardLinksContainer {

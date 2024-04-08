@@ -55,7 +55,7 @@ def edit_card(card_id):
             card.labels = form.labels.data
             card.notification = form.notification.data
             card.description = form.description.data
-            card.start_date = form.start_date.data
+
             card.end_date = form.end_date.data
             card.checklist = form.checklist.data
 

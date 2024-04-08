@@ -8,7 +8,7 @@ export default function HomePage() {
   const isLoggedIn = useSelector((state) => state.session.user);
 
   return (
-    <div>
+    <div className="containerforthehomepage">
       <div id="accelerateContainer">
         {/* <h3 id="accelerate">
           Intelligence (AI) features 🧠 now in beta! Learn more about our
