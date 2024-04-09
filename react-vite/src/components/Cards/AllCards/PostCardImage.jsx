@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useModal } from "../../../context/Modal";
 import "./PostCardImage.css";
 
-export default function PostCardImage({ card }) {
+export default function PostCardImage({ card, isUploading }) {
   const dispatch = useDispatch();
   // const history = useHistory();
   const { closeModal } = useModal();
@@ -37,7 +37,7 @@ export default function PostCardImage({ card }) {
 
       return;
     }
-
+    isUploading(false);
     closeModal();
   };
 
@@ -68,7 +68,9 @@ export default function PostCardImage({ card }) {
             onChange={() => setCover(!cover)}
             className="post-card-image-checkbox"
           />
-          <span>Make this photo the cover?</span>
+          <span className="post-card-image-span">
+            Make this photo the cover?
+          </span>
         </div>
       </form>
     </div>

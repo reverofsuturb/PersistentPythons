@@ -5,13 +5,45 @@
   justify-content: center;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: transparent;
+  width: 450px;
 }
+
+.modalPage > h1 {
+  color: white;
+}
+
 #signUpForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
+  color: white;
+}
+
+.signUpInput {
+  width: 250px;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.signUpButton {
+  margin: 14px;
+  padding: 5px;
+  width: 175px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: white solid 2px;
+}
+.signUpButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.signUpButton:focus {
+  color: white;
 }
 
 .signUpErrors {

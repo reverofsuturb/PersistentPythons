@@ -5,8 +5,7 @@
   justify-content: center;
   margin-left: 10px;
   margin-right: 10px;
-  width:520px;
-  /* background-color: white; */
+  width: 520px;
 }
 
 #loginForm {
@@ -15,4 +14,30 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+  color: white;
+}
+
+.logInInput {
+  width: 250px;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.logInButton {
+  margin: 14px;
+  padding: 5px;
+  width: 175px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: white solid 2px;
+}
+
+.logInButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.logInButton:focus {
+  color: white;
 }

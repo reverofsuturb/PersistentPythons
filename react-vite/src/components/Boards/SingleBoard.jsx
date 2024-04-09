@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetBoard } from "../../store/boards";
 import { thunkGetAllLists } from "../../store/lists";
@@ -15,13 +15,13 @@ import { useModal } from "../../context/Modal";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { MdWorkspaces } from "react-icons/md";
 import { thunkGetAllBoards } from "../../store/boards";
+import { thunkAllGetCardImages } from "../../store/card_images";
 import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
 import OpenModalButton from "../OpenModalButton";
-import { thunkGetCardImage } from "../../store/card_images";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
-
+import { thunkGetAllCards } from "../../store/cards";
 export default function SingleBoard() {
   const { board_id } = useParams();
   const { closeModal } = useModal();
@@ -32,6 +32,33 @@ export default function SingleBoard() {
   const lists = useSelector((state) => state.lists);
   const post_card = useSelector((state) => state.cards);
   const sessionUser = useSelector((state) => state.session.user);
+  const cards = useSelector((state) => state.cards);
+  const cardImagesObj = useSelector((state) => state.cardImages);
+  const cardImages = Object.values(cardImagesObj);
+  console.log(cardImages);
+  // let cardArray = Object.values(cards);
+  // let cardIds = [];
+  // cardArray?.forEach((card) => cardIds.push(card.id));
+  // let imageArray = [];
+  // let cardImage;
+  // console.log(cardIds, "cardids")
+  // let images = async (cardIds) => {
+  //   cardIds.forEach((card) => {
+  //     dispatch(thunkGetCardImage(card.id));
+  //     cardImage = useSelector((state) => state.cardImages)
+  //     console.log(cardImage);
+  //     imageArray.push(cardImage);
+  //   });
+  // };
+  // console.log(imageArray);
+  // let cardIds = []
+  // const cardsData = lists.map((list) => {
+  //   list.cards_in_list
+  // })
+
+  // const handleImageReturn = useCallBack((imageData) => {
+  //   dispatch(thunkGetCardImage())
+  // })
 
   const length_post_card = Object.values(post_card).length;
 
@@ -49,7 +76,8 @@ export default function SingleBoard() {
     dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
     dispatch(thunkGetAllLists());
-    dispatch(thunkGetCardImage());
+    dispatch(thunkGetAllCards());
+    dispatch(thunkAllGetCardImages());
   }, [dispatch, showMenu, closeModal, addCard, length_post_card]);
 
   const closeMenu = () => setShowMenu(false);
@@ -232,7 +260,16 @@ export default function SingleBoard() {
                                   </div>
                                   <div className="card-modal-main-info">
                                     <div className="card-modal-cover-image">
-                                      [Enter Image Here]
+                                      <img
+                                        style={{ width: 100, height: 100 }}
+                                        src={
+                                          cardImages?.length &&
+                                          cardImages?.find(
+                                            (image) => image.card_id == card.id
+                                          )?.image_file
+                                        }
+                                        alt="img"
+                                      />
                                     </div>
                                     <div className="card-modal-description">
                                       {card.description}

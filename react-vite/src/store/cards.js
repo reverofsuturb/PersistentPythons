@@ -1,8 +1,14 @@
+const GET_ALL_CARDS = "cards/getAllCards";
 const GET_CARD = "cards/getCard";
 const POST_CARD = "cards/postCard";
 const EDIT_CARD = "cards/editCard";
 const DELETE_CARD = "cards/deleteCard";
-const ADD_CARD_IMAGE = 'cards/newImage'
+const ADD_CARD_IMAGE = "cards/newImage";
+
+const getAllCards = (cards) => ({
+  type: GET_ALL_CARDS,
+  cards,
+});
 
 const getCard = (card) => ({
   type: GET_CARD,
@@ -24,44 +30,44 @@ const deleteCard = (card_id) => ({
   card_id,
 });
 
-
 const addCardImage = (card_id, image) => ({
   type: ADD_CARD_IMAGE,
   card_id,
-  image
-})
+  image,
+});
 
-
-
-
-export const thunkPostCardImage = (card_id, image) => async(dispatch) => {
+export const thunkPostCardImage = (card_id, image) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}/card_image`, {
     method: "POST",
-    body: image
-  })
+    body: image,
+  });
 
+  const data = await res.json();
 
-  const data = await res.json()
-
-
-  if(data.errors) {
+  if (data.errors) {
     return data;
   }
 
- const responseImage = await dispatch(addCardImage(data))
+  const responseImage = await dispatch(addCardImage(data));
 
   return responseImage;
+};
 
+export const thunkGetAllCards = () => async (dispatch) => {
+  const res = await fetch(`/api/cards`);
+  const data = await res.json();
+  console.log(data, "DATA FROM CARDS")
 
-}
+  if (data && data.errors) {
+    return data;
+  }
+  dispatch(getAllCards(data));
+};
 
 export const thunkGetCard = (card_id) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`);
 
-
-
   const data = await res.json();
-
 
   if (data.errors) {
     return data;
@@ -69,14 +75,9 @@ export const thunkGetCard = (card_id) => async (dispatch) => {
   dispatch(getCard(data));
 };
 
-
-
 export const thunkPostCard = (list_id, card) => async (dispatch) => {
   const res = await fetch(`/api/lists/${list_id}/card`, {
     method: "POST",
-
-
-
 
     headers: {
       "Content-Type": "application/json",
@@ -93,9 +94,6 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
     return newCard;
   }
 };
-
-
-
 
 export const thunkEditCard = (card_id, card) => async (dispatch) => {
   const res = await fetch(`/api/cards/${card_id}`, {
@@ -133,8 +131,13 @@ const initialState = {};
 
 export default function cardsReducer(state = initialState, action) {
   switch (action.type) {
-
-
+    case GET_ALL_CARDS: {
+      const cardState = {};
+      action.cards.Cards.forEach((card) => {
+        cardState[card.id] = card;
+      });
+      return cardState;
+    }
     case GET_CARD: {
       return { ...state, [action.card.id]: action.card };
     }
@@ -150,7 +153,10 @@ export default function cardsReducer(state = initialState, action) {
       return cardState;
     }
     case ADD_CARD_IMAGE: {
-      return { ...state, [action.card_id]: {...state[action.card_id], image: action.image} };
+      return {
+        ...state,
+        [action.card_id]: { ...state[action.card_id], image: action.image },
+      };
     }
     default:
       return state;

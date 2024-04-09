@@ -20,12 +20,12 @@ function SignupFormModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
-    }
+    // if (password !== confirmPassword) {
+    //   return setErrors({
+    //     confirmPassword:
+    //       "Confirm Password field must be the same as the Password field",
+    //   });
+    // }
 
     const serverResponse = await dispatch(
       thunkSignup({
@@ -34,6 +34,7 @@ function SignupFormModal() {
         email,
         username,
         password,
+        confirm: confirmPassword,
       })
     );
 
@@ -52,7 +53,7 @@ function SignupFormModal() {
       <form id="signUpForm" onSubmit={handleSubmit}>
         First Name
         <label>
-          <input
+          <input className="signUpInput"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -64,7 +65,7 @@ function SignupFormModal() {
         )}
         Last Name
         <label>
-          <input
+          <input className="signUpInput"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -74,7 +75,7 @@ function SignupFormModal() {
         {errors.last_name && <p className="signUpErrors">{errors.last_name}</p>}
         Email
         <label>
-          <input
+          <input className="signUpInput"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -84,7 +85,7 @@ function SignupFormModal() {
         {errors.email && <p className="signUpErrors">{errors.email}</p>}
         Username
         <label>
-          <input
+          <input className="signUpInput"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -94,7 +95,7 @@ function SignupFormModal() {
         {errors.username && <p className="signUpErrors">{errors.username}</p>}
         Password
         <label>
-          <input
+          <input className="signUpInput"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -104,7 +105,7 @@ function SignupFormModal() {
         {errors.password && <p className="signUpErrors">{errors.password}</p>}
         Confirm Password
         <label>
-          <input
+          <input className="signUpInput"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -114,7 +115,7 @@ function SignupFormModal() {
         {errors.confirmPassword && (
           <p className="signUpErrors">{errors.confirmPassword}</p>
         )}
-        <button type="submit">Sign Up</button>
+        <button className="signUpButton" type="submit">Sign Up</button>
       </form>
     </div>
   );

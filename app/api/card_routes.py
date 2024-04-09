@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Board, List, User, Card, CardImage, Comment
 from app.forms import CardForm, CardImageForm, CommentForm
 from sqlalchemy import select
-from app.api.aws import (upload_file_to_s3, get_unique_filename)
+from app.api.aws import upload_file_to_s3, get_unique_filename
 
 
 card_routes = Blueprint("card", __name__)
@@ -67,8 +67,6 @@ def edit_card(card_id):
     return jsonify(card.to_dict())
 
 
-
-
 @card_routes.route("/<int:card_id>", methods=["DELETE"])
 @login_required
 def delete_card(card_id):
@@ -87,11 +85,6 @@ def delete_card(card_id):
     return jsonify(card.to_dict())
 
 
-
-
-
-
-
 @card_routes.route("/<int:card_id>/card_image", methods=["GET", "POST"])
 @login_required
 def post_card_image(card_id):
@@ -103,27 +96,22 @@ def post_card_image(card_id):
     if card.user_id != current_user.id:
         return jsonify({"Not Authorized": "Forbidden"}), 403
 
-
     form = CardImageForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-
-    print('am i getting here')
+    print("am i getting here")
     if form.validate_on_submit():
-        image = form.data['image_file']
+        image = form.data["image_file"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
         print(dir(upload))
         print(upload)
 
         if "url" not in upload:
-            return jsonify({'errors': [upload]}), 400
+            return jsonify({"errors": [upload]}), 400
 
-        url = upload['url']
-        new_image = CardImage(
-            card_id,
-            image_file = url
-            )
+        url = upload["url"]
+        new_image = CardImage(card_id, image_file=url)
 
         db.session.add(new_image)
         db.session.commit()
@@ -131,12 +119,7 @@ def post_card_image(card_id):
 
     if form.errors:
         print(form.errors)
-        return jsonify({"errors": form.errors}),400
-
-
-
-
-
+        return jsonify({"errors": form.errors}), 400
 
 
 @card_routes.route("/<int:card_id>/comments", methods=["GET", "POST"])

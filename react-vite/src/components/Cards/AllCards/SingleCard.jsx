@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { MdImage } from "react-icons/md";
 import { thunkEditCard, thunkGetCard } from "../../../store/cards";
+import { thunkGetCardImage } from "../../../store/card_images";
 
 import "./SingleCard.css";
 import PostCardImage from "./PostCardImage";
@@ -21,7 +22,9 @@ import GetImagesForCards from "./GetCardImage";
 
 export default function SingleCard({ card, list }) {
   const cardState = useSelector((state) => state.cards[card.id]);
-
+  const cardImagesObj = useSelector((state) => state.cardImages);
+  const cardImages = Object.values(cardImagesObj)
+  const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card.title);
   const [description, setDescription] = useState(
@@ -44,6 +47,7 @@ export default function SingleCard({ card, list }) {
 
     dispatch(thunkGetCard(card.id));
     dispatch(thunkGetAllComments(card.id));
+    dispatch(thunkGetCardImage(card.id));
   }, [dispatch, notif]);
 
   const handleEdit = () => {
@@ -81,18 +85,14 @@ export default function SingleCard({ card, list }) {
     setEditNotif(false);
     setEditDescription(false);
   };
-
   const handleButtonClick = () => {
     alert("Feature coming soon");
   };
-
   return (
     <>
       <div className="cardcontainer">
         <div className="photocover">
-          {/* <div>
-            Photo cover
-          </div> */}
+          <img src={cardImages?.length && cardImages[0][0]?.image_file} alt="card image" />
         </div>
 
         <div className="titlescont">
@@ -280,7 +280,9 @@ export default function SingleCard({ card, list }) {
             <OpenModalButton
               className="buttonsincard"
               buttonText={"Add Image"}
-              modalComponent={<PostCardImage card={card} />}
+              modalComponent={
+                <PostCardImage card={card} isUploading={isUploading} />
+              }
             />
             <h5 style={{ marginBottom: "0", marginTop: "50px" }}>Action</h5>
             <button onClick={handleButtonClick} className="buttonsincard">

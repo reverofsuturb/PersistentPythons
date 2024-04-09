@@ -44,6 +44,7 @@ function LoginFormModal() {
         Email
         <label>
           <input
+            className="logInInput"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -54,6 +55,7 @@ function LoginFormModal() {
         Password
         <label>
           <input
+            className="logInInput"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -61,8 +63,12 @@ function LoginFormModal() {
           />
         </label>
         {errors.password && <p className="signUpErrors">{errors.password}</p>}
-        <button type="submit">Log In</button>
-        <button onClick={handleDemoLogin}>Demo User Login</button>
+        <button className="logInButton" type="submit">
+          Log In
+        </button>
+        <button className="logInButton" onClick={handleDemoLogin}>
+          Demo User Login
+        </button>
       </form>
     </div>
   );

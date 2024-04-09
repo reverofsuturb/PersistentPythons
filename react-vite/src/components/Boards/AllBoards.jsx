@@ -76,14 +76,15 @@ export default function AllBoards() {
               <div id="containerForRightTiles">
                 {allBoards && allBoards.length > 0 ? (
                   allBoards.map((board) => (
-                    <div key={board.id} className="ab-boards-tile-right">
-                      <NavLink
-                        className={"ab-boards-link-right"}
-                        to={`/boards/${board.id}`}
-                      >
+                    <NavLink
+                      key={board.id}
+                      className={"ab-boards-link-right"}
+                      to={`/boards/${board.id}`}
+                    >
+                      <div className="ab-boards-tile-right">
                         {board.board_name}
-                      </NavLink>
-                    </div>
+                      </div>
+                    </NavLink>
                   ))
                 ) : (
                   <div>

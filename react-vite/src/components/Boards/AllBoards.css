@@ -95,15 +95,11 @@ a.ab-a-nav {
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
   font-weight: 500;
-  /* font-family: "Space Grotesk", sans-serif; */
-  font-family: "Death Star", sans-serif;
   border: rgb(255, 255, 255) 1px, solid;
   text-shadow: rgb(56, 51, 51) 1px 1px 5px;
   border-radius: 10px;
-  word-wrap: break-word;
-  overflow: hidden;
+
   /* Ensures text does not overflow its container */
-  text-overflow: ellipsis;
 }
 
 .ab-boards-link-right:hover {
@@ -127,13 +123,15 @@ a.ab-a-nav {
   align-items: center;
   margin-top: 10px;
   border: 2px rgb(0, 0, 0) solid;
+  font-family: "Death Star", sans-serif;
   padding: 20px;
   width: 125px;
   height: 150px;
   border-radius: 10px;
   word-wrap: break-word;
   background-color: rgba(0, 0, 0, 0.539);
-
+  overflow: hidden;
+  text-overflow: ellipsis;
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
 }
 
