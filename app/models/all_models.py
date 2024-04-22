@@ -73,8 +73,8 @@ class Card(db.Model):
     labels = db.Column(db.String(255), nullable=True)
     notification = db.Column(db.Boolean, nullable=True)
     description = db.Column(db.String(2000), nullable=True)
-    start_date = db.Column(db.Date, nullable=True)
-    end_date = db.Column(db.Date, nullable=True)
+    start_date = db.Column(db.String, nullable=True)
+    end_date = db.Column(db.String, nullable=True)
     checklist = db.Column(db.String(255), default=None, nullable=True)
 # EDIT THIS DOWN BELOW CHAOS?
     list = db.relationship('List', back_populates='cards_in_list')

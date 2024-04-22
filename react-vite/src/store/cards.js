@@ -86,7 +86,7 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   });
 
   const data = await res.json();
-
+  console.log(data)
   if (data.errors) {
     return data;
   } else {
