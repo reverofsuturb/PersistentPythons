@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ModalProvider, Modal } from "../context/Modal";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { DragDropContext } from "react-beautiful-dnd";
 import { thunkAuthenticate } from "../store/session";
 import Navigation from "../components/Navigation/Navigation";
 
@@ -16,13 +15,13 @@ export default function Layout() {
 
   return (
     <>
-      <DndProvider backend={HTML5Backend}>
+      <DragDropContext>
         <ModalProvider>
           <Navigation />
           {isLoaded && <Outlet />}
           <Modal />
         </ModalProvider>
-      </DndProvider>
+      </DragDropContext>
     </>
   );
 }
