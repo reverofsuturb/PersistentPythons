@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Board, List
+from app.models import db, Board, List, Card
 from app.forms import BoardForm, ListForm
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
@@ -14,7 +14,11 @@ def view_board():
     # stmt = select(Board).join(Board.lists).where(Board.user_id == current_user.id)
     boards = (
         db.session.query(Board)
-        .options(db.joinedload(Board.lists).joinedload(List.cards_in_list))
+        .options(
+            db.joinedload(Board.lists)
+            .joinedload(List.cards_in_list)
+            .joinedload(Card.images)
+        )
         .filter_by(user_id=current_user.id)
         .all()
     )
@@ -43,6 +47,15 @@ def view_board():
                             "start_date": card.start_date,
                             "end_date": card.end_date,
                             "checklist": card.checklist,
+                            "cardimages": [
+                                {
+                                    "id": image.id,
+                                    "card_id": image.card_id,
+                                    "image_file": image.image_file,
+                                    "cover": image.cover,
+                                }
+                                for image in card.images
+                            ],
                         }
                         for card in _list.cards_in_list
                     ],
