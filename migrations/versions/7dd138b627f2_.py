@@ -1,21 +1,16 @@
 """empty message
 
-Revision ID: 806c296e5839
-Revises:
-Create Date: 2024-03-18 13:52:37.763911
+Revision ID: 7dd138b627f2
+Revises: 
+Create Date: 2024-04-22 14:33:55.000550
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
-
 
 # revision identifiers, used by Alembic.
-revision = '806c296e5839'
+revision = '7dd138b627f2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -34,10 +29,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
-
     op.create_table('boards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -46,10 +37,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('board_name')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE boards SET SCHEMA {SCHEMA};")
-
-
     op.create_table('lists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('board_id', sa.Integer(), nullable=True),
@@ -59,9 +46,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE lists SET SCHEMA {SCHEMA};")
-
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('list_id', sa.Integer(), nullable=False),
@@ -69,30 +53,22 @@ def upgrade():
     sa.Column('title', sa.String(length=255), nullable=False),
     sa.Column('labels', sa.String(length=255), nullable=True),
     sa.Column('notification', sa.Boolean(), nullable=True),
-    sa.Column('description', sa.String(length=255), nullable=True),
-    sa.Column('start_date', sa.Date(), nullable=True),
-    sa.Column('end_date', sa.Date(), nullable=True),
+    sa.Column('description', sa.String(length=2000), nullable=True),
+    sa.Column('start_date', sa.String(), nullable=True),
+    sa.Column('end_date', sa.String(), nullable=True),
     sa.Column('checklist', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['list_id'], ['lists.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE cards SET SCHEMA {SCHEMA};")
-
-
     op.create_table('card_images',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
-    sa.Column('image_file', sa.String(length=1000), nullable=False),
+    sa.Column('image_file', sa.String(), nullable=False),
     sa.Column('cover', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE card_images SET SCHEMA {SCHEMA};")
-
-
     op.create_table('card_users',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
@@ -100,21 +76,15 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('user_id', 'card_id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE card_users SET SCHEMA {SCHEMA};")
-
-
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('card_id', sa.Integer(), nullable=False),
-    sa.Column('body', sa.String(length=255), nullable=False),
+    sa.Column('body', sa.String(length=2000), nullable=False),
     sa.ForeignKeyConstraint(['card_id'], ['cards.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

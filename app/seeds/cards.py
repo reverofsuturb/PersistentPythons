@@ -1,7 +1,8 @@
 from app.models import db, Card, environment, SCHEMA
 from sqlalchemy.sql import text
-from datetime import date
+from datetime import datetime
 
+currdate = datetime.today()
 
 def seed_cards():
 
@@ -12,8 +13,8 @@ def seed_cards():
         labels="Dope",
         notification=True,
         description="Everything is great I love life",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Check",
     )
     card2 = Card(
@@ -23,8 +24,8 @@ def seed_cards():
         labels="Not Dope",
         notification=False,
         description="Everything is not great, however, life is bearable",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Not Check",
     )
     card3 = Card(
@@ -34,8 +35,8 @@ def seed_cards():
         labels="async",
         notification=False,
         description="def all that",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Shrood",
     )
     card4 = Card(
@@ -45,8 +46,8 @@ def seed_cards():
         labels="Put One Here",
         notification=False,
         description="Because I hate notifications",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist=" ",
     )
     card5 = Card(
@@ -56,8 +57,8 @@ def seed_cards():
         labels="It is what it is",
         notification=True,
         description="Alert me always",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist=" ",
     )
     card6 = Card(
@@ -67,8 +68,8 @@ def seed_cards():
         labels="To Buy",
         notification=False,
         description="Buy essentials for the week",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="To Buy",
     )
     card7 = Card(
@@ -78,8 +79,8 @@ def seed_cards():
         labels="In Progress",
         notification=False,
         description="Complete pending assignments",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="In Progress",
     )
     card8 = Card(
@@ -89,8 +90,8 @@ def seed_cards():
         labels="To-Do",
         notification=False,
         description="Fix that leaky faucet",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="To-Do",
     )
     card9 = Card(
@@ -100,8 +101,8 @@ def seed_cards():
         labels="Completed Sets",
         notification=False,
         description="Daily workout routine",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Completed Sets",
     )
     card10 = Card(
@@ -111,68 +112,68 @@ def seed_cards():
         labels="Upcoming Trips",
         notification=False,
         description="Book flights and accommodations",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Upcoming Trips",
     )
 
     card11 = Card(
         list_id=11,
-        user_id=2,
+        user_id=1,
         title="Creative Projects",
         labels="Ideas",
         notification=False,
         description="Write that novel",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Ideas",
     )
 
     card12 = Card(
         list_id=12,
-        user_id=3,
+        user_id=2,
         title="Financial Management",
         labels="Expenses",
         notification=False,
         description="Review budget",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Expenses",
     )
 
     card13 = Card(
         list_id=13,
-        user_id=1,
+        user_id=3,
         title="Health Tracker",
         labels="Progress",
         notification=False,
         description="Log daily meals and exercise",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Progress",
     )
 
     card14 = Card(
         list_id=14,
-        user_id=2,
+        user_id=1,
         title="Home Decor",
         labels="Options",
         notification=False,
         description="Choose new curtains",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Options",
     )
 
     card15 = Card(
         list_id=15,
-        user_id=3,
+        user_id=2,
         title="Random Thoughts",
         labels="Notes",
         notification=False,
         description="Brainstorm ideas",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Notes",
     )
     card16 = Card(
@@ -182,8 +183,8 @@ def seed_cards():
         labels="Reflection",
         notification=False,
         description="Record thoughts and experiences",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Entries",
     )
 
@@ -194,8 +195,8 @@ def seed_cards():
         labels="Cooking",
         notification=False,
         description="Compile favorite recipes",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Ingredients",
     )
 
@@ -206,8 +207,8 @@ def seed_cards():
         labels="Green Thumb",
         notification=False,
         description="Plant new seeds and water plants",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Tasks",
     )
 
@@ -218,8 +219,8 @@ def seed_cards():
         labels="Polyglot",
         notification=False,
         description="Practice vocabulary and grammar",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Lessons",
     )
 
@@ -230,8 +231,8 @@ def seed_cards():
         labels="Furry Friends",
         notification=False,
         description="Feed, groom, and play with pets",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Pet Tasks",
     )
 
@@ -242,8 +243,8 @@ def seed_cards():
         labels="Productivity",
         notification=False,
         description="Organize desk and supplies",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Workspace",
     )
 
@@ -254,8 +255,8 @@ def seed_cards():
         labels="Literature",
         notification=False,
         description="Share favorite reads",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Books",
     )
 
@@ -266,8 +267,8 @@ def seed_cards():
         labels="Exploration",
         notification=False,
         description="Hike, bike, or camp",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Gear",
     )
 
@@ -278,8 +279,8 @@ def seed_cards():
         labels="Shutterbug",
         notification=False,
         description="Capture moments and edit photos",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Themes",
     )
 
@@ -290,8 +291,8 @@ def seed_cards():
         labels="Inspiration",
         notification=False,
         description="Collect memorable quotes",
-        start_date=date.today(),
-        end_date=date.today(),
+        start_date=currdate.strftime('%Y-%m-%d'),
+        end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Quotes",
     )
 
