@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState, useEffect, useRef } from "react";
 import { thunkPostList } from "../../store/lists";
 import { thunkGetAllLists } from "../../store/lists";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./PostLists.css";
 
 export default function PostList() {
@@ -13,22 +13,23 @@ export default function PostList() {
   const dispatch = useDispatch();
   const ufRef = useRef();
 
-
   const closeMenu = () => setShowSubmit(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (title.length == 0 ) {
+    if (title.length == 0) {
       setErrors({ title: "List title is required" });
       return;
     } else if (title.length > 100) {
-      setErrors({ title: "List's title must be shorter than 100 characters long." });
+      setErrors({
+        title: "List's title must be shorter than 100 characters long.",
+      });
       return;
     }
 
     let postList = {
-      title
+      title,
     };
 
     const res = await dispatch(thunkPostList(board_id, postList));
@@ -39,7 +40,7 @@ export default function PostList() {
     dispatch(thunkGetAllLists());
     setTitle("");
 
-    closeMenu()
+    closeMenu();
   };
 
   const toggleMenu = (e) => {
@@ -48,41 +49,30 @@ export default function PostList() {
     setShowSubmit(!showSubmit);
   };
 
-
-
   useEffect(() => {
     if (!showSubmit) return;
     const handleOutsideClick = (e) => {
       if (ufRef.current && !ufRef.current.contains(e.target)) {
-        setShowSubmit(false)
+        setShowSubmit(false);
       }
-    }
+    };
 
     if (showSubmit) {
-      document.addEventListener('click', handleOutsideClick)
+      document.addEventListener("click", handleOutsideClick);
     } else {
-      document.removeEventListener('click', handleOutsideClick)
+      document.removeEventListener("click", handleOutsideClick);
     }
-    return () => document.removeEventListener('click', handleOutsideClick)
-
-  }, [showSubmit])
-
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [showSubmit]);
 
   return (
     <>
       {showSubmit === false ? (
-        <button
-          type="button"
-          className="pl-lists-button"
-          onClick={toggleMenu}
-        >
+        <button type="button" className="pl-lists-button" onClick={toggleMenu}>
           Add a list
         </button>
       ) : (
-        <div
-          className="pl-lists-container"
-
-        >
+        <div className="pl-lists-container">
           <form className="pl-lists-form" onSubmit={handleSubmit} ref={ufRef}>
             <label className="pl-lists-label" htmlFor="title">
               <input
@@ -91,7 +81,7 @@ export default function PostList() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter a list title"
-              // onClick={(e) => e.stopPropagation()}
+                // onClick={(e) => e.stopPropagation()}
               />
             </label>
             <div className="pl-lists-button-container">

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetBoard } from "../../store/boards";
 import { thunkGetAllLists } from "../../store/lists";
@@ -11,54 +11,26 @@ import DeleteList from "../Lists/DeleteList";
 import SingleCard from "../Cards/AllCards/SingleCard";
 import PostCard from "../Cards/AllCards/PostCard";
 import { PostList } from "../Lists";
-import { useModal } from "../../context/Modal";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { MdWorkspaces } from "react-icons/md";
 import { thunkGetAllBoards } from "../../store/boards";
 import { thunkAllGetCardImages } from "../../store/card_images";
 import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
-import OpenModalButton from "../OpenModalButton";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
 import { thunkGetAllCards } from "../../store/cards";
 export default function SingleBoard() {
   const { board_id } = useParams();
-  const { closeModal } = useModal();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  // const [editing, setEditing] = useState(false);
+
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
   const post_card = useSelector((state) => state.cards);
-  const sessionUser = useSelector((state) => state.session.user);
-  const cards = useSelector((state) => state.cards);
+
   const cardImagesObj = useSelector((state) => state.cardImages);
   const cardImages = Object.values(cardImagesObj);
-  console.log(cardImages);
-  // let cardArray = Object.values(cards);
-  // let cardIds = [];
-  // cardArray?.forEach((card) => cardIds.push(card.id));
-  // let imageArray = [];
-  // let cardImage;
-  // console.log(cardIds, "cardids")
-  // let images = async (cardIds) => {
-  //   cardIds.forEach((card) => {
-  //     dispatch(thunkGetCardImage(card.id));
-  //     cardImage = useSelector((state) => state.cardImages)
-  //     console.log(cardImage);
-  //     imageArray.push(cardImage);
-  //   });
-  // };
-  // console.log(imageArray);
-  // let cardIds = []
-  // const cardsData = lists.map((list) => {
-  //   list.cards_in_list
-  // })
-
-  // const handleImageReturn = useCallBack((imageData) => {
-  //   dispatch(thunkGetCardImage())
-  // })
 
   const length_post_card = Object.values(post_card).length;
 
@@ -78,7 +50,7 @@ export default function SingleBoard() {
     dispatch(thunkGetAllLists());
     dispatch(thunkGetAllCards());
     dispatch(thunkAllGetCardImages());
-  }, [dispatch,  addCard, length_post_card]);
+  }, [dispatch, addCard, length_post_card]);
 
   const closeMenu = () => setShowMenu(false);
 
@@ -99,10 +71,7 @@ export default function SingleBoard() {
           Your Boards
         </h2>
       </div>
-      <div
-        id="secondHalfContainerBoards"
-        // className="sb-outer_container"
-      >
+      <div id="secondHalfContainerBoards">
         <div id="boardsLeftSideContainer">
           {allBoards.length &&
             allBoards?.map((board) => (
@@ -139,7 +108,7 @@ export default function SingleBoard() {
                 modalComponent={
                   <DeleteBoard board_id={board_id} board={board} />
                 }
-                onItemClick={closeMenu}
+                // onItemClick={closeMenu}
                 role="button"
               />
               <div>
@@ -152,67 +121,25 @@ export default function SingleBoard() {
             </div>
 
             <div className="list-title-menu">
-              <button onClick={toggleMenu} className="board-menu-button">
-                <HiDotsHorizontal />
-
-                <i
-                  className="fa-solid fa-ellipsis"
-                  onMouseOver={() => setHoverCaption(-1)}
-                  onMouseOut={() => setHoverCaption(null)}
-                  role="button"
-                />
-                {hoverCaption === "hover" && (
-                  <p
-                    className={
-                      hoverClassName + (showMenu ? setHoverCaption("") : "")
-                    }
-                  >
-                    Board Menu
-                  </p>
-                )}
-              </button>
-              {/* <ul className={ulClassName}>
-                {sessionUser ? (
-                  <>
-                    <li className="profile_dropdown_manage">
-                      <button onClick={} className="user_manage_button">Manage Spots</button>
-                    </li>
-                    <li className="delete-opb opb">
-                      <OpenModalButton
-                        buttonText={"Delete Board"}
-                        modalComponent={
-                          <DeleteBoard board_id={board_id} board={board} />
-                        }
-                        onItemClick={closeMenu}
-                        role="button"
-                      />
-                    </li>
-                  </>
-                ) : (
-                  <></>
-                )}
-              </ul> */}
+              <i
+                className="fa-solid fa-ellipsis"
+                onMouseOver={() => setHoverCaption(-1)}
+                onMouseOut={() => setHoverCaption(null)}
+                role="button"
+              />
+              {hoverCaption === "hover" && (
+                <p
+                  className={
+                    hoverClassName + (showMenu ? setHoverCaption("") : "")
+                  }
+                >
+                  Board Menu
+                </p>
+              )}
             </div>
           </div>
 
-          {/* additional options */}
           <div className="sb-delete-bp-list-add">
-            {/*Board Delete */}
-            {/* <div className="single-board-delete">
-              {board_id && (
-                <button className="single-board-button-delete">
-                  <OpenModalMenuItem
-                    itemText={"Delete Board"}
-                    onItemClick={closeMenu}
-                    modalComponent={
-                      <DeleteBoard board_id={board_id} board={board} />
-
-                    }
-                  />
-                </button>
-              )}
-            </div> */}
-
             <div className="board-post-list">
               <PostList />
             </div>

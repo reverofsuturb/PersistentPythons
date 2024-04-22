@@ -1,11 +1,8 @@
 import { useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { thunkDeleteBoard, thunkGetBoard } from "../../../../store/boards";
-import { thunkDeleteBoard, thunkGetBoard } from "../../store/boards";
+import { thunkDeleteBoard } from "../../store/boards";
 import { useModal } from "../../context/Modal";
-
-import "./DeleteBoard.css";
 
 export default function DeleteBoard({ board_id }) {
   const dispatch = useDispatch();
@@ -19,35 +16,29 @@ export default function DeleteBoard({ board_id }) {
     setShowMenu(!showMenu);
   };
 
-  const handleDelete = async (board_id) => {
-    try {
-      await dispatch(thunkDeleteBoard(board_id));
-      navigate("/boards");
-    } catch (error) {
-      return "Why are you like this", error;
+  const handleDelete = async (e, board_id) => {
+    e.preventDefault();
+    const res = await dispatch(thunkDeleteBoard(board_id));
+    if (res && res.errors) {
+      return res.errors;
     }
+    navigate("/boards");
+    closeModal();
   };
 
   const noDeletion = () => {
     closeModal();
   };
 
-  useEffect(() => {
-    dispatch(thunkGetBoard(board_id));
-  }, [dispatch, board_id]);
-
   return (
     <>
-      {/* <div className="outer-delete_container"> */}
-      {/* <div className="inner-delete_container"> */}
       <h1>Confirm Delete</h1>
       <form action="" onClick={toggleMenu}>
         <div className="delete-board-modal-pop">
           <button
             className="delete-board-button"
-            onClick={() => {
-              handleDelete(board_id);
-              navigate("/boards");
+            onClick={(e) => {
+              handleDelete(e, board_id);
             }}
           >
             Yes (Delete Board)
@@ -58,8 +49,6 @@ export default function DeleteBoard({ board_id }) {
           </button>
         </div>
       </form>
-      {/* </div> */}
-      {/* </div> */}
     </>
   );
 }

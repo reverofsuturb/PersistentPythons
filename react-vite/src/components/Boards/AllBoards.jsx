@@ -11,9 +11,6 @@ import OpenModalButton from "../OpenModalButton";
 export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
-  // const sessionUser = useSelector((state) => state.session.user);
-
-  // const navAlert = () => alert("Feature Coming Soon!");
 
   const allBoards = Object.values(boards);
 
@@ -24,23 +21,6 @@ export default function AllBoards() {
   return (
     <>
       <div className="ab-outer-div_container">
-        {/* {
-          sessionUser === "undefined" || !sessionUser ?
-            <>
-              <div id="boardsTitleContainer" className="ab-inner-div_container">
-                <h2 className="ab-h2">
-                  <RiSpaceShipFill />
-                  Accelerate you OR your teams&apos; work with our new (AI) features 🤖 now in beta mode! <a className="ab-a-nav"
-                    onClick={navAlert}
-                  >
-                    Learn more.</a>
-
-                </h2>
-              </div>
-
-
-            </>
-            : */}
         <>
           <div id="boardsTitleContainer" className="ab-inner-div_container">
             <h2 className="ab-h2">
@@ -87,7 +67,7 @@ export default function AllBoards() {
                     </NavLink>
                   ))
                 ) : (
-                  <div>
+                  <div id="ab-create-board-button">
                     <OpenModalButton
                       buttonText="Create your first board"
                       modalComponent={<PostBoard />}

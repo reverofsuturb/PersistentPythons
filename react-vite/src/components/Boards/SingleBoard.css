@@ -143,7 +143,6 @@ button.pl-lists-button:hover {
 .outer-sb-list {
   display: flex;
   width: 100%;
-  overflow-x: auto;
 }
 
 .sb-list-full {
@@ -409,37 +408,7 @@ p.caption {
   justify-content: space-between;
   height: 10px;
 }
-
-/* ul.profile-dropdown {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px 10px;
-  bottom: 6rem;
-  right: 0rem;
-  border-radius: 10px;
-} */
-
-/* ul.profile-dropdownhidden {
-  visibility: hidden;
-} */
-
-/* ul.profile-dropdown > li {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  width: fit-content;
-  height: fit-content;
-  padding: 2px;
-  padding-left: 0;
-} */
-
-/* ul.profile-dropdown > .opb {
-  width: 100%;
-} */
-
+ 
 button.omb-button {
   width: 100%;
   border-style: none;
@@ -447,9 +416,4 @@ button.omb-button {
   border-radius: 0;
   outline: none;
   box-shadow: none;
-}
-
-button.board-menu-button {
-  position: relative;
-  left: 8rem;
 }

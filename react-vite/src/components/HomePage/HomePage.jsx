@@ -9,13 +9,6 @@ export default function HomePage() {
 
   return (
     <div className="containerforthehomepage">
-      <div id="accelerateContainer">
-        {/* <h3 id="accelerate">
-          Intelligence (AI) features 🧠 now in beta! Learn more about our
-          intelligence thats still figuring out if its smart or just pretending!
-          🤖
-        </h3> */}
-      </div>
       <div id="secondHalfContainer">
         <div id="spaceParagraphContainer">
           <div className="home-title">Space Odyssey</div>
