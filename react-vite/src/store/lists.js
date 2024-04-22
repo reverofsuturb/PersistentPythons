@@ -25,7 +25,6 @@ export const thunkGetAllLists = () => async (dispatch) => {
   const res = await fetch("/api/lists");
   const data = await res.json();
 
-
   if (data.errors) {
     return data;
   }
@@ -60,7 +59,6 @@ export const thunkEditList = (list_id, list) => async (dispatch) => {
     body: JSON.stringify(list),
   });
   const data = await res.json();
-
 
   if (data.errors) {
     return data;
@@ -98,7 +96,7 @@ function listReducer(state = initialState, action) {
       return { ...state, [action.list.id]: action.list };
     }
     case DELETE_LIST: {
-      listState = { ...state };
+      let listState = { ...state };
       delete listState[action.list_id];
       return listState;
     }

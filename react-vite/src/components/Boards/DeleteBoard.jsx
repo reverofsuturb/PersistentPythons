@@ -28,9 +28,7 @@ export default function DeleteBoard({ board_id }) {
     }
   };
 
-  const noDeletion = (e) => {
-    e.preventDefault();
-
+  const noDeletion = () => {
     closeModal();
   };
 

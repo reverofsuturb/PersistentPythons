@@ -166,7 +166,7 @@
 
 #loginAndSignupButtonContainer {
   display: flex;
-  gap: 18px;
+  gap: 40px;
 }
 
 /* #loginAndSignupButtonContainer>.open-modal-menu-item_list:last-child {

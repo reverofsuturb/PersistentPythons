@@ -78,7 +78,7 @@ export default function SingleBoard() {
     dispatch(thunkGetAllLists());
     dispatch(thunkGetAllCards());
     dispatch(thunkAllGetCardImages());
-  }, [dispatch, showMenu, closeModal, addCard, length_post_card]);
+  }, [dispatch,  addCard, length_post_card]);
 
   const closeMenu = () => setShowMenu(false);
 

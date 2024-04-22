@@ -20,7 +20,7 @@ export default function HomePage() {
         <div id="spaceParagraphContainer">
           <div className="home-title">Space Odyssey</div>
           <h2 id="spaceParagraph">
-            We unites your missions, crew, and resources in one cosmic hub. Keep
+            We unite your missions, crew, and resources in one cosmic hub. Keep
             your galactic endeavors organized, even across vast distances.
           </h2>
           <h3 id="secondSpaceParagraph">

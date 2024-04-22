@@ -1,4 +1,4 @@
-.containerforthehomepage{
+.containerforthehomepage {
   height: 92%;
   background-color: black;
 }
@@ -17,7 +17,7 @@
 
 #secondHalfContainer {
   background-color: black;
-  background-image: url(../../../public/space.jpg);
+  background-image: url(https://cdn.sci.news/images/enlarge3/image_4161e-N159.jpg);
   background-repeat: no-repeat;
   background-position: 50%;
 }
@@ -31,7 +31,7 @@
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1000px;
+  height: 100vh;
   max-height: 100%;
 }
 
@@ -39,32 +39,29 @@
   margin-top: 40px;
   width: 650px;
   color: white;
-  /* font-family: "Death Star", sans-serif; */
-  /* font-weight: 400; */
   font-size: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.386);
   border-radius: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 #secondSpaceParagraph {
   font-size: 1.5rem;
   color: white;
-  /* font-family: "Death Star", sans-serif; */
-  /* font-weight: 400; */
-  /* background-color: rgba(0, 0, 0, 0.386); */
-  border-radius: 10px;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 #signUpHereButton {
-  color: rgb(168, 21, 21);
+  color: royalblue;
   font-size: 30px;
   font-family: "Death Star", sans-serif;
-  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
 }
 
 #signUpHereButton:hover {
   cursor: pointer;
-  color: royalblue;
+  color: rgb(255, 255, 255);
 }
 
 /* special effects */
@@ -114,4 +111,5 @@ div.home-title {
   font-size: 8.5rem;
   font-weight: 300;
   animation: lights 5s 750ms linear infinite;
+  font-family: "Death Star", sans-serif;
 }
