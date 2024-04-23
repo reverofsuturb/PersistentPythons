@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
@@ -11,8 +11,12 @@ import OpenModalButton from "../OpenModalButton";
 export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
+  const [showBoards, setShowBoards] = useState(false)
+  console.log("🚀 ~ AllBoards ~ showBoards:", showBoards)
 
   const allBoards = Object.values(boards);
+
+
 
   useEffect(() => {
     dispatch(thunkGetAllBoards());
@@ -46,6 +50,7 @@ export default function AllBoards() {
                 <div>No boards available</div>
               )}
             </div>
+
 
             <div id="boardsRightSideContainer">
               <div id="workSpaceContainer">

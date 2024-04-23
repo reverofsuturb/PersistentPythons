@@ -415,4 +415,14 @@ button.omb-button {
   background-color: rgba(0, 0, 0, 0.365);
   width: 95%;
 }
+
+#boardsLeftSideContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 2px black solid;
+  height: 30%;
+  background-color: rgb(219, 219, 219);
+  padding: 0px 5px;
+}
 }

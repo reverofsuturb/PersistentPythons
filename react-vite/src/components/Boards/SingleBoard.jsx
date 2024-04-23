@@ -29,6 +29,8 @@ export default function SingleBoard() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [currSelectedCard, setCurrSelectedCard] = useState(null);
+  const [showBoards, setShowBoards] = useState(false)
+
 
   let boards = useSelector((state) => state.boards);
   let board = useSelector((state) => state.boards[board_id]);
@@ -62,6 +64,10 @@ export default function SingleBoard() {
     setHoverCaption(null);
   };
 
+  const handleShowAllBoards = () => {
+    setShowBoards(!showBoards)
+  }
+
   useEffect(() => {
     // dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
@@ -83,27 +89,29 @@ export default function SingleBoard() {
 
   return (
     <>
-      <div id="boardsTitleContainer">
+      <div onClick={() => handleShowAllBoards()} id="boardsTitleContainer">
         <h2>
           <RiSpaceShipFill />
           Your Boards
         </h2>
       </div>
       <div id="secondHalfContainerBoards">
-        <div id="boardsLeftSideContainer">
-          {allBoards.length &&
-            allBoards?.map((board) => (
-              <div key={board.id} className="ab-boards-tile-left">
-                <MdWorkspaces />
-                <NavLink
-                  className={"ab-boards-link-left"}
-                  to={`/boards/${board.id}`}
-                >
-                  {board.board_name}
-                </NavLink>
-              </div>
-            ))}
-        </div>
+        {showBoards &&
+          <div id="boardsLeftSideContainer">
+            {allBoards.length &&
+              allBoards?.map((board) => (
+                <div key={board.id} className="ab-boards-tile-left">
+                  <MdWorkspaces />
+                  <NavLink
+                    className={"ab-boards-link-left"}
+                    to={`/boards/${board.id}`}
+                  >
+                    {board.board_name}
+                  </NavLink>
+                </div>
+              ))}
+          </div>
+        }
         <div id="boardsRightSideContainer">
           <div className="sb-header-right-container">
             <div className="sb-edit-board">
