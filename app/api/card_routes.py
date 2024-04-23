@@ -46,7 +46,6 @@ def edit_card(card_id):
 
     if card.user_id != current_user.id:
         return jsonify({"Not Authorized": "Forbidden"}), 403
-
     if request.method == "PUT":
         form = CardForm()
         form["csrf_token"].data = request.cookies["csrf_token"]
@@ -55,7 +54,7 @@ def edit_card(card_id):
             card.labels = form.labels.data
             card.notification = form.notification.data
             card.description = form.description.data
-
+            card.start_date = form.start_date.data
             card.end_date = form.end_date.data
             card.checklist = form.checklist.data
 
@@ -65,6 +64,24 @@ def edit_card(card_id):
             return jsonify(card.to_dict())
         return jsonify({"errors": form.errors}), 400
     return jsonify(card.to_dict())
+
+
+@card_routes.route("/<int:list_id>/<int:card_id>", methods=["PUT"])
+@login_required
+def patch_card(list_id, card_id):
+    stmt = select(Card).where(Card.id == card_id)
+    card = db.session.execute(stmt).scalar_one()
+    if card is None:
+        return jsonify({"Error": "Card not found"}), 404
+
+    if card.user_id != current_user.id:
+        return jsonify({"Not Authorized": "Forbidden"}), 403
+    if list_id:
+        card.list_id = list_id
+        db.session.add(card)
+        db.session.commit()
+        return jsonify(card.to_dict())
+    return jsonify({"errors": "No list id, drop unsuccessful"}), 400
 
 
 @card_routes.route("/<int:card_id>", methods=["DELETE"])

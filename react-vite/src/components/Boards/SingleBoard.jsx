@@ -19,7 +19,10 @@ import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
+import { DnDList } from "../Lists/DnDList";
+import { DnDCard } from "../Cards/AllCards/DnDCard";
 import { thunkGetAllCards } from "../../store/cards";
+
 export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
@@ -27,7 +30,9 @@ export default function SingleBoard() {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [currSelectedCard, setCurrSelectedCard] = useState(null);
 
-  const boards = useSelector((state) => state.boards);
+  let boards = useSelector((state) => state.boards);
+  let board = useSelector((state) => state.boards[board_id]);
+  console.log(board);
   const lists = useSelector((state) => state.lists);
   const post_card = useSelector((state) => state.cards);
 
@@ -40,7 +45,7 @@ export default function SingleBoard() {
 
   const [hoverCaption, setHoverCaption] = useState(null);
 
-  const board = boards[board_id];
+  // const board = boards[board_id];
   const allLists = Object.values(lists).filter(
     (list) => list.board_id == board_id
   );
@@ -58,13 +63,13 @@ export default function SingleBoard() {
   };
 
   useEffect(() => {
-    dispatch(thunkGetBoard(board_id));
+    // dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
     dispatch(thunkGetAllLists());
     dispatch(thunkGetAllCards());
     dispatch(thunkAllGetCardImages());
+    console.log("rerender");
   }, [dispatch, addCard, length_post_card]);
-
   const closeMenu = () => setShowMenu(false);
 
   const toggleMenu = (e) => {
@@ -158,15 +163,15 @@ export default function SingleBoard() {
           {/* list */}
           <div className="outer-sb-list">
             <div className="sb-list-full">
-              {allLists.length ? (
-                allLists?.map((list) => (
+              {board?.lists?.length ? (
+                board?.lists?.map((list) => (
                   <div key={list.id} className="sb-list-container">
                     <EditList list={list} />
-
+                    <DnDList list={list} />
                     {/* Cards */}
                     <div className="all-cards-on-list">
-                      {list.cards_in_list.length > 0 ? (
-                        list.cards_in_list.map((card) => (
+                      {list?.cards?.length > 0 ? (
+                        list?.cards?.map((card, index) => (
                           <div className="indiv-card-in-list" key={card.id}>
                             {card && (
                               <>

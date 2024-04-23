@@ -48,7 +48,7 @@ export default function PostCard({ list }) {
   const closeMenu = () => setShowSubmit(false);
 
   useEffect(() => {
-    dispatch(thunkGetBoard(list.board_id));
+    // dispatch(thunkGetBoard(list.board_id));
     if (!showSubmit) return;
 
     document.addEventListener("click", closeMenu);
