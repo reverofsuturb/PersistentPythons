@@ -1,6 +1,5 @@
 import { DnDCard } from "../Cards/AllCards/DnDCard";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import { thunkGetAllBoards } from "../../store/boards";
 export const DnDList = ({ list }) => {
   return (
     <Droppable droppableId={list.id.toString()}>

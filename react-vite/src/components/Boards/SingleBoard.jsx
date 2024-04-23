@@ -19,9 +19,8 @@ import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
-import { DnDList } from "../Lists/DnDList";
-import { DnDCard } from "../Cards/AllCards/DnDCard";
 import { thunkGetAllCards } from "../../store/cards";
+import { SingleList } from "../Lists/SingleList";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
@@ -162,7 +161,6 @@ export default function SingleBoard() {
               )}
             </div>
           </div>
-
           <div className="sb-delete-bp-list-add">
             <div className="board-post-list">
               <PostList />
@@ -173,91 +171,88 @@ export default function SingleBoard() {
             <div className="sb-list-full">
               {board?.lists?.length ? (
                 board?.lists?.map((list) => (
-                  <div key={list.id} className="sb-list-container">
-                    <EditList list={list} />
-                    <DnDList list={list} />
-                    {/* Cards */}
-                    <div className="all-cards-on-list">
-                      {list?.cards?.length > 0 ? (
-                        list?.cards?.map((card, index) => (
-                          <div className="indiv-card-in-list" key={card.id}>
-                            {card && (
-                              <>
-                                <div className="card-modal-box">
-                                  <div
-                                    onMouseOver={() => handleMouseOver(card.id)}
-                                    onMouseLeave={handleMouseLeave}
-                                    className="card-modal-title"
-                                    role="link"
-                                  >
-                                    <OpenModalMenuItem
-                                      className="card-modal-item"
-                                      id="card-modal-item"
-                                      itemText={card.title}
-                                      onItemClick={!closeMenu}
-                                      modalComponent={
-                                        <SingleCard
-                                          className="card-modal"
-                                          card={card}
-                                          list={list}
-                                        />
-                                      }
-                                    />
-                                    {isMouseOver &&
-                                      currSelectedCard === card.id && (
-                                        <p className={hoverClassName}>
-                                          {" "}
-                                          Click to edit card
-                                        </p>
-                                      )}
-                                  </div>
-                                  <div className="card-modal-main-info">
-                                    <div className="card-modal-cover-image">
-                                      <img
-                                        className="sb-image-card"
-                                        style={{ width: 220, height: 220 }}
-                                        src={
-                                          cardImages?.length &&
-                                          cardImages?.find(
-                                            (image) => image.card_id == card.id
-                                          )?.image_file
-                                        }
-                                        alt="img"
-                                      />
-                                    </div>
-                                    <div className="card-modal-description">
-                                      {card.description}
-                                    </div>
-                                  </div>
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        ))
-                      ) : (
-                        <div className="sb-contain-two">
-                          <div className="no-cards">
-                            No cards yet! Add a card and get your odyssey on!
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="add-card-div">
-                      <PostCard list={list} />
-                    </div>
-                    <div className="list-card-delete-button">
-                      <DeleteList list={list} />
-                    </div>
-                  </div>
+                  <SingleList list={list} />
+                  // <div key={list.id} className="sb-list-container">
+                  //   <EditList list={list} />
+                  //   {/* Cards */}
+                  //   <div className="all-cards-on-list">
+                  //     {list?.cards?.length > 0 ? (
+                  //       list?.cards?.map((card, index) => (
+                  //         <div className="indiv-card-in-list" key={card.id}>
+                  //           {card && (
+                  //             <>
+                  //               <div className="card-modal-box">
+                  //                 <div
+                  //                   onMouseOver={() => handleMouseOver(card.id)}
+                  //                   onMouseLeave={handleMouseLeave}
+                  //                   className="card-modal-title"
+                  //                   role="link"
+                  //                 >
+                  //                   <OpenModalMenuItem
+                  //                     className="card-modal-item"
+                  //                     id="card-modal-item"
+                  //                     itemText={card.title}
+                  //                     onItemClick={!closeMenu}
+                  //                     modalComponent={
+                  //                       <SingleCard
+                  //                         className="card-modal"
+                  //                         card={card}
+                  //                         list={list}
+                  //                       />
+                  //                     }
+                  //                   />
+                  //                   {isMouseOver &&
+                  //                     currSelectedCard === card.id && (
+                  //                       <p className={hoverClassName}>
+                  //                         {" "}
+                  //                         Click to edit card
+                  //                       </p>
+                  //                     )}
+                  //                 </div>
+                  //                 <div className="card-modal-main-info">
+                  //                   <div className="card-modal-cover-image">
+                  //                     <img
+                  //                       className="sb-image-card"
+                  //                       style={{ width: 220, height: 220 }}
+                  //                       src={
+                  //                         cardImages?.length &&
+                  //                         cardImages?.find(
+                  //                           (image) => image.card_id == card.id
+                  //                         )?.image_file
+                  //                       }
+                  //                       alt="img"
+                  //                     />
+                  //                   </div>
+                  //                   <div className="card-modal-description">
+                  //                     {card.description}
+                  //                   </div>
+                  //                 </div>
+                  //               </div>
+                  //             </>
+                  //           )}
+                  //         </div>
                 ))
               ) : (
-                <>No Lists Created</>
+                <div className="sb-contain-two">
+                  <div className="no-cards">
+                    No cards yet! Add a card and get your odyssey on!
+                  </div>
+                </div>
               )}
             </div>
+
+            <div className="add-card-div">
+              {/* <PostCard list={list} /> */}
+            </div>
+            <div className="list-card-delete-button">
+              {/* <DeleteList list={list} /> */}
+            </div>
           </div>
+          )) ) : (<>No Lists Created</>)
         </div>
       </div>
+      {/* </div> */}
+      {/* </div> */}
     </>
   );
 }
