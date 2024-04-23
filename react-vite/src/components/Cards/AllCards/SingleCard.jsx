@@ -23,10 +23,10 @@ import GetImagesForCards from "./GetCardImage";
 export default function SingleCard({ card, list }) {
   const cardState = useSelector((state) => state.cards[card.id]);
   const cardImagesObj = useSelector((state) => state.cardImages);
-  const cardImages = Object.values(cardImagesObj)
+  const cardImages = Object.values(cardImagesObj);
   const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(card.title);
+  const [title, setTitle] = useState(card?.title);
   const [description, setDescription] = useState(
     card.description ? card.description : ""
   );
@@ -92,7 +92,10 @@ export default function SingleCard({ card, list }) {
     <>
       <div className="cardcontainer">
         <div className="photocover">
-          <img src={cardImages?.length && cardImages[0][0]?.image_file} alt="card image" />
+          <img
+            src={cardImages?.length && cardImages[0][0]?.image_file}
+            alt="card image"
+          />
         </div>
 
         <div className="titlescont">
@@ -128,7 +131,7 @@ export default function SingleCard({ card, list }) {
               className="sc-title"
               style={{ fontSize: "12px", margin: "0px" }}
             >
-              In list: {list.title}
+              In list: {list?.title}
             </div>
           </div>
         </div>
