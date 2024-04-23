@@ -28,8 +28,7 @@ a.ab-a-nav {
 }
 
 #secondHalfContainerBoards {
-  display: grid;
-  grid-template-columns: 0.1fr 1fr;
+    display: flex;
   height: 85vh;
   width: 100%;
 }
@@ -51,7 +50,7 @@ a.ab-a-nav {
   background-size: cover;
   padding: 1rem;
   /* min-height: 100vh; */
-  /* width: 100%; */
+  width: 100%;
   overflow-x: scroll; /* This one and the scroll in singleboard .outer-sb-list keeps the scroll to the lists and keeps the image from extending the page  */
 }
 
@@ -203,7 +202,7 @@ a.ab-a-nav {
     background-size: cover;
     padding: 1rem;
     /* min-height: 100vh; */
-    /* width: 100%; */
+    width: auto;
     overflow-y: scroll;
     /* This one and the scroll in singleboard .outer-sb-list keeps the scroll to the lists and keeps the image from extending the page */
   }

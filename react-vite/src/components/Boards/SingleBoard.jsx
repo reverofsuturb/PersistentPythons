@@ -91,13 +91,13 @@ export default function SingleBoard() {
     <>
       <div onClick={() => handleShowAllBoards()} id="boardsTitleContainer">
         <h2>
-          <RiSpaceShipFill />
+          <RiSpaceShipFill className={showBoards ? "flip" : "unflip"} />
           Your Boards
         </h2>
       </div>
       <div id="secondHalfContainerBoards">
         {showBoards &&
-          <div id="boardsLeftSideContainer">
+          <div id="boardsLeftSideContainer" className={showBoards ? "slideDown" : "slideUp"}>
             {allBoards.length &&
               allBoards?.map((board) => (
                 <div key={board.id} className="ab-boards-tile-left">

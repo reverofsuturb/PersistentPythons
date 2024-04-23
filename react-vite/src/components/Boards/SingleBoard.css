@@ -389,7 +389,7 @@ button.omb-button {
 
   .outer-sb-list {
     display: flex;
-    width: 100vw;
+    /* width: 100vw; */
     /* overflow-y: scroll; */
     height: 100%;
 
@@ -421,8 +421,20 @@ button.omb-button {
   flex-direction: column;
   gap: 10px;
   border-right: 2px black solid;
-  height: 30%;
+  height: auto;
   background-color: rgb(219, 219, 219);
   padding: 0px 5px;
+}
+
+.flip, .unflip {
+  transition: transform 0.4s ease-in-out;
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.unflip {
+  transform: rotate(0deg);
 }
 }
