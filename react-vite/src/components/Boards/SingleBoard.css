@@ -132,6 +132,8 @@ button.pl-lists-button:hover {
 .outer-sb-list {
   display: flex;
   width: 100%;
+  overflow-x: scroll;
+
 }
 
 .sb-list-full {
@@ -370,4 +372,47 @@ button.omb-button {
   border-radius: 0;
   outline: none;
   box-shadow: none;
+}
+
+
+@media only screen and (max-width: 650px) {
+  .sb-list-full {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 8px;
+    align-items: flex-start;
+    color: #eae5ec;
+  }
+
+  .outer-sb-list {
+    display: flex;
+    width: 100vw;
+    /* overflow-y: scroll; */
+    height: 100%;
+
+  }
+
+  .sb-list-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.539);
+    box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
+    box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
+    border-radius: 20px;
+    padding-bottom: 8px;
+    width: 100%;
+    border: 1px black solid;
+    height: fit-content;
+}
+
+.pl-lists-button {
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.365);
+  width: 95%;
+}
 }
