@@ -113,3 +113,34 @@ div.home-title {
   animation: lights 5s 750ms linear infinite;
   font-family: "Death Star", sans-serif;
 }
+
+@media only screen and (max-width: 650px) {
+  div.home-title {
+    font-size: 17.5vw;
+    font-weight: 300;
+    animation: lights 5s 750ms linear infinite;
+    font-family: "Death Star", sans-serif;
+  }
+
+  #spaceParagraph {
+    margin-top: 5vw;
+    width: 80vw;
+    font-size: 7.5vw;
+    color: white;
+    border-radius: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  #secondSpaceParagraph {
+    font-size: 3.5vw;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+
+  #nameContainer {
+    display: flex;
+    flex-direction: row;
+  }
+}
