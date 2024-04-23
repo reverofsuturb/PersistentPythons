@@ -40,6 +40,7 @@ def view_board():
                     "cards": [
                         {
                             "id": card.id,
+                            "list_id": card.list_id,
                             "title": card.title,
                             "labels": card.labels,
                             "notification": card.notification,
