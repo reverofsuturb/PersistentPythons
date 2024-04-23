@@ -241,12 +241,6 @@ export default function SingleBoard() {
               )}
             </div>
 
-            <div className="add-card-div">
-              {/* <PostCard list={list} /> */}
-            </div>
-            <div className="list-card-delete-button">
-              {/* <DeleteList list={list} /> */}
-            </div>
           </div>
           )) ) : (<>No Lists Created</>)
         </div>

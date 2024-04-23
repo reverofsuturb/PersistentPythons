@@ -44,7 +44,7 @@ a.ab-a-nav {
 }
 
 #boardsRightSideContainer {
-  background-image: url(/public/space2jpg.jpg);
+  background-image: url(https://bramble-bucket.s3.amazonaws.com/1713908769963.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -196,7 +196,6 @@ a.ab-a-nav {
   }
 
   #boardsRightSideContainer {
-    background-image: url(/public/space2jpg.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

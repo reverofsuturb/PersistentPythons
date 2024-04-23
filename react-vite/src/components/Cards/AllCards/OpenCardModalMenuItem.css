@@ -1,0 +1,32 @@
+.ocmmi-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(123, 123, 123);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.image-files-in-ocmmi-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-files-in-ocmmi{
+    width: 220px;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 650px){
+    .image-files-in-ocmmi{
+        width: 95%;
+        height: auto;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

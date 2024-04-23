@@ -1,4 +1,5 @@
 import { useModal } from "../../../context/Modal";
+import './OpenCardModalMenuItem.css'
 
 function OpenCardModalMenuItem({
   modalComponent, // component to render inside the modal
@@ -16,10 +17,10 @@ function OpenCardModalMenuItem({
   };
   console.log(card)
   return (
-    <div onClick={onClick}>
+    <div className="ocmmi-container" onClick={onClick}>
       <div className="open-modal-menu-item_list">{itemText}</div>
-      <div>
-        {card?.cardimages?.length && <img src={card?.cardimages[0]?.image_file} />}
+      <div className="image-files-in-ocmmi-container">
+        {card?.cardimages?.length && <img className="image-files-in-ocmmi" src={card?.cardimages[0]?.image_file} />}
       </div>
     </div>
   );
