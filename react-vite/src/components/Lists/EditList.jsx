@@ -3,7 +3,6 @@ import { useState } from "react";
 import { thunkEditList, thunkGetAllLists } from "../../store/lists";
 import "./EditList.css";
 
-
 export default function EditList({ list }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(list.title);
@@ -11,13 +10,11 @@ export default function EditList({ list }) {
   const [editing, setEditing] = useState(false);
   const [hoverCaption, setHoverCaption] = useState(null);
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEdits = {
-      title
+      title,
     };
 
     const res = await dispatch(thunkEditList(list.id, newEdits));
@@ -34,37 +31,27 @@ export default function EditList({ list }) {
   return (
     <>
       <div className="eb-title_outer_container">
-
         {editing === false ? (
           <div className="eb-title">
-
             <div className="eb-title_inner_container">
-              <h2 onDoubleClick={() => setEditing(true)} className="eb-lists-title"
+              <h2
+                onDoubleClick={() => setEditing(true)}
+                className="eb-lists-title"
                 onMouseEnter={() => setHoverCaption(-1)}
                 onMouseLeave={() => setHoverCaption(null)}
               >
-                <div className="list-title">
-                  {list.title}
-                </div>
-
+                <div className="list-title">{list.title}</div>
               </h2>
             </div>
             <div className="caption_container">
               {hoverCaption === -1 && (
-                <p className={hoverClassName}>
-                  Double click here to edit board name
-                </p>
+                <p className={hoverClassName}>Double click to edit title</p>
               )}
             </div>
           </div>
         ) : (
-          <form className="eb-lists-form" onSubmit={handleSubmit}
-
-          >
-
-            <label htmlFor="title"
-              role="link"
-            >
+          <form className="eb-lists-form" onSubmit={handleSubmit}>
+            <label htmlFor="title" role="link">
               <input
                 className="eb-lists-input"
                 type="text"
@@ -73,7 +60,6 @@ export default function EditList({ list }) {
                 onChange={(e) => setTitle(e.target.value)}
               />
               {errors?.title && <p className="p-error">{errors.title}</p>}
-
             </label>
           </form>
         )}

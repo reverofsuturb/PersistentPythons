@@ -24,6 +24,8 @@ export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [currSelectedCard, setCurrSelectedCard] = useState(null);
 
   const boards = useSelector((state) => state.boards);
   const lists = useSelector((state) => state.lists);
@@ -43,6 +45,17 @@ export default function SingleBoard() {
     (list) => list.board_id == board_id
   );
   const [addCard, setAddCard] = useState(false);
+
+  const handleMouseOver = (cardId) => {
+    setCurrSelectedCard(cardId);
+    setHoverCaption(cardId);
+    setIsMouseOver(true);
+  };
+
+  const handleMouseLeave = () => {
+    setCurrSelectedCard(null);
+    setHoverCaption(null);
+  };
 
   useEffect(() => {
     dispatch(thunkGetBoard(board_id));
@@ -113,9 +126,7 @@ export default function SingleBoard() {
               />
               <div>
                 {hoverCaption === -1 && (
-                  <p className={hoverClassName}>
-                    Double click here to edit board name
-                  </p>
+                  <p className={hoverClassName}>Double click to edit title</p>
                 )}
               </div>
             </div>
@@ -155,16 +166,17 @@ export default function SingleBoard() {
                     {/* Cards */}
                     <div className="all-cards-on-list">
                       {list.cards_in_list.length > 0 ? (
-                        list.cards_in_list.map((card, index) => (
+                        list.cards_in_list.map((card) => (
                           <div className="indiv-card-in-list" key={card.id}>
                             {card && (
                               <>
-                                <div
-                                  className="card-modal-box"
-                                  onMouseEnter={() => setHoverCaption(index)}
-                                  onMouseLeave={() => setHoverCaption(null)}
-                                >
-                                  <div className="card-modal-title" role="link">
+                                <div className="card-modal-box">
+                                  <div
+                                    onMouseOver={() => handleMouseOver(card.id)}
+                                    onMouseLeave={handleMouseLeave}
+                                    className="card-modal-title"
+                                    role="link"
+                                  >
                                     <OpenModalMenuItem
                                       className="card-modal-item"
                                       id="card-modal-item"
@@ -178,17 +190,19 @@ export default function SingleBoard() {
                                         />
                                       }
                                     />
-                                    {hoverCaption === index && (
-                                      <p className={hoverClassName}>
-                                        {" "}
-                                        Double click here edit your card
-                                      </p>
-                                    )}
+                                    {isMouseOver &&
+                                      currSelectedCard === card.id && (
+                                        <p className={hoverClassName}>
+                                          {" "}
+                                          Click to edit card
+                                        </p>
+                                      )}
                                   </div>
                                   <div className="card-modal-main-info">
                                     <div className="card-modal-cover-image">
                                       <img
-                                        style={{ width: 100, height: 100 }}
+                                        className="sb-image-card"
+                                        style={{ width: 220, height: 220 }}
                                         src={
                                           cardImages?.length &&
                                           cardImages?.find(

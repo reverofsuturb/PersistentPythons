@@ -60,10 +60,8 @@
   top: 2.8rem;
   right: 2.8rem;
   font-size: small;
-  font-family: cursive;
-  font-style: italic;
   border: 1px solid black;
-  background-color: beige;
+  background-color: rgb(255, 255, 255);
   padding: 0px 8px;
   color: black;
 }
@@ -71,8 +69,6 @@
 .hover.hidden {
   visibility: hidden;
 }
-
-/* .sb-edit-board-modal {} */
 
 .caption {
   font-size: small;
@@ -85,7 +81,6 @@
   justify-content: center;
   height: 250px;
   width: 250px;
-  /* background: #c197d2; */
   border-radius: 15px;
 }
 
@@ -122,10 +117,6 @@
   border-radius: 8px;
 }
 
-/* #addListAndListContainer {
-  display: grid;
-  grid-template-columns: 1.25fr, 1fr;
-} */
 .pl-lists-button {
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.365);
@@ -134,9 +125,7 @@
 button.pl-lists-button:hover {
   cursor: pointer;
   background-color: slategrey;
-  /* border: 4px solid #6185e180; */
   border-width: 3px;
-  /* box-shadow: 0 0 10px #84acf8; */
 }
 
 /* .sb-delete-bp-list-add {} */
@@ -154,34 +143,25 @@ button.pl-lists-button:hover {
   gap: 8px;
   align-items: flex-start;
   color: #eae5ec;
-  /* overflow-x: scroll; Allow horizontal scrolling */
 }
 
 .sb-list-container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   margin-left: 5px;
   gap: 8px;
-  /* background-color: darkgrey; */
   background-color: rgba(0, 0, 0, 0.539);
-
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   border-radius: 20px;
   padding-bottom: 8px;
-  align-items: center;
-  width: 18rem;
+  width: 16rem;
   border: 1px black solid;
-  /* width: fit-content; */
   height: fit-content;
-  overflow: hidden;
-  /* overflow-x: auto; Allow horizontal scrolling */
 }
 
 .sb-list-container:hover {
   box-shadow: 2.3px 1.2px 6px 6px #84acf8;
-  /* padding: 12px 14px; */
 }
 
 .single-board_delete {
@@ -200,40 +180,17 @@ button.pl-lists-button:hover {
   align-items: center;
   width: 100%;
   height: 100%;
-  margin-top: 1rem;
 }
 
 .indiv-card-in-list {
   width: 100%;
   display: flex;
   flex-direction: row;
-  /* Change flex-direction to row */
   flex-wrap: wrap;
-  height: 200px;
 }
-
-/* .card-modal {} */
 
 .card-modal-title {
   cursor: pointer;
-}
-
-.all-cards-on-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.indiv-card-in-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 200px;
 }
 
 .card-modal-box {
@@ -278,7 +235,7 @@ button.pl-lists-button:hover {
 
 div.card-modal-title > p.hover {
   position: relative;
-  top: 50%;
+  top: 40%;
   right: 15%;
   width: fit-content;
   color: black;
@@ -292,21 +249,15 @@ div.card-modal-title > p.hover {
 .card-modal-main-info {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
   padding: 2px 10px;
   margin: 10px;
-  border: 2px solid black;
-  width: 100%;
-  height: 75%;
+  height: 250px;
   align-items: center;
 }
 
 .card-modal-cover-image {
-  /* width: 75%; */
-  /* height: 170px; */
-  border-bottom: 1px solid black;
-  border-radius: 2%;
+  border-radius: 20px;
   padding: 8px 12px;
   margin: 2px;
   cursor: auto;
@@ -314,6 +265,11 @@ div.card-modal-title > p.hover {
 
 .card-modal-description {
   cursor: default;
+}
+
+.sb-image-card {
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px 4px grey;
 }
 
 .on-list-delete {
@@ -387,13 +343,11 @@ h2.sb-edit-board > p.hover {
 p.caption {
   position: relative;
   height: min-content;
-  top: 2.8rem;
+  top: 1.6rem;
   right: 2.8rem;
   font-size: small;
-  font-family: cursive;
-  font-style: italic;
   border: 1px solid black;
-  background-color: beige;
+  background-color: rgb(255, 255, 255);
   padding: 0px 8px;
   color: black;
 }
@@ -408,7 +362,7 @@ p.caption {
   justify-content: space-between;
   height: 10px;
 }
- 
+
 button.omb-button {
   width: 100%;
   border-style: none;
