@@ -1,4 +1,5 @@
 import { useModal } from "../../../context/Modal";
+import { FaNoteSticky } from "react-icons/fa6";
 import './OpenCardModalMenuItem.css'
 
 function OpenCardModalMenuItem({
@@ -22,6 +23,7 @@ function OpenCardModalMenuItem({
       <div className="image-files-in-ocmmi-container">
         {card?.cardimages?.length && <img className="image-files-in-ocmmi" src={card?.cardimages[0]?.image_file} />}
       </div>
+      <div>      <div>{card.description && <FaNoteSticky />}</div></div>
     </div>
   );
 }
