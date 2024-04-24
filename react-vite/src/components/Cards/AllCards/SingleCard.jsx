@@ -24,6 +24,7 @@ export default function SingleCard({ card, list }) {
   const cardState = useSelector((state) => state.cards[card.id]);
   const cardImagesObj = useSelector((state) => state.cardImages);
   const cardImages = Object.values(cardImagesObj);
+  console.log("🚀 ~ SingleCard ~ cardImages:", cardImages)
   const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card?.title);
