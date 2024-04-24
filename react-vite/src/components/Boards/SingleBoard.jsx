@@ -69,9 +69,6 @@ export default function SingleBoard() {
   useEffect(() => {
     // dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
-    dispatch(thunkGetAllLists());
-    dispatch(thunkGetAllCards());
-    dispatch(thunkAllGetCardImages());
     console.log("rerender");
   }, [dispatch, addCard, length_post_card, editing]);
   const closeMenu = () => setShowMenu(false);

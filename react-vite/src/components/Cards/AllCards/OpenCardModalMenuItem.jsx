@@ -1,5 +1,6 @@
 import { useModal } from "../../../context/Modal";
-import "./OpenCardModalMenuItem.css";
+import { FaNoteSticky } from "react-icons/fa6";
+import './OpenCardModalMenuItem.css'
 
 function OpenCardModalMenuItem({
   modalComponent, // component to render inside the modal
@@ -29,6 +30,7 @@ function OpenCardModalMenuItem({
           ""
         )}
       </div>
+      <div>      <div>{card.description && <FaNoteSticky />}</div></div>
     </div>
   );
 }
