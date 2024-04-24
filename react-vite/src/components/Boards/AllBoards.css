@@ -33,6 +33,10 @@ a.ab-a-nav {
   width: 100%;
 }
 
+.boardsTitleContainer{
+  margin-left: 10px;
+}
+
 #boardsLeftSideContainer {
   display: flex;
   flex-direction: column;
