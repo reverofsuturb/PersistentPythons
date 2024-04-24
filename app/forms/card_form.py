@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, TextAreaField, DateField
+from wtforms import StringField, BooleanField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired , Length
 
 class CardForm(FlaskForm):
@@ -12,3 +12,4 @@ class CardForm(FlaskForm):
     start_date = StringField('Start Date')
     end_date = StringField('End Date')
     checklist = StringField('Checklist')
+    cover_photo = StringField('Cover Photo')

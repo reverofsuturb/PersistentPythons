@@ -79,6 +79,7 @@ class Card(db.Model):
     start_date = db.Column(db.String, nullable=True)
     end_date = db.Column(db.String, nullable=True)
     checklist = db.Column(db.String(255), default=None, nullable=True)
+    cover_photo = db.Column(db.String, default=None, nullable=True)
     # EDIT THIS DOWN BELOW CHAOS?
     list = db.relationship("List", back_populates="cards_in_list")
     comments = db.relationship(
@@ -100,6 +101,7 @@ class Card(db.Model):
             "start_date": self.start_date,
             "end_date": self.end_date,
             "checklist": self.checklist,
+            "cover_photo": self.cover_photo,
         }
 
 
@@ -114,20 +116,17 @@ class CardImage(db.Model):
         db.Integer, db.ForeignKey(add_prefix_for_prod("cards.id")), nullable=False
     )
     image_file = db.Column(db.String(), nullable=False)
-    cover = db.Column(db.Boolean, nullable=False)
     card_images_rel = db.relationship("Card", back_populates="images")
 
-    def __init__(self, card_id, image_file, cover=False):
+    def __init__(self, card_id, image_file):
         self.card_id = card_id
         self.image_file = image_file
-        self.cover = cover
 
     def to_dict(self):
         return {
             "id": self.id,
             "card_id": self.card_id,
             "image_file": self.image_file,
-            "cover": self.cover,
         }
 
 

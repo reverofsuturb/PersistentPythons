@@ -7,52 +7,52 @@ def card_images_seeds():
 	card_image1 = CardImage(
 		card_id = 1,
 		image_file = 'https://imgur.com/hHKSn9N.jpg',
-		cover = True,
+	
 	)
 	card_image2 = CardImage(
 		card_id = 2,
 		image_file = 'https://imgur.com/10WPEMV.jpg',
-		cover = False,
+		
 	)
 	card_image3 = CardImage(
 		card_id = 3,
 		image_file = 'https://imgur.com/9xzJhaP.jpg',
-		cover = False,
+		
 	)
 	card_image4 = CardImage(
 		card_id = 4,
 		image_file = 'https://imgur.com/xTfhFLE.jpg',
-		cover = True,
+	
 	)
 	card_image5 = CardImage(
 		card_id = 5,
 		image_file = 'https://imgur.com/Mdqz9LC.jpg',
-		cover = False,
+		
 	)
 	card_image6 = CardImage(
 		card_id = 6,
 		image_file = 'https://imgur.com/Mdqz9LC.jpg',
-		cover = True,
+	
 	)
 	card_image7 = CardImage(
 		card_id = 7,
 		image_file = 'https://imgur.com/evZ2BFG.jpg',
-		cover = True,
+	
 	)
 	card_image8 = CardImage(
 		card_id = 8,
 		image_file = 'https://imgur.com/mPMqcuo.jpg',
-		cover = False,
+		
 	)
 	card_image9 = CardImage(
 		card_id = 9,
 		image_file = 'https://imgur.com/pc3n1bh.jpg',
-		cover = True,
+	
 	)
 	card_image10 = CardImage(
 		card_id = 10,
 		image_file = 'https://imgur.com/lab35Jz.jpg',
-		cover = True,
+	
 	)
 
 	all_card_images =[card_image1, card_image2, card_image3, card_image4, card_image5, card_image6, card_image7, card_image8, card_image9, card_image10]
