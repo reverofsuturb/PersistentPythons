@@ -27,14 +27,17 @@
 
 .board-post-list {
   width: 275px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 #sb-delete-board-button-single {
-  border: 2px solid black;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 10px;
-  padding: 4px;
+  padding-top: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-bottom: 2px;
-  background-color: rgb(255, 255, 255);
 }
 
 .sb-edit-board {
@@ -121,15 +124,8 @@
   border-radius: 8px;
 }
 
-.pl-lists-button {
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 0.365);
-  width: 200px;
-}
-
 button.pl-lists-button:hover {
   cursor: pointer;
-  background-color: slategrey;
   border-width: 3px;
 }
 
@@ -155,7 +151,7 @@ button.pl-lists-button:hover {
   flex-direction: column;
   margin-left: 5px;
   gap: 8px;
-  background-color: rgba(0, 0, 0, 0.539);
+  background-color: rgba(0, 0, 0, 0.922);
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
   border-radius: 20px;
@@ -165,9 +161,9 @@ button.pl-lists-button:hover {
   height: fit-content;
 }
 
-.sb-list-container:hover {
+/* .sb-list-container:hover {
   box-shadow: 2.3px 1.2px 6px 6px #84acf8;
-}
+} */
 
 .single-board_delete {
   margin: 10px;
@@ -391,7 +387,6 @@ button.omb-button {
 
   .outer-sb-list {
     display: flex;
-    /* width: 100vw; */
     height: 100%;
   }
 
@@ -400,9 +395,6 @@ button.omb-button {
     flex-direction: column;
     margin-left: 0px;
     gap: 8px;
-    background-color: rgba(0, 0, 0, 0.539);
-    box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
-    box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
     border-radius: 20px;
     padding-bottom: 8px;
     width: 100%;
@@ -413,7 +405,6 @@ button.omb-button {
 
   .pl-lists-button {
     font-size: 18px;
-    background-color: rgba(0, 0, 0, 0.365);
     width: 100%;
   }
 
@@ -423,7 +414,6 @@ button.omb-button {
     gap: 10px;
     border-right: 2px black solid;
     height: auto;
-    background-color: rgb(219, 219, 219);
     padding: 0px 5px;
   }
 

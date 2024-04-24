@@ -141,7 +141,7 @@ a.ab-a-nav {
 }
 
 .ab-boards-tile-right:hover {
-  box-shadow: 2.3px 1.2px 6px 6px #84acf8;
+  box-shadow: 1px 1px 8px 1px #84acf8;
 }
 
 @media only screen and (max-width: 650px) {
@@ -205,5 +205,4 @@ a.ab-a-nav {
     overflow-y: scroll;
     /* This one and the scroll in singleboard .outer-sb-list keeps the scroll to the lists and keeps the image from extending the page */
   }
-
 }

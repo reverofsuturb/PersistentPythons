@@ -46,7 +46,7 @@
 }
 ::-webkit-file-upload-button:hover {
   border: 2px solid #8584f8;
-  box-shadow: 2.3px 1.2px 6px 6px #84acf8;
+  box-shadow: 1px 1px 8px 1px #84acf8;
   transition: 0.2s linear;
 }
 

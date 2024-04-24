@@ -1,5 +1,11 @@
-.delete-list-button {
+#delete-list-button-container {
   display: flex;
-  align-self: flex-end;
   margin-right: 5px;
+  margin-left: 5px;
+}
+
+#delete-list-button {
+  border: 1px white solid;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
 }

@@ -2,11 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
+  justify-content: flex-start;
   padding: 10px;
   height: 100px;
-  background-color: #613659;
+  background-color: #61365900;
   border-radius: 15px;
 }
 
@@ -14,10 +13,9 @@
   font-size: 0.9rem;
   width: 230px;
   height: 30px;
-  background-color: #c197d2;
+  background-color: rgb(255, 255, 255);
   padding: 5px;
   border-radius: 10px;
-  border-bottom: solid 1px #211522;
 }
 
 .pl-cards-form {
@@ -28,15 +26,27 @@
 
 .pl-cards-button {
   justify-content: flex-start;
+  align-self: flex-start;
+  text-align: left;
+  color: white;
   height: 50px;
-  background-color: #ffffff3d;
+  background-color: #ffffff00;
+  width: 100%;
+  border: none;
   padding: 12px;
+  outline: none;
+  box-shadow: none;
+}
+
+.pl-cards-button:hover {
+  color: white;
+  background-color: #ffffff00;
 }
 
 .pl-cards-submit-button {
   width: 75px;
   height: 30px;
-  background-color: #c197d2;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 

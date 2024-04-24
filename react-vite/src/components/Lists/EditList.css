@@ -1,21 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/death-star");
 
-.eb-lists-title {
-  font-size: 1.75rem;
-  border-bottom: solid 2px #211522;
-}
-
 .eb-lists-input {
   font-size: 1.75rem;
-}
-
-.eb-lists-title {
-  font-size: 1.25rem;
-  display: flex;
-  border-bottom: solid 2px #211522;
-  margin: 0.5rem 0.2rem;
-  flex-wrap: wrap;
-  width: fit-content;
 }
 
 .eb-title_outer_container {
@@ -32,10 +18,9 @@
   display: flex;
   height: 65px;
   width: 100%;
-  /* flex-wrap: wrap; */
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -95,6 +80,8 @@ p.hover {
   left: 2rem;
 }
 
-.profile-dropdown {}
+.profile-dropdown {
+}
 
-.profile-dropdownhidden {}
+.profile-dropdownhidden {
+}

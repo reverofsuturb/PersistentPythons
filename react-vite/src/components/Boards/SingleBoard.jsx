@@ -128,7 +128,10 @@ export default function SingleBoard() {
               </div>
               <OpenModalMenuItem
                 itemText={
-                  <p id="sb-delete-board-button-single">
+                  <p
+                    style={{ fontSize: "12px", color: "white" }}
+                    id="sb-delete-board-button-single"
+                  >
                     <FaTrash />
                   </p>
                 }
@@ -165,7 +168,7 @@ export default function SingleBoard() {
           </div>
           <div className="sb-delete-bp-list-add">
             <div className="board-post-list">
-              <PostList setEditing={setEditing}/>
+              <PostList setEditing={setEditing} />
             </div>
           </div>
           {/* list */}
@@ -173,7 +176,11 @@ export default function SingleBoard() {
             <div className="sb-list-full">
               {board?.lists?.length ? (
                 board?.lists?.map((list) => (
-                  <SingleList list={list} setEditing={setEditing} />
+                  <SingleList
+                    list={list}
+                    setEditing={setEditing}
+                    editing={editing}
+                  />
                   // <div key={list.id} className="sb-list-container">
                   //   <EditList list={list} />
                   //   {/* Cards */}
