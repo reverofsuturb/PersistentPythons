@@ -4,13 +4,12 @@ import { useParams } from "react-router-dom";
 import "./EditBoard.css";
 import { thunkPutBoard } from "../../store/boards";
 
-export default function EditBoard({ board }) {
+export default function EditBoard({ board, editing, setEditing }) {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const name_board = board?.board_name;
   const [boardName, setBoardName] = useState(name_board);
   const [errors, setErrors] = useState({});
-  const [editing, setEditing] = useState(false);
 
 
   const handleSubmit = async (e) => {
@@ -39,7 +38,7 @@ export default function EditBoard({ board }) {
     setErrors(errorsObject)
   }, [boardName])
 
- 
+
   return (
     <>
       {editing === false ? (

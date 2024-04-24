@@ -6,52 +6,52 @@ def card_images_seeds():
 
 	card_image1 = CardImage(
 		card_id = 1,
-		image_file = 'https://imgur.com/hHKSn9N.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space1.jpg',
 	
 	)
 	card_image2 = CardImage(
 		card_id = 2,
-		image_file = 'https://imgur.com/10WPEMV.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space10.jpg',
 		
 	)
 	card_image3 = CardImage(
 		card_id = 3,
-		image_file = 'https://imgur.com/9xzJhaP.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space2.jpg',
 		
 	)
 	card_image4 = CardImage(
 		card_id = 4,
-		image_file = 'https://imgur.com/xTfhFLE.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space3.png',
 	
 	)
 	card_image5 = CardImage(
 		card_id = 5,
-		image_file = 'https://imgur.com/Mdqz9LC.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space4.webp',
 		
 	)
 	card_image6 = CardImage(
 		card_id = 6,
-		image_file = 'https://imgur.com/Mdqz9LC.jpg',
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space5.webp',
 	
 	)
 	card_image7 = CardImage(
-		card_id = 7,
-		image_file = 'https://imgur.com/evZ2BFG.jpg',
+		card_id = 11,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space6.jpg',
 	
 	)
 	card_image8 = CardImage(
-		card_id = 8,
-		image_file = 'https://imgur.com/mPMqcuo.jpg',
+		card_id = 16,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space7.jpg',
 		
 	)
 	card_image9 = CardImage(
-		card_id = 9,
-		image_file = 'https://imgur.com/pc3n1bh.jpg',
+		card_id = 7,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space8.webp',
 	
 	)
 	card_image10 = CardImage(
-		card_id = 10,
-		image_file = 'https://imgur.com/lab35Jz.jpg',
+		card_id = 18,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space9.webp',
 	
 	)
 

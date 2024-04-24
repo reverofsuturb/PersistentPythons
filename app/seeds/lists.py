@@ -8,28 +8,28 @@ def seed_lists():
         title="Good Times",
     )
     list2 = List(
-        board_id=2,
-        user_id=2,
+        board_id=1,
+        user_id=1,
         title="Yellow Suitcase",
     )
     list3 = List(
-        board_id=3,
-        user_id=3,
+        board_id=1,
+        user_id=1,
         title="Insubordination Ants",
     )
     list4 = List(
-        board_id=4,
+        board_id=2,
         user_id=1,
         title="Critical Menus",
     )
     list5 = List(
-        board_id=5,
-        user_id=2,
+        board_id=2,
+        user_id=1,
         title="This may be too much",
     )
     list6 = List(
-        board_id=6,
-        user_id=3,
+        board_id=2,
+        user_id=1,
         title="Adventure Time",
     )
     list7 = List(
@@ -39,12 +39,12 @@ def seed_lists():
     )
     list8 = List(
         board_id=8,
-        user_id=2,
+        user_id=1,
         title="Journey Ahead",
     )
     list9 = List(
         board_id=9,
-        user_id=3,
+        user_id=1,
         title="Creative Minds",
     )
     list10 = List(
@@ -64,7 +64,7 @@ def seed_lists():
     )
     list13 = List(
         board_id=3,
-        user_id=3,
+        user_id=1,
         title="Present Moments",
     )
     list14 = List(
@@ -74,7 +74,7 @@ def seed_lists():
     )
     list15 = List(
         board_id=5,
-        user_id=2,
+        user_id=1,
         title="Wishful Thinking",
     )
 

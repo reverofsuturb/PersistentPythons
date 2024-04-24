@@ -4,14 +4,14 @@ from sqlalchemy.sql import text
 
 def seed_boards():
     board1 = Board(user_id=1, board_name="Taco Palace")
-    board2 = Board(user_id=2, board_name="Orange Chicken")
-    board3 = Board(user_id=3, board_name="Organization Fun")
+    board2 = Board(user_id=1, board_name="Orange Chicken")
+    board3 = Board(user_id=1, board_name="Organization Fun")
     board4 = Board(user_id=1, board_name="Legend Frank")
-    board5 = Board(user_id=2, board_name="Steak Sauce Frontier")
-    board6 = Board(user_id=3, board_name="Pizza Kingdom")
+    board5 = Board(user_id=1, board_name="Steak Sauce Frontier")
+    board6 = Board(user_id=1, board_name="Pizza Kingdom")
     board7 = Board(user_id=1, board_name="Burger Empire")
-    board8 = Board(user_id=2, board_name="Sushi Universe")
-    board9 = Board(user_id=3, board_name="Pasta Galaxy")
+    board8 = Board(user_id=1, board_name="Sushi Universe")
+    board9 = Board(user_id=1, board_name="Pasta Galaxy")
     board10 = Board(user_id=1, board_name="Salad Oasis")
 
     all_boards = [

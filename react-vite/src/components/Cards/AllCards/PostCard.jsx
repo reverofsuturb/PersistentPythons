@@ -10,10 +10,11 @@ export default function PostCard({ list, setEditing  }) {
   const [showSubmit, setShowSubmit] = useState(false);
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-  setEditing(true);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEditing(true);
     if (title.length == 0) {
       setErrors({ title: "Card title is required" });
       return;
@@ -40,6 +41,7 @@ export default function PostCard({ list, setEditing  }) {
     setEditing(false);
     closeModal();
   };
+
 
   const toggleMenu = (e) => {
     e.stopPropagation();
