@@ -78,7 +78,6 @@ export default function SingleBoard() {
     setShowMenu(!showMenu);
   };
 
-  // const ulClassName = "profile-dropdown" + (showMenu ? "" : "hidden");
 
   const hoverClassName = "caption" + (hoverCaption !== null ? "" : "hidden");
 
@@ -120,7 +119,7 @@ export default function SingleBoard() {
                 role="link"
               >
                 {board?.board_name && (
-                  <EditBoard board={board} className="sb-edit-board-modal" />
+                  <EditBoard board={board} editing={editing} setEditing={setEditing} className="sb-edit-board-modal" />
                 )}
               </div>
               <OpenModalMenuItem
@@ -135,7 +134,6 @@ export default function SingleBoard() {
                 modalComponent={
                   <DeleteBoard board_id={board_id} board={board} />
                 }
-                // onItemClick={closeMenu}
                 role="button"
               />
               <div>
@@ -178,65 +176,6 @@ export default function SingleBoard() {
                     setEditing={setEditing}
                     editing={editing}
                   />
-                  // <div key={list.id} className="sb-list-container">
-                  //   <EditList list={list} />
-                  //   {/* Cards */}
-                  //   <div className="all-cards-on-list">
-                  //     {list?.cards?.length > 0 ? (
-                  //       list?.cards?.map((card, index) => (
-                  //         <div className="indiv-card-in-list" key={card.id}>
-                  //           {card && (
-                  //             <>
-                  //               <div className="card-modal-box">
-                  //                 <div
-                  //                   onMouseOver={() => handleMouseOver(card.id)}
-                  //                   onMouseLeave={handleMouseLeave}
-                  //                   className="card-modal-title"
-                  //                   role="link"
-                  //                 >
-                  //                   <OpenModalMenuItem
-                  //                     className="card-modal-item"
-                  //                     id="card-modal-item"
-                  //                     itemText={card.title}
-                  //                     onItemClick={!closeMenu}
-                  //                     modalComponent={
-                  //                       <SingleCard
-                  //                         className="card-modal"
-                  //                         card={card}
-                  //                         list={list}
-                  //                       />
-                  //                     }
-                  //                   />
-                  //                   {isMouseOver &&
-                  //                     currSelectedCard === card.id && (
-                  //                       <p className={hoverClassName}>
-                  //                         {" "}
-                  //                         Click to edit card
-                  //                       </p>
-                  //                     )}
-                  //                 </div>
-                  //                 <div className="card-modal-main-info">
-                  //                   <div className="card-modal-cover-image">
-                  //                     <img
-                  //                       className="sb-image-card"
-                  //                       style={{ width: 220, height: 220 }}
-                  //                       src={
-                  //                         cardImages?.length &&
-                  //                         cardImages?.find(
-                  //                           (image) => image.card_id == card.id
-                  //                         )?.image_file
-                  //                       }
-                  //                       alt="img"
-                  //                     />
-                  //                   </div>
-                  //                   <div className="card-modal-description">
-                  //                     {card.description}
-                  //                   </div>
-                  //                 </div>
-                  //               </div>
-                  //             </>
-                  //           )}
-                  //         </div>
                 ))
               ) : (
                 <div className="sb-contain-two">
