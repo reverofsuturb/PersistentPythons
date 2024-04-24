@@ -1,6 +1,6 @@
 .cardcontainer{
   width: auto;
-  max-height: 1000px;
+  max-height: 90vh;
   overflow-y: auto;
   border-radius: 15px;
   background-color: mintcream;
@@ -136,4 +136,21 @@
   height: 250px;
   resize: none;
   font-size: 15;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .cardcontainer{
+    width: 80vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    background-color: mintcream;
+    padding: 20px;
+    color: white;
+    background: linear-gradient(110deg, #13283ce2, #3a92d5,#57bdbb, #5abebd, #62A6CD, #a17cad, #DA99DC, #a00093);
+    background-size: 200% 200%;
+    animation: Gradient 20s ease infinite;
+  }
+
 }
