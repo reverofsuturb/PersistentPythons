@@ -25,11 +25,15 @@
   border-bottom: solid 2px #211522;
 }
 
+<<<<<<< HEAD
 .boardsTitleContainer{
   margin-left: 10px;
 }
 
 .board-post-list{
+=======
+.board-post-list {
+>>>>>>> dev
   width: 275px;
 }
 
@@ -128,6 +132,7 @@
 .pl-lists-button {
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.365);
+  width: 200px;
 }
 
 button.pl-lists-button:hover {
@@ -380,18 +385,7 @@ button.omb-button {
   box-shadow: none;
 }
 
-
-
-
-
-@media only screen and (min-width: 650px) {
-  .outer-sb-list {
-      overflow-x: scroll; /* Change this to the value you want when the screen width is 650px or less */
-  }
-}
-
 @media only screen and (max-width: 650px) {
-
   .sb-list-full {
     display: flex;
     flex-direction: column;
@@ -423,33 +417,34 @@ button.omb-button {
     border: 1px black solid;
     height: fit-content;
     margin-bottom: 20px;
-}
+  }
 
-.pl-lists-button {
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 0.365);
-  width: 100%;
-}
+  .pl-lists-button {
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.365);
+    width: 100%;
+  }
 
-#boardsLeftSideContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-right: 2px black solid;
-  height: auto;
-  background-color: rgb(219, 219, 219);
-  padding: 0px 5px;
-}
+  #boardsLeftSideContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 2px black solid;
+    height: auto;
+    background-color: rgb(219, 219, 219);
+    padding: 0px 5px;
+  }
 
-.flip, .unflip {
-  transition: transform 0.4s ease-in-out;
-}
+  .flip,
+  .unflip {
+    transition: transform 0.4s ease-in-out;
+  }
 
-.flip {
-  transform: rotate(180deg);
-}
+  .flip {
+    transform: rotate(180deg);
+  }
 
-.unflip {
-  transform: rotate(0deg);
-}
+  .unflip {
+    transform: rotate(0deg);
+  }
 }

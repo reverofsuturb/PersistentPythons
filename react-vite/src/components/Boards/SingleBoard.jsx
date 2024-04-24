@@ -28,8 +28,7 @@ export default function SingleBoard() {
   const [showMenu, setShowMenu] = useState(false);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const [currSelectedCard, setCurrSelectedCard] = useState(null);
-  const [showBoards, setShowBoards] = useState(false)
-
+  const [showBoards, setShowBoards] = useState(false);
 
   let boards = useSelector((state) => state.boards);
   let board = useSelector((state) => state.boards[board_id]);
@@ -64,8 +63,8 @@ export default function SingleBoard() {
   };
 
   const handleShowAllBoards = () => {
-    setShowBoards(!showBoards)
-  }
+    setShowBoards(!showBoards);
+  };
 
   useEffect(() => {
     // dispatch(thunkGetBoard(board_id));
@@ -95,8 +94,11 @@ export default function SingleBoard() {
         </h2>
       </div>
       <div id="secondHalfContainerBoards">
-        {showBoards &&
-          <div id="boardsLeftSideContainer" className={showBoards ? "slideDown" : "slideUp"}>
+        {showBoards && (
+          <div
+            id="boardsLeftSideContainer"
+            className={showBoards ? "slideDown" : "slideUp"}
+          >
             {allBoards.length &&
               allBoards?.map((board) => (
                 <div key={board.id} className="ab-boards-tile-left">
@@ -110,7 +112,7 @@ export default function SingleBoard() {
                 </div>
               ))}
           </div>
-        }
+        )}
         <div id="boardsRightSideContainer">
           <div className="sb-header-right-container">
             <div className="sb-edit-board">
@@ -240,9 +242,7 @@ export default function SingleBoard() {
                 </div>
               )}
             </div>
-
           </div>
-          )) ) : (<>No Lists Created</>)
         </div>
       </div>
       {/* </div> */}

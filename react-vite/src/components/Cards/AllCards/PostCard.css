@@ -1,16 +1,16 @@
-.pl-lists-container {
+.pc-cards-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 275px;
+
   padding: 10px;
   height: 100px;
   background-color: #613659;
   border-radius: 15px;
 }
 
-.pl-lists-input {
+.pl-cards-input {
   font-size: 0.9rem;
   width: 230px;
   height: 30px;
@@ -20,29 +20,27 @@
   border-bottom: solid 1px #211522;
 }
 
-.pl-lists-form {
+.pl-cards-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.pl-lists-button {
+.pl-cards-button {
   justify-content: flex-start;
-  width: 100%;
-  height: 70px;
+  height: 50px;
   background-color: #ffffff3d;
-  border-radius: 15px;
   padding: 12px;
 }
 
-.pl-lists-submit-button {
+.pl-cards-submit-button {
   width: 75px;
   height: 30px;
   background-color: #c197d2;
   border-radius: 15px;
 }
 
-.pl-lists-button-container {
+.pl-cards-button-container {
   display: flex;
   align-items: space-between;
   justify-content: space-between;
