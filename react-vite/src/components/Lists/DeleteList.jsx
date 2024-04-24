@@ -17,8 +17,8 @@ export default function DeleteList({ list }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <button type="submit">
+      <form className="delete-list-button" onSubmit={handleSubmit}>
+        <button style={{ fontSize: "12px" }} type="submit">
           <FaTrash />
         </button>
       </form>

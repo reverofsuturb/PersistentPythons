@@ -60,20 +60,20 @@ export default function PostCard({ list }) {
     <>
       <button
         type="button"
-        className="pl-lists-button"
+        className="pl-cards-button"
         onClick={toggleMenu}
         style={{ display: showSubmit ? "none" : "block" }}
       >
         Add a Card
       </button>
       <div
-        className="pl-lists-container"
+        className="pl-cards-container"
         style={{ display: showSubmit ? "block" : "none" }}
       >
-        <form className="pl-lists-form" onSubmit={handleSubmit}>
-          <label className="pl-lists-label">
+        <form className="pl-cards-form" onSubmit={handleSubmit}>
+          <label className="pl-cards-label">
             <input
-              className="pl-lists-input"
+              className="pl-cards-input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -81,9 +81,9 @@ export default function PostCard({ list }) {
               onClick={(e) => e.stopPropagation()}
             />
           </label>
-          <div className="pl-lists-button-container">
+          <div className="pl-cards-button-container">
             <p className="p-error">{errors?.title}</p>
-            <button type="submit" className="pl-lists-submit-button">
+            <button type="submit" className="pl-cards-submit-button">
               Submit
             </button>
           </div>
