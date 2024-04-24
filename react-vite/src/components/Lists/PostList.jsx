@@ -5,7 +5,7 @@ import { thunkGetAllLists } from "../../store/lists";
 import { useParams } from "react-router-dom";
 import "./PostLists.css";
 
-export default function PostList() {
+export default function PostList({ setEditing }) {
   const { board_id } = useParams();
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
@@ -17,7 +17,7 @@ export default function PostList() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setEditing(true);
     if (title.length == 0) {
       setErrors({ title: "List title is required" });
       return;
@@ -39,7 +39,7 @@ export default function PostList() {
     }
     dispatch(thunkGetAllLists());
     setTitle("");
-
+    setEditing(false);
     closeMenu();
   };
 

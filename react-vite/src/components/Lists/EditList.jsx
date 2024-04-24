@@ -3,16 +3,16 @@ import { useState } from "react";
 import { thunkEditList, thunkGetAllLists } from "../../store/lists";
 import "./EditList.css";
 
-export default function EditList({ list }) {
+export default function EditList({ list, setEditing }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(list.title);
   const [errors, setErrors] = useState({});
-  const [editing, setEditing] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [hoverCaption, setHoverCaption] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setEditing(true);
     const newEdits = {
       title,
     };
@@ -22,6 +22,7 @@ export default function EditList({ list }) {
     if (res && res.errors) {
       return setErrors(res.errors);
     }
+    setShowEdit(false);
     setEditing(false);
     dispatch(thunkGetAllLists());
   };
@@ -31,11 +32,11 @@ export default function EditList({ list }) {
   return (
     <>
       <div className="eb-title_outer_container">
-        {editing === false ? (
+        {showEdit === false ? (
           <div className="eb-title">
             <div className="eb-title_inner_container">
               <h2
-                onDoubleClick={() => setEditing(true)}
+                onDoubleClick={() => setShowEdit(true)}
                 className="eb-lists-title"
                 onMouseEnter={() => setHoverCaption(-1)}
                 onMouseLeave={() => setHoverCaption(null)}

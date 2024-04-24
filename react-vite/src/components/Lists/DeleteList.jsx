@@ -4,15 +4,17 @@ import { FaTrash } from "react-icons/fa";
 
 import "./DeleteList.css";
 
-export default function DeleteList({ list }) {
+export default function DeleteList({ list, setEditing }) {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = dispatch(thunkDeleteList(list.id));
+    setEditing(true);
+    const res = await dispatch(thunkDeleteList(list.id));
     if (res && res.errors) {
       return res.errors;
     }
+    setEditing(false);
   };
 
   return (

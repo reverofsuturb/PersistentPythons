@@ -5,7 +5,7 @@ import { thunkGetBoard } from "../../../store/boards";
 import "./PostCard.css";
 import { useModal } from "../../../context/Modal";
 
-export default function PostCard({ list }) {
+export default function PostCard({ list, setEditing }) {
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
   const [showSubmit, setShowSubmit] = useState(false);
@@ -14,7 +14,7 @@ export default function PostCard({ list }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setEditing(true);
     if (title.length == 0) {
       setErrors({ title: "Card title is required" });
       return;
@@ -33,10 +33,12 @@ export default function PostCard({ list }) {
 
     if (res && res.errors) {
       setErrors(res.errors);
+      setEditing(false);
       return;
     }
 
     setTitle("");
+    setEditing(false);
     closeModal();
   };
 

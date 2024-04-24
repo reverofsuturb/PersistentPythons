@@ -50,7 +50,7 @@ export default function SingleBoard() {
     (list) => list.board_id == board_id
   );
   const [addCard, setAddCard] = useState(false);
-
+  const [editing, setEditing] = useState(false);
   const handleMouseOver = (cardId) => {
     setCurrSelectedCard(cardId);
     setHoverCaption(cardId);
@@ -73,7 +73,7 @@ export default function SingleBoard() {
     dispatch(thunkGetAllCards());
     dispatch(thunkAllGetCardImages());
     console.log("rerender");
-  }, [dispatch, addCard, length_post_card]);
+  }, [dispatch, addCard, length_post_card, editing]);
   const closeMenu = () => setShowMenu(false);
 
   const toggleMenu = (e) => {
@@ -165,7 +165,7 @@ export default function SingleBoard() {
           </div>
           <div className="sb-delete-bp-list-add">
             <div className="board-post-list">
-              <PostList />
+              <PostList setEditing={setEditing}/>
             </div>
           </div>
           {/* list */}
@@ -173,7 +173,7 @@ export default function SingleBoard() {
             <div className="sb-list-full">
               {board?.lists?.length ? (
                 board?.lists?.map((list) => (
-                  <SingleList list={list} />
+                  <SingleList list={list} setEditing={setEditing} />
                   // <div key={list.id} className="sb-list-container">
                   //   <EditList list={list} />
                   //   {/* Cards */}
