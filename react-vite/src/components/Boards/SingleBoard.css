@@ -25,6 +25,10 @@
   border-bottom: solid 2px #211522;
 }
 
+.board-post-list{
+  width: 275px;
+}
+
 #sb-delete-board-button-single {
   border: 2px solid black;
   border-radius: 10px;
@@ -107,7 +111,7 @@
   cursor: pointer;
   margin: 4px 8px;
   padding: 12px;
-  width: 100%;
+  width: 92%;
   border: none;
   height: 20%;
   font-size: 14px;
@@ -132,8 +136,6 @@ button.pl-lists-button:hover {
 .outer-sb-list {
   display: flex;
   width: 100%;
-  overflow-x: scroll;
-
 }
 
 .sb-list-full {
@@ -378,8 +380,14 @@ button.omb-button {
 
 
 
+@media only screen and (min-width: 650px) {
+  .outer-sb-list {
+      overflow-x: scroll; /* Change this to the value you want when the screen width is 650px or less */
+  }
+}
 
 @media only screen and (max-width: 650px) {
+
   .sb-list-full {
     display: flex;
     flex-direction: column;
@@ -394,15 +402,13 @@ button.omb-button {
   .outer-sb-list {
     display: flex;
     /* width: 100vw; */
-    /* overflow-y: scroll; */
     height: 100%;
-
   }
 
   .sb-list-container {
     display: flex;
     flex-direction: column;
-    margin-left: 5px;
+    margin-left: 0px;
     gap: 8px;
     background-color: rgba(0, 0, 0, 0.539);
     box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
@@ -412,12 +418,13 @@ button.omb-button {
     width: 100%;
     border: 1px black solid;
     height: fit-content;
+    margin-bottom: 20px;
 }
 
 .pl-lists-button {
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.365);
-  width: 95%;
+  width: 100%;
 }
 
 #boardsLeftSideContainer {
