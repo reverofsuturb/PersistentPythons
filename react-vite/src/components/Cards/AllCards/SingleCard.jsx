@@ -20,7 +20,7 @@ import "./SingleCard.css";
 import PostCardImage from "./PostCardImage";
 import GetImagesForCards from "./GetCardImage";
 
-export default function SingleCard({ card, list }) {
+export default function SingleCard({ card, list, setEditing }) {
   const cardState = useSelector((state) => state.cards[card.id]);
   const cardImagesObj = useSelector((state) => state.cardImages);
   const cardImages = Object.values(cardImagesObj);
@@ -33,11 +33,13 @@ export default function SingleCard({ card, list }) {
   );
   const [labels, setLabels] = useState(card.labels);
 
+
   const [notif, setNotif] = useState(card.notification);
   const [editTitle, setEditTitle] = useState(false);
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
   const [editNotif, setEditNotif] = useState(false);
+  const [coverPhoto, setCoverPhoto] = useState(card?.cover_photo || "")
 
   const [errors, setErrors] = useState({});
 
@@ -94,7 +96,7 @@ export default function SingleCard({ card, list }) {
       <div className="cardcontainer">
         <div className="photocovercontainer">
           <img className="photocover"
-            src={cardImages?.length && cardImages[0][0]?.image_file}
+            src={coverPhoto}
             alt="card image"
           />
         </div>
@@ -226,7 +228,7 @@ export default function SingleCard({ card, list }) {
                 <MdImage />
               </div>
               <div>
-                <GetImagesForCards card={card} />
+                <GetImagesForCards card={card}  setEditing={setEditing} coverPhoto={coverPhoto} setCoverPhoto={setCoverPhoto} />
               </div>
             </div>
 

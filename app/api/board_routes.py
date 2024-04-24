@@ -48,12 +48,12 @@ def view_board():
                             "start_date": card.start_date,
                             "end_date": card.end_date,
                             "checklist": card.checklist,
+                            "cover_photo": card.cover_photo,
                             "cardimages": [
                                 {
                                     "id": image.id,
                                     "card_id": image.card_id,
-                                    "image_file": image.image_file,
-                                    "cover": image.cover,
+                                    "image_file": image.image_file
                                 }
                                 for image in card.images
                             ],

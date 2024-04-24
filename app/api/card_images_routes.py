@@ -18,7 +18,6 @@ def get_card_images():
             "id": results.id,
             "card_id": results.card_id,
             "image_file": results.image_file,
-            "cover": results.cover,
         }
         images.append(results_info)
     return jsonify(images)
@@ -27,13 +26,6 @@ def get_card_images():
 @card_images_routes.route("/<int:cards_id>", methods=["GET"])
 @login_required
 def view_card_images(cards_id):
-    print("Are we even getting here??")
-    print("")
-    print("")
-    print(cards_id)
-    print("")
-    print("")
-    print("")
     stmt = select(CardImage).where(CardImage.card_id == cards_id)
 
     card_images_list = []
@@ -44,15 +36,7 @@ def view_card_images(cards_id):
             "id": results.id,
             "card_id": results.card_id,
             "image_file": results.image_file,
-            "cover": results.cover,
         }
 
         card_images_list.append(results_info)
-    print("")
-    print("")
-    print("")
-    print(card_images_list)
-    print("")
-    print("")
-    print("")
     return jsonify(card_images_list)

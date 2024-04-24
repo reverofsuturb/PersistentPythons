@@ -114,17 +114,16 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
   }
 };
 
-export const thunkPatchCard = (list_id, card_id) => async (dispatch) => {
-  const res = await fetch(`/api/cards/${list_id}/${card_id}`, {
+export const thunkPatchCard = (cardId, coverPhoto) => async (dispatch) => {
+  const res = await fetch(`/api/cards/${cardId}/cover`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(list_id),
+    body: JSON.stringify(coverPhoto),
   });
 
   const data = await res.json();
-  console.log(data, "PUT");
   if (data.errors) {
     return data;
   } else {

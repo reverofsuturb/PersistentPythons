@@ -24,7 +24,7 @@ function OpenCardModalMenuItem({
         {card?.cardimages?.length ? (
           <img
             className="image-files-in-ocmmi"
-            src={card?.cardimages[0]?.image_file}
+            src={card?.cover_photo}
           />
         ) : (
           ""

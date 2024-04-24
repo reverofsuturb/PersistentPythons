@@ -9,7 +9,7 @@ export const SingleList = ({ list, setEditing , editing }) => {
     <div className="sb-list-container">
       <EditList list={list} setEditing={setEditing} />
       {list.cards.map((card) => (
-        <CardSticker card={card} list={list} />
+        <CardSticker card={card} list={list} setEditing={setEditing} />
       ))}
       <div className="sl-post-delete-buttons-container">
         {!editing ? (

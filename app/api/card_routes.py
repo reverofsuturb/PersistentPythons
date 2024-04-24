@@ -29,6 +29,7 @@ def view_cards():
             "start_date": results.start_date,
             "end_date": results.end_date,
             "checklist": results.checklist,
+            "cover_photo": results.cover_photo
         }
         cards_list.append(results_info)
 
@@ -57,6 +58,7 @@ def edit_card(card_id):
             card.start_date = form.start_date.data
             card.end_date = form.end_date.data
             card.checklist = form.checklist.data
+            card.cover_photo= form.cover_photo.data
 
             db.session.add(card)
             db.session.commit()
@@ -66,9 +68,11 @@ def edit_card(card_id):
     return jsonify(card.to_dict())
 
 
-@card_routes.route("/<int:list_id>/<int:card_id>", methods=["PUT"])
+@card_routes.route("/<int:card_id>/cover", methods=["PUT"])
 @login_required
-def patch_card(list_id, card_id):
+def patch_card(card_id):
+    cover_photo = request.get_json()
+
     stmt = select(Card).where(Card.id == card_id)
     card = db.session.execute(stmt).scalar_one()
     if card is None:
@@ -76,12 +80,14 @@ def patch_card(list_id, card_id):
 
     if card.user_id != current_user.id:
         return jsonify({"Not Authorized": "Forbidden"}), 403
-    if list_id:
-        card.list_id = list_id
+
+
+    if cover_photo:
+        card.cover_photo = cover_photo
         db.session.add(card)
         db.session.commit()
         return jsonify(card.to_dict())
-    return jsonify({"errors": "No list id, drop unsuccessful"}), 400
+    return jsonify({"errors": "No cover photo, edit unsuccessful"}), 400
 
 
 @card_routes.route("/<int:card_id>", methods=["DELETE"])

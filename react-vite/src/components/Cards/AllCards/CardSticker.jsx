@@ -1,7 +1,7 @@
 import SingleCard from "./SingleCard";
 import OpenCardModalMenuItem from "./OpenCardModalMenuItem";
 import { useModal } from "../../../context/Modal";
-export const CardSticker = ({ card, list }) => {
+export const CardSticker = ({ card, list, setEditing }) => {
   const { closeMenu } = useModal();
   return (
     <div>
@@ -12,7 +12,7 @@ export const CardSticker = ({ card, list }) => {
         onItemClick={!closeMenu}
         card={card}
         modalComponent={
-          <SingleCard className="card-modal" card={card} list={list} />
+          <SingleCard className="card-modal" card={card} list={list} setEditing={setEditing} />
         }
       />
     </div>
