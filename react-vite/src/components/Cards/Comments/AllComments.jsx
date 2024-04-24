@@ -29,7 +29,7 @@ export default function AllComments({ card }) {
               <FaRegComment />
             </div>
             <div className="comment-info">
-              <h4 style={{fontWeight:'900', marginTop:'0px', marginBottom:'5px'}}>{comment.user_id === user.id ? user?.username : null}</h4>
+              <h4 style={{fontWeight:'900', marginTop:'0px', marginBottom:'5px', color: 'white'}}>{comment.user_id === user.id ? user?.username : null}</h4>
               <span className="ac-comments-row">{comment?.body}</span>
               <div className='thisisbutton'>
                 <OpenModalButton

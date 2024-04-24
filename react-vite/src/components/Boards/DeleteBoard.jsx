@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { thunkDeleteBoard } from "../../store/boards";
 import { useModal } from "../../context/Modal";
+import './DeleteBoard.css'
 
 export default function DeleteBoard({ board_id }) {
   const dispatch = useDispatch();
@@ -31,8 +32,8 @@ export default function DeleteBoard({ board_id }) {
   };
 
   return (
-    <>
-      <h1>Confirm Delete</h1>
+    <div className="delete-board-modal-container">
+      <h1 style={{marginTop: '0px'}}>Confirm Delete</h1>
       <form action="" onClick={toggleMenu}>
         <div className="delete-board-modal-pop">
           <button
@@ -49,6 +50,6 @@ export default function DeleteBoard({ board_id }) {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }

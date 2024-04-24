@@ -52,20 +52,22 @@ function ProfileButton() {
         <ul className="profile-dropdown" ref={ulRef}>
           {user ? (
             <>
-              <li className="profileDeets">{user.username}</li>
-              <li className="profileDeets">{user.email}</li>
-              <li className="profileDeets">
-                <button id="allBoardsButtonInProfile">
-                  <NavLink id="allBoardsButtonInProfile" to="/boards">
-                    All Boards
-                  </NavLink>
-                </button>
-              </li>
-              <li className="profileDeets">
-                <button id="logoutButton" onClick={logout}>
-                  Log Out
-                </button>
-              </li>
+              <div className="username-email-container">
+                <li className="profileDeets">{user.username}</li>
+                <li className="profileDeets">{user.email}</li>
+              </div>
+              <div className="buttonscontainerinprofilebutton">
+                <li className="profileDeets">
+                  <button id="allBoardsButtonInProfile" onClick={() => navigate('/boards')}>
+                      All Boards
+                  </button>
+                </li>
+                <li className="profileDeets">
+                  <button id="logoutButton" onClick={logout}>
+                    Log Out
+                  </button>
+                </li>
+              </div>
             </>
           ) : (
             <>

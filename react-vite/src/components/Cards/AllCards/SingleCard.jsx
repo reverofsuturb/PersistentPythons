@@ -91,8 +91,8 @@ export default function SingleCard({ card, list }) {
   return (
     <>
       <div className="cardcontainer">
-        <div className="photocover">
-          <img
+        <div className="photocovercontainer">
+          <img className="photocover"
             src={cardImages?.length && cardImages[0][0]?.image_file}
             alt="card image"
           />

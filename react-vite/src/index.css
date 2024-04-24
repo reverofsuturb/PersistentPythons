@@ -47,10 +47,8 @@ button {
 
 button:hover {
   font-family: "Space Grotesk", sans-serif;
-  /* border: 2px solid #8584f8; */
   box-shadow: 1px 1px 8px 1px #84acf8;
   cursor: pointer;
-  /* color: #160467cc; */
   transition: 0.2s linear;
 }
 
@@ -65,11 +63,9 @@ button:focus {
 /* effects */
 
 /* other display */
-p:hover {
-  color: royalblue;
-}
+
 
 a:hover {
-  color: royalblue;
+  /* color: royalblue; */
   cursor: pointer;
 }

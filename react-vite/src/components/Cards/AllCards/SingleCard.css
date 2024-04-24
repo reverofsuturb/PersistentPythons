@@ -3,19 +3,22 @@
   max-height: 90vh;
   overflow-y: auto;
   border-radius: 15px;
-  background-color: mintcream;
   padding: 20px;
   color: white;
-  background: linear-gradient(110deg, #13283ce2, #3a92d5,#57bdbb, #5abebd, #62A6CD, #a17cad, #DA99DC, #a00093);
-  background-size: 200% 200%;
-  animation: Gradient 20s ease infinite;
+  background-color: rgba(0, 0, 0, 0.922);
 }
 
-@keyframes Gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+.photocovercontainer {
+  display: flex;
+  align-items: center;
+  max-width: 635px;
+  height: auto;
 }
+
+.photocover{
+  width: 100%
+}
+
 .titlescont{
   margin-left: 15px;
 }
@@ -139,18 +142,15 @@
 }
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 790px) {
   .cardcontainer{
     width: 80vw;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 15px;
-    background-color: mintcream;
     padding: 20px;
     color: white;
-    background: linear-gradient(110deg, #13283ce2, #3a92d5,#57bdbb, #5abebd, #62A6CD, #a17cad, #DA99DC, #a00093);
     background-size: 200% 200%;
-    animation: Gradient 20s ease infinite;
   }
 
 }

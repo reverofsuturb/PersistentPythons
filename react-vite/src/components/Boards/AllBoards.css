@@ -24,7 +24,8 @@ a.ab-a-nav {
   border-top: 2px black solid;
   border-bottom: 2px black solid;
   text-shadow: 1px 1px 2px rgb(159, 156, 156);
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(29, 29, 29);
+  color: white;
 }
 
 #secondHalfContainerBoards {
@@ -39,8 +40,9 @@ a.ab-a-nav {
   gap: 10px;
   border-right: 2px black solid;
   height: 100%;
-  background-color: rgb(219, 219, 219);
   padding: 0px 5px;
+  background-color: rgb(29, 29, 29);
+  color: white;
 }
 
 #boardsRightSideContainer {
@@ -60,19 +62,24 @@ a.ab-a-nav {
 }
 
 .ab-boards-link-left {
+  margin-left: 8px;
   text-decoration: none;
   color: black;
   font-family: "Space Grotesk", sans-serif;
   text-shadow: 1px 1px 2px rgb(159, 156, 156);
+  color: white;
+  transition: ease-in-out 0.2s;
 }
 
 .ab-boards-link-left:hover {
-  color: rgb(0, 15, 154);
+  transform: scale(1.1);
+  color: rgb(255, 255, 255);
 }
 
 .ab-boards-tile-left {
   display: flex;
   margin-top: 10px;
+  color: white;
 }
 
 #workSpaceContainer {
@@ -103,9 +110,6 @@ a.ab-a-nav {
   /* Ensures text does not overflow its container */
 }
 
-.ab-boards-link-right:hover {
-  color: rgb(43, 61, 226);
-}
 
 #containerForRightTiles {
   display: flex;
