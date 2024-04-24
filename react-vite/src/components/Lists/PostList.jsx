@@ -81,7 +81,6 @@ export default function PostList({ setEditing }) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter a list title"
-                // onClick={(e) => e.stopPropagation()}
               />
             </label>
             <div className="pl-lists-button-container">

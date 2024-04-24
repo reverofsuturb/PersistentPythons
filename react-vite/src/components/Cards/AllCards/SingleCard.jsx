@@ -50,14 +50,14 @@ export default function SingleCard({ card, list }) {
     dispatch(thunkGetCardImage(card.id));
   }, [dispatch, notif]);
 
-  const handleEdit = () => {
-    return (
-      <OpenModalButton
-        buttonText={"Edit Card"}
-        modalComponent={<EditCard card={card} list={list} />}
-      />
-    );
-  };
+  // const handleEdit = () => {
+  //   return (
+  //     <OpenModalButton
+  //       buttonText={"Edit Card"}
+  //       modalComponent={<EditCard card={card} list={list} />}
+  //     />
+  //   );
+  // };
 
   const handleNotifChange = (e) => {
     handleSubmit(e);
@@ -92,7 +92,8 @@ export default function SingleCard({ card, list }) {
     <>
       <div className="cardcontainer">
         <div className="photocovercontainer">
-          <img className="photocover"
+          <img
+            className="photocover"
             src={cardImages?.length && cardImages[0][0]?.image_file}
             alt="card image"
           />

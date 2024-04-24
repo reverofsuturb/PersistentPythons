@@ -1,6 +1,6 @@
 import { thunkPostCardImage } from "../../../store/cards";
 import { useDispatch } from "react-redux";
-import React, { useState } from "react";
+import { useState } from "react";
 // import { useHistory } from "react-router-dom";
 import { useModal } from "../../../context/Modal";
 import "./PostCardImage.css";
@@ -13,7 +13,22 @@ export default function PostCardImage({ card, isUploading }) {
   console.log("🚀 ~ PostCardImage ~ image:", image);
   const [cover, setCover] = useState(true);
   const [imageLoading, setImageLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
   const [errors, setErrors] = useState({});
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+
+      // Create a URL for image preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,14 +63,29 @@ export default function PostCardImage({ card, isUploading }) {
         encType="multipart/form-data"
         className="post-card-image-form"
       >
-        <input
+        {/* <input
           type="file"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
           className="post-card-image-input"
-        />
+        /> */}
+
+        <label>
+          <input id="post-image-url" type="file" onChange={updateFile} />
+        </label>
+        {imagePreview && (
+          <img
+            id="preview-image"
+            src={imagePreview}
+            alt="preview of uploaded image"
+            style={{ maxWidth: "300px" }}
+          />
+        )}
+
         {Object.values(errors).map((error) => (
-          <p className="p-error">{error}</p>
+          <p key={error} className="p-error">
+            {error}
+          </p>
         ))}
         <button type="submit" className="post-card-image-submit">
           Submit

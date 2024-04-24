@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { thunkDeleteComment } from "../../../store/comments";
 

@@ -83,19 +83,19 @@ a.ab-a-nav {
 }
 
 #workSpaceContainer {
-  color: white;
-  margin-left: 40px;
+  color: rgb(255, 255, 255);
+  margin-left: 5px;
   margin-top: 30px;
   width: fit-content;
-  background-color: rgba(0, 0, 0, 0.494);
   border-radius: 10px;
 }
 
 #workspaceTitle {
+  font-size: 2.5rem;
+  border-bottom: solid 2px rgb(0, 0, 0);
   font-family: "Death Star", sans-serif;
-  font-size: 2.25rem;
-  text-shadow: black 2px 5px 5px;
-  padding: 10px;
+  text-shadow: rgb(255, 255, 255) 1px 1px 4px;
+  color: black;
 }
 
 .ab-boards-link-right {
@@ -106,10 +106,7 @@ a.ab-a-nav {
   border: rgb(255, 255, 255) 1px, solid;
   text-shadow: rgb(56, 51, 51) 1px 1px 5px;
   border-radius: 10px;
-
-  /* Ensures text does not overflow its container */
 }
-
 
 #containerForRightTiles {
   display: flex;
@@ -127,7 +124,11 @@ a.ab-a-nav {
 }
 
 .ab-boards-tile-right {
+  font-family: "Death Star", sans-serif;
+  text-shadow: rgb(0, 0, 0) 1px 1px 5px;
+  color: rgb(255, 255, 255);
   display: flex;
+  font-size: 1.9rem;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
@@ -138,10 +139,9 @@ a.ab-a-nav {
   height: 150px;
   border-radius: 10px;
   word-wrap: break-word;
-  background-color: rgba(0, 0, 0, 0.539);
+  background-color: rgba(0, 0, 0, 0.741);
   overflow: hidden;
   text-overflow: ellipsis;
-  box-shadow: rgba(0, 0, 0, 0.502) 2px 4px 2px;
 }
 
 .ab-boards-tile-right:hover {
@@ -204,9 +204,7 @@ a.ab-a-nav {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 1rem;
-    /* min-height: 100vh; */
     width: auto;
     overflow-y: scroll;
-    /* This one and the scroll in singleboard .outer-sb-list keeps the scroll to the lists and keeps the image from extending the page */
   }
 }

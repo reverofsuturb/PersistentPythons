@@ -32,12 +32,14 @@
 }
 
 #sb-delete-board-button-single {
-  border: 1px solid rgb(255, 255, 255);
-  border-radius: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.567);
   padding-top: 5px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   padding-bottom: 2px;
+  margin: 0px;
 }
 
 .sb-edit-board {
@@ -129,7 +131,6 @@ button.pl-lists-button:hover {
   border-width: 3px;
 }
 
-/* .sb-delete-bp-list-add {} */
 .outer-sb-list {
   display: flex;
   width: 100%;
@@ -137,7 +138,6 @@ button.pl-lists-button:hover {
 
 .sb-list-full {
   display: flex;
-  /* width: 100%; */
   margin-top: 2rem;
   flex-wrap: nowrap;
   justify-content: flex-start;
@@ -159,11 +159,8 @@ button.pl-lists-button:hover {
   width: 16rem;
   border: 1px black solid;
   height: fit-content;
+  /* overflow: hidden; */
 }
-
-/* .sb-list-container:hover {
-  box-shadow: 2.3px 1.2px 6px 6px #84acf8;
-} */
 
 .single-board_delete {
   margin: 10px;
@@ -203,7 +200,6 @@ button.pl-lists-button:hover {
   margin: 0;
   padding: 8px 0px;
   background-color: transparent;
-  /* overflow: hidden; */
   white-space: normal;
   flex-direction: row;
   width: 100%;
@@ -371,6 +367,20 @@ button.omb-button {
   border-radius: 0;
   outline: none;
   box-shadow: none;
+}
+
+.flip,
+.unflip {
+  transition: transform 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.unflip {
+  transform: rotate(0deg);
 }
 
 @media only screen and (max-width: 650px) {

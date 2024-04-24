@@ -1,11 +1,10 @@
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { thunkPostCard } from "../../../store/cards";
-import { thunkGetBoard } from "../../../store/boards";
-import "./PostCard.css";
 import { useModal } from "../../../context/Modal";
+import "./PostCard.css";
 
-export default function PostCard({ list, setEditing }) {
+export default function PostCard({ list, setEditing  }) {
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
   const [showSubmit, setShowSubmit] = useState(false);
@@ -50,7 +49,6 @@ export default function PostCard({ list, setEditing }) {
   const closeMenu = () => setShowSubmit(false);
 
   useEffect(() => {
-    // dispatch(thunkGetBoard(list.board_id));
     if (!showSubmit) return;
 
     document.addEventListener("click", closeMenu);

@@ -126,7 +126,7 @@ export default function SingleBoard() {
               <OpenModalMenuItem
                 itemText={
                   <p
-                    style={{ fontSize: "12px", color: "white" }}
+                    style={{ fontSize: "12px", color: "black" }}
                     id="sb-delete-board-button-single"
                   >
                     <FaTrash />

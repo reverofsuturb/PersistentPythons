@@ -12,11 +12,8 @@ export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
   const [showBoards, setShowBoards] = useState(false)
-  console.log("🚀 ~ AllBoards ~ showBoards:", showBoards)
 
   const allBoards = Object.values(boards);
-
-
 
   useEffect(() => {
     dispatch(thunkGetAllBoards());

@@ -35,8 +35,6 @@
 
 .list-title-menu {
   padding: 5px;
-  /* margin-left: 25px;
-  margin-bottom: 50px; */
 }
 
 .eb-lists-input {
@@ -48,14 +46,14 @@
 .eb-lists-submit-button {
   width: 75px;
   height: 30px;
-  background-color: #c197d2;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 
 .eb-lists-form {
   margin-top: 23.24px;
   margin-bottom: 23.24px;
-  border-bottom: solid 2px #211522;
+  border-bottom: solid 2px #000000;
 }
 
 div.caption_container {
@@ -79,5 +77,3 @@ p.hover {
   top: 0rem;
   left: 2rem;
 }
-
-
