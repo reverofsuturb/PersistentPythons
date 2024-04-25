@@ -38,6 +38,12 @@
   box-shadow: none;
 }
 
+#pc-add-card-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .pl-cards-button:hover {
   color: white;
   background-color: #ffffff00;

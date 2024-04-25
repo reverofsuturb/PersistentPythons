@@ -45,7 +45,11 @@ function ProfileButton() {
 
   return (
     <>
-      <button id="profileButton" onClick={(e) => toggleMenu(e)}>
+      <button
+        style={{ fontSize: "18px" }}
+        id="profileButton"
+        onClick={(e) => toggleMenu(e)}
+      >
         <FaUserAstronaut />
       </button>
       {showMenu && (
@@ -58,8 +62,11 @@ function ProfileButton() {
               </div>
               <div className="buttonscontainerinprofilebutton">
                 <li className="profileDeets">
-                  <button id="allBoardsButtonInProfile" onClick={() => navigate('/boards')}>
-                      All Boards
+                  <button
+                    id="allBoardsButtonInProfile"
+                    onClick={() => navigate("/boards")}
+                  >
+                    All Boards
                   </button>
                 </li>
                 <li className="profileDeets">

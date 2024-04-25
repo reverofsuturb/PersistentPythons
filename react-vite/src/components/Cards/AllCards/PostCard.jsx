@@ -2,15 +2,16 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { thunkPostCard } from "../../../store/cards";
 import { useModal } from "../../../context/Modal";
+import { GoPlus } from "react-icons/go";
+
 import "./PostCard.css";
 
-export default function PostCard({ list, setEditing  }) {
+export default function PostCard({ list, setEditing }) {
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState({});
   const [showSubmit, setShowSubmit] = useState(false);
   const dispatch = useDispatch();
   const { closeModal } = useModal();
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +43,6 @@ export default function PostCard({ list, setEditing  }) {
     closeModal();
   };
 
-
   const toggleMenu = (e) => {
     e.stopPropagation();
     setShowSubmit(!showSubmit);
@@ -66,7 +66,10 @@ export default function PostCard({ list, setEditing  }) {
         onClick={toggleMenu}
         style={{ display: showSubmit ? "none" : "block" }}
       >
-        Add a Card
+        <div style={{ fontSize: "15px" }} id="pc-add-card-container">
+          <GoPlus />
+          Add a Card
+        </div>
       </button>
       <div
         className="pl-cards-container"
