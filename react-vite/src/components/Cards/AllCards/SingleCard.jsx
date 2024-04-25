@@ -144,7 +144,7 @@ export default function SingleCard({ card, list, setEditing }) {
               <div
                 onClick={(e) => handleNotifChange(e)}
                 className="sc-row"
-                style={{ backgroundColor: notif ? "lightblue" : "transparent" }}
+                style={{ backgroundColor: notif ? "lightblue" : "transparent", cursor: 'pointer' }}
               >
                 {notif ? "Notify me!" : "Don't notify me."}
               </div>

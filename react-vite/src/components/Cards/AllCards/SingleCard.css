@@ -1,4 +1,4 @@
-.cardcontainer{
+.cardcontainer {
   width: auto;
   max-height: 90vh;
   overflow-y: auto;
@@ -15,11 +15,11 @@
   height: auto;
 }
 
-.photocover{
-  width: 100%
+.photocover {
+  width: 100%;
 }
 
-.titlescont{
+.titlescont {
   margin-left: 15px;
 }
 
@@ -41,16 +41,16 @@
   /* background-color: red; */
 }
 
-.sc-title{
+.sc-title {
   margin-top: 0px;
 }
 
-.leftside{
+.leftside {
   /* border: 1px solid blueviolet; */
-  width:500px;
+  width: 500px;
 }
 
-.label-notif-container{
+.label-notif-container {
   display: flex;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -58,13 +58,12 @@
   margin-left: 16px;
 }
 
-.description-container{
+.description-container {
   display: flex;
   flex-direction: row;
 }
 
-.editanddescription{
-
+.editanddescription {
   display: flex;
   justify-content: space-between;
 }
@@ -78,12 +77,12 @@
   opacity: 1;
 }
 
-.fillthespace{
-  width: 100%
-}
-.postcommentcont, .pc-comments-title{
+.fillthespace {
   width: 100%;
-
+}
+.postcommentcont,
+.pc-comments-title {
+  width: 100%;
 }
 
 .sc-row {
@@ -94,29 +93,28 @@
   /* border-bottom: solid 1px #211522; */
 }
 
-.attachments-container{
+.attachments-container {
   display: flex;
 }
 
-.checklist-container{
+.checklist-container {
   display: flex;
   margin-bottom: 15px;
 }
-.attachments-container{
+.attachments-container {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.rightside{
+.rightside {
   /* border: 1px solid yellow; */
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-
 }
 
-.buttonsincard{
-  background-color: #E4E6E9;
+.buttonsincard {
+  background-color: #e4e6e9;
   margin-bottom: 8px;
   width: 110px;
   padding: 10px;
@@ -127,23 +125,22 @@
 }
 
 .buttonsincard:hover {
-  background-color: #C2C4C7; /* Darker shade on hover */
+  background-color: #c2c4c7; /* Darker shade on hover */
 }
 
-.logo{
+.logo {
   margin-right: 5px;
 }
 
-.ed-card-input{
+.ed-card-input {
   width: 450px;
   height: 250px;
   resize: none;
   font-size: 15;
 }
 
-
 @media only screen and (max-width: 790px) {
-  .cardcontainer{
+  .cardcontainer {
     width: 80vw;
     max-height: 90vh;
     overflow-y: auto;
@@ -152,5 +149,4 @@
     color: white;
     background-size: 200% 200%;
   }
-
 }

@@ -6,7 +6,7 @@
   /* width: 275px; */
   padding: 10px;
   height: 100px;
-  background-color: #fdfdfd;
+  background-color: rgba(0, 0, 0, 0.922);
   border-radius: 15px;
 }
 
@@ -36,7 +36,7 @@
   border-radius: 15px;
   padding: 12px;
   font-size: 18px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.922);
   border: none;
   width: 200px;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useShowBoards } from "../../context/ShowBoards";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
@@ -17,7 +18,7 @@ export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [showBoards, setShowBoards] = useState(false);
+  const { showBoards, setShowBoards } = useShowBoards();
 
   let boards = useSelector((state) => state.boards);
   let board = useSelector((state) => state.boards[board_id]);
