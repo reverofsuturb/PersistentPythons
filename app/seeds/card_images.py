@@ -54,8 +54,83 @@ def card_images_seeds():
 		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space9.webp',
 	
 	)
+	card_image11 = CardImage(
+		card_id = 7,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space11.jpg',
+	
+	)
+	card_image12 = CardImage(
+		card_id = 8,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space12.jpg',
+	
+	)
+	card_image13 = CardImage(
+		card_id = 9,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space13.jpg',
+	
+	)
+	card_image14 = CardImage(
+		card_id = 10,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space14.jpg',
+	
+	)
+	card_image15 = CardImage(
+		card_id = 12,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space15.jpg',
+	
+	)
+	card_image16 = CardImage(
+		card_id = 13,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space16.jpg',
+	
+	)
+	card_image17 = CardImage(
+		card_id = 14,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space17.jpg',
+	
+	)
+	card_image18 = CardImage(
+		card_id = 15,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space18.jpg',
+	
+	)
+	card_image19 = CardImage(
+		card_id = 19,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space19.jpg',
+	
+	)
+	card_image20 = CardImage(
+		card_id = 20,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space20.jpg',
+	
+	)
+	card_image21 = CardImage(
+		card_id = 21,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space21.jpg',
+	
+	)
+	card_image22 = CardImage(
+		card_id = 22,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space22.jpg',
+	
+	)
+	card_image23 = CardImage(
+		card_id = 23,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space23.jpg',
+	
+	)
+	card_image24 = CardImage(
+		card_id = 24,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space24.jpg',
+	
+	)
+	card_image25 = CardImage(
+		card_id = 25,
+		image_file = 'https://tech-trist-open.s3.us-east-2.amazonaws.com/space25.jpg',
+	
+	)
 
-	all_card_images =[card_image1, card_image2, card_image3, card_image4, card_image5, card_image6, card_image7, card_image8, card_image9, card_image10]
+	all_card_images =[card_image1, card_image2, card_image3, card_image4, card_image5, card_image6, card_image7, card_image8, card_image9, card_image10, card_image11 , card_image12 , card_image13 , card_image14, card_image15 , card_image16, card_image17, card_image18, card_image19, card_image20, card_image21, card_image22, card_image23, card_image24, card_image25]
 	[db.session.add(card_image) for card_image in all_card_images]
 	db.session.commit()
 

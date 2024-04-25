@@ -88,17 +88,19 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="In Progress",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space11.jpg"
     )
     card8 = Card(
         list_id=8,
         user_id=1,
-        title="Home Improvement",
+        title="SpaceShip Improvement",
         labels="To-Do",
         notification=False,
         description="Fix that leaky faucet",
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="To-Do",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space12.jpg"
     )
     card9 = Card(
         list_id=9,
@@ -110,6 +112,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Completed Sets",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space13.jpg"
     )
     card10 = Card(
         list_id=10,
@@ -121,6 +124,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Upcoming Trips",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space14.jpg"
     )
 
     card11 = Card(
@@ -146,6 +150,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Expenses",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space15.jpg"
     )
 
     card13 = Card(
@@ -158,30 +163,33 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Progress",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space16.jpg"
     )
 
     card14 = Card(
         list_id=14,
         user_id=1,
-        title="Home Decor",
+        title="Space Ship Decor",
         labels="Options",
         notification=False,
         description="Choose new curtains",
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Options",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space17.jpg"
     )
 
     card15 = Card(
         list_id=15,
         user_id=1,
-        title="Random Thoughts",
+        title="Random Stars",
         labels="Notes",
         notification=False,
         description="Brainstorm ideas",
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Notes",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space18.jpg"
     )
     card16 = Card(
         list_id=1,
@@ -232,6 +240,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Lessons",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space19.jpg"
     )
 
     card20 = Card(
@@ -244,18 +253,20 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Pet Tasks",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space20.jpg"
     )
 
     card21 = Card(
         list_id=6,
         user_id=1,
-        title="Home Office Setup",
+        title="Space Office Setup",
         labels="Productivity",
         notification=False,
         description="Organize desk and supplies",
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Workspace",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space21.jpg"
     )
 
     card22 = Card(
@@ -268,18 +279,20 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Books",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space22.jpg"
     )
 
     card23 = Card(
         list_id=8,
         user_id=1,
-        title="Outdoor Adventures",
+        title="Space Adventures",
         labels="Exploration",
         notification=False,
         description="Hike, bike, or camp",
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Gear",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space23.jpg"
     )
 
     card24 = Card(
@@ -292,6 +305,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Themes",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space24.jpg"
     )
 
     card25 = Card(
@@ -304,6 +318,7 @@ def seed_cards():
         start_date=currdate.strftime('%Y-%m-%d'),
         end_date=currdate.strftime('%Y-%m-%d'),
         checklist="Quotes",
+        cover_photo="https://tech-trist-open.s3.us-east-2.amazonaws.com/space25.jpg"
     )
 
     all_cards = [

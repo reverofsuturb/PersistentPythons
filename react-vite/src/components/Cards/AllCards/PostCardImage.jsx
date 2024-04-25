@@ -7,10 +7,8 @@ import "./PostCardImage.css";
 
 export default function PostCardImage({ card, isUploading }) {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const { closeModal } = useModal();
   const [image, setImage] = useState(null);
-  console.log("🚀 ~ PostCardImage ~ image:", image);
   const [cover, setCover] = useState(true);
   const [imageLoading, setImageLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
@@ -38,12 +36,10 @@ export default function PostCardImage({ card, isUploading }) {
     formData.append("image_file", image);
     formData.append("card_id", card.id);
 
-    console.log("🚀 ~ handleSubmit ~ formData:", formData);
 
     setImageLoading(true);
 
     const res = await dispatch(thunkPostCardImage(card.id, formData));
-    console.log("🚀 ~ handleSubmit ~ res:", res);
     if (res && res.errors) {
       setTimeout(() => {
         setImageLoading(false);
@@ -63,13 +59,6 @@ export default function PostCardImage({ card, isUploading }) {
         encType="multipart/form-data"
         className="post-card-image-form"
       >
-        {/* <input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-          className="post-card-image-input"
-        /> */}
-
         <label>
           <input id="post-image-url" type="file" onChange={updateFile} />
         </label>

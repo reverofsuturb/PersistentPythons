@@ -23,7 +23,7 @@ def seed_lists():
         title="Critical Menus",
     )
     list5 = List(
-        board_id=2,
+        board_id=1,
         user_id=1,
         title="This may be too much",
     )

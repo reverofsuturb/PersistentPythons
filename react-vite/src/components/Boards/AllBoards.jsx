@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { thunkGetAllBoards } from "../../store/boards";
 import { NavLink } from "react-router-dom";
-import "./AllBoards.css";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { MdWorkspaces } from "react-icons/md";
 import PostBoard from "./PostBoard";
 import OpenModalButton from "../OpenModalButton";
+import "./AllBoards.css";
 
 export default function AllBoards() {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
-  const [showBoards, setShowBoards] = useState(false)
 
   const allBoards = Object.values(boards);
 
@@ -48,7 +47,6 @@ export default function AllBoards() {
               )}
             </div>
 
-
             <div id="boardsRightSideContainer">
               <div id="workSpaceContainer">
                 <h2 id="workspaceTitle" className="ab-h2">
@@ -80,8 +78,6 @@ export default function AllBoards() {
             </div>
           </div>
         </>
-
-        {/* } */}
       </div>
     </>
   );

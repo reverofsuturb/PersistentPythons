@@ -12,10 +12,8 @@ export default function Layout() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleOnDragEnd = (result) => {
-    console.log(result);
     const { destination, source, draggableId } = result;
     if (!destination || destination.index === source.index) return;
-    console.log("listid", destination.droppableId, "cardid", draggableId)
     dispatch(thunkPatchCard(destination.droppableId, draggableId));
   };
 

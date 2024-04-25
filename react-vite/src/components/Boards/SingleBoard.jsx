@@ -1,43 +1,27 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { thunkGetBoard } from "../../store/boards";
-import { thunkGetAllLists } from "../../store/lists";
 import { useParams } from "react-router-dom";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
-import EditList from "../Lists/EditList";
-import DeleteList from "../Lists/DeleteList";
-import SingleCard from "../Cards/AllCards/SingleCard";
-import PostCard from "../Cards/AllCards/PostCard";
 import { PostList } from "../Lists";
 import { RiSpaceShipFill } from "react-icons/ri";
 import { MdWorkspaces } from "react-icons/md";
 import { thunkGetAllBoards } from "../../store/boards";
-import { thunkAllGetCardImages } from "../../store/card_images";
 import { NavLink } from "react-router-dom";
 import "./SingleBoard.css";
-import { HiDotsHorizontal } from "react-icons/hi";
 import { FaTrash } from "react-icons/fa";
-import { thunkGetAllCards } from "../../store/cards";
 import { SingleList } from "../Lists/SingleList";
 
 export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [isMouseOver, setIsMouseOver] = useState(false);
-  const [currSelectedCard, setCurrSelectedCard] = useState(null);
   const [showBoards, setShowBoards] = useState(false);
 
   let boards = useSelector((state) => state.boards);
   let board = useSelector((state) => state.boards[board_id]);
-  console.log(board);
-  const lists = useSelector((state) => state.lists);
   const post_card = useSelector((state) => state.cards);
-
-  const cardImagesObj = useSelector((state) => state.cardImages);
-  const cardImages = Object.values(cardImagesObj);
 
   const length_post_card = Object.values(post_card).length;
 
@@ -45,39 +29,16 @@ export default function SingleBoard() {
 
   const [hoverCaption, setHoverCaption] = useState(null);
 
-  // const board = boards[board_id];
-  const allLists = Object.values(lists).filter(
-    (list) => list.board_id == board_id
-  );
   const [addCard, setAddCard] = useState(false);
   const [editing, setEditing] = useState(false);
-  const handleMouseOver = (cardId) => {
-    setCurrSelectedCard(cardId);
-    setHoverCaption(cardId);
-    setIsMouseOver(true);
-  };
-
-  const handleMouseLeave = () => {
-    setCurrSelectedCard(null);
-    setHoverCaption(null);
-  };
 
   const handleShowAllBoards = () => {
     setShowBoards(!showBoards);
   };
 
   useEffect(() => {
-    // dispatch(thunkGetBoard(board_id));
     dispatch(thunkGetAllBoards());
-    console.log("rerender");
   }, [dispatch, addCard, length_post_card, editing]);
-  const closeMenu = () => setShowMenu(false);
-
-  const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep click from bubbling up to document and triggering closeMenu
-    setShowMenu(!showMenu);
-  };
-
 
   const hoverClassName = "caption" + (hoverCaption !== null ? "" : "hidden");
 
@@ -119,7 +80,12 @@ export default function SingleBoard() {
                 role="link"
               >
                 {board?.board_name && (
-                  <EditBoard board={board} editing={editing} setEditing={setEditing} className="sb-edit-board-modal" />
+                  <EditBoard
+                    board={board}
+                    editing={editing}
+                    setEditing={setEditing}
+                    className="sb-edit-board-modal"
+                  />
                 )}
               </div>
               <OpenModalMenuItem
@@ -172,6 +138,7 @@ export default function SingleBoard() {
               {board?.lists?.length ? (
                 board?.lists?.map((list) => (
                   <SingleList
+                    key={list}
                     list={list}
                     setEditing={setEditing}
                     editing={editing}

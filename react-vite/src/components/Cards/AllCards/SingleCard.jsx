@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import OpenModalMenuItem from "../../Navigation/OpenModalMenuItem";
 import OpenModalButton from "../../OpenModalButton";
-import EditCard from "./EditCard";
 import DeleteCard from "./DeleteCard";
 import AllComments from "../Comments/AllComments";
 import PostComment from "../Comments/PostComment";
@@ -22,9 +20,7 @@ import GetImagesForCards from "./GetCardImage";
 
 export default function SingleCard({ card, list, setEditing }) {
   const cardState = useSelector((state) => state.cards[card.id]);
-  const cardImagesObj = useSelector((state) => state.cardImages);
-  const cardImages = Object.values(cardImagesObj);
-  console.log("🚀 ~ SingleCard ~ cardImages:", cardImages)
+
   const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card?.title);
@@ -53,14 +49,6 @@ export default function SingleCard({ card, list, setEditing }) {
     dispatch(thunkGetCardImage(card.id));
   }, [dispatch, notif]);
 
-  // const handleEdit = () => {
-  //   return (
-  //     <OpenModalButton
-  //       buttonText={"Edit Card"}
-  //       modalComponent={<EditCard card={card} list={list} />}
-  //     />
-  //   );
-  // };
 
   const handleNotifChange = (e) => {
     handleSubmit(e);

@@ -56,7 +56,6 @@ export const thunkPostCardImage = (card_id, image) => async (dispatch) => {
 export const thunkGetAllCards = () => async (dispatch) => {
   const res = await fetch(`/api/cards`);
   const data = await res.json();
-  console.log(data, "DATA FROM CARDS");
 
   if (data && data.errors) {
     return data;
@@ -86,7 +85,6 @@ export const thunkPostCard = (list_id, card) => async (dispatch) => {
   });
 
   const data = await res.json();
-  console.log(data);
   if (data.errors) {
     return data;
   } else {
@@ -105,7 +103,6 @@ export const thunkEditCard = (card_id, card) => async (dispatch) => {
   });
 
   const data = await res.json();
-  console.log(data);
   if (data.errors) {
     return data;
   } else {

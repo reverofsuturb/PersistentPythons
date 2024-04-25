@@ -1,5 +1,6 @@
 #delete-list-button-container {
   display: flex;
+  align-self: flex-end;
   margin-right: 5px;
   margin-left: 5px;
 }
