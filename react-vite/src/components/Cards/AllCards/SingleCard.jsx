@@ -29,13 +29,12 @@ export default function SingleCard({ card, list, setEditing }) {
   );
   const [labels, setLabels] = useState(card.labels);
 
-
   const [notif, setNotif] = useState(card.notification);
   const [editTitle, setEditTitle] = useState(false);
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
   const [editNotif, setEditNotif] = useState(false);
-  const [coverPhoto, setCoverPhoto] = useState(card?.cover_photo || "")
+  const [coverPhoto, setCoverPhoto] = useState(card?.cover_photo || "");
 
   const [errors, setErrors] = useState({});
 
@@ -49,19 +48,19 @@ export default function SingleCard({ card, list, setEditing }) {
     dispatch(thunkGetCardImage(card.id));
   }, [dispatch, notif]);
 
-
   const handleNotifChange = (e) => {
     handleSubmit(e);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setEditing(true);
     const editCards = {
       title,
       description,
       labels,
       notification: !notif,
+      cover_photo: coverPhoto,
     };
 
     const res = await dispatch(thunkEditCard(card.id, editCards));
@@ -69,7 +68,7 @@ export default function SingleCard({ card, list, setEditing }) {
     if (res && res.errors) {
       return setErrors(res.errors);
     }
-
+    setEditing(false);
     setNotif(!notif);
     setEditTitle(false);
     setEditLabels(false);
@@ -83,10 +82,7 @@ export default function SingleCard({ card, list, setEditing }) {
     <>
       <div className="cardcontainer">
         <div className="photocovercontainer">
-          <img className="photocover"
-            src={coverPhoto}
-            alt="card image"
-          />
+          <img className="photocover" src={coverPhoto} alt="card image" />
         </div>
 
         <div className="titlescont">
@@ -95,29 +91,18 @@ export default function SingleCard({ card, list, setEditing }) {
           </div>
 
           <div>
-            {editTitle === false ? (
-              <h1
-                onDoubleClick={() => setEditTitle(true)}
-                style={{ marginBottom: "0px" }}
-                className="sc-title"
-              >
-                {title}
-              </h1>
-            ) : (
-              <form className="edit-card-form" onSubmit={handleSubmit}>
-                <label htmlFor="title">
-                  <input
-                    className="eb-lists-input"
-                    type="text"
-                    value={title}
-                    onBlur={handleSubmit}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter Title"
-                  />
-                  {errors?.title && <p className="p-error">{errors.title}</p>}
-                </label>
-              </form>
-            )}
+            <h1
+              style={{ marginBottom: "0px" }}
+              className="sc-title"
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+              value={title}
+              onInput={(e) => setTitle(e.currentTarget.innerText)}
+              onBlur={handleSubmit}
+            >
+              {title}
+            </h1>
+            {errors?.title && <p className="p-error">{errors.title}</p>}
             <div
               className="sc-title"
               style={{ fontSize: "12px", margin: "0px" }}
@@ -216,7 +201,12 @@ export default function SingleCard({ card, list, setEditing }) {
                 <MdImage />
               </div>
               <div>
-                <GetImagesForCards card={card}  setEditing={setEditing} coverPhoto={coverPhoto} setCoverPhoto={setCoverPhoto} />
+                <GetImagesForCards
+                  card={card}
+                  setEditing={setEditing}
+                  coverPhoto={coverPhoto}
+                  setCoverPhoto={setCoverPhoto}
+                />
               </div>
             </div>
 
