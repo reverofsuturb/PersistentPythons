@@ -17,7 +17,10 @@ def view_board():
         .options(
             db.joinedload(Board.lists)
             .joinedload(List.cards_in_list)
-            .joinedload(Card.images)
+            .joinedload(Card.images),
+            db.joinedload(Board.lists)
+            .joinedload(List.cards_in_list)
+            .joinedload(Card.comments),
         )
         .filter_by(user_id=current_user.id)
         .all()
@@ -56,6 +59,15 @@ def view_board():
                                     "image_file": image.image_file,
                                 }
                                 for image in card.images
+                            ],
+                            "comments": [
+                                {
+                                    "id": comment.id,
+                                    "user_id": comment.user_id,
+                                    "card_id": comment.card_id,
+                                    "body": comment.body,
+                                }
+                                for comment in card.comments
                             ],
                         }
                         for card in _list.cards_in_list

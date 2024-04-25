@@ -1,4 +1,10 @@
 import { useModal } from "../../../context/Modal";
+import { BiNotepad } from "react-icons/bi";
+import { GoChecklist } from "react-icons/go";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+import { MdLabelImportantOutline } from "react-icons/md";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { FaRegComments } from "react-icons/fa";
 import "./OpenCardModalMenuItem.css";
 
 function OpenCardModalMenuItem({
@@ -21,15 +27,18 @@ function OpenCardModalMenuItem({
       <div className="open-modal-menu-item_list">{itemText}</div>
       <div className="image-files-in-ocmmi-container">
         {card?.cardimages?.length ? (
-          <img
-            className="image-files-in-ocmmi"
-            src={card?.cover_photo}
-          />
+          <img className="image-files-in-ocmmi" src={card?.cover_photo} />
         ) : (
           ""
         )}
       </div>
-      <div> </div>
+      <div className="ocmmi-icons">
+        {card.description && <BiNotepad />} {card.checklist && <GoChecklist />}
+        {(card.end_date || card.start_date) && <IoCalendarNumberOutline />}
+        {card.labels && <MdLabelImportantOutline />}
+        {card.notification && <IoMdNotificationsOutline />}
+        {card.comments?.length && <FaRegComments />}
+      </div>
     </div>
   );
 }
