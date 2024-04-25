@@ -104,7 +104,7 @@ export default function SingleBoard() {
               />
               <div>
                 {hoverCaption === -1 && (
-                  <p className={hoverClassName}>Double click to edit title</p>
+                  <p className={hoverClassName}>Click to edit title</p>
                 )}
               </div>
             </div>
@@ -138,7 +138,7 @@ export default function SingleBoard() {
               {board?.lists?.length ? (
                 board?.lists?.map((list) => (
                   <SingleList
-                    key={list}
+                    key={list.id}
                     list={list}
                     setEditing={setEditing}
                     editing={editing}

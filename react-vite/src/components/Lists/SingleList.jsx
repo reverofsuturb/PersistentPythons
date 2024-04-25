@@ -10,7 +10,7 @@ export const SingleList = ({ list, setEditing }) => {
       <EditList list={list} setEditing={setEditing} />
       {list.cards.map((card) => (
         <CardSticker
-          key={card}
+          key={card.id}
           card={card}
           list={list}
           setEditing={setEditing}

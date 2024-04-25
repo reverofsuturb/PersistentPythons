@@ -53,7 +53,7 @@ def view_board():
                                 {
                                     "id": image.id,
                                     "card_id": image.card_id,
-                                    "image_file": image.image_file
+                                    "image_file": image.image_file,
                                 }
                                 for image in card.images
                             ],
@@ -88,8 +88,18 @@ def new_board():
 @board_routes.route("/<int:board_id>", methods=["GET", "PUT"])
 @login_required
 def edit_board(board_id):
-    stmt = select(Board).where(Board.id == board_id)
-    board = db.session.execute(stmt).scalar_one()
+    board = (
+        db.session.query(Board)
+        .options(
+            db.joinedload(Board.lists)
+            .joinedload(List.cards_in_list)
+            .joinedload(Card.images)
+        )
+        .where(Board.id == board_id)
+        .filter_by(user_id=current_user.id)
+        .one()
+    )
+
     if board.user_id != current_user.id:
         return jsonify({"Not Authorized": "forbidden"}), 403
 
@@ -100,7 +110,46 @@ def edit_board(board_id):
             board.board_name = form.board_name.data
             db.session.add(board)
             db.session.commit()
-            return jsonify(board.to_dict())
+
+            board_info = {
+                "id": board.id,
+                "user_id": board.user_id,
+                "board_name": board.board_name,
+                "lists": [
+                    {
+                        "id": _list.id,
+                        "title": _list.title,
+                        "board_id": _list.board_id,
+                        "user_id": _list.user_id,
+                        "cards": [
+                            {
+                                "id": card.id,
+                                "list_id": card.list_id,
+                                "title": card.title,
+                                "labels": card.labels,
+                                "notification": card.notification,
+                                "description": card.description,
+                                "start_date": card.start_date,
+                                "end_date": card.end_date,
+                                "checklist": card.checklist,
+                                "cover_photo": card.cover_photo,
+                                "cardimages": [
+                                    {
+                                        "id": image.id,
+                                        "card_id": image.card_id,
+                                        "image_file": image.image_file,
+                                    }
+                                    for image in card.images
+                                ],
+                            }
+                            for card in _list.cards_in_list
+                        ],
+                    }
+                    for _list in board.lists
+                ],
+            }
+            print(board_info)
+            return jsonify({"message": "Success"})
         else:
             return jsonify({"errors": form.errors}), 400
     return jsonify(board.to_dict())
