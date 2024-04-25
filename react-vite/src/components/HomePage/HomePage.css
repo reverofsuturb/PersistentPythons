@@ -17,7 +17,7 @@
 
 #secondHalfContainer {
   background-color: black;
-  background-image: url(../public/space_galaxy.jpg);
+  background-image: url(https://per-py-proj.s3.amazonaws.com/space_galaxy.jpg);
   background-repeat: no-repeat;
   background-position: 50%;
 }
