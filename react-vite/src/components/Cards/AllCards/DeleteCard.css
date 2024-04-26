@@ -8,14 +8,23 @@
 
 .ec-cards-modal-title,
 .ec-cards-modal-p {
-  color: #211522;
+  color: white;
 }
 
 .ec-cards-modal-button {
-  color: #d3b1c2;
-  margin: 5px;
-  padding: 10px 50px;
-  border-radius: 15px;
-  font-size: 1.2rem;
-  background-color: #613659;
+  margin: 14px;
+  padding: 5px;
+  width: 175px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: white solid 2px;
+}
+
+.ec-cards-modal-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.ec-cards-modal-button:focus {
+  color: white;
 }

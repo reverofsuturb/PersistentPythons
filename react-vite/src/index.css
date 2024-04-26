@@ -52,18 +52,9 @@ button:hover {
   transition: 0.2s linear;
 }
 
-button:focus {
-  font-family: "Space Grotesk", sans-serif;
-  border: 3px solid #ffc718;
-
-  cursor: pointer;
-  color: black;
-}
-
 /* effects */
 
 /* other display */
-
 
 a:hover {
   /* color: royalblue; */

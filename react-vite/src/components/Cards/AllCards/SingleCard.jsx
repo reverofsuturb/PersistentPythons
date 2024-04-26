@@ -144,7 +144,10 @@ export default function SingleCard({ card, list, setEditing }) {
               <div
                 onClick={(e) => handleNotifChange(e)}
                 className="sc-row"
-                style={{ backgroundColor: notif ? "lightblue" : "transparent", cursor: 'pointer' }}
+                style={{
+                  backgroundColor: notif ? "lightblue" : "transparent",
+                  cursor: "pointer",
+                }}
               >
                 {notif ? "Notify me!" : "Don't notify me."}
               </div>
@@ -229,9 +232,9 @@ export default function SingleCard({ card, list, setEditing }) {
 
           <div className="rightside">
             <h5 style={{ marginBottom: "0" }}>Add to card</h5>
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Members
-            </button>
+            </button> */}
             {labels ? (
               <></>
             ) : (
@@ -255,28 +258,28 @@ export default function SingleCard({ card, list, setEditing }) {
                 Add Description
               </button>
             )}
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Checklist
             </button>
             <button onClick={handleButtonClick} className="buttonsincard">
               Dates
-            </button>
+            </button> */}
             <OpenModalButton
-              className="buttonsincard"
               buttonText={"Add Image"}
+              css={"buttonsincard"}
               modalComponent={
                 <PostCardImage card={card} isUploading={isUploading} />
               }
             />
             <h5 style={{ marginBottom: "0", marginTop: "50px" }}>Action</h5>
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Cover
             </button>
             <button onClick={handleButtonClick} className="buttonsincard">
               Copy
-            </button>
+            </button> */}
             <OpenModalButton
-              className="buttonsincard"
+              css={"buttonsincard"}
               buttonText={"Delete Card"}
               modalComponent={<DeleteCard card={card} list={list} />}
             />

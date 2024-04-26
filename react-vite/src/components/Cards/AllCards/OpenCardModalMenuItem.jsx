@@ -33,11 +33,24 @@ function OpenCardModalMenuItem({
         )}
       </div>
       <div className="ocmmi-icons">
-        {card.description && <BiNotepad />} {card.checklist && <GoChecklist />}
-        {(card.end_date || card.start_date) && <IoCalendarNumberOutline />}
-        {card.labels && <MdLabelImportantOutline />}
-        {card.notification && <IoMdNotificationsOutline />}
-        {card.comments?.length && <FaRegComments />}
+        {card.description ||
+        card.checklist ||
+        card.start_date ||
+        card.end_date ||
+        card.labels ||
+        card.notification ||
+        card?.comments?.length ? (
+          <>
+            {card.description && <BiNotepad />}
+            {card.checklist && <GoChecklist />}
+            {(card.end_date || card.start_date) && <IoCalendarNumberOutline />}
+            {card.labels && <MdLabelImportantOutline />}
+            {card.notification && <IoMdNotificationsOutline />}
+            {card.comments?.length ? <FaRegComments /> : ""}
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

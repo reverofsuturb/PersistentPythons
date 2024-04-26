@@ -137,14 +137,16 @@ export default function SingleBoard() {
           <div className="outer-sb-list">
             <div className="sb-list-full">
               {board?.lists?.length ? (
-                board?.lists?.map((list) => (
-                  <SingleList
-                    key={list.id}
-                    list={list}
-                    setEditing={setEditing}
-                    editing={editing}
-                  />
-                ))
+                board?.lists
+                  ?.sort((a, b) => a.id - b.id)
+                  .map((list) => (
+                    <SingleList
+                      key={list.id}
+                      list={list}
+                      setEditing={setEditing}
+                      editing={editing}
+                    />
+                  ))
               ) : (
                 <div className="sb-contain-two">
                   <div className="no-cards">

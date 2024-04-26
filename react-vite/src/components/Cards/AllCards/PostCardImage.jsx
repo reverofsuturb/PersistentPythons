@@ -13,7 +13,6 @@ export default function PostCardImage({ card, isUploading }) {
   const [imageLoading, setImageLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
   const [errors, setErrors] = useState({});
-
   const updateFile = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -35,7 +34,6 @@ export default function PostCardImage({ card, isUploading }) {
     const formData = new FormData();
     formData.append("image_file", image);
     formData.append("card_id", card.id);
-
 
     setImageLoading(true);
 
@@ -80,17 +78,6 @@ export default function PostCardImage({ card, isUploading }) {
           Submit
         </button>
         {imageLoading && <p className="loading">Loading...</p>}
-        <div>
-          <input
-            type="checkbox"
-            value={cover}
-            onChange={() => setCover(!cover)}
-            className="post-card-image-checkbox"
-          />
-          <span className="post-card-image-span">
-            Make this photo the cover?
-          </span>
-        </div>
       </form>
     </div>
   );

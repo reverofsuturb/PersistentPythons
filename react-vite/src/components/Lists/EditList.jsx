@@ -12,6 +12,7 @@ export default function EditList({ list, setEditing }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setEditing(true);
+    setErrors({});
     const newEdits = {
       title,
     };
@@ -19,6 +20,7 @@ export default function EditList({ list, setEditing }) {
     const res = await dispatch(thunkEditList(list.id, newEdits));
 
     if (res && res.errors) {
+      console.log(res);
       return setErrors(res.errors);
     }
     setEditing(false);
@@ -42,12 +44,21 @@ export default function EditList({ list, setEditing }) {
                 contentEditable={true}
                 suppressContentEditableWarning={true}
                 value={title}
-                onInput={(e) => setTitle(e.currentTarget.innerText)}
+                onInput={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  setTitle(e.currentTarget.innerText);
+                }}
                 onBlur={handleSubmit}
               >
                 {list.title}
               </div>
             </h2>
+            {errors && (
+              <p className="p-error" style={{ margin: "0" }}>
+                {errors.title}
+              </p>
+            )}
           </div>
           <div className="caption_container">
             {hoverCaption === -1 && (

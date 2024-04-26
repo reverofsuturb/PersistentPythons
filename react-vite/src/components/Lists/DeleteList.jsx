@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import { thunkDeleteList } from "../../store/lists";
-import { FaTrash } from "react-icons/fa";
+import { useModal } from "../../context/Modal";
 
 import "./DeleteList.css";
 
 export default function DeleteList({ list, setEditing }) {
   const dispatch = useDispatch();
-
+  const { closeModal } = useModal();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setEditing(true);
@@ -15,11 +15,30 @@ export default function DeleteList({ list, setEditing }) {
       return res.errors;
     }
     setEditing(false);
+    closeModal();
   };
 
   return (
     <>
-      <form id="delete-list-button-container" onSubmit={handleSubmit}>
+      <div className="ec-cards-delete-modal">
+        <h2 className="ec-cards-modal-title">Confirm Delete</h2>
+        <p className="ec-comments-modal-p">
+          Are you sure you want to remove this List?
+        </p>
+        <form onSubmit={handleSubmit}>
+          <button type="submit" className="ec-cards-modal-button">
+            Yes
+          </button>
+          <button
+            className="ec-cards-modal-button"
+            onClick={() => closeModal()}
+          >
+            No
+          </button>
+        </form>
+      </div>
+
+      {/* <form id="delete-list-button-container" onSubmit={handleSubmit}>
         <button
           id="delete-list-button"
           style={{ fontSize: "12px", color: "white" }}
@@ -27,7 +46,7 @@ export default function DeleteList({ list, setEditing }) {
         >
           <FaTrash />
         </button>
-      </form>
+      </form> */}
     </>
   );
 }
