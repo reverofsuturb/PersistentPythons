@@ -82,7 +82,7 @@ export default function SingleCard({ card, list, setEditing }) {
     <>
       <div className="cardcontainer">
         <div className="photocovercontainer">
-          <img className="photocover" src={coverPhoto} alt="card image" />
+          {coverPhoto && <img className="photocover" src={coverPhoto}/>}
         </div>
 
         <div className="titlescont">
