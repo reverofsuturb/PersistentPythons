@@ -1,3 +1,21 @@
 .delete-board-modal-container{
     padding: 20px;
 }
+
+.delete-board-button {
+  margin: 14px;
+  padding: 5px;
+  width: 175px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: white solid 2px;
+}
+
+.delete-board-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.delete-board-button:focus {
+  color: white;
+}

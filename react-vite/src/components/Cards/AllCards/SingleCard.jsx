@@ -24,23 +24,23 @@ export default function SingleCard({ card, list, setEditing }) {
   const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card?.title);
+
   const [description, setDescription] = useState(
     card.description ? card.description : ""
   );
   const [labels, setLabels] = useState(card.labels);
-
 
   const [notif, setNotif] = useState(card.notification);
   const [editTitle, setEditTitle] = useState(false);
   const [editLabels, setEditLabels] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
   const [editNotif, setEditNotif] = useState(false);
-  const [coverPhoto, setCoverPhoto] = useState(card?.cover_photo || "")
+  const [coverPhoto, setCoverPhoto] = useState(card?.cover_photo || "");
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (cardState?.title) setTitle(cardState.title);
+    // if (cardState?.title) setTitle(cardState.title);
     if (cardState?.notification) setNotif(cardState.notification);
     if (cardState?.labels) setLabels(cardState.labels);
 
@@ -49,19 +49,22 @@ export default function SingleCard({ card, list, setEditing }) {
     dispatch(thunkGetCardImage(card.id));
   }, [dispatch, notif]);
 
-
   const handleNotifChange = (e) => {
     handleSubmit(e);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEditing(true);
+
+    const updatedTitle = (e.currentTarget.innerText) // This works for render to give it enough time to update the title, when using the title state, it seems like it would send the request to update for the old title, then update the new title info
 
     const editCards = {
-      title,
+      title: updatedTitle,
       description,
       labels,
       notification: !notif,
+      cover_photo: coverPhoto,
     };
 
     const res = await dispatch(thunkEditCard(card.id, editCards));
@@ -69,24 +72,20 @@ export default function SingleCard({ card, list, setEditing }) {
     if (res && res.errors) {
       return setErrors(res.errors);
     }
-
+    setEditing(false);
     setNotif(!notif);
     setEditTitle(false);
     setEditLabels(false);
     setEditNotif(false);
     setEditDescription(false);
   };
-  const handleButtonClick = () => {
-    alert("Feature coming soon");
-  };
+
+
   return (
     <>
       <div className="cardcontainer">
         <div className="photocovercontainer">
-          <img className="photocover"
-            src={coverPhoto}
-            alt="card image"
-          />
+          {coverPhoto && <img className="photocover" src={coverPhoto}/>}
         </div>
 
         <div className="titlescont">
@@ -95,29 +94,21 @@ export default function SingleCard({ card, list, setEditing }) {
           </div>
 
           <div>
-            {editTitle === false ? (
-              <h1
-                onDoubleClick={() => setEditTitle(true)}
-                style={{ marginBottom: "0px" }}
-                className="sc-title"
-              >
-                {title}
-              </h1>
-            ) : (
-              <form className="edit-card-form" onSubmit={handleSubmit}>
-                <label htmlFor="title">
-                  <input
-                    className="eb-lists-input"
-                    type="text"
-                    value={title}
-                    onBlur={handleSubmit}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Enter Title"
-                  />
-                  {errors?.title && <p className="p-error">{errors.title}</p>}
-                </label>
-              </form>
-            )}
+            <h1
+              style={{ marginBottom: "0px" }}
+              className="sc-title"
+              contentEditable={true}
+              suppressContentEditableWarning={true}
+              value={title}
+              // onInput={(e) => setTitle(e.currentTarget.textContent)} // This prevented the cursor from moving
+              onBlur={(e) => {                                          // This needs to update the title and send the submit
+                setTitle(e.currentTarget.textContent);
+                handleSubmit(e);
+              }}
+            >
+              {title}
+            </h1>
+            {errors?.title && <p className="p-error">{errors.title}</p>}
             <div
               className="sc-title"
               style={{ fontSize: "12px", margin: "0px" }}
@@ -159,7 +150,10 @@ export default function SingleCard({ card, list, setEditing }) {
               <div
                 onClick={(e) => handleNotifChange(e)}
                 className="sc-row"
-                style={{ backgroundColor: notif ? "lightblue" : "transparent" }}
+                style={{
+                  backgroundColor: notif ? "lightblue" : "transparent",
+                  cursor: "pointer",
+                }}
               >
                 {notif ? "Notify me!" : "Don't notify me."}
               </div>
@@ -216,7 +210,12 @@ export default function SingleCard({ card, list, setEditing }) {
                 <MdImage />
               </div>
               <div>
-                <GetImagesForCards card={card}  setEditing={setEditing} coverPhoto={coverPhoto} setCoverPhoto={setCoverPhoto} />
+                <GetImagesForCards
+                  card={card}
+                  setEditing={setEditing}
+                  coverPhoto={coverPhoto}
+                  setCoverPhoto={setCoverPhoto}
+                />
               </div>
             </div>
 
@@ -239,9 +238,9 @@ export default function SingleCard({ card, list, setEditing }) {
 
           <div className="rightside">
             <h5 style={{ marginBottom: "0" }}>Add to card</h5>
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Members
-            </button>
+            </button> */}
             {labels ? (
               <></>
             ) : (
@@ -265,28 +264,28 @@ export default function SingleCard({ card, list, setEditing }) {
                 Add Description
               </button>
             )}
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Checklist
             </button>
             <button onClick={handleButtonClick} className="buttonsincard">
               Dates
-            </button>
+            </button> */}
             <OpenModalButton
-              className="buttonsincard"
               buttonText={"Add Image"}
+              css={"buttonsincard"}
               modalComponent={
                 <PostCardImage card={card} isUploading={isUploading} />
               }
             />
             <h5 style={{ marginBottom: "0", marginTop: "50px" }}>Action</h5>
-            <button onClick={handleButtonClick} className="buttonsincard">
+            {/* <button onClick={handleButtonClick} className="buttonsincard">
               Cover
             </button>
             <button onClick={handleButtonClick} className="buttonsincard">
               Copy
-            </button>
+            </button> */}
             <OpenModalButton
-              className="buttonsincard"
+              css={"buttonsincard"}
               buttonText={"Delete Card"}
               modalComponent={<DeleteCard card={card} list={list} />}
             />

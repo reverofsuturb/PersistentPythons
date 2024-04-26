@@ -4,6 +4,7 @@
   font-family: "Death Star", sans-serif;
   text-shadow: rgb(255, 255, 255) 1px 1px 4px;
   color: black;
+  cursor: pointer;
 }
 
 .eb-board-title:hover {

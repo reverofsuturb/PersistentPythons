@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useShowBoards } from "../../context/ShowBoards";
 import OpenModalMenuItem from "../Navigation/OpenModalMenuItem";
 import EditBoard from "./EditBoard";
 import DeleteBoard from "./DeleteBoard";
@@ -17,7 +18,7 @@ export default function SingleBoard() {
   const { board_id } = useParams();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [showBoards, setShowBoards] = useState(false);
+  const { showBoards, setShowBoards } = useShowBoards();
 
   let boards = useSelector((state) => state.boards);
   let board = useSelector((state) => state.boards[board_id]);
@@ -104,7 +105,7 @@ export default function SingleBoard() {
               />
               <div>
                 {hoverCaption === -1 && (
-                  <p className={hoverClassName}>Double click to edit title</p>
+                  <p className={hoverClassName}>Click to edit title</p>
                 )}
               </div>
             </div>
@@ -136,14 +137,16 @@ export default function SingleBoard() {
           <div className="outer-sb-list">
             <div className="sb-list-full">
               {board?.lists?.length ? (
-                board?.lists?.map((list) => (
-                  <SingleList
-                    key={list}
-                    list={list}
-                    setEditing={setEditing}
-                    editing={editing}
-                  />
-                ))
+                board?.lists
+                  ?.sort((a, b) => a.id - b.id)
+                  .map((list) => (
+                    <SingleList
+                      key={list.id}
+                      list={list}
+                      setEditing={setEditing}
+                      editing={editing}
+                    />
+                  ))
               ) : (
                 <div className="sb-contain-two">
                   <div className="no-cards">

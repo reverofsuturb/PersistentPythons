@@ -42,11 +42,10 @@ export default function DeleteBoard({ board_id }) {
               handleDelete(e, board_id);
             }}
           >
-            Yes (Delete Board)
+            Yes
           </button>
           <button className="delete-board-button" onClick={() => noDeletion()}>
-            {" "}
-            No (Go Back)
+            No
           </button>
         </div>
       </form>

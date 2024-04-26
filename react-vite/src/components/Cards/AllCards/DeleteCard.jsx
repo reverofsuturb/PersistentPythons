@@ -24,7 +24,7 @@ export default function DeleteCard({ card }) {
     <div className="ec-cards-delete-modal">
       <h2 className="ec-cards-modal-title">Confirm Delete</h2>
       <p className="ec-comments-modal-p">
-        Are you sure you want to remove this comment?
+        Are you sure you want to remove this card?
       </p>
       <form onSubmit={handleDelete}>
         <button type="submit" className="ec-cards-modal-button">

@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider as ReduxProvider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
+import { ShowBoardsProvider } from "./context/ShowBoards";
 import configureStore from "./store/store";
 import { router } from "./router";
 import * as sessionActions from "./store/session";
@@ -17,7 +18,9 @@ if (import.meta.env.MODE !== "production") {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <RouterProvider router={router} />
+      <ShowBoardsProvider>
+        <RouterProvider router={router} />
+      </ShowBoardsProvider>
     </ReduxProvider>
   </React.StrictMode>
 );
