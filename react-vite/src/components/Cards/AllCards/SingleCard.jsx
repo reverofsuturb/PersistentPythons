@@ -24,6 +24,7 @@ export default function SingleCard({ card, list, setEditing }) {
   const [uploading, isUploading] = useState(false);
   const dispatch = useDispatch();
   const [title, setTitle] = useState(card?.title);
+
   const [description, setDescription] = useState(
     card.description ? card.description : ""
   );
@@ -39,7 +40,7 @@ export default function SingleCard({ card, list, setEditing }) {
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    if (cardState?.title) setTitle(cardState.title);
+    // if (cardState?.title) setTitle(cardState.title);
     if (cardState?.notification) setNotif(cardState.notification);
     if (cardState?.labels) setLabels(cardState.labels);
 
@@ -55,8 +56,11 @@ export default function SingleCard({ card, list, setEditing }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setEditing(true);
+
+    const updatedTitle = (e.currentTarget.innerText) // This works for render to give it enough time to update the title, when using the title state, it seems like it would send the request to update for the old title, then update the new title info
+
     const editCards = {
-      title,
+      title: updatedTitle,
       description,
       labels,
       notification: !notif,
@@ -75,9 +79,8 @@ export default function SingleCard({ card, list, setEditing }) {
     setEditNotif(false);
     setEditDescription(false);
   };
-  const handleButtonClick = () => {
-    alert("Feature coming soon");
-  };
+
+
   return (
     <>
       <div className="cardcontainer">
@@ -97,8 +100,11 @@ export default function SingleCard({ card, list, setEditing }) {
               contentEditable={true}
               suppressContentEditableWarning={true}
               value={title}
-              onInput={(e) => setTitle(e.currentTarget.innerText)}
-              onBlur={handleSubmit}
+              // onInput={(e) => setTitle(e.currentTarget.textContent)} // This prevented the cursor from moving
+              onBlur={(e) => {                                          // This needs to update the title and send the submit
+                setTitle(e.currentTarget.textContent);
+                handleSubmit(e);
+              }}
             >
               {title}
             </h1>
