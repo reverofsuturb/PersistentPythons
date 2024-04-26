@@ -9,6 +9,7 @@ export default function EditCard({ card, list }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [title, setTitle] = useState(card.title);
+  console.log("🚀 ~ EditCard ~ title:", title)
   const [labels, setLabels] = useState(card.labels);
   const [notification, setNotification] = useState(card.notification);
   const [description, setDescription] = useState(card.description);
@@ -30,6 +31,7 @@ export default function EditCard({ card, list }) {
       start_date: startDate,
       end_date: endDate,
       checklist,
+      cover_photo: card.cover
     };
 
     const res = await dispatch(thunkEditCard(card.id, editCard));

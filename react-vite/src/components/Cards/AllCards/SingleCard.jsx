@@ -60,7 +60,7 @@ export default function SingleCard({ card, list, setEditing }) {
     const updatedTitle = (e.currentTarget.innerText) // This works for render to give it enough time to update the title, when using the title state, it seems like it would send the request to update for the old title, then update the new title info
 
     const editCards = {
-      title: updatedTitle,
+      title: updatedTitle || title,
       description,
       labels,
       notification: !notif,
