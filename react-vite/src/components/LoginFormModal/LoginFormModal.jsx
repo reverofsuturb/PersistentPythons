@@ -22,6 +22,7 @@ function LoginFormModal() {
         password,
       })
     );
+    console.log("🚀 ~ handleSubmit ~ serverResponse:", serverResponse)
 
     if (serverResponse) {
       setErrors(serverResponse);
@@ -31,10 +32,11 @@ function LoginFormModal() {
     }
   };
 
-  const handleDemoLogin = async () => {
+  const handleDemoLogin = async(e) => {
     setEmail("user1@aa.io");
     setPassword("password");
-    await handleSubmit();
+
+    setTimeout(() => handleSubmit(e), 100) // Gives this function enough time to update the state before logging in, also 100ms was tested, it allows the state enough time to update and to keep the errors from popping up a split second before sending data.
   };
 
   return (
@@ -66,7 +68,7 @@ function LoginFormModal() {
         <button className="logInButton" type="submit">
           Log In
         </button>
-        <button className="logInButton" onClick={handleDemoLogin}>
+        <button className="logInButton" onClick={(e) => handleDemoLogin(e)}>
           Demo User Login
         </button>
       </form>

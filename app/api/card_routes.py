@@ -122,7 +122,6 @@ def post_card_image(card_id):
     form = CardImageForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
-    print("am i getting here")
     if form.validate_on_submit():
         image = form.data["image_file"]
         image.filename = get_unique_filename(image.filename)
